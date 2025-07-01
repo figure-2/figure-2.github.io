@@ -18,9 +18,9 @@ main:
 # sidebar navigation (categories)
 # 2022.02.15 sidebar update : simple ver.
 categories:
-  - title: "Categories1"
+  - title: "데이터 분석"
     url: /categories/categories1/
-  - title: "Categories2"
+  - title: "LLM"
     url: /categories/categories2/
   - title: "Categories3"
     url: /categories/categories3/
