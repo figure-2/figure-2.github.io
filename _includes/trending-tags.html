@@ -1,0 +1,18 @@
+{% if site.tags.size > 0 %}
+<div class="sidebar__widget">
+  <h3 class="sidebar__title">Trending Tags</h3>
+  <div class="sidebar__content">
+    <div class="sidebar__tags">
+      {% assign sorted_tags = site.tags | sort_by: 'size' | reverse %}
+      {% for tag in sorted_tags limit:10 %}
+        {% assign tag_name = tag[0] %}
+        {% assign tag_count = tag[1].size %}
+        <a href="{{ '/tags/' | append: tag_name | relative_url }}" class="sidebar__tag">
+          <span class="sidebar__tag-name">{{ tag_name }}</span>
+          <span class="sidebar__tag-count">({{ tag_count }})</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}

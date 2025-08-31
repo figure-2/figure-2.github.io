@@ -1,0 +1,18 @@
+{% if site.posts.size > 0 %}
+<div class="sidebar__widget">
+  <h3 class="sidebar__title">Recently Updated</h3>
+  <div class="sidebar__content">
+    <ul class="sidebar__list">
+      {% assign recent_posts = site.posts | sort: 'last_modified_at' | reverse %}
+      {% for post in recent_posts limit:5 %}
+        <li class="sidebar__item">
+          <a href="{{ post.url | relative_url }}" class="sidebar__link">
+            <span class="sidebar__post-title">{{ post.title }}</span>
+            <span class="sidebar__post-date">{{ post.last_modified_at | date: "%b %d, %Y" }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endif %}
