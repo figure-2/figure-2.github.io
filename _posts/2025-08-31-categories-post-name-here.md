@@ -3,11 +3,11 @@ title: "NumPy 랑 친해지기"
 excerpt: "본문의 주요 내용을 여기에 입력하세요"
 
 categories:
-  -PYTHON, NUMPY
+  - Python
 tags:
   - [ 'python', 'numpy']
 
-permalink: /categories1/post-name-here/
+permalink: /python/post-name-here/
 
 toc: true
 toc_sticky: true
