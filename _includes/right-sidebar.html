@@ -1,5 +1,15 @@
 <!-- Right Sidebar Widgets -->
 <div class="sidebar__right">
+  <!-- Table of Contents Widget -->
+  {% if page.toc %}
+    <div class="sidebar__widget">
+      <h3 class="sidebar__title">Contents</h3>
+      <div class="sidebar__content">
+        {% include toc.html sanitize=true html=content h_min=1 h_max=6 class="toc__menu" skip_no_ids=true %}
+      </div>
+    </div>
+  {% endif %}
+  
   <!-- Recently Updated Widget -->
   {% include recently-updated.html %}
   
