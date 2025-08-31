@@ -18,11 +18,13 @@ main:
 # sidebar navigation (categories)
 # 2022.02.15 sidebar update : simple ver.
 categories:
-  - title: "데이터 분석"
+  - title: "PYTHON "
     url: /categories/categories1/
-  - title: "LLM"
+  - title: "MATHEMATICS"
     url: /categories/categories2/
-  - title: "프로젝트"
+  - title: "MACHINE_LEARNING"
     url: /categories/categories3/
-  - title: "Categories4"
+  - title: "DEEP_LEARNING"
     url: /categories/categories4/
+  - title: "LLM_AGENT"
+    url: /categories/categories5/
