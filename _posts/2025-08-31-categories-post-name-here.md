@@ -51,7 +51,7 @@ pip install numpy==2.2.4
 
 ### dimension 은  axis (축)
 
-![ndarray.png](/assets/img/ndarray.png)
+![ndarray.png](/assets/images/ndarray.png)
 
 - `ndarray` 의 모양을 나타낼 때, shape 이라는 말을 사용하고, (axis 0 의 item 수, … , axis n 의 item 수) 라는 `tuple` 을 보여준다.
 
@@ -69,7 +69,7 @@ pip install numpy==2.2.4
 
 ### 대표적인 attributes
 
-![ndarray_example.png](/assets/img/ndarray_example.png)
+![ndarray_example.png](/assets/images/ndarray_example.png)
 
 - `shape`: 각 축의 크기를 tuple 로 표현한 속성. ex.) (4, 3, 2)
 
@@ -230,7 +230,7 @@ np.linspace(10, 20, 5, dtype=np.int64)  # [10 12 15 17 20]
 
 ### 주로 사용하는 연산
 
-![numpy_func.png](/assets/img/numpy_func.png)
+![numpy_func.png](/assets/images/numpy_func.png)
 
 - 산술 연산자: `+`, `-`, `*`, `/`, `**`, `%`, `//`
 
