@@ -10,18 +10,49 @@
 
 // Right Sidebar Container
 .sidebar__right {
-  float: right;
-  width: 300px;
-  margin-left: 2rem;
-  margin-bottom: 2rem;
+  position: fixed;
+  top: 100px; /* Adjust based on your header height */
+  right: 20px;
+  width: 280px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  z-index: 100;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+// Main content area adjustment
+.page__content {
+  margin-right: 320px; /* Make space for right sidebar */
+}
+
+// Archive pages adjustment
+.entries-list, .entries-grid {
+  margin-right: 320px;
+}
+
+// Responsive adjustments
 @media (max-width: 1024px) {
   .sidebar__right {
-    float: none;
+    position: static;
     width: 100%;
     margin-left: 0;
     margin-top: 2rem;
+    top: auto;
+    right: auto;
+    max-height: none;
+    overflow-y: visible;
+  }
+  
+  .page__content {
+    margin-right: 0;
+  }
+  
+  .entries-list, .entries-grid {
+    margin-right: 0;
   }
 }
 
