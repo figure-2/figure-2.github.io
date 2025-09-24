@@ -21,10 +21,10 @@ main:
 categories:
   - title: "TIL"
     children:
-      - title: "Git"
-        url: /categories/Git/
-      - title: "Python"
-        url: /categories/Python/
+      - title: "01.Git"
+        url: /categories/01.Git/
+      - title: "02.Python"
+        url: /categories/02.Python/
 
   - title: "PYTHON"
     url: /categories/python/
