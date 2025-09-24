@@ -1,9 +1,9 @@
 ---
-title: "Git"
+title: "02.Python"
 layout: category
-permalink: /categories/Git/
+permalink: /categories/02.Python/
 author_profile: true
-taxonomy: Git
+taxonomy: Python
 sidebar:
   nav: "categories"
 ---
