@@ -18,6 +18,8 @@ main:
 # sidebar navigation (categories)
 # 2022.02.15 sidebar update : simple ver.
 categories:
+  - title: "TIL"
+    url: /categories/TIL/
   - title: "PYTHON "
     url: /categories/python/
   - title: "MATHEMATICS"
@@ -28,5 +30,3 @@ categories:
     url: /categories/categories4/
   - title: "LLM_AGENT"
     url: /categories/categories5/
-  - title: "알고리즘"
-    url: /categories/categories6/
