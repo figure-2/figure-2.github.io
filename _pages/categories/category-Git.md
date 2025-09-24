@@ -1,9 +1,9 @@
 ---
-title: "TILd"
+title: "Git"
 layout: category
-permalink: /categories/TIL/
+permalink: /categories/Git/
 author_profile: true
-taxonomy: TIL
+taxonomy: Git
 sidebar:
   nav: "categories"
 ---
