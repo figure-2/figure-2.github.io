@@ -17,6 +17,7 @@ main:
 
 # sidebar navigation (categories)
 # 2022.02.15 sidebar update : simple ver.
+
 categories:
   - title: "TIL"
     url: /categories/TIL/
@@ -30,5 +31,3 @@ categories:
     url: /categories/categories4/
   - title: "LLM_AGENT"
     url: /categories/categories5/
-  - title: "C/C++"
-    url: /categories/c-cpp/
