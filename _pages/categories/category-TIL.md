@@ -1,5 +1,5 @@
 ---
-title: "TILd"
+title: "TIL"
 layout: category
 permalink: /categories/TIL/
 author_profile: true
