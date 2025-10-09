@@ -1,6 +1,5 @@
 ---
 title: "Pandas concat과 merge - 데이터 연결과 병합"
-excerpt: "Pandas의 concat과 merge를 사용한 DataFrame 연결, 병합 방법에 대한 완전 가이드"
 
 categories:
   - Pandas
@@ -15,8 +14,11 @@ tags:
 
 toc: true
 
-date: 2023-07-25 16:00:00
-last_modified_at: 2025-01-18
+date: 2023-07-25 16:00:00 +0900
+toc: true
+comments: false
+mermaid: true
+math: true
 ---
 
 # Pandas concat과 merge - 데이터 연결과 병합

@@ -1,6 +1,5 @@
 ---
 title: "HTML 기초 - 웹 개발의 첫 걸음"
-excerpt: "HTML의 기본 구조, 주요 태그들, Form 요소에 대한 완전 가이드"
 
 categories:
   - WEB
@@ -15,8 +14,11 @@ tags:
 
 toc: true
 
-date: 2023-08-18 09:00:00
-last_modified_at: 2025-01-18
+date: 2023-08-18 09:00:00 +0900
+toc: true
+comments: false
+mermaid: true
+math: true
 ---
 
 # HTML 기초 - 웹 개발의 첫 걸음
