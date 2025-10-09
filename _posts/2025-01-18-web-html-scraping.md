@@ -1,6 +1,5 @@
 ---
 title: "HTML 스크래핑 - 웹 데이터 수집의 핵심"
-excerpt: "BeautifulSoup, requests, Selenium을 활용한 HTML 스크래핑 기법, 실무 적용 사례, 최적화 방법에 대한 완전 가이드"
 
 categories:
   - WEB
@@ -15,8 +14,11 @@ tags:
 
 toc: true
 
-date: 2023-10-13 09:00:00
-last_modified_at: 2025-01-18
+date: 2023-10-13 09:00:00 +0900
+toc: true
+comments: false
+mermaid: true
+math: true
 ---
 
 # HTML 스크래핑 - 웹 데이터 수집의 핵심

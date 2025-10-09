@@ -1,6 +1,5 @@
 ---
 title: "데이터 분석 기초 - 자동차 결함 리콜 데이터 분석 실습"
-excerpt: "데이터 읽기, 정제, 시각화를 통한 데이터 분석의 기본 과정과 자동차 결함 리콜 데이터 분석 실습"
 
 categories:
   - Data_Analysis
@@ -15,8 +14,11 @@ tags:
 
 toc: true
 
-date: 2023-09-20 09:00:00
-last_modified_at: 2025-01-18
+date: 2023-09-20 09:00:00 +0900
+toc: true
+comments: false
+mermaid: true
+math: true
 ---
 
 # 데이터 분석 기초 - 자동차 결함 리콜 데이터 분석 실습
