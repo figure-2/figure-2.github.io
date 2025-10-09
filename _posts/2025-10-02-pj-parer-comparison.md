@@ -32,220 +32,140 @@ math: true
 
 ## 1. Upstage Parser API
 
-<details>
-<summary>Upstage Parser API 상세 분석 결과</summary>
+### 장점: 객체 탐지 우수
 
-<h3>장점: 객체 탐지 우수</h3>
-<ul>
-<li><strong>일관성 있는 바운딩 박스</strong>: 어노테이션 바운딩 박스 결과가 가장 일관성 있게 탐지되며, HTML 결과에서 테이블 구조를 정확하게 인식</li>
-</ul>
+- **일관성 있는 바운딩 박스**: 어노테이션 바운딩 박스 결과가 가장 일관성 있게 탐지되며, HTML 결과에서 테이블 구조를 정확하게 인식
 
-<details>
-<summary>원본 PDF 1페이지 - 바운딩 박스 분석 결과</summary>
-<img src="/assets/images/PJ/1_parser_upstage_bbox.PNG" alt="Upstage Parser 바운딩 박스 결과">
-</details>
+#### 원본 PDF 1페이지 - 바운딩 박스 분석 결과
+![Upstage Parser 바운딩 박스 결과](/assets/images/PJ/1_parser_upstage_bbox.PNG){: width="80%"}
 
-<details>
-<summary>HTML 추출 결과</summary>
-<img src="/assets/images/PJ/1_parser_upstage_bbox_내용.PNG" alt="Upstage Parser HTML 추출 결과 1">
-<img src="/assets/images/PJ/1_parser_upstage_bbox_내용2.PNG" alt="Upstage Parser HTML 추출 결과 2">
-</details>
+#### HTML 추출 결과
+![Upstage Parser HTML 추출 결과 1](/assets/images/PJ/1_parser_upstage_bbox_내용.PNG){: width="80%"}
+![Upstage Parser HTML 추출 결과 2](/assets/images/PJ/1_parser_upstage_bbox_내용2.PNG){: width="80%"}
 
-<h3>한계: 복잡한 구조 처리</h3>
-<ul>
-<li><strong>이중 구조 표 처리</strong>: 복잡한 이중 구조 표에서 바운딩 박스 정확도가 떨어지지만, <span style="color: #e74c3c; font-weight: bold;">HTML 결과에서는 중첩표를 정확하게 탐지</span></li>
-</ul>
+### 한계: 복잡한 구조 처리
 
-<details>
-<summary>원본 PDF 2페이지 - 중첩표 바운딩 박스 분석</summary>
-<img src="/assets/images/PJ/1_parser_upstage_bbox2.PNG" alt="Upstage Parser 중첩표 바운딩 박스 결과">
-</details>
+- **이중 구조 표 처리**: 복잡한 이중 구조 표에서 바운딩 박스 정확도가 떨어지지만, <span style="color: #e74c3c; font-weight: bold;">HTML 결과에서는 중첩표를 정확하게 탐지</span>
 
-<details>
-<summary>HTML 추출 결과</summary>
-<img src="/assets/images/PJ/1_parser_upstage_bbox2_분석.PNG" alt="Upstage Parser 중첩표 HTML 추출 결과">
-</details>
+#### 원본 PDF 2페이지 - 중첩표 바운딩 박스 분석
+![Upstage Parser 중첩표 바운딩 박스 결과](/assets/images/PJ/1_parser_upstage_bbox2.PNG){: width="80%"}
 
-<h3>한계: 그래프 인식 부족</h3>
-<ul>
-<li><strong>중첩 표 내 그래프</strong>: 중첩 표 안에 있는 그래프를 인식하지 못함</li>
-</ul>
+#### HTML 추출 결과
+![Upstage Parser 중첩표 HTML 추출 결과](/assets/images/PJ/1_parser_upstage_bbox2_분석.PNG){: width="80%"}
 
-<details>
-<summary>원본 PDF 3페이지 - 그래프 바운딩 박스 분석</summary>
-<img src="/assets/images/PJ/1_parser_upstage_bbox3.PNG" alt="Upstage Parser 그래프 바운딩 박스 결과">
-</details>
+### 한계: 그래프 인식 부족
 
-<details>
-<summary>HTML 추출 결과</summary>
-<img src="/assets/images/PJ/1_parser_upstage_bbox3_분석.PNG" alt="Upstage Parser 그래프 HTML 추출 결과">
-</details>
+- **중첩 표 내 그래프**: 중첩 표 안에 있는 그래프를 인식하지 못함
 
-</details>
+#### 원본 PDF 3페이지 - 그래프 바운딩 박스 분석
+![Upstage Parser 그래프 바운딩 박스 결과](/assets/images/PJ/1_parser_upstage_bbox3.PNG){: width="80%"}
+
+#### HTML 추출 결과
+![Upstage Parser 그래프 HTML 추출 결과](/assets/images/PJ/1_parser_upstage_bbox3_분석.PNG){: width="80%"}
 
 ## 2. Llamaparse Parser API
 
-<details>
-<summary>Llamaparse Parser API 상세 분석 결과</summary>
+### 한계: 기본 표 처리 부족
 
-<h3>한계: 기본 표 처리 부족</h3>
-<ul>
-<li><strong>표 처리</strong>: 바운딩 박스가 부정확하며, 단일 표 형식에서도 정확한 추출이 어려움</li>
-</ul>
+- **표 처리**: 바운딩 박스가 부정확하며, 단일 표 형식에서도 정확한 추출이 어려움
 
-<details>
-<summary>원본 PDF 1페이지 - 바운딩 박스 분석 결과</summary>
-<img src="/assets/images/PJ/02_Llamaparse_bbox.PNG" alt="Llamaparse Parser 바운딩 박스 결과">
-</details>
+#### 원본 PDF 1페이지 - 바운딩 박스 분석 결과
+![Llamaparse Parser 바운딩 박스 결과](/assets/images/PJ/02_Llamaparse_bbox.PNG){: width="80%"}
 
-<details>
-<summary>HTML 추출 결과</summary>
-<img src="/assets/images/PJ/02_Llamaparse_bbox_분석.PNG" alt="Llamaparse Parser HTML 추출 결과">
-</details>
+#### HTML 추출 결과
+![Llamaparse Parser HTML 추출 결과](/assets/images/PJ/02_Llamaparse_bbox_분석.PNG){: width="80%"}
 
-<h3>혼재된 결과: 중첩표 처리</h3>
-<ul>
-<li><strong>표 처리</strong>: 바운딩 박스가 부정확하며 중첩표 구조에서 내용이 한 칸씩 밀림 <span style="color: #e74c3c; font-weight: bold;">(빨간색 표시)</span><br>
-<li><strong>긍정적 측면</strong>: 중첩표 구조 자체는 정확하게 인식 <span style="color: #3498db; font-weight: bold;">(파란색 표시)</span></li>
-</ul>
+### 혼재된 결과: 중첩표 처리
 
-<details>
-<summary>원본 PDF 2페이지 - 중첩표 바운딩 박스 분석</summary>
-<img src="/assets/images/PJ/02_Llamaparse_bbox2.PNG" alt="Llamaparse Parser 중첩표 바운딩 박스 결과">
-</details>
+- **표 처리**: 바운딩 박스가 부정확하며 중첩표 구조에서 내용이 한 칸씩 밀림 <span style="color: #e74c3c; font-weight: bold;">(빨간색 표시)</span>
+- **긍정적 측면**: 중첩표 구조 자체는 정확하게 인식 <span style="color: #3498db; font-weight: bold;">(파란색 표시)</span>
 
-<details>
-<summary>HTML 추출 결과</summary>
-<img src="/assets/images/PJ/02_Llamaparse_bbox2_분석.PNG" alt="Llamaparse Parser 중첩표 HTML 추출 결과">
-</details>
+#### 원본 PDF 2페이지 - 중첩표 바운딩 박스 분석
+![Llamaparse Parser 중첩표 바운딩 박스 결과](/assets/images/PJ/02_Llamaparse_bbox2.PNG){: width="80%"}
 
-</details>
+#### HTML 추출 결과
+![Llamaparse Parser 중첩표 HTML 추출 결과](/assets/images/PJ/02_Llamaparse_bbox2_분석.PNG){: width="80%"}
 
 ## 3. OpenAI API
 
-<details>
-<summary>OpenAI API 상세 분석 결과</summary>
+### 한계: 일관성 부족
 
-<h3>한계: 일관성 부족</h3>
-<ul>
-<li><strong>표 처리</strong>: 바운딩 박스가 부정확하며 프롬프트와 PDF 파일에 따라 결과가 달라짐</li>
-<li><strong>일관성 문제</strong>: 추출 결과의 일관성과 정확성이 떨어짐</li>
-<li><strong>긍정적 측면</strong>: HTML 추출에서는 중첩표 테이블을 정확하게 인식하고 복잡한 구조도 잘 처리</li>
-</ul>
+- **표 처리**: 바운딩 박스가 부정확하며 프롬프트와 PDF 파일에 따라 결과가 달라짐
+- **일관성 문제**: 추출 결과의 일관성과 정확성이 떨어짐
+- **긍정적 측면**: HTML 추출에서는 중첩표 테이블을 정확하게 인식하고 복잡한 구조도 잘 처리
 
-<details>
-<summary>원본 PDF 1,2페이지 - 바운딩 박스 분석 결과</summary>
-<img src="/assets/images/PJ/03_openAI_bbox.PNG" alt="OpenAI API 바운딩 박스 결과 1">
-<img src="/assets/images/PJ/03_openAI_bbox2.PNG" alt="OpenAI API 바운딩 박스 결과 2">
-</details>
+#### 원본 PDF 1,2페이지 - 바운딩 박스 분석 결과
+![OpenAI API 바운딩 박스 결과 1](/assets/images/PJ/03_openAI_bbox.PNG){: width="80%"}
+![OpenAI API 바운딩 박스 결과 2](/assets/images/PJ/03_openAI_bbox2.PNG){: width="80%"}
 
-<details>
-<summary>HTML 추출 결과</summary>
-<img src="/assets/images/PJ/03_openAI_bbox_분석.PNG" alt="OpenAI API HTML 추출 결과">
-</details>
+#### HTML 추출 결과
+![OpenAI API HTML 추출 결과](/assets/images/PJ/03_openAI_bbox_분석.PNG){: width="80%"}
 
-<h3>장점: 그래프 추출 가능</h3>
-<ul>
-<li><strong>그래프 인식</strong>: 바운딩 박스는 부정확하지만 HTML 추출에서 그래프를 정확하게 탐지하고 추출</li>
-</ul>
+### 장점: 그래프 추출 가능
 
-<details>
-<summary>원본 PDF 3페이지 - 그래프 바운딩 박스 분석</summary>
-<img src="/assets/images/PJ/03_openAI_bbox3.PNG" alt="OpenAI API 그래프 바운딩 박스 결과">
-</details>
+- **그래프 인식**: 바운딩 박스는 부정확하지만 HTML 추출에서 그래프를 정확하게 탐지하고 추출
 
-<details>
-<summary>HTML 추출 결과</summary>
-<img src="/assets/images/PJ/03_openAI_bbox_분석2.PNG" alt="OpenAI API 그래프 HTML 추출 결과">
-</details>
+#### 원본 PDF 3페이지 - 그래프 바운딩 박스 분석
+![OpenAI API 그래프 바운딩 박스 결과](/assets/images/PJ/03_openAI_bbox3.PNG){: width="80%"}
 
-</details>
+#### HTML 추출 결과
+![OpenAI API 그래프 HTML 추출 결과](/assets/images/PJ/03_openAI_bbox_분석2.PNG){: width="80%"}
 
 ## 4. Gemini API
 
-<details>
-<summary>Gemini API 상세 분석 결과</summary>
+OpenAI API와 유사한 결과를 보이며, 차이점은 HTML 추출 결과에서 그래프의 내용을 파악하고 간단한 코멘트를 제공하는 점입니다.
 
-<p>OpenAI API와 유사한 결과를 보이며, 차이점은 HTML 추출 결과에서 그래프의 내용을 파악하고 간단한 코멘트를 제공하는 점입니다.</p>
+### 한계: 일관성 부족
 
-<h3>한계: 일관성 부족</h3>
-<ul>
-<li><strong>표 처리</strong>: 바운딩 박스가 부정확하며 프롬프트와 PDF 파일에 따라 결과가 달라짐</li>
-<li><strong>일관성 문제</strong>: 추출 결과의 일관성과 정확성이 떨어짐</li>
-<li><strong>긍정적 측면</strong>: HTML 추출에서는 중첩표 테이블을 정확하게 인식하고 복잡한 구조도 잘 처리</li>
-</ul>
+- **표 처리**: 바운딩 박스가 부정확하며 프롬프트와 PDF 파일에 따라 결과가 달라짐
+- **일관성 문제**: 추출 결과의 일관성과 정확성이 떨어짐
+- **긍정적 측면**: HTML 추출에서는 중첩표 테이블을 정확하게 인식하고 복잡한 구조도 잘 처리
 
-<details>
-<summary>원본 PDF 1,2페이지 - 바운딩 박스 분석 결과</summary>
-<img src="/assets/images/PJ/04_Gemini_bbox.PNG" alt="Gemini API 바운딩 박스 결과 1">
-<img src="/assets/images/PJ/04_Gemini_bbox2.PNG" alt="Gemini API 바운딩 박스 결과 2">
-</details>
+#### 원본 PDF 1,2페이지 - 바운딩 박스 분석 결과
+![Gemini API 바운딩 박스 결과 1](/assets/images/PJ/04_Gemini_bbox.PNG){: width="80%"}
+![Gemini API 바운딩 박스 결과 2](/assets/images/PJ/04_Gemini_bbox2.PNG){: width="80%"}
 
-<details>
-<summary>HTML 추출 결과</summary>
-<img src="/assets/images/PJ/04_Gemini_bbox_분석1.PNG" alt="Gemini API HTML 추출 결과">
-</details>
+#### HTML 추출 결과
+![Gemini API HTML 추출 결과](/assets/images/PJ/04_Gemini_bbox_분석1.PNG){: width="80%"}
 
-<h3>장점: 그래프 추출 및 코멘트 제공</h3>
-<ul>
-<li><strong>그래프 인식</strong>: 바운딩 박스는 부정확하지만 HTML 추출에서 그래프를 정확하게 탐지하고 추출</li>
-<li><strong>추가 기능</strong>: 그래프 내용을 파악하여 간단한 코멘트를 제공하는 차별화된 기능</li>
-</ul>
+### 장점: 그래프 추출 및 코멘트 제공
 
-<details>
-<summary>원본 PDF 3페이지 - 그래프 바운딩 박스 분석</summary>
-<img src="/assets/images/PJ/04_Gemini_bbox3.PNG" alt="Gemini API 그래프 바운딩 박스 결과">
-</details>
+- **그래프 인식**: 바운딩 박스는 부정확하지만 HTML 추출에서 그래프를 정확하게 탐지하고 추출
+- **추가 기능**: 그래프 내용을 파악하여 간단한 코멘트를 제공하는 차별화된 기능
 
-<details>
-<summary>HTML 추출 결과</summary>
-<img src="/assets/images/PJ/04_Gemini_bbox_분석2.PNG" alt="Gemini API 그래프 HTML 추출 결과">
-</details>
+#### 원본 PDF 3페이지 - 그래프 바운딩 박스 분석
+![Gemini API 그래프 바운딩 박스 결과](/assets/images/PJ/04_Gemini_bbox3.PNG){: width="80%"}
 
-</details>
+#### HTML 추출 결과
+![Gemini API 그래프 HTML 추출 결과](/assets/images/PJ/04_Gemini_bbox_분석2.PNG){: width="80%"}
 
 ## 5. GoogleCloud Document AI API
 
-<details>
-<summary>GoogleCloud Document AI API 상세 분석 결과</summary>
+GCP 환경을 이용하는 경우에는 GoogleCloud Document AI API 사용을 고려할 수 있습니다.
 
-<p>GCP 환경을 이용하는 경우에는 GoogleCloud Document AI API 사용을 고려할 수 있습니다.</p>
+### 한계: 구조적 처리 부족
 
-<h3>한계: 구조적 처리 부족</h3>
-<ul>
-<li><strong>표 처리</strong>: 바운딩 박스가 부정확하며, HTML/TXT 추출 결과가 나열식으로 출력됨</li>
-<li><strong>구조 문제</strong>: 테이블을 별도로 정리하지 않아 청킹과 데이터 중복 문제가 예상됨</li>
-</ul>
+- **표 처리**: 바운딩 박스가 부정확하며, HTML/TXT 추출 결과가 나열식으로 출력됨
+- **구조 문제**: 테이블을 별도로 정리하지 않아 청킹과 데이터 중복 문제가 예상됨
 
-<details>
-<summary>원본 PDF 1,2페이지 - 바운딩 박스 분석 결과</summary>
-<img src="/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox.PNG" alt="GoogleCloud Document AI 바운딩 박스 결과 1">
-<img src="/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox2.PNG" alt="GoogleCloud Document AI 바운딩 박스 결과 2">
-</details>
+#### 원본 PDF 1,2페이지 - 바운딩 박스 분석 결과
+![GoogleCloud Document AI 바운딩 박스 결과 1](/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox.PNG){: width="80%"}
+![GoogleCloud Document AI 바운딩 박스 결과 2](/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox2.PNG){: width="80%"}
 
-<details>
-<summary>HTML 추출 결과</summary>
-<img src="/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox_분석.PNG" alt="GoogleCloud Document AI HTML 추출 결과">
-</details>
+#### HTML 추출 결과
+![GoogleCloud Document AI HTML 추출 결과](/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox_분석.PNG){: width="80%"}
 
-<h3>혼재된 결과: 그래프 추출</h3>
-<ul>
-<li><strong>그래프 처리</strong>: 바운딩 박스는 부정확하지만 HTML/TXT 추출에서 그래프를 탐지</li>
-<li><strong>데이터 문제</strong>: 추출된 데이터와 누락된 데이터가 혼재되어 있음</li>
-<li><strong>구조적 한계</strong>: 나열식 출력으로 인한 청킹과 데이터 중복 문제 지속</li>
-</ul>
+### 혼재된 결과: 그래프 추출
 
-<details>
-<summary>원본 PDF 3페이지 - 그래프 바운딩 박스 분석</summary>
-<img src="/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox3.PNG" alt="GoogleCloud Document AI 그래프 바운딩 박스 결과">
-</details>
+- **그래프 처리**: 바운딩 박스는 부정확하지만 HTML/TXT 추출에서 그래프를 탐지
+- **데이터 문제**: 추출된 데이터와 누락된 데이터가 혼재되어 있음
+- **구조적 한계**: 나열식 출력으로 인한 청킹과 데이터 중복 문제 지속
 
-<details>
-<summary>HTML 추출 결과</summary>
-<img src="/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox_분석3.PNG" alt="GoogleCloud Document AI 그래프 HTML 추출 결과">
-</details>
+#### 원본 PDF 3페이지 - 그래프 바운딩 박스 분석
+![GoogleCloud Document AI 그래프 바운딩 박스 결과](/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox3.PNG){: width="80%"}
 
-</details>
+#### HTML 추출 결과
+![GoogleCloud Document AI 그래프 HTML 추출 결과](/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox_분석3.PNG){: width="80%"}
 
 ## 종합 비교 분석
 
