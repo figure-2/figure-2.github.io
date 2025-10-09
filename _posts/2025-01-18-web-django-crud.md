@@ -1,25 +1,21 @@
 ---
-title: "Django CRUD - 게시판 만들기의 핵심"
-
+title: Django CRUD - 게시판 만들기의 핵심
 categories:
-  - WEB_DEVELOPMENT
+- 04_WEB_DEVELOPMENT
 tags:
-  - django
-  - crud
-  - 게시판
-  - 모델
-  - 뷰
-  - 템플릿
-  - orm
-
+- django
+- crud
+- 게시판
+- 모델
+- 뷰
+- 템플릿
+- orm
 toc: true
-
 date: 2023-08-22 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Django CRUD - 게시판 만들기의 핵심
 
 ## CRUD 개요

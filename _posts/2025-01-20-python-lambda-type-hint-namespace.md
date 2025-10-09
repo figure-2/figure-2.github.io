@@ -1,24 +1,20 @@
 ---
-title: "Python Lambda, 타입힌트, 이름공간"
-
+title: Python Lambda, 타입힌트, 이름공간
 categories:
-  - PYTHON
+- 02_PYTHON
 tags:
-  - python
-  - lambda
-  - 타입힌트
-  - 이름공간
-  - scope
-  - 함수어노테이션
-
+- python
+- lambda
+- 타입힌트
+- 이름공간
+- scope
+- 함수어노테이션
 toc: true
-
 date: 2023-07-25 00:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Python Lambda, 타입힌트, 이름공간
 
 ### lambda 표현식

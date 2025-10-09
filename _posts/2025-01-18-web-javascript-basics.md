@@ -1,24 +1,20 @@
 ---
-title: "JavaScript 기초 - 웹 상호작용의 핵심"
-
+title: JavaScript 기초 - 웹 상호작용의 핵심
 categories:
-  - WEB_DEVELOPMENT
+- 04_WEB_DEVELOPMENT
 tags:
-  - javascript
-  - dom
-  - 이벤트
-  - 비동기
-  - ajax
-  - fetch
-
+- javascript
+- dom
+- 이벤트
+- 비동기
+- ajax
+- fetch
 toc: true
-
 date: 2023-09-05 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # JavaScript 기초 - 웹 상호작용의 핵심
 
 ## 개요

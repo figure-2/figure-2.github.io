@@ -1,24 +1,20 @@
 ---
-title: "Django 댓글 시스템 - 1:N 관계와 댓글 CRUD"
-
+title: Django 댓글 시스템 - 1:N 관계와 댓글 CRUD
 categories:
-  - WEB_DEVELOPMENT
+- 04_WEB_DEVELOPMENT
 tags:
-  - django
-  - 댓글시스템
-  - 1n관계
-  - foreignkey
-  - comment
-  - crud
-
+- django
+- 댓글시스템
+- 1n관계
+- foreignkey
+- comment
+- crud
 toc: true
-
 date: 2023-08-25 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Django 댓글 시스템 - 1:N 관계와 댓글 CRUD
 
 ## 개요

@@ -1,26 +1,25 @@
 ---
-title: "Selenium을 활용한 고급 크롤링"
+title: Selenium을 활용한 고급 크롤링
 categories:
-  - SPECIAL
+- 14_SPECIAL
 tags:
-  - 특강
-  - Selenium
-  - 고급크롤링
-  - 동적웹페이지
-  - JavaScript
-  - WebDriver
-  - 대기처리
-  - 스크롤
-  - 팝업처리
-  - 성능최적화
-  - 에러처리
+- 특강
+- Selenium
+- 고급크롤링
+- 동적웹페이지
+- JavaScript
+- WebDriver
+- 대기처리
+- 스크롤
+- 팝업처리
+- 성능최적화
+- 에러처리
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Selenium을 활용한 고급 크롤링
 > 동적 웹 페이지와 JavaScript 기반 사이트 크롤링
 

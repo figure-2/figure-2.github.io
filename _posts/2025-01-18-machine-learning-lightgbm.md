@@ -1,21 +1,20 @@
 ---
-title: "LightGBM (Light Gradient Boosting Machine)"
+title: LightGBM (Light Gradient Boosting Machine)
 categories:
-  - MACHINE_LEARNING
+- 08_MACHINE_LEARNING
 tags:
-  - LightGBM
-  - 그라디언트부스팅
-  - 머신러닝
-  - XGBoost
-  - 성능최적화
-  - 메모리효율
+- LightGBM
+- 그라디언트부스팅
+- 머신러닝
+- XGBoost
+- 성능최적화
+- 메모리효율
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # LightGBM (Light Gradient Boosting Machine)
 
 > 230926 학습한 내용 정리

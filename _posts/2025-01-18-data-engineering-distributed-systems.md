@@ -1,23 +1,22 @@
 ---
-title: "분산시스템의 이해"
+title: 분산시스템의 이해
 categories:
-  - DATA_ENGINEERING
+- DATA_ENGINEERING
 tags:
-  - 분산시스템
-  - RPC
-  - 3-Tier Architecture
-  - BASE
-  - CAP
-  - Hadoop
-  - 확장성
-  - 가용성
+- 분산시스템
+- RPC
+- 3-Tier Architecture
+- BASE
+- CAP
+- Hadoop
+- 확장성
+- 가용성
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # 분산시스템의 이해
 
 ## 컴퓨터의 진화

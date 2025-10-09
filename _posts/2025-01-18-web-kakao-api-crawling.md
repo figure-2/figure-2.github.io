@@ -1,25 +1,21 @@
 ---
-title: "카카오 API 크롤링 - 다양한 서비스 활용하기"
-
+title: 카카오 API 크롤링 - 다양한 서비스 활용하기
 categories:
-  - WEB_DEVELOPMENT
+- 04_WEB_DEVELOPMENT
 tags:
-  - kakao
-  - api
-  - 크롤링
-  - 카카오맵
-  - 카카오뉴스
-  - 카카오톡
-  - 데이터수집
-
+- kakao
+- api
+- 크롤링
+- 카카오맵
+- 카카오뉴스
+- 카카오톡
+- 데이터수집
 toc: true
-
 date: 2023-10-12 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # 카카오 API 크롤링 - 다양한 서비스 활용하기
 
 ## 개요

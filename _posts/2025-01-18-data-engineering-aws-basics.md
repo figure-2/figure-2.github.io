@@ -1,23 +1,22 @@
 ---
-title: "AWS 기초 - 인스턴스, 보안그룹, 탄력적IP"
+title: AWS 기초 - 인스턴스, 보안그룹, 탄력적IP
 categories:
-  - DATA_ENGINEERING
+- DATA_ENGINEERING
 tags:
-  - AWS
-  - EC2
-  - 인스턴스
-  - 보안그룹
-  - 탄력적IP
-  - SSH
-  - 클라우드
-  - 인프라
+- AWS
+- EC2
+- 인스턴스
+- 보안그룹
+- 탄력적IP
+- SSH
+- 클라우드
+- 인프라
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # AWS
 > 인스턴스, 보안그룹, 탄력적IP
 

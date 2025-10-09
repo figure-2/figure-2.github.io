@@ -1,24 +1,23 @@
 ---
-title: "HTML 스크래핑"
+title: HTML 스크래핑
 categories:
-  - SPECIAL
+- 14_SPECIAL
 tags:
-  - 특강
-  - HTML스크래핑
-  - BeautifulSoup
-  - DOM구조
-  - 파싱
-  - find
-  - find_all
-  - CSS선택자
-  - 속성값추출
+- 특강
+- HTML스크래핑
+- BeautifulSoup
+- DOM구조
+- 파싱
+- find
+- find_all
+- CSS선택자
+- 속성값추출
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 ## HTML 스크래핑
 - BeautifulSoup 라이브러리 활용
 

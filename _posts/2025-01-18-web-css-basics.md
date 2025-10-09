@@ -1,24 +1,20 @@
 ---
-title: "CSS 기초 - 웹 스타일링의 핵심"
-
+title: CSS 기초 - 웹 스타일링의 핵심
 categories:
-  - WEB_DEVELOPMENT
+- 04_WEB_DEVELOPMENT
 tags:
-  - css
-  - 스타일링
-  - 선택자
-  - 색상
-  - 테두리
-  - 마진
-
+- css
+- 스타일링
+- 선택자
+- 색상
+- 테두리
+- 마진
 toc: true
-
 date: 2023-08-18 10:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # CSS 기초 - 웹 스타일링의 핵심
 
 ## CSS 색상 적용 방법

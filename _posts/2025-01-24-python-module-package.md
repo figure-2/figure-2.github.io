@@ -1,25 +1,21 @@
 ---
-title: "Python 모듈과 패키지 - import, 내장 패키지"
-
+title: Python 모듈과 패키지 - import, 내장 패키지
 categories:
-  - PYTHON
+- 02_PYTHON
 tags:
-  - python
-  - 모듈
-  - 패키지
-  - import
-  - math
-  - random
-  - datetime
-
+- python
+- 모듈
+- 패키지
+- import
+- math
+- random
+- datetime
 toc: true
-
 date: 2023-07-25 00:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Python 모듈과 패키지 - import, 내장 패키지
 
 ## module

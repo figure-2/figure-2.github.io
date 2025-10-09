@@ -1,24 +1,20 @@
 ---
-title: "Python 제어문 - 조건문과 조건표현식"
-
+title: Python 제어문 - 조건문과 조건표현식
 categories:
-  - PYTHON
+- 02_PYTHON
 tags:
-  - python
-  - 제어문
-  - 조건문
-  - if문
-  - elif
-  - 조건표현식
-
+- python
+- 제어문
+- 조건문
+- if문
+- elif
+- 조건표현식
 toc: true
-
 date: 2023-07-25 00:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Python 제어문 - 조건문과 조건표현식
 
 ## 제어문

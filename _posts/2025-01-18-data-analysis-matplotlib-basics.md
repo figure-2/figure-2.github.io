@@ -1,24 +1,20 @@
 ---
-title: "Matplotlib 기초 - 데이터 시각화의 핵심 도구"
-
+title: Matplotlib 기초 - 데이터 시각화의 핵심 도구
 categories:
-  - DATA_ANALYSIS
+- 07_DATA_ANALYSIS
 tags:
-  - matplotlib
-  - 시각화
-  - 히스토그램
-  - 박스플롯
-  - 히트맵
-  - 데이터분석
-
+- matplotlib
+- 시각화
+- 히스토그램
+- 박스플롯
+- 히트맵
+- 데이터분석
 toc: true
-
 date: 2023-09-22 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Matplotlib 기초 - 데이터 시각화의 핵심 도구
 
 ## 개요

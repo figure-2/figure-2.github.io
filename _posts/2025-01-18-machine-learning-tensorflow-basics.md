@@ -1,23 +1,22 @@
 ---
-title: "TensorFlow 기본 모델링"
+title: TensorFlow 기본 모델링
 categories:
-  - MACHINE_LEARNING
+- 08_MACHINE_LEARNING
 tags:
-  - TensorFlow
-  - 딥러닝
-  - Sequential API
-  - Functional API
-  - Subclassing API
-  - 콜백
-  - 커스텀손실함수
-  - 하이퍼파라미터튜닝
+- TensorFlow
+- 딥러닝
+- Sequential API
+- Functional API
+- Subclassing API
+- 콜백
+- 커스텀손실함수
+- 하이퍼파라미터튜닝
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # TensorFlow 기본 모델링
 
 > 231016 학습한 내용 정리

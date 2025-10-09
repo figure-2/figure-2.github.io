@@ -1,24 +1,20 @@
 ---
-title: "EDA(탐색적 데이터 분석) - 데이터 이해의 첫 걸음"
-
+title: EDA(탐색적 데이터 분석) - 데이터 이해의 첫 걸음
 categories:
-  - DATA_ANALYSIS
+- 07_DATA_ANALYSIS
 tags:
-  - EDA
-  - 탐색적데이터분석
-  - 기술통계
-  - sweetviz
-  - 데이터타입
-  - 시각화
-
+- EDA
+- 탐색적데이터분석
+- 기술통계
+- sweetviz
+- 데이터타입
+- 시각화
 toc: true
-
 date: 2023-09-21 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # EDA(탐색적 데이터 분석) - 데이터 이해의 첫 걸음
 
 ## 개요

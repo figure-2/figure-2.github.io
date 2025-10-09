@@ -1,23 +1,20 @@
 ---
-title: "Python 기초 - 변수, 연산자, 자료형"
-
+title: Python 기초 - 변수, 연산자, 자료형
 categories:
-  - PYTHON
+- 02_PYTHON
 tags:
-  - python
-  - 기초
-  - 변수
-  - 연산자
-  - 자료형
-  - 자료구조
-
+- python
+- 기초
+- 변수
+- 연산자
+- 자료형
+- 자료구조
 date: 2023-07-25 00:00:00 +0900
 toc: true
 comments: false
 mermaid: true
 math: true
 ---
-
 # Python 기초 - 변수, 연산자, 자료형
 
 ## Python

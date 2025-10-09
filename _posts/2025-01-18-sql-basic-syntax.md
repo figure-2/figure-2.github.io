@@ -1,24 +1,20 @@
 ---
-title: "SQL 기본 문법 - 데이터베이스 조작의 핵심"
-
+title: SQL 기본 문법 - 데이터베이스 조작의 핵심
 categories:
-  - SQL
+- 05_SQL
 tags:
-  - sql
-  - 데이터베이스
-  - 테이블
-  - CRUD
-  - django
-  - ORM
-
+- sql
+- 데이터베이스
+- 테이블
+- CRUD
+- django
+- ORM
 toc: true
-
 date: 2023-09-01 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # SQL 기본 문법 - 데이터베이스 조작의 핵심
 
 ## 개요

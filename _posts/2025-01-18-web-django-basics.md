@@ -1,25 +1,21 @@
 ---
-title: "Django 기초 - Python 웹 프레임워크의 핵심"
-
+title: Django 기초 - Python 웹 프레임워크의 핵심
 categories:
-  - WEB_DEVELOPMENT
+- 04_WEB_DEVELOPMENT
 tags:
-  - django
-  - python
-  - 웹프레임워크
-  - mtv
-  - url
-  - 뷰
-  - 템플릿
-
+- django
+- python
+- 웹프레임워크
+- mtv
+- url
+- 뷰
+- 템플릿
 toc: true
-
 date: 2023-08-21 10:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Django 기초 - Python 웹 프레임워크의 핵심
 
 ## Django 개요

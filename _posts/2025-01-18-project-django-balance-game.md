@@ -1,24 +1,20 @@
 ---
-title: "Django 밸런스 게임 프로젝트 - 실무 웹 애플리케이션 개발"
-
+title: Django 밸런스 게임 프로젝트 - 실무 웹 애플리케이션 개발
 categories:
-  - 실무프로젝트
+- 실무프로젝트
 tags:
-  - django
-  - 프로젝트
-  - 밸런스게임
-  - 웹개발
-  - 실무
-  - CRUD
-
+- django
+- 프로젝트
+- 밸런스게임
+- 웹개발
+- 실무
+- CRUD
 toc: true
-
 date: 2023-09-10 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Django 밸런스 게임 프로젝트 - 실무 웹 애플리케이션 개발
 
 ## 프로젝트 개요

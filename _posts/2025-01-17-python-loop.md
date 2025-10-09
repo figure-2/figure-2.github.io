@@ -1,27 +1,23 @@
 ---
-title: "Python 반복문 - while, for, break, continue, else"
-
+title: Python 반복문 - while, for, break, continue, else
 categories:
-  - PYTHON
+- 02_PYTHON
 tags:
-  - python
-  - 반복문
-  - while
-  - for
-  - break
-  - continue
-  - else
-  - enumerate
-  - match
-
+- python
+- 반복문
+- while
+- for
+- break
+- continue
+- else
+- enumerate
+- match
 toc: true
-
 date: 2023-07-25 00:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Python 반복문 - while, for, break, continue, else
 
 ## 반복문

@@ -1,23 +1,22 @@
 ---
-title: "Apache Kafka 기초 개념"
+title: Apache Kafka 기초 개념
 categories:
-  - Kafka
+- Kafka
 tags:
-  - Apache Kafka
-  - Topic
-  - Partition
-  - Producer
-  - Consumer
-  - Broker
-  - 스트리밍
-  - 실시간처리
+- Apache Kafka
+- Topic
+- Partition
+- Producer
+- Consumer
+- Broker
+- 스트리밍
+- 실시간처리
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Apache Kafka 기초 개념
 > 실시간 스트리밍 데이터 플랫폼
 

@@ -1,24 +1,20 @@
 ---
-title: "Django ModelForm - 폼 자동화와 URL 통합"
-
+title: Django ModelForm - 폼 자동화와 URL 통합
 categories:
-  - WEB_DEVELOPMENT
+- 04_WEB_DEVELOPMENT
 tags:
-  - django
-  - modelform
-  - 폼자동화
-  - url통합
-  - getpost
-  - forms.py
-
+- django
+- modelform
+- 폼자동화
+- url통합
+- getpost
+- forms.py
 toc: true
-
 date: 2023-08-24 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Django ModelForm - 폼 자동화와 URL 통합
 
 ## 개요

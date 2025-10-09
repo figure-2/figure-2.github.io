@@ -1,21 +1,20 @@
 ---
-title: "XGBoost (eXtreme Gradient Boosting)"
+title: XGBoost (eXtreme Gradient Boosting)
 categories:
-  - MACHINE_LEARNING
+- 08_MACHINE_LEARNING
 tags:
-  - XGBoost
-  - 그라디언트부스팅
-  - 머신러닝
-  - 하이퍼파라미터
-  - 성능최적화
-  - SHAP
+- XGBoost
+- 그라디언트부스팅
+- 머신러닝
+- 하이퍼파라미터
+- 성능최적화
+- SHAP
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # XGBoost (eXtreme Gradient Boosting)
 
 > 230926 학습한 내용 정리

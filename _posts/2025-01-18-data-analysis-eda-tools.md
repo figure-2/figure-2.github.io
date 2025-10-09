@@ -1,24 +1,20 @@
 ---
-title: "EDA 도구 활용 - 효율적인 탐색적 데이터 분석"
-
+title: EDA 도구 활용 - 효율적인 탐색적 데이터 분석
 categories:
-  - DATA_ANALYSIS
+- 07_DATA_ANALYSIS
 tags:
-  - EDA
-  - sweetviz
-  - pandas-profiling
-  - 자동화
-  - 데이터분석
-  - 탐색적분석
-
+- EDA
+- sweetviz
+- pandas-profiling
+- 자동화
+- 데이터분석
+- 탐색적분석
 toc: true
-
 date: 2023-09-25 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # EDA 도구 활용 - 효율적인 탐색적 데이터 분석
 
 ## 개요

@@ -1,26 +1,20 @@
 ---
-title: "HTML 스크래핑 - 웹 데이터 수집의 핵심"
-
+title: HTML 스크래핑 - 웹 데이터 수집의 핵심
 categories:
-  - WEB
+- 04_WEB
 tags:
-  - html
-  - 스크래핑
-  - beautifulsoup
-  - requests
-  - selenium
-  - 웹크롤링
-
-
+- html
+- 스크래핑
+- beautifulsoup
+- requests
+- selenium
+- 웹크롤링
 toc: true
-
 date: 2023-10-13 09:00:00 +0900
-toc: true
 comments: false
 mermaid: true
 math: true
 ---
-
 # HTML 스크래핑 - 웹 데이터 수집의 핵심
 
 ## 개요

@@ -1,24 +1,20 @@
 ---
-title: "Django ORM과 SQL 비교 - 데이터베이스 조작의 두 가지 방법"
-
+title: Django ORM과 SQL 비교 - 데이터베이스 조작의 두 가지 방법
 categories:
-  - SQL
+- 05_SQL
 tags:
-  - django
-  - orm
-  - sql
-  - 데이터베이스
-  - 쿼리
-  - 비교
-
+- django
+- orm
+- sql
+- 데이터베이스
+- 쿼리
+- 비교
 toc: true
-
 date: 2023-09-02 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Django ORM과 SQL 비교 - 데이터베이스 조작의 두 가지 방법
 
 ## 개요

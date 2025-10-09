@@ -1,25 +1,21 @@
 ---
-title: "SQL 고급 문법 - GROUP BY, JOIN, 서브쿼리 완전 가이드"
-
+title: SQL 고급 문법 - GROUP BY, JOIN, 서브쿼리 완전 가이드
 categories:
-  - SQL
+- 05_SQL
 tags:
-  - sql
-  - groupby
-  - join
-  - 서브쿼리
-  - 집계함수
-  - 조건문
-  - 날짜함수
-
+- sql
+- groupby
+- join
+- 서브쿼리
+- 집계함수
+- 조건문
+- 날짜함수
 toc: true
-
 date: 2023-09-03 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # SQL 고급 문법 - GROUP BY, JOIN, 서브쿼리 완전 가이드
 
 ## 개요

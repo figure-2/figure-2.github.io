@@ -1,26 +1,20 @@
 ---
-title: "데이터 분석 기초 - 자동차 결함 리콜 데이터 분석 실습"
-
+title: 데이터 분석 기초 - 자동차 결함 리콜 데이터 분석 실습
 categories:
-  - Data_Analysis
+- Data_Analysis
 tags:
-  - 데이터분석
-  - pandas
-  - matplotlib
-  - 데이터정제
-  - 시각화
-  - 리콜데이터
-
-
+- 데이터분석
+- pandas
+- matplotlib
+- 데이터정제
+- 시각화
+- 리콜데이터
 toc: true
-
 date: 2023-09-20 09:00:00 +0900
-toc: true
 comments: false
 mermaid: true
 math: true
 ---
-
 # 데이터 분석 기초 - 자동차 결함 리콜 데이터 분석 실습
 
 ## 개요

@@ -1,23 +1,19 @@
 ---
-title: "Bootstrap 기초 - 빠른 웹 개발을 위한 CSS 프레임워크"
-
+title: Bootstrap 기초 - 빠른 웹 개발을 위한 CSS 프레임워크
 categories:
-  - WEB_DEVELOPMENT
+- 04_WEB_DEVELOPMENT
 tags:
-  - bootstrap
-  - css프레임워크
-  - 유틸리티
-  - 컴포넌트
-  - 반응형
-
+- bootstrap
+- css프레임워크
+- 유틸리티
+- 컴포넌트
+- 반응형
 toc: true
-
 date: 2023-08-21 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Bootstrap 기초 - 빠른 웹 개발을 위한 CSS 프레임워크
 
 ## Bootstrap 개요

@@ -1,21 +1,20 @@
 ---
-title: "PCA (Principal Component Analysis)"
+title: PCA (Principal Component Analysis)
 categories:
-  - MACHINE_LEARNING
+- 08_MACHINE_LEARNING
 tags:
-  - PCA
-  - 차원축소
-  - 주성분분석
-  - 데이터분석
-  - 시각화
-  - 노이즈제거
+- PCA
+- 차원축소
+- 주성분분석
+- 데이터분석
+- 시각화
+- 노이즈제거
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # PCA (Principal Component Analysis)
 
 > 231004 학습한 내용 정리

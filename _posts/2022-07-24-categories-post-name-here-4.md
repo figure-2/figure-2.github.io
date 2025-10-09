@@ -1,20 +1,16 @@
 ---
-title: "NumPy Cheat Sheet"
-
+title: NumPy Cheat Sheet
 categories:
-  - PYTHON
+- 02_PYTHON
 tags:
-  - python
-  - numpy
-
+- python
+- numpy
 toc: true
-
 date: 2025-09-01 00:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 ## 🦥 본문
 
 ## 🎯실습예제

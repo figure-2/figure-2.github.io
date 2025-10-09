@@ -1,24 +1,20 @@
 ---
-title: "Python 재귀함수 - 팩토리얼과 피보나치 수열"
-
+title: Python 재귀함수 - 팩토리얼과 피보나치 수열
 categories:
-  - PYTHON
+- 02_PYTHON
 tags:
-  - python
-  - 재귀
-  - recursive
-  - 팩토리얼
-  - 피보나치
-  - 함수
-
+- python
+- 재귀
+- recursive
+- 팩토리얼
+- 피보나치
+- 함수
 toc: true
-
 date: 2023-07-25 00:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Python 재귀함수 - 팩토리얼과 피보나치 수열
 
 ## 재귀(recursive)

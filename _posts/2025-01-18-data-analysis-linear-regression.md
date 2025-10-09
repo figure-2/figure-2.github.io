@@ -1,24 +1,20 @@
 ---
-title: "선형회귀분석 - 머신러닝의 기초와 농어 무게 예측"
-
+title: 선형회귀분석 - 머신러닝의 기초와 농어 무게 예측
 categories:
-  - DATA_ANALYSIS
+- 07_DATA_ANALYSIS
 tags:
-  - 머신러닝
-  - 선형회귀
-  - 데이터분리
-  - scikit-learn
-  - 농어예측
-  - 회귀분석
-
+- 머신러닝
+- 선형회귀
+- 데이터분리
+- scikit-learn
+- 농어예측
+- 회귀분석
 toc: true
-
 date: 2023-09-23 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # 선형회귀분석 - 머신러닝의 기초와 농어 무게 예측
 
 ## 개요
