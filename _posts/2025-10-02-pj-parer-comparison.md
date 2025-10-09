@@ -47,7 +47,7 @@ math: true
 
 > **한계: 복잡한 구조 처리**
 > 
-> - **이중 구조 표 처리**: 복잡한 이중 구조 표에서 바운딩 박스 정확도가 떨어지지만, <span style="color: #e74c3c; font-weight: bold;">HTML 결과에서는 중첩표를 정확하게 탐지</span>
+> - **이중 구조 표 처리**: 복잡한 이중 구조 표에서 바운딩 박스 정확도가 떨어지지만, **HTML 결과에서는 중첩표를 정확하게 탐지**
 > 
 > **원본 PDF 2페이지 - 중첩표 바운딩 박스 분석**
 > ![Upstage Parser 중첩표 바운딩 박스 결과](/assets/images/PJ/1_parser_upstage_bbox2.PNG){: width="80%"}
@@ -83,8 +83,8 @@ math: true
 
 > **혼재된 결과: 중첩표 처리**
 > 
-> - **표 처리**: 바운딩 박스가 부정확하며 중첩표 구조에서 내용이 한 칸씩 밀림 <span style="color: #e74c3c; font-weight: bold;">(빨간색 표시)</span>
-> - **긍정적 측면**: 중첩표 구조 자체는 정확하게 인식 <span style="color: #3498db; font-weight: bold;">(파란색 표시)</span>
+> - **표 처리**: 바운딩 박스가 부정확하며 중첩표 구조에서 내용이 한 칸씩 밀림 **(빨간색 표시)**
+> - **긍정적 측면**: 중첩표 구조 자체는 정확하게 인식 **(파란색 표시)**
 > 
 > **원본 PDF 2페이지 - 중첩표 바운딩 박스 분석**
 > ![Llamaparse Parser 중첩표 바운딩 박스 결과](/assets/images/PJ/02_Llamaparse_bbox2.PNG){: width="80%"}
