@@ -1,7 +1,8 @@
 ---
 title: Matplotlib 기초 - 데이터 시각화의 핵심 도구
 categories:
-- 07_DATA_ANALYSIS
+- 1.TIL
+- 1-7.DATA_ANALYSIS
 tags:
 - matplotlib
 - 시각화

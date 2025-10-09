@@ -1,7 +1,7 @@
 ---
 title: Python 제어문 - 조건문과 조건표현식
 categories:
-- 01.TIL
+- 1.TIL
 - 1-2.PYTHON
 
 tags:
@@ -12,7 +12,7 @@ tags:
 - elif
 - 조건표현식
 toc: true
-date: 2023-07-25 00:00:00 +0900
+date: 2023-07-26 00:00:00 +0900
 comments: false
 mermaid: true
 math: true

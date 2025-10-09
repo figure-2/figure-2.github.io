@@ -1,7 +1,8 @@
 ---
 title: Apache Kafka 기초 개념
 categories:
-- Kafka
+- 1.TIL
+- 1-9.DATA_ENGINEERING
 tags:
 - Apache Kafka
 - Topic
@@ -12,7 +13,7 @@ tags:
 - 스트리밍
 - 실시간처리
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-11-08 09:00:00 +0900
 comments: false
 mermaid: true
 math: true

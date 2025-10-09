@@ -1,7 +1,8 @@
 ---
 title: 웹 크롤링 기초
 categories:
-- 14_SPECIAL
+- 1.TIL
+- 1-10.SPECIAL
 tags:
 - 특강
 - 웹크롤링
@@ -13,7 +14,7 @@ tags:
 - requests
 - BeautifulSoup
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-08-15 11:00:00 +0900
 comments: false
 mermaid: true
 math: true

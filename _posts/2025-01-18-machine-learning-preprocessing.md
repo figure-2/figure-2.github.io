@@ -1,7 +1,8 @@
 ---
 title: 머신러닝 전처리 - 데이터 품질 향상을 위한 핵심 기법
 categories:
-- 08_MACHINE_LEARNING
+- 1.TIL
+- 1-8.MACHINE_LEARNING
 tags:
 - 머신러닝
 - 전처리
@@ -10,7 +11,7 @@ tags:
 - 인코딩
 - 데이터정제
 toc: true
-date: 2023-09-27 09:00:00 +0900
+date: 2023-09-13 10:00:00 +0900
 comments: false
 mermaid: true
 math: true

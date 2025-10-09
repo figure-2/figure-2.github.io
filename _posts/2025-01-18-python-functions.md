@@ -1,7 +1,8 @@
 ---
 title: Python 함수 - 선언, 호출, return
 categories:
-- 02_PYTHON
+- 1.TIL
+- 1-2.PYTHON
 tags:
 - - python
   - 함수
@@ -10,7 +11,7 @@ tags:
   - 호출
   - return
 toc: true
-date: 2023-07-25
+date: 2023-07-27 00:00:00 +0900
 comments: false
 mermaid: true
 math: true

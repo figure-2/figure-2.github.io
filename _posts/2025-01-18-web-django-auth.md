@@ -1,7 +1,8 @@
 ---
 title: Django 사용자 인증 - Signup, Login, Logout
 categories:
-- 04_WEB_DEVELOPMENT
+- 1.TIL
+- 1-5.WEB
 tags:
 - django
 - 사용자인증

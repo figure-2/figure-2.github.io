@@ -1,7 +1,8 @@
 ---
 title: Pandas 파일입출력 - Excel과 CSV 파일 처리
 categories:
-- 03.Pandas
+- 1.TIL
+- 1-3.PANDAS
 tags:
 - - pandas
   - 파일입출력

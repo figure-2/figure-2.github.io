@@ -1,7 +1,8 @@
 ---
 title: Python Lambda, 타입힌트, 이름공간
 categories:
-- 02_PYTHON
+- 1.TIL
+- 1-2.PYTHON
 tags:
 - python
 - lambda

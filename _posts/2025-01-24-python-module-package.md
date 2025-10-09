@@ -1,7 +1,8 @@
 ---
 title: Python 모듈과 패키지 - import, 내장 패키지
 categories:
-- 02_PYTHON
+- 1.TIL
+- 1-2.PYTHON
 tags:
 - python
 - 모듈

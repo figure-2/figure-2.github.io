@@ -1,7 +1,8 @@
 ---
 title: 데이터사이언스스쿨 수학편
 categories:
-- 14_SPECIAL
+- 1.TIL
+- 1-10.SPECIAL
 tags:
 - 특강
 - 데이터사이언스스쿨
@@ -15,7 +16,7 @@ tags:
 - PCA
 - 선형회귀
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-08-15 14:00:00 +0900
 comments: false
 mermaid: true
 math: true

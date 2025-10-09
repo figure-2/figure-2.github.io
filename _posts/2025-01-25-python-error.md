@@ -1,7 +1,8 @@
 ---
 title: Python 에러와 예외처리 - try, except, finally
 categories:
-- 02_PYTHON
+- 1.TIL
+- 1-2.PYTHON
 tags:
 - python
 - 에러

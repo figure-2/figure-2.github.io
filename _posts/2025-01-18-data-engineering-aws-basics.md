@@ -1,7 +1,8 @@
 ---
 title: AWS 기초 - 인스턴스, 보안그룹, 탄력적IP
 categories:
-- DATA_ENGINEERING
+- 1.TIL
+- 1-9.DATA_ENGINEERING
 tags:
 - AWS
 - EC2
@@ -12,7 +13,7 @@ tags:
 - 클라우드
 - 인프라
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-11-06 10:00:00 +0900
 comments: false
 mermaid: true
 math: true

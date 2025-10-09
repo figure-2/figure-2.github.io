@@ -1,7 +1,8 @@
 ---
 title: Selenium을 활용한 고급 크롤링
 categories:
-- 14_SPECIAL
+- 1.TIL
+- 1-10.SPECIAL
 tags:
 - 특강
 - Selenium
@@ -15,7 +16,7 @@ tags:
 - 성능최적화
 - 에러처리
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-08-15 13:00:00 +0900
 comments: false
 mermaid: true
 math: true

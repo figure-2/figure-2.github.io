@@ -1,7 +1,8 @@
 ---
 title: LightGBM (Light Gradient Boosting Machine)
 categories:
-- 08_MACHINE_LEARNING
+- 1.TIL
+- 1-8.MACHINE_LEARNING
 tags:
 - LightGBM
 - 그라디언트부스팅
@@ -10,7 +11,7 @@ tags:
 - 성능최적화
 - 메모리효율
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-09-15 10:00:00 +0900
 comments: false
 mermaid: true
 math: true

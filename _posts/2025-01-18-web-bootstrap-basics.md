@@ -1,7 +1,8 @@
 ---
 title: Bootstrap 기초 - 빠른 웹 개발을 위한 CSS 프레임워크
 categories:
-- 04_WEB_DEVELOPMENT
+- 1.TIL
+- 1-5.WEB
 tags:
 - bootstrap
 - css프레임워크

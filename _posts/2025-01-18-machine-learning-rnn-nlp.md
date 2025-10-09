@@ -1,7 +1,8 @@
 ---
 title: RNN (Recurrent Neural Network) 자연어 처리
 categories:
-- 08_MACHINE_LEARNING
+- 1.TIL
+- 1-8.MACHINE_LEARNING
 tags:
 - RNN
 - 순환신경망
@@ -13,7 +14,7 @@ tags:
 - 자연어처리
 - 시계열예측
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-09-16 10:00:00 +0900
 comments: false
 mermaid: true
 math: true

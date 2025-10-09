@@ -1,7 +1,8 @@
 ---
 title: UX/UI 디자인 기초
 categories:
-- 14_SPECIAL
+- 1.TIL
+- 1-10.SPECIAL
 tags:
 - 특강
 - UX
@@ -12,7 +13,7 @@ tags:
 - 공공디자인
 - 어포던스
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-08-15 10:00:00 +0900
 comments: false
 mermaid: true
 math: true

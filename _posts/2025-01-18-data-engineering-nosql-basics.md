@@ -1,7 +1,8 @@
 ---
 title: NoSQL 기초 개념
 categories:
-- NoSQL
+- 1.TIL
+- 1-9.DATA_ENGINEERING
 tags:
 - 데이터엔지니어링
 - NoSQL
@@ -15,7 +16,7 @@ tags:
 - 확장성
 - 유연성
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-11-10 09:00:00 +0900
 comments: false
 mermaid: true
 math: true

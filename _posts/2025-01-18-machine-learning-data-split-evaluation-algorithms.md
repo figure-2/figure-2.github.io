@@ -1,7 +1,8 @@
 ---
 title: 머신러닝 데이터분리, 평가척도, 알고리즘 - 실전 머신러닝의 핵심
 categories:
-- 08_MACHINE_LEARNING
+- 1.TIL
+- 1-8.MACHINE_LEARNING
 tags:
 - 머신러닝
 - 데이터분리
@@ -12,7 +13,7 @@ tags:
 - KNN
 - 로지스틱회귀
 toc: true
-date: 2023-09-28 09:00:00 +0900
+date: 2023-09-13 11:00:00 +0900
 comments: false
 mermaid: true
 math: true

@@ -1,7 +1,8 @@
 ---
 title: '고급 머신러닝: 모델 선택과 평가'
 categories:
-- 08_MACHINE_LEARNING
+- 1.TIL
+- 1-8.MACHINE_LEARNING
 tags:
 - 머신러닝
 - 모델선택
@@ -11,7 +12,7 @@ tags:
 - 그리드서치
 - 베이지안최적화
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-09-14 09:00:00 +0900
 comments: false
 mermaid: true
 math: true

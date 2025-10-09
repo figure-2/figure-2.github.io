@@ -1,7 +1,8 @@
 ---
 title: Apache Kafka 상세 내용
 categories:
-- Kafka
+- 1.TIL
+- 1-9.DATA_ENGINEERING
 tags:
 - Apache Kafka
 - 파티셔닝
@@ -12,7 +13,7 @@ tags:
 - 데이터파이프라인
 - 모니터링
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-11-08 10:00:00 +0900
 comments: false
 mermaid: true
 math: true

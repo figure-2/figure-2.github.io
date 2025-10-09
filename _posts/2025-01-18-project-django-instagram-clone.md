@@ -1,7 +1,8 @@
 ---
 title: Django Instagram 클론 프로젝트 - 소셜미디어 플랫폼 개발
 categories:
-- 실무프로젝트
+- 1.TIL
+- 1-6.PROJECT
 tags:
 - django
 - 프로젝트
@@ -10,7 +11,7 @@ tags:
 - M:N관계
 - 이미지처리
 toc: true
-date: 2023-09-15 09:00:00 +0900
+date: 2023-08-30 09:00:00 +0900
 comments: false
 mermaid: true
 math: true

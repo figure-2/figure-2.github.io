@@ -1,7 +1,8 @@
 ---
 title: CNN (Convolutional Neural Network) 이미지 처리
 categories:
-- 08_MACHINE_LEARNING
+- 1.TIL
+- 1-8.MACHINE_LEARNING
 tags:
 - CNN
 - 합성곱신경망
@@ -12,7 +13,7 @@ tags:
 - Grad-CAM
 - 성능최적화
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-09-16 09:00:00 +0900
 comments: false
 mermaid: true
 math: true

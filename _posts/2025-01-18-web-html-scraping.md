@@ -1,7 +1,8 @@
 ---
 title: HTML 스크래핑 - 웹 데이터 수집의 핵심
 categories:
-- 04_WEB
+- 1.TIL
+- 1-5.WEB
 tags:
 - html
 - 스크래핑

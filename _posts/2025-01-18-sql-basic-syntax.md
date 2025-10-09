@@ -1,7 +1,8 @@
 ---
 title: SQL 기본 문법 - 데이터베이스 조작의 핵심
 categories:
-- 05_SQL
+- 1.TIL
+- 1-6.SQL
 tags:
 - sql
 - 데이터베이스

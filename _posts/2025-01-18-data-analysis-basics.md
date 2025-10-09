@@ -1,7 +1,8 @@
 ---
 title: 데이터 분석 기초 - 자동차 결함 리콜 데이터 분석 실습
 categories:
-- 07_DATA_ANALYSIS
+- 1.TIL
+- 1-7.DATA_ANALYSIS
 tags:
 - 데이터분석
 - pandas

@@ -1,7 +1,8 @@
 ---
 title: PCA (Principal Component Analysis)
 categories:
-- 08_MACHINE_LEARNING
+- 1.TIL
+- 1-8.MACHINE_LEARNING
 tags:
 - PCA
 - 차원축소
@@ -10,7 +11,7 @@ tags:
 - 시각화
 - 노이즈제거
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-09-15 11:00:00 +0900
 comments: false
 mermaid: true
 math: true

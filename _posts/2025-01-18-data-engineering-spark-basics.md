@@ -1,7 +1,8 @@
 ---
 title: Apache Spark 기초 개념
 categories:
-- Spark
+- 1.TIL
+- 1-9.DATA_ENGINEERING
 tags:
 - Apache Spark
 - RDD
@@ -11,7 +12,7 @@ tags:
 - 지연실행
 - 장애복구
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-11-07 09:00:00 +0900
 comments: false
 mermaid: true
 math: true

@@ -1,7 +1,8 @@
 ---
 title: Pandas 데이터 조회, 정렬, 조건필터 - loc, iloc, where, isin
 categories:
-- 03.Pandas
+- 1.TIL
+- 1-3.PANDAS
 tags:
 - - pandas
   - 데이터조회
@@ -12,7 +13,7 @@ tags:
   - where
   - isin
 toc: true
-date: 2023-07-25 11:00:00
+date: 2023-08-11 11:00:00 +0900
 comments: false
 mermaid: true
 math: true
