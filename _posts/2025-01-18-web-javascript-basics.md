@@ -435,21 +435,21 @@ fetchAndPrint();
 
 ```html
 <!-- 수정 전 -->
-<a href="{% url 'posts:like' post_id=post.id %}" class="text-reset text-decoration-none">
-    {% if post in user.like_posts.all %}
+<a href="&#123;% url 'posts:like' post_id=post.id %&#125;" class="text-reset text-decoration-none">
+    &#123;% if post in user.like_posts.all %&#125;
         <i class="bi bi-heart-fill" style="color: red;"></i>
-    {% else %}
+    &#123;% else %&#125;
         <i class="bi bi-heart"></i>
-    {% endif %}
-</a> {% raw %}{{ post.like_users.all|length }}{% endraw %}명이 좋아합니다.
+    &#123;% endif %&#125;
+</a> &#123;% raw %&#125;&#123;&#123; post.like_users.all|length &#125;&#125;&#123;% endraw %&#125;명이 좋아합니다.
 
 <!-- 수정 후 -->
-{% if post in user.like_posts.all %}
-    <i class="bi bi-heart-fill heart" style="color: red;" data-post-id="{% raw %}{{ post.id }}{% endraw %}"></i>
-{% else %}
-    <i class="bi bi-heart heart" data-post-id="{% raw %}{{ post.id }}{% endraw %}"></i>
-{% endif %}
-{% raw %}{{ post.like_users.all|length }}{% endraw %}명이 좋아합니다.
+&#123;% if post in user.like_posts.all %&#125;
+    <i class="bi bi-heart-fill heart" style="color: red;" data-post-id="&#123;% raw %&#125;&#123;&#123; post.id &#125;&#125;&#123;% endraw %&#125;"></i>
+&#123;% else %&#125;
+    <i class="bi bi-heart heart" data-post-id="&#123;% raw %&#125;&#123;&#123; post.id &#125;&#125;&#123;% endraw %&#125;"></i>
+&#123;% endif %&#125;
+&#123;% raw %&#125;&#123;&#123; post.like_users.all|length &#125;&#125;&#123;% endraw %&#125;명이 좋아합니다.
 ```
 
 #### JavaScript 코드

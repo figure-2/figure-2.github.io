@@ -24,13 +24,11 @@ def fix_liquid_syntax(file_path):
             print(f"ENCODING ERROR: {os.path.basename(file_path)}")
             return False
         
-        # {{ }} 패턴을 {% raw %}{{ }}{% endraw %}로 감싸기
-        # 단, 이미 {% raw %}로 감싸진 것은 제외
-        content = re.sub(
-            r'(?<!{% raw %})\{\{([^}]+)\}\}(?!{% endraw %})',
-            r'{% raw %}{{\1}}{% endraw %}',
-            content
-        )
+        # {{ }} 문법을 HTML 엔티티로 변환
+        content = re.sub(r'\{\{([^}]+)\}\}', r'&#123;&#123;\1&#125;&#125;', content)
+        
+        # {% %} 문법을 HTML 엔티티로 변환
+        content = re.sub(r'\{%([^%]+)%\}', r'&#123;%\1%&#125;', content)
         
         # 파일 저장
         with open(file_path, 'w', encoding='utf-8') as f:
@@ -47,7 +45,7 @@ def main():
     """메인 함수"""
     print("Liquid 문법 오류 수정 시작...")
     
-    # 문제가 있는 파일들
+    # 문제가 있는 파일들만 처리
     problem_files = [
         "2025-01-18-project-django-balance-game.md",
         "2025-01-18-project-django-instagram-clone.md", 

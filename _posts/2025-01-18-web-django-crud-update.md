@@ -121,7 +121,7 @@ TEMPLATES = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Django Board{% endblock %}</title>
+    <title>&#123;% block title %&#125;Django Board&#123;% endblock %&#125;</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -129,18 +129,18 @@ TEMPLATES = [
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'posts:index' %}">Django Board</a>
+            <a class="navbar-brand" href="&#123;% url 'posts:index' %&#125;">Django Board</a>
             <div class="navbar-nav">
-                <a class="nav-link" href="{% url 'posts:index' %}">Home</a>
-                <a class="nav-link" href="{% url 'posts:new' %}">New Post</a>
+                <a class="nav-link" href="&#123;% url 'posts:index' %&#125;">Home</a>
+                <a class="nav-link" href="&#123;% url 'posts:new' %&#125;">New Post</a>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
     <div class="container mt-4">
-        {% block content %}
-        {% endblock %}
+        &#123;% block content %&#125;
+        &#123;% endblock %&#125;
     </div>
 
     <!-- Bootstrap JS -->
@@ -153,11 +153,11 @@ TEMPLATES = [
 
 `posts/templates/posts/index.html`:
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}게시판 - Django Board{% endblock %}
+&#123;% block title %&#125;게시판 - Django Board&#123;% endblock %&#125;
 
-{% block content %}
+&#123;% block content %&#125;
 <h1>게시판</h1>
 <table class="table">
     <thead>
@@ -168,16 +168,16 @@ TEMPLATES = [
         </tr>
     </thead>
     <tbody>
-        {% for post in posts %}
+        &#123;% for post in posts %&#125;
         <tr>
-            <td>{% raw %}{{ post.title }}{% endraw %}</td>
-            <td>{% raw %}{{ post.created_at|date:"Y-m-d" }}{% endraw %}</td>
-            <td><a href="{% url 'posts:detail' post.id %}">상세보기</a></td>
+            <td>&#123;% raw %&#125;&#123;&#123; post.title &#125;&#125;&#123;% endraw %&#125;</td>
+            <td>&#123;% raw %&#125;&#123;&#123; post.created_at|date:"Y-m-d" &#125;&#125;&#123;% endraw %&#125;</td>
+            <td><a href="&#123;% url 'posts:detail' post.id %&#125;">상세보기</a></td>
         </tr>
-        {% endfor %}
+        &#123;% endfor %&#125;
     </tbody>
 </table>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 3. POST 메서드 사용
@@ -195,8 +195,8 @@ TEMPLATES = [
 
 #### 변경 후 (POST 메서드)
 ```html
-<form action="{% url 'posts:create' %}" method="POST">
-    {% csrf_token %}
+<form action="&#123;% url 'posts:create' %&#125;" method="POST">
+    &#123;% csrf_token %&#125;
     <div class="mb-3">
         <label for="title" class="form-label">제목</label>
         <input type="text" class="form-control" id="title" name="title">
@@ -213,9 +213,9 @@ TEMPLATES = [
 
 | 항목 | 변경 전 | 변경 후 |
 |------|---------|---------|
-| URL 지정 | `action="/posts/create/"` | `action="{% url 'posts:create' %}"` |
+| URL 지정 | `action="/posts/create/"` | `action="&#123;% url 'posts:create' %&#125;"` |
 | HTTP 메서드 | GET (기본값) | POST |
-| CSRF 보호 | 없음 | `{% csrf_token %}` |
+| CSRF 보호 | 없음 | `&#123;% csrf_token %&#125;` |
 | 스타일링 | 기본 HTML | Bootstrap 클래스 |
 
 ### views.py 업데이트
@@ -353,40 +353,40 @@ def delete(request, id):
 
 #### detail.html
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}{% raw %}{{ post.title }}{% endraw %} - Django Board{% endblock %}
+&#123;% block title %&#125;&#123;% raw %&#125;&#123;&#123; post.title &#125;&#125;&#123;% endraw %&#125; - Django Board&#123;% endblock %&#125;
 
-{% block content %}
+&#123;% block content %&#125;
 <div class="card mt-4">
     <div class="card-header">
-        <h2>{% raw %}{{ post.title }}{% endraw %}</h2>
+        <h2>&#123;% raw %&#125;&#123;&#123; post.title &#125;&#125;&#123;% endraw %&#125;</h2>
     </div>
     <div class="card-body">
-        <p>{% raw %}{{ post.content|linebreaks }}{% endraw %}</p>
+        <p>&#123;% raw %&#125;&#123;&#123; post.content|linebreaks &#125;&#125;&#123;% endraw %&#125;</p>
     </div>
     <div class="card-footer">
-        <small class="text-muted">{% raw %}{{ post.created_at }}{% endraw %}</small>
+        <small class="text-muted">&#123;% raw %&#125;&#123;&#123; post.created_at &#125;&#125;&#123;% endraw %&#125;</small>
         <div class="float-end">
-            <a href="{% url 'posts:edit' post.id %}" class="btn btn-warning">수정</a>
-            <a href="{% url 'posts:delete' post.id %}" class="btn btn-danger">삭제</a>
+            <a href="&#123;% url 'posts:edit' post.id %&#125;" class="btn btn-warning">수정</a>
+            <a href="&#123;% url 'posts:delete' post.id %&#125;" class="btn btn-danger">삭제</a>
         </div>
     </div>
 </div>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 #### new.html
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}새 글 작성 - Django Board{% endblock %}
+&#123;% block title %&#125;새 글 작성 - Django Board&#123;% endblock %&#125;
 
-{% block content %}
+&#123;% block content %&#125;
 <h1>새 글 작성</h1>
 
-<form action="{% url 'posts:create' %}" method="POST">
-    {% csrf_token %}
+<form action="&#123;% url 'posts:create' %&#125;" method="POST">
+    &#123;% csrf_token %&#125;
     <div class="mb-3">
         <label for="title" class="form-label">제목</label>
         <input type="text" class="form-control" id="title" name="title" required>
@@ -396,34 +396,34 @@ def delete(request, id):
         <textarea class="form-control" name="content" id="content" rows="10" required></textarea>
     </div>
     <button type="submit" class="btn btn-primary">작성</button>
-    <a href="{% url 'posts:index' %}" class="btn btn-secondary">취소</a>
+    <a href="&#123;% url 'posts:index' %&#125;" class="btn btn-secondary">취소</a>
 </form>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 #### edit.html
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}글 수정 - Django Board{% endblock %}
+&#123;% block title %&#125;글 수정 - Django Board&#123;% endblock %&#125;
 
-{% block content %}
+&#123;% block content %&#125;
 <h1>글 수정</h1>
 
-<form action="{% url 'posts:update' post.id %}" method="POST">
-    {% csrf_token %}
+<form action="&#123;% url 'posts:update' post.id %&#125;" method="POST">
+    &#123;% csrf_token %&#125;
     <div class="mb-3">
         <label for="title" class="form-label">제목</label>
-        <input type="text" class="form-control" id="title" name="title" value="{% raw %}{{ post.title }}{% endraw %}" required>
+        <input type="text" class="form-control" id="title" name="title" value="&#123;% raw %&#125;&#123;&#123; post.title &#125;&#125;&#123;% endraw %&#125;" required>
     </div>
     <div class="mb-3">
         <label for="content" class="form-label">내용</label>
-        <textarea class="form-control" id="content" name="content" rows="10" required>{% raw %}{{ post.content }}{% endraw %}</textarea>
+        <textarea class="form-control" id="content" name="content" rows="10" required>&#123;% raw %&#125;&#123;&#123; post.content &#125;&#125;&#123;% endraw %&#125;</textarea>
     </div>
     <button type="submit" class="btn btn-primary">수정</button>
-    <a href="{% url 'posts:detail' post.id %}" class="btn btn-secondary">취소</a>
+    <a href="&#123;% url 'posts:detail' post.id %&#125;" class="btn btn-secondary">취소</a>
 </form>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 5. 실무 팁
@@ -434,7 +434,7 @@ def delete(request, id):
 app_name = 'posts'
 
 # 템플릿에서 사용
-{% url 'posts:detail' post.id %}
+&#123;% url 'posts:detail' post.id %&#125;
 ```
 
 ### 2. 에러 처리

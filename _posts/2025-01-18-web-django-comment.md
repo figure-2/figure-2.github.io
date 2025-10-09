@@ -72,34 +72,34 @@ create.html과 update.html이 완전히 동일해졌으므로 공통 템플릿�
 
 `articles/templates/articles/form.html`:
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}
-    {% if article %}
+&#123;% block title %&#125;
+    &#123;% if article %&#125;
         글 수정 - Django Board
-    {% else %}
+    &#123;% else %&#125;
         새 글 작성 - Django Board
-    {% endif %}
-{% endblock %}
+    &#123;% endif %&#125;
+&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <h1>
-    {% if article %}
+    &#123;% if article %&#125;
         글 수정
-    {% else %}
+    &#123;% else %&#125;
         새 글 작성
-    {% endif %}
+    &#123;% endif %&#125;
 </h1>
 
 <form action="" method="POST">
-    {% csrf_token %}
-    {% raw %}{{ form.as_p }}{% endraw %}
+    &#123;% csrf_token %&#125;
+    &#123;% raw %&#125;&#123;&#123; form.as_p &#125;&#125;&#123;% endraw %&#125;
     <button type="submit" class="btn btn-primary">
-        {% if article %}수정{% else %}작성{% endif %}
+        &#123;% if article %&#125;수정&#123;% else %&#125;작성&#123;% endif %&#125;
     </button>
-    <a href="{% url 'articles:index' %}" class="btn btn-secondary">취소</a>
+    <a href="&#123;% url 'articles:index' %&#125;" class="btn btn-secondary">취소</a>
 </form>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ### views.py 업데이트
@@ -230,23 +230,23 @@ def detail(request, id):
 
 `articles/templates/articles/detail.html`:
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}{% raw %}{{ article.title }}{% endraw %} - Django Board{% endblock %}
+&#123;% block title %&#125;&#123;% raw %&#125;&#123;&#123; article.title &#125;&#125;&#123;% endraw %&#125; - Django Board&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <div class="card mt-4">
     <div class="card-header">
-        <h2>{% raw %}{{ article.title }}{% endraw %}</h2>
+        <h2>&#123;% raw %&#125;&#123;&#123; article.title &#125;&#125;&#123;% endraw %&#125;</h2>
     </div>
     <div class="card-body">
-        <p>{% raw %}{{ article.content|linebreaks }}{% endraw %}</p>
+        <p>&#123;% raw %&#125;&#123;&#123; article.content|linebreaks &#125;&#125;&#123;% endraw %&#125;</p>
     </div>
     <div class="card-footer">
-        <small class="text-muted">{% raw %}{{ article.created_at }}{% endraw %}</small>
+        <small class="text-muted">&#123;% raw %&#125;&#123;&#123; article.created_at &#125;&#125;&#123;% endraw %&#125;</small>
         <div class="float-end">
-            <a href="{% url 'articles:update' article.id %}" class="btn btn-warning">수정</a>
-            <a href="{% url 'articles:delete' article.id %}" class="btn btn-danger">삭제</a>
+            <a href="&#123;% url 'articles:update' article.id %&#125;" class="btn btn-warning">수정</a>
+            <a href="&#123;% url 'articles:delete' article.id %&#125;" class="btn btn-danger">삭제</a>
         </div>
     </div>
 </div>
@@ -257,9 +257,9 @@ def detail(request, id):
         <h4>댓글 작성</h4>
     </div>
     <div class="card-body">
-        <form action="{% url 'articles:comment_create' article_id=article.id %}" method="POST">
-            {% csrf_token %}
-            {% raw %}{{ comment_form.as_p }}{% endraw %}
+        <form action="&#123;% url 'articles:comment_create' article_id=article.id %&#125;" method="POST">
+            &#123;% csrf_token %&#125;
+            &#123;% raw %&#125;&#123;&#123; comment_form.as_p &#125;&#125;&#123;% endraw %&#125;
             <button type="submit" class="btn btn-primary">댓글 작성</button>
         </form>
     </div>
@@ -271,23 +271,23 @@ def detail(request, id):
         <h4>댓글 목록</h4>
     </div>
     <div class="card-body">
-        {% if not article.comment_set.all|length %}
+        &#123;% if not article.comment_set.all|length %&#125;
             <p class="text-muted">댓글이 없습니다.</p>
-        {% endif %}
+        &#123;% endif %&#125;
         
-        {% for comment in article.comment_set.all %}
+        &#123;% for comment in article.comment_set.all %&#125;
         <div class="border-bottom pb-2 mb-2">
-            <p>{% raw %}{{ comment.content }}{% endraw %}</p>
+            <p>&#123;% raw %&#125;&#123;&#123; comment.content &#125;&#125;&#123;% endraw %&#125;</p>
             <small class="text-muted">
-                {% raw %}{{ comment.created_at }}{% endraw %}
-                <a href="{% url 'articles:comment_delete' article_id=article.id id=comment.id %}" 
+                &#123;% raw %&#125;&#123;&#123; comment.created_at &#125;&#125;&#123;% endraw %&#125;
+                <a href="&#123;% url 'articles:comment_delete' article_id=article.id id=comment.id %&#125;" 
                    class="text-danger ms-2">삭제</a>
             </small>
         </div>
-        {% endfor %}
+        &#123;% endfor %&#125;
     </div>
 </div>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 4. 댓글 삭제 기능
@@ -330,9 +330,9 @@ class Comment(models.Model):
 
 템플릿에서 사용:
 ```html
-{% for comment in article.comments.all %}
-    <p>{% raw %}{{ comment.content }}{% endraw %}</p>
-{% endfor %}
+&#123;% for comment in article.comments.all %&#125;
+    <p>&#123;% raw %&#125;&#123;&#123; comment.content &#125;&#125;&#123;% endraw %&#125;</p>
+&#123;% endfor %&#125;
 ```
 
 ## 6. 댓글 개수 표시
@@ -341,7 +341,7 @@ class Comment(models.Model):
 
 ```html
 <div class="card-header">
-    <h4>댓글 목록 ({% raw %}{{ article.comment_set.count }}{% endraw %}개)</h4>
+    <h4>댓글 목록 (&#123;% raw %&#125;&#123;&#123; article.comment_set.count &#125;&#125;&#123;% endraw %&#125;개)</h4>
 </div>
 ```
 
@@ -394,20 +394,20 @@ def comment_update(request, article_id, id):
 
 `articles/templates/articles/comment_update.html`:
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}댓글 수정 - Django Board{% endblock %}
+&#123;% block title %&#125;댓글 수정 - Django Board&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <h1>댓글 수정</h1>
 
 <form action="" method="POST">
-    {% csrf_token %}
-    {% raw %}{{ form.as_p }}{% endraw %}
+    &#123;% csrf_token %&#125;
+    &#123;% raw %&#125;&#123;&#123; form.as_p &#125;&#125;&#123;% endraw %&#125;
     <button type="submit" class="btn btn-primary">수정</button>
-    <a href="{% url 'articles:detail' comment.article.id %}" class="btn btn-secondary">취소</a>
+    <a href="&#123;% url 'articles:detail' comment.article.id %&#125;" class="btn btn-secondary">취소</a>
 </form>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 8. 실무 팁

@@ -162,12 +162,12 @@ urlpatterns = [
 ```html
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'posts:index' %}">Instagram</a>
+        <a class="navbar-brand" href="&#123;% url 'posts:index' %&#125;">Instagram</a>
         <div class="navbar-nav">
-            <a class="nav-link" href="{% url 'posts:index' %}">Home</a>
-            <a class="nav-link" href="{% url 'posts:create' %}">Create</a>
-            <a class="nav-link" href="{% url 'accounts:signup' %}">Signup</a>
-            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+            <a class="nav-link" href="&#123;% url 'posts:index' %&#125;">Home</a>
+            <a class="nav-link" href="&#123;% url 'posts:create' %&#125;">Create</a>
+            <a class="nav-link" href="&#123;% url 'accounts:signup' %&#125;">Signup</a>
+            <a class="nav-link" href="&#123;% url 'accounts:login' %&#125;">Login</a>
         </div>
     </div>
 </nav>
@@ -182,15 +182,15 @@ urlpatterns = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Instagram{% endblock %}</title>
+    <title>&#123;% block title %&#125;Instagram&#123;% endblock %&#125;</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    {% include '_nav.html' %}
+    &#123;% include '_nav.html' %&#125;
     
     <div class="container mt-4">
-        {% block body %}
-        {% endblock %}
+        &#123;% block body %&#125;
+        &#123;% endblock %&#125;
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -203,13 +203,13 @@ urlpatterns = [
 `posts/templates/_card.html`:
 ```html
 <div class="card mb-3" style="width: 18rem;">
-    <img src="{% raw %}{{ post.image.url }}{% endraw %}" class="card-img-top" alt="...">
+    <img src="&#123;% raw %&#125;&#123;&#123; post.image.url &#125;&#125;&#123;% endraw %&#125;" class="card-img-top" alt="...">
     <div class="card-body">
-        <p class="card-text">{% raw %}{{ post.content }}{% endraw %}</p>
-        <small class="text-muted">{% raw %}{{ post.created_at|timesince }}{% endraw %} 전</small>
+        <p class="card-text">&#123;% raw %&#125;&#123;&#123; post.content &#125;&#125;&#123;% endraw %&#125;</p>
+        <small class="text-muted">&#123;% raw %&#125;&#123;&#123; post.created_at|timesince &#125;&#125;&#123;% endraw %&#125; 전</small>
         <br>
-        <a href="{% url 'accounts:profile' username=post.user %}" class="text-reset text-decoration-none">
-            {% raw %}{{ post.user }}{% endraw %}
+        <a href="&#123;% url 'accounts:profile' username=post.user %&#125;" class="text-reset text-decoration-none">
+            &#123;% raw %&#125;&#123;&#123; post.user &#125;&#125;&#123;% endraw %&#125;
         </a>
     </div>
 </div>
@@ -219,19 +219,19 @@ urlpatterns = [
 
 `posts/templates/posts/index.html`:
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}Instagram{% endblock %}
+&#123;% block title %&#125;Instagram&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <div class="row">
-    {% for post in posts %}
+    &#123;% for post in posts %&#125;
         <div class="col-md-4 mb-3">
-            {% include '_card.html' %}
+            &#123;% include '_card.html' %&#125;
         </div>
-    {% endfor %}
+    &#123;% endfor %&#125;
 </div>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ### views.py
@@ -295,12 +295,12 @@ def create(request):
 
 `posts/templates/posts/form.html`:
 ```html
-{% extends 'base.html' %}
-{% load bootstrap5 %}
+&#123;% extends 'base.html' %&#125;
+&#123;% load bootstrap5 %&#125;
 
-{% block title %}새 게시물 작성{% endblock %}
+&#123;% block title %&#125;새 게시물 작성&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card">
@@ -309,16 +309,16 @@ def create(request):
             </div>
             <div class="card-body">
                 <form action="" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% bootstrap_form form %}
+                    &#123;% csrf_token %&#125;
+                    &#123;% bootstrap_form form %&#125;
                     <button type="submit" class="btn btn-primary">게시</button>
-                    <a href="{% url 'posts:index' %}" class="btn btn-secondary">취소</a>
+                    <a href="&#123;% url 'posts:index' %&#125;" class="btn btn-secondary">취소</a>
                 </form>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 5. 여러가지 기능 추가
@@ -327,7 +327,7 @@ def create(request):
 
 `_card.html`에서 사용:
 ```html
-<small class="text-muted">{% raw %}{{ post.created_at|timesince }}{% endraw %} 전</small>
+<small class="text-muted">&#123;% raw %&#125;&#123;&#123; post.created_at|timesince &#125;&#125;&#123;% endraw %&#125; 전</small>
 ```
 
 ### 정렬 기능
@@ -452,45 +452,45 @@ def signup(request):
 
 `accounts/templates/accounts/form.html`:
 ```html
-{% extends 'base.html' %}
-{% load bootstrap5 %}
+&#123;% extends 'base.html' %&#125;
+&#123;% load bootstrap5 %&#125;
 
-{% block title %}
-    {% if request.resolver_match.url_name == 'signup' %}
+&#123;% block title %&#125;
+    &#123;% if request.resolver_match.url_name == 'signup' %&#125;
         회원가입
-    {% else %}
+    &#123;% else %&#125;
         로그인
-    {% endif %}
-{% endblock %}
+    &#123;% endif %&#125;
+&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                {% if request.resolver_match.url_name == 'signup' %}
+                &#123;% if request.resolver_match.url_name == 'signup' %&#125;
                     <h3>회원가입</h3>
-                {% else %}
+                &#123;% else %&#125;
                     <h3>로그인</h3>
-                {% endif %}
+                &#123;% endif %&#125;
             </div>
             <div class="card-body">
                 <form action="" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% bootstrap_form form %}
+                    &#123;% csrf_token %&#125;
+                    &#123;% bootstrap_form form %&#125;
                     <button type="submit" class="btn btn-primary">
-                        {% if request.resolver_match.url_name == 'signup' %}
+                        &#123;% if request.resolver_match.url_name == 'signup' %&#125;
                             회원가입
-                        {% else %}
+                        &#123;% else %&#125;
                             로그인
-                        {% endif %}
+                        &#123;% endif %&#125;
                     </button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 7. Login 기능 구현
@@ -571,26 +571,26 @@ def profile(request, username):
 
 `accounts/templates/accounts/profile.html`:
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}{% raw %}{{ user_info.username }}{% endraw %}의 프로필{% endblock %}
+&#123;% block title %&#125;&#123;% raw %&#125;&#123;&#123; user_info.username &#125;&#125;&#123;% endraw %&#125;의 프로필&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <div class="row mb-4">
     <div class="col-4">
-        {% if user_info.profile_image %}
-            <img src="{% raw %}{{ user_info.profile_image.url }}{% endraw %}" alt="" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
-        {% else %}
+        &#123;% if user_info.profile_image %&#125;
+            <img src="&#123;% raw %&#125;&#123;&#123; user_info.profile_image.url &#125;&#125;&#123;% endraw %&#125;" alt="" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+        &#123;% else %&#125;
             <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 150px; height: 150px;">
-                <span class="text-white">{% raw %}{{ user_info.username|first|upper }}{% endraw %}</span>
+                <span class="text-white">&#123;% raw %&#125;&#123;&#123; user_info.username|first|upper &#125;&#125;&#123;% endraw %&#125;</span>
             </div>
-        {% endif %}
+        &#123;% endif %&#125;
     </div>
 
     <div class="col-8">
         <div class="row mb-3">
             <div class="col-3">
-                <h4>{% raw %}{{ user_info.username }}{% endraw %}</h4>
+                <h4>&#123;% raw %&#125;&#123;&#123; user_info.username &#125;&#125;&#123;% endraw %&#125;</h4>
             </div>
             <div class="col-4">
                 <a href="" class="btn btn-outline-primary">팔로우</a>
@@ -598,7 +598,7 @@ def profile(request, username):
         </div>
         <div class="row">
             <div class="col">
-                <strong>{% raw %}{{ user_info.post_set.count }}{% endraw %}</strong><br>
+                <strong>&#123;% raw %&#125;&#123;&#123; user_info.post_set.count &#125;&#125;&#123;% endraw %&#125;</strong><br>
                 <span>게시물</span>
             </div>
             <div class="col">
@@ -614,19 +614,19 @@ def profile(request, username):
 </div>
 
 <div class="row row-cols-3 g-2">
-    {% for post in user_info.post_set.all %}
+    &#123;% for post in user_info.post_set.all %&#125;
     <div class="col">
         <div class="card">
-            <img src="{% raw %}{{ post.image.url }}{% endraw %}" alt="" class="card-img-top" style="height: 200px; object-fit: cover;">
+            <img src="&#123;% raw %&#125;&#123;&#123; post.image.url &#125;&#125;&#123;% endraw %&#125;" alt="" class="card-img-top" style="height: 200px; object-fit: cover;">
         </div>
     </div>
-    {% empty %}
+    &#123;% empty %&#125;
     <div class="col-12 text-center">
         <p class="text-muted">아직 게시물이 없습니다.</p>
     </div>
-    {% endfor %}
+    &#123;% endfor %&#125;
 </div>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 9. 실무 팁

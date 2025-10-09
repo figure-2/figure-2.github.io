@@ -162,12 +162,12 @@ def index(request):
 <body>
     <h1>게시판</h1>
     
-    {% for post in posts %}
-        <h3>{% raw %}{{ post.title }}{% endraw %}</h3>
-        <p>{% raw %}{{ post.content|truncatewords:20 }}{% endraw %}</p>
-        <a href="{% url 'detail' post.id %}">자세히 보기</a>
+    &#123;% for post in posts %&#125;
+        <h3>&#123;% raw %&#125;&#123;&#123; post.title &#125;&#125;&#123;% endraw %&#125;</h3>
+        <p>&#123;% raw %&#125;&#123;&#123; post.content|truncatewords:20 &#125;&#125;&#123;% endraw %&#125;</p>
+        <a href="&#123;% url 'detail' post.id %&#125;">자세히 보기</a>
         <hr>
-    {% endfor %}
+    &#123;% endfor %&#125;
 </body>
 </html>
 ```
@@ -192,17 +192,17 @@ def detail(request, id):
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>{% raw %}{{ post.title }}{% endraw %}</title>
+    <title>&#123;% raw %&#125;&#123;&#123; post.title &#125;&#125;&#123;% endraw %&#125;</title>
 </head>
 <body>
-    <h1>{% raw %}{{ post.title }}{% endraw %}</h1>
-    <p>{% raw %}{{ post.content }}{% endraw %}</p>
-    <p>작성일: {% raw %}{{ post.created_at }}{% endraw %}</p>
-    <p>수정일: {% raw %}{{ post.updated_at }}{% endraw %}</p>
+    <h1>&#123;% raw %&#125;&#123;&#123; post.title &#125;&#125;&#123;% endraw %&#125;</h1>
+    <p>&#123;% raw %&#125;&#123;&#123; post.content &#125;&#125;&#123;% endraw %&#125;</p>
+    <p>작성일: &#123;% raw %&#125;&#123;&#123; post.created_at &#125;&#125;&#123;% endraw %&#125;</p>
+    <p>수정일: &#123;% raw %&#125;&#123;&#123; post.updated_at &#125;&#125;&#123;% endraw %&#125;</p>
     
-    <a href="{% url 'index' %}">목록으로</a>
-    <a href="{% url 'edit' post.id %}">수정</a>
-    <a href="{% url 'delete' post.id %}">삭제</a>
+    <a href="&#123;% url 'index' %&#125;">목록으로</a>
+    <a href="&#123;% url 'edit' post.id %&#125;">수정</a>
+    <a href="&#123;% url 'delete' post.id %&#125;">삭제</a>
 </body>
 </html>
 ```
@@ -251,8 +251,8 @@ def create(request):
 <body>
     <h1>새 글 작성</h1>
     
-    <form method="POST" action="{% url 'create' %}">
-        {% csrf_token %}
+    <form method="POST" action="&#123;% url 'create' %&#125;">
+        &#123;% csrf_token %&#125;
         <div>
             <label for="title">제목:</label>
             <input type="text" id="title" name="title" required>
@@ -264,7 +264,7 @@ def create(request):
         <button type="submit">작성</button>
     </form>
     
-    <a href="{% url 'index' %}">목록으로</a>
+    <a href="&#123;% url 'index' %&#125;">목록으로</a>
 </body>
 </html>
 ```
@@ -340,20 +340,20 @@ def update(request, id):
 <body>
     <h1>글 수정</h1>
     
-    <form method="POST" action="{% url 'update' post.id %}">
-        {% csrf_token %}
+    <form method="POST" action="&#123;% url 'update' post.id %&#125;">
+        &#123;% csrf_token %&#125;
         <div>
             <label for="title">제목:</label>
-            <input type="text" id="title" name="title" value="{% raw %}{{ post.title }}{% endraw %}" required>
+            <input type="text" id="title" name="title" value="&#123;% raw %&#125;&#123;&#123; post.title &#125;&#125;&#123;% endraw %&#125;" required>
         </div>
         <div>
             <label for="content">내용:</label>
-            <textarea id="content" name="content" rows="10" cols="50" required>{% raw %}{{ post.content }}{% endraw %}</textarea>
+            <textarea id="content" name="content" rows="10" cols="50" required>&#123;% raw %&#125;&#123;&#123; post.content &#125;&#125;&#123;% endraw %&#125;</textarea>
         </div>
         <button type="submit">수정</button>
     </form>
     
-    <a href="{% url 'detail' post.id %}">취소</a>
+    <a href="&#123;% url 'detail' post.id %&#125;">취소</a>
 </body>
 </html>
 ```

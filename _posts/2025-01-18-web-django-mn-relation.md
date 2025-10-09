@@ -148,43 +148,43 @@ urlpatterns = [
 
 `posts/templates/_card.html`:
 ```html
-{% load bootstrap5 %}
+&#123;% load bootstrap5 %&#125;
 
 <div class="card mt-5">
-    <img src="{% raw %}{{ post.image.url }}{% endraw %}" class="card-img-top" alt="...">
+    <img src="&#123;% raw %&#125;&#123;&#123; post.image.url &#125;&#125;&#123;% endraw %&#125;" class="card-img-top" alt="...">
     <div class="card-body">
-        <a href="{% url 'posts:like' post_id=post.id %}" class="text-reset text-decoration-none">
-            {% if post in user.like_posts.all %}
+        <a href="&#123;% url 'posts:like' post_id=post.id %&#125;" class="text-reset text-decoration-none">
+            &#123;% if post in user.like_posts.all %&#125;
                 <i class="bi bi-heart-fill" style="color: red;"></i>
-            {% else %}
+            &#123;% else %&#125;
                 <i class="bi bi-heart"></i>
-            {% endif %}
-        </a> {% raw %}{{ post.like_users.all|length }}{% endraw %}명이 좋아합니다.
+            &#123;% endif %&#125;
+        </a> &#123;% raw %&#125;&#123;&#123; post.like_users.all|length &#125;&#125;&#123;% endraw %&#125;명이 좋아합니다.
         
-        <p class="card-text">{% raw %}{{ post.content }}{% endraw %}</p>
-        <small class="text-muted">{% raw %}{{ post.created_at|timesince }}{% endraw %} 전</small>
+        <p class="card-text">&#123;% raw %&#125;&#123;&#123; post.content &#125;&#125;&#123;% endraw %&#125;</p>
+        <small class="text-muted">&#123;% raw %&#125;&#123;&#123; post.created_at|timesince &#125;&#125;&#123;% endraw %&#125; 전</small>
         <br>
-        <a href="{% url 'accounts:profile' username=post.user %}" class="text-reset text-decoration-none">
-            {% raw %}{{ post.user }}{% endraw %}
+        <a href="&#123;% url 'accounts:profile' username=post.user %&#125;" class="text-reset text-decoration-none">
+            &#123;% raw %&#125;&#123;&#123; post.user &#125;&#125;&#123;% endraw %&#125;
         </a>
     </div>
     
     <!-- 댓글 목록 -->
     <div class="card-footer">
         <hr>
-        {% for comment in post.comment_set.all %}
-            <li>{% raw %}{{ comment.user }}{% endraw %}: {% raw %}{{ comment.content }}{% endraw %}</li>
-        {% endfor %}
+        &#123;% for comment in post.comment_set.all %&#125;
+            <li>&#123;% raw %&#125;&#123;&#123; comment.user &#125;&#125;&#123;% endraw %&#125;: &#123;% raw %&#125;&#123;&#123; comment.content &#125;&#125;&#123;% endraw %&#125;</li>
+        &#123;% endfor %&#125;
         
         <!-- 댓글 작성 (로그인한 경우에만) -->
-        {% if user.is_authenticated %}
+        &#123;% if user.is_authenticated %&#125;
         <hr>
-        <form action="{% url 'posts:comment_create' post_id=post.id %}" method="POST">
-            {% csrf_token %}
-            {% bootstrap_form comment_form %}
+        <form action="&#123;% url 'posts:comment_create' post_id=post.id %&#125;" method="POST">
+            &#123;% csrf_token %&#125;
+            &#123;% bootstrap_form comment_form %&#125;
             <button type="submit" class="btn btn-sm btn-outline-primary">댓글 작성</button>
         </form>
-        {% endif %}
+        &#123;% endif %&#125;
     </div>
 </div>
 ```
@@ -295,15 +295,15 @@ def like(request, post_id):
 `_card.html`에서 좋아요 버튼:
 ```html
 <div class="card-body">
-    <a href="{% url 'posts:like' post_id=post.id %}" class="text-reset text-decoration-none">
-        {% if post in user.like_posts.all %}
+    <a href="&#123;% url 'posts:like' post_id=post.id %&#125;" class="text-reset text-decoration-none">
+        &#123;% if post in user.like_posts.all %&#125;
             <i class="bi bi-heart-fill" style="color: red;"></i>
-        {% else %}
+        &#123;% else %&#125;
             <i class="bi bi-heart"></i>
-        {% endif %}
-    </a> {% raw %}{{ post.like_users.all|length }}{% endraw %}명이 좋아합니다.
+        &#123;% endif %&#125;
+    </a> &#123;% raw %&#125;&#123;&#123; post.like_users.all|length &#125;&#125;&#123;% endraw %&#125;명이 좋아합니다.
     
-    <p class="card-text">{% raw %}{{ post.content }}{% endraw %}</p>
+    <p class="card-text">&#123;% raw %&#125;&#123;&#123; post.content &#125;&#125;&#123;% endraw %&#125;</p>
     <!-- ... 기타 내용 ... -->
 </div>
 ```
@@ -317,7 +317,7 @@ def like(request, post_id):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Instagram{% endblock %}</title>
+    <title>&#123;% block title %&#125;Instagram&#123;% endblock %&#125;</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
@@ -398,49 +398,49 @@ urlpatterns = [
 
 `accounts/templates/accounts/profile.html`:
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}{% raw %}{{ user_info.username }}{% endraw %}의 프로필{% endblock %}
+&#123;% block title %&#125;&#123;% raw %&#125;&#123;&#123; user_info.username &#125;&#125;&#123;% endraw %&#125;의 프로필&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <div class="row mb-4">
     <div class="col-4">
-        {% if user_info.profile_image %}
-            <img src="{% raw %}{{ user_info.profile_image.url }}{% endraw %}" alt="" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
-        {% else %}
+        &#123;% if user_info.profile_image %&#125;
+            <img src="&#123;% raw %&#125;&#123;&#123; user_info.profile_image.url &#125;&#125;&#123;% endraw %&#125;" alt="" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+        &#123;% else %&#125;
             <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 150px; height: 150px;">
-                <span class="text-white">{% raw %}{{ user_info.username|first|upper }}{% endraw %}</span>
+                <span class="text-white">&#123;% raw %&#125;&#123;&#123; user_info.username|first|upper &#125;&#125;&#123;% endraw %&#125;</span>
             </div>
-        {% endif %}
+        &#123;% endif %&#125;
     </div>
 
     <div class="col-8">
         <div class="row mb-3">
             <div class="col-3">
-                <h4>{% raw %}{{ user_info.username }}{% endraw %}</h4>
+                <h4>&#123;% raw %&#125;&#123;&#123; user_info.username &#125;&#125;&#123;% endraw %&#125;</h4>
             </div>
             <div class="col-4">
                 <!-- user: 로그인한 사람, user_info: 프로필 페이지 유저 -->
-                {% if user != user_info %}
-                    {% if user in user_info.followers.all %}
-                        <a href="{% url 'accounts:follow' username=user_info.username %}" class="btn btn-primary btn-sm">팔로잉</a>
-                    {% else %}
-                        <a href="{% url 'accounts:follow' username=user_info.username %}" class="btn btn-secondary btn-sm">팔로우</a>
-                    {% endif %}
-                {% endif %}
+                &#123;% if user != user_info %&#125;
+                    &#123;% if user in user_info.followers.all %&#125;
+                        <a href="&#123;% url 'accounts:follow' username=user_info.username %&#125;" class="btn btn-primary btn-sm">팔로잉</a>
+                    &#123;% else %&#125;
+                        <a href="&#123;% url 'accounts:follow' username=user_info.username %&#125;" class="btn btn-secondary btn-sm">팔로우</a>
+                    &#123;% endif %&#125;
+                &#123;% endif %&#125;
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <strong>{% raw %}{{ user_info.post_set.all|length }}{% endraw %}</strong><br>
+                <strong>&#123;% raw %&#125;&#123;&#123; user_info.post_set.all|length &#125;&#125;&#123;% endraw %&#125;</strong><br>
                 <span>게시물</span>
             </div>
             <div class="col">
-                <strong>{% raw %}{{ user_info.followers.all|length }}{% endraw %}</strong><br>
+                <strong>&#123;% raw %&#125;&#123;&#123; user_info.followers.all|length &#125;&#125;&#123;% endraw %&#125;</strong><br>
                 <span>팔로워</span>
             </div>
             <div class="col">
-                <strong>{% raw %}{{ user_info.followings.all|length }}{% endraw %}</strong><br>
+                <strong>&#123;% raw %&#125;&#123;&#123; user_info.followings.all|length &#125;&#125;&#123;% endraw %&#125;</strong><br>
                 <span>팔로잉</span>
             </div>
         </div>
@@ -448,19 +448,19 @@ urlpatterns = [
 </div>
 
 <div class="row row-cols-3 g-2">
-    {% for post in user_info.post_set.all %}
+    &#123;% for post in user_info.post_set.all %&#125;
     <div class="col">
         <div class="card">
-            <img src="{% raw %}{{ post.image.url }}{% endraw %}" alt="" class="card-img-top" style="height: 200px; object-fit: cover;">
+            <img src="&#123;% raw %&#125;&#123;&#123; post.image.url &#125;&#125;&#123;% endraw %&#125;" alt="" class="card-img-top" style="height: 200px; object-fit: cover;">
         </div>
     </div>
-    {% empty %}
+    &#123;% empty %&#125;
     <div class="col-12 text-center">
         <p class="text-muted">아직 게시물이 없습니다.</p>
     </div>
-    {% endfor %}
+    &#123;% endfor %&#125;
 </div>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 5. 팔로우 피드 구현
@@ -493,18 +493,18 @@ def index(request):
 ```html
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'posts:index' %}">Instagram</a>
+        <a class="navbar-brand" href="&#123;% url 'posts:index' %&#125;">Instagram</a>
         <div class="navbar-nav">
-            <a class="nav-link" href="{% url 'posts:index' %}">Home</a>
-            <a class="nav-link" href="{% url 'posts:all' %}">전체 게시물</a>
-            <a class="nav-link" href="{% url 'posts:create' %}">Create</a>
-            {% if user.is_authenticated %}
-                <a class="nav-link" href="{% url 'accounts:profile' username=user.username %}">My Profile</a>
-                <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
-            {% else %}
-                <a class="nav-link" href="{% url 'accounts:signup' %}">Signup</a>
-                <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
-            {% endif %}
+            <a class="nav-link" href="&#123;% url 'posts:index' %&#125;">Home</a>
+            <a class="nav-link" href="&#123;% url 'posts:all' %&#125;">전체 게시물</a>
+            <a class="nav-link" href="&#123;% url 'posts:create' %&#125;">Create</a>
+            &#123;% if user.is_authenticated %&#125;
+                <a class="nav-link" href="&#123;% url 'accounts:profile' username=user.username %&#125;">My Profile</a>
+                <a class="nav-link" href="&#123;% url 'accounts:logout' %&#125;">Logout</a>
+            &#123;% else %&#125;
+                <a class="nav-link" href="&#123;% url 'accounts:signup' %&#125;">Signup</a>
+                <a class="nav-link" href="&#123;% url 'accounts:login' %&#125;">Login</a>
+            &#123;% endif %&#125;
         </div>
     </div>
 </nav>
