@@ -22,7 +22,7 @@ math: true
 1. 템플릿으로 개인 site 만들기 [start Bootstrap](https://startbootstrap.com/theme/personal)
 2. camp29에 다운로드 받은 템플릿 압축해제후 그 폴더에서 code로 열기
 3. git init -> git add . -> git commit -m "message" -> (repository 생성) -> git remote add origin <remote url> -> git push origin master
-![remote_url](./images/git-고급/remote_url.png)
+![remote_url](/assets/images/git-고급/remote_url.png)
     3-1. repository name : githubID.github.io (규칙을 지켜야 도메인 호스팅을 해줌)   
     3-2. 확장프로그램 : open in browser 설치   
     3-3. html 문서에 마우스 오른쪽 Open In default Browser로 Site 열어줌
@@ -54,7 +54,7 @@ math: true
     - 내용수정
     - git add. -> git commit -m "update2" -> git **push** origin master
 
-![협업](./images/git-고급/협업관련.png)
+![협업](/assets/images/git-고급/협업관련.png)
 
 ## 오후수업
 
@@ -63,7 +63,7 @@ math: true
 - if 충돌이 발생한 경우 (=pull을 진행하지 않고 push한 경우)
     -VScode 선택하여 해결
         - 3가지 방법 중에서 한 가지 선택
-        ![충돌해결](./images/git-고급/3가지선택.png)
+        ![충돌해결](/assets/images/git-고급/3가지선택.png)
         - git add . -> git commit -m "message" -> git push origin master
         - 과정
             - git add .   
@@ -96,7 +96,7 @@ math: true
 - camp29에서 만든 repository(백일장)을 folk 진행.
 - Owner은 내계정으로 바꿔주고 repository name도 그대로 유지
 - create fork 진행
-![fork](./images/git-고급/fork.png)
+![fork](/assets/images/git-고급/fork.png)
 - fork를 제대로 해왔는지 확인 후 code에서 https 복사
 - camp29 폴더에서 git bash 으로 열기
 - git clone <https url> 진행
