@@ -132,38 +132,38 @@ def index(request):
 
 `articles/templates/articles/index.html`:
 ```html
-{% extends 'base.html' %}
-{% load bootstrap5 %}
+&#123;% extends 'base.html' %&#125;
+&#123;% load bootstrap5 %&#125;
 
-{% block title %}게시판 - Django Board{% endblock %}
+&#123;% block title %&#125;게시판 - Django Board&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <h1>게시판</h1>
 
-{% for article in articles %}
+&#123;% for article in articles %&#125;
 <div class="card mb-3">
     <div class="card-header">
-        <h5>{% raw %}{{ article.title }}{% endraw %}</h5>
-        <small class="text-muted">작성자: {% raw %}{{ article.user.username }}{% endraw %} | {% raw %}{{ article.created_at }}{% endraw %}</small>
+        <h5>&#123;% raw %&#125;&#123;&#123; article.title &#125;&#125;&#123;% endraw %&#125;</h5>
+        <small class="text-muted">작성자: &#123;% raw %&#125;&#123;&#123; article.user.username &#125;&#125;&#123;% endraw %&#125; | &#123;% raw %&#125;&#123;&#123; article.created_at &#125;&#125;&#123;% endraw %&#125;</small>
     </div>
     <div class="card-body">
-        <p>{% raw %}{{ article.content|truncatewords:20 }}{% endraw %}</p>
-        <a href="{% url 'articles:detail' article.id %}" class="btn btn-primary">자세히 보기</a>
+        <p>&#123;% raw %&#125;&#123;&#123; article.content|truncatewords:20 &#125;&#125;&#123;% endraw %&#125;</p>
+        <a href="&#123;% url 'articles:detail' article.id %&#125;" class="btn btn-primary">자세히 보기</a>
     </div>
     
     <!-- 댓글 작성 (로그인한 경우에만) -->
-    {% if user.is_authenticated %}
+    &#123;% if user.is_authenticated %&#125;
     <div class="card-footer">
-        <form action="{% url 'articles:comment_create' article_id=article.id %}" method="POST">
-            {% csrf_token %}
-            {% bootstrap_form form %}
+        <form action="&#123;% url 'articles:comment_create' article_id=article.id %&#125;" method="POST">
+            &#123;% csrf_token %&#125;
+            &#123;% bootstrap_form form %&#125;
             <button type="submit" class="btn btn-sm btn-outline-primary">댓글 작성</button>
         </form>
     </div>
-    {% endif %}
+    &#123;% endif %&#125;
 </div>
-{% endfor %}
-{% endblock %}
+&#123;% endfor %&#125;
+&#123;% endblock %&#125;
 ```
 
 ## 3. Create 기능 구현
@@ -219,35 +219,35 @@ def create(request):
 
 `articles/templates/articles/form.html`:
 ```html
-{% extends 'base.html' %}
-{% load bootstrap5 %}
+&#123;% extends 'base.html' %&#125;
+&#123;% load bootstrap5 %&#125;
 
-{% block title %}
-    {% if article %}
+&#123;% block title %&#125;
+    &#123;% if article %&#125;
         글 수정 - Django Board
-    {% else %}
+    &#123;% else %&#125;
         새 글 작성 - Django Board
-    {% endif %}
-{% endblock %}
+    &#123;% endif %&#125;
+&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <h1>
-    {% if article %}
+    &#123;% if article %&#125;
         글 수정
-    {% else %}
+    &#123;% else %&#125;
         새 글 작성
-    {% endif %}
+    &#123;% endif %&#125;
 </h1>
 
 <form action="" method="POST">
-    {% csrf_token %}
-    {% bootstrap_form form %}
+    &#123;% csrf_token %&#125;
+    &#123;% bootstrap_form form %&#125;
     <button type="submit" class="btn btn-primary">
-        {% if article %}수정{% else %}작성{% endif %}
+        &#123;% if article %&#125;수정&#123;% else %&#125;작성&#123;% endif %&#125;
     </button>
-    <a href="{% url 'articles:index' %}" class="btn btn-secondary">취소</a>
+    <a href="&#123;% url 'articles:index' %&#125;" class="btn btn-secondary">취소</a>
 </form>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 4. 로그인 인증 처리
@@ -329,61 +329,61 @@ INSTALLED_APPS = [
 ### 템플릿에서 사용
 
 ```html
-{% extends 'base.html' %}
-{% load bootstrap5 %}
+&#123;% extends 'base.html' %&#125;
+&#123;% load bootstrap5 %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <form action="" method="POST">
-    {% csrf_token %}
-    {% bootstrap_form form %}
+    &#123;% csrf_token %&#125;
+    &#123;% bootstrap_form form %&#125;
     <button type="submit" class="btn btn-primary">제출</button>
 </form>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ### HTML 통일화
 
 `accounts/templates/accounts/form.html`:
 ```html
-{% extends 'base.html' %}
-{% load bootstrap5 %}
+&#123;% extends 'base.html' %&#125;
+&#123;% load bootstrap5 %&#125;
 
-{% block title %}
-    {% if request.resolver_match.url_name == 'signup' %}
+&#123;% block title %&#125;
+    &#123;% if request.resolver_match.url_name == 'signup' %&#125;
         회원가입 - Django Board
-    {% else %}
+    &#123;% else %&#125;
         로그인 - Django Board
-    {% endif %}
-{% endblock %}
+    &#123;% endif %&#125;
+&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                {% if request.resolver_match.url_name == 'signup' %}
+                &#123;% if request.resolver_match.url_name == 'signup' %&#125;
                     <h3>회원가입</h3>
-                {% else %}
+                &#123;% else %&#125;
                     <h3>로그인</h3>
-                {% endif %}
+                &#123;% endif %&#125;
             </div>
             <div class="card-body">
                 <form action="" method="POST">
-                    {% csrf_token %}
-                    {% bootstrap_form form %}
+                    &#123;% csrf_token %&#125;
+                    &#123;% bootstrap_form form %&#125;
                     <button type="submit" class="btn btn-primary">
-                        {% if request.resolver_match.url_name == 'signup' %}
+                        &#123;% if request.resolver_match.url_name == 'signup' %&#125;
                             회원가입
-                        {% else %}
+                        &#123;% else %&#125;
                             로그인
-                        {% endif %}
+                        &#123;% endif %&#125;
                     </button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 6. 댓글 기능 구현
@@ -412,44 +412,44 @@ def comment_create(request, article_id):
 
 `articles/templates/articles/index.html`:
 ```html
-{% for article in articles %}
+&#123;% for article in articles %&#125;
 <div class="card mb-3">
     <div class="card-header">
-        <h5>{% raw %}{{ article.title }}{% endraw %}</h5>
-        <small class="text-muted">작성자: {% raw %}{{ article.user.username }}{% endraw %} | {% raw %}{{ article.created_at }}{% endraw %}</small>
+        <h5>&#123;% raw %&#125;&#123;&#123; article.title &#125;&#125;&#123;% endraw %&#125;</h5>
+        <small class="text-muted">작성자: &#123;% raw %&#125;&#123;&#123; article.user.username &#125;&#125;&#123;% endraw %&#125; | &#123;% raw %&#125;&#123;&#123; article.created_at &#125;&#125;&#123;% endraw %&#125;</small>
     </div>
     <div class="card-body">
-        <p>{% raw %}{{ article.content|truncatewords:20 }}{% endraw %}</p>
-        <a href="{% url 'articles:detail' article.id %}" class="btn btn-primary">자세히 보기</a>
+        <p>&#123;% raw %&#125;&#123;&#123; article.content|truncatewords:20 &#125;&#125;&#123;% endraw %&#125;</p>
+        <a href="&#123;% url 'articles:detail' article.id %&#125;" class="btn btn-primary">자세히 보기</a>
     </div>
     
     <!-- 댓글 목록 -->
-    {% if article.comment_set.all %}
+    &#123;% if article.comment_set.all %&#125;
     <div class="card-footer">
-        <h6>댓글 ({% raw %}{{ article.comment_set.count }}{% endraw %}개)</h6>
-        {% for comment in article.comment_set.all|slice:":3" %}
+        <h6>댓글 (&#123;% raw %&#125;&#123;&#123; article.comment_set.count &#125;&#125;&#123;% endraw %&#125;개)</h6>
+        &#123;% for comment in article.comment_set.all|slice:":3" %&#125;
         <div class="border-bottom pb-1 mb-1">
-            <small class="text-muted">{% raw %}{{ comment.user.username }}{% endraw %}: {% raw %}{{ comment.content|truncatewords:10 }}{% endraw %}</small>
+            <small class="text-muted">&#123;% raw %&#125;&#123;&#123; comment.user.username &#125;&#125;&#123;% endraw %&#125;: &#123;% raw %&#125;&#123;&#123; comment.content|truncatewords:10 &#125;&#125;&#123;% endraw %&#125;</small>
         </div>
-        {% endfor %}
-        {% if article.comment_set.count > 3 %}
+        &#123;% endfor %&#125;
+        &#123;% if article.comment_set.count > 3 %&#125;
         <small class="text-muted">... 더 보려면 자세히 보기 클릭</small>
-        {% endif %}
+        &#123;% endif %&#125;
     </div>
-    {% endif %}
+    &#123;% endif %&#125;
     
     <!-- 댓글 작성 (로그인한 경우에만) -->
-    {% if user.is_authenticated %}
+    &#123;% if user.is_authenticated %&#125;
     <div class="card-footer">
-        <form action="{% url 'articles:comment_create' article_id=article.id %}" method="POST">
-            {% csrf_token %}
-            {% bootstrap_form form %}
+        <form action="&#123;% url 'articles:comment_create' article_id=article.id %&#125;" method="POST">
+            &#123;% csrf_token %&#125;
+            &#123;% bootstrap_form form %&#125;
             <button type="submit" class="btn btn-sm btn-outline-primary">댓글 작성</button>
         </form>
     </div>
-    {% endif %}
+    &#123;% endif %&#125;
 </div>
-{% endfor %}
+&#123;% endfor %&#125;
 ```
 
 ## 7. 협업을 위한 라이브러리 목록 저장

@@ -140,11 +140,11 @@ def signup(request):
 
 `accounts/templates/accounts/signup.html`:
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}회원가입 - Django Board{% endblock %}
+&#123;% block title %&#125;회원가입 - Django Board&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card">
@@ -153,16 +153,16 @@ def signup(request):
             </div>
             <div class="card-body">
                 <form action="" method="POST">
-                    {% csrf_token %}
-                    {% raw %}{{ form.as_p }}{% endraw %}
+                    &#123;% csrf_token %&#125;
+                    &#123;% raw %&#125;&#123;&#123; form.as_p &#125;&#125;&#123;% endraw %&#125;
                     <button type="submit" class="btn btn-primary">회원가입</button>
-                    <a href="{% url 'accounts:login' %}" class="btn btn-secondary">로그인</a>
+                    <a href="&#123;% url 'accounts:login' %&#125;" class="btn btn-secondary">로그인</a>
                 </form>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 3. 로그인 (Login) 기능
@@ -211,11 +211,11 @@ def login(request):
 
 `accounts/templates/accounts/login.html`:
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}로그인 - Django Board{% endblock %}
+&#123;% block title %&#125;로그인 - Django Board&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card">
@@ -224,16 +224,16 @@ def login(request):
             </div>
             <div class="card-body">
                 <form action="" method="POST">
-                    {% csrf_token %}
-                    {% raw %}{{ form.as_p }}{% endraw %}
+                    &#123;% csrf_token %&#125;
+                    &#123;% raw %&#125;&#123;&#123; form.as_p &#125;&#125;&#123;% endraw %&#125;
                     <button type="submit" class="btn btn-primary">로그인</button>
-                    <a href="{% url 'accounts:signup' %}" class="btn btn-secondary">회원가입</a>
+                    <a href="&#123;% url 'accounts:signup' %&#125;" class="btn btn-secondary">회원가입</a>
                 </form>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 4. 로그아웃 (Logout) 기능
@@ -258,32 +258,32 @@ def logout(request):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Django Board{% endblock %}</title>
+    <title>&#123;% block title %&#125;Django Board&#123;% endblock %&#125;</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'articles:index' %}">Django Board</a>
+            <a class="navbar-brand" href="&#123;% url 'articles:index' %&#125;">Django Board</a>
             <div class="navbar-nav">
-                <a class="nav-link" href="{% url 'articles:index' %}">Home</a>
-                <a class="nav-link" href="{% url 'articles:create' %}">Create</a>
+                <a class="nav-link" href="&#123;% url 'articles:index' %&#125;">Home</a>
+                <a class="nav-link" href="&#123;% url 'articles:create' %&#125;">Create</a>
                 
                 <!-- 사용자 인증 상태에 따른 메뉴 표시 -->
-                {% if user.is_authenticated %}
-                    <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
-                    <span class="navbar-text ms-3">안녕하세요, {% raw %}{{ user.username }}{% endraw %}님!</span>
-                {% else %}
-                    <a class="nav-link" href="{% url 'accounts:signup' %}">Signup</a>
-                    <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
-                {% endif %}
+                &#123;% if user.is_authenticated %&#125;
+                    <a class="nav-link" href="&#123;% url 'accounts:logout' %&#125;">Logout</a>
+                    <span class="navbar-text ms-3">안녕하세요, &#123;% raw %&#125;&#123;&#123; user.username &#125;&#125;&#123;% endraw %&#125;님!</span>
+                &#123;% else %&#125;
+                    <a class="nav-link" href="&#123;% url 'accounts:signup' %&#125;">Signup</a>
+                    <a class="nav-link" href="&#123;% url 'accounts:login' %&#125;">Login</a>
+                &#123;% endif %&#125;
             </div>
         </div>
     </nav>
 
     <div class="container mt-4">
-        {% block body %}
-        {% endblock %}
+        &#123;% block body %&#125;
+        &#123;% endblock %&#125;
     </div>
 </body>
 </html>
@@ -394,18 +394,18 @@ def comment_create(request, article_id):
 ### detail.html 업데이트
 
 ```html
-{% for comment in article.comment_set.all %}
+&#123;% for comment in article.comment_set.all %&#125;
 <div class="border-bottom pb-2 mb-2">
-    <p>{% raw %}{{ comment.content }}{% endraw %}</p>
+    <p>&#123;% raw %&#125;&#123;&#123; comment.content &#125;&#125;&#123;% endraw %&#125;</p>
     <small class="text-muted">
-        {% raw %}{{ comment.author.username }}{% endraw %} | {% raw %}{{ comment.created_at }}{% endraw %}
-        {% if comment.author == user %}
-            <a href="{% url 'articles:comment_delete' article_id=article.id id=comment.id %}" 
+        &#123;% raw %&#125;&#123;&#123; comment.author.username &#125;&#125;&#123;% endraw %&#125; | &#123;% raw %&#125;&#123;&#123; comment.created_at &#125;&#125;&#123;% endraw %&#125;
+        &#123;% if comment.author == user %&#125;
+            <a href="&#123;% url 'articles:comment_delete' article_id=article.id id=comment.id %&#125;" 
                class="text-danger ms-2">삭제</a>
-        {% endif %}
+        &#123;% endif %&#125;
     </small>
 </div>
-{% endfor %}
+&#123;% endfor %&#125;
 ```
 
 ## 8. 로그인 리다이렉트 설정

@@ -361,39 +361,39 @@ urlpatterns = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}밸런스 게임{% endblock %}</title>
+    <title>&#123;% block title %&#125;밸런스 게임&#123;% endblock %&#125;</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <link rel="stylesheet" href="&#123;% static 'css/mystyle.css' %&#125;">
 </head>
 <body>
     <!-- 네비게이션 바 -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'balance:main' %}">밸런스 게임</a>
+            <a class="navbar-brand" href="&#123;% url 'balance:main' %&#125;">밸런스 게임</a>
             <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="{% url 'balance:main' %}">Home</a>
-                <a class="nav-link" href="{% url 'balance:create' %}">Create</a>
-                <a class="nav-link" href="{% url 'balance:settings' %}">Settings</a>
+                <a class="nav-link" href="&#123;% url 'balance:main' %&#125;">Home</a>
+                <a class="nav-link" href="&#123;% url 'balance:create' %&#125;">Create</a>
+                <a class="nav-link" href="&#123;% url 'balance:settings' %&#125;">Settings</a>
             </div>
         </div>
     </nav>
 
     <!-- 메시지 표시 -->
-    {% if messages %}
+    &#123;% if messages %&#125;
         <div class="container mt-3">
-            {% for message in messages %}
-                <div class="alert alert-{% raw %}{{ message.tags }}{% endraw %} alert-dismissible fade show" role="alert">
-                    {% raw %}{{ message }}{% endraw %}
+            &#123;% for message in messages %&#125;
+                <div class="alert alert-&#123;% raw %&#125;&#123;&#123; message.tags &#125;&#125;&#123;% endraw %&#125; alert-dismissible fade show" role="alert">
+                    &#123;% raw %&#125;&#123;&#123; message &#125;&#125;&#123;% endraw %&#125;
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
-            {% endfor %}
+            &#123;% endfor %&#125;
         </div>
-    {% endif %}
+    &#123;% endif %&#125;
 
     <!-- 메인 콘텐츠 -->
     <main class="container mt-4">
-        {% block content %}
-        {% endblock %}
+        &#123;% block content %&#125;
+        &#123;% endblock %&#125;
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -405,12 +405,12 @@ urlpatterns = [
 
 ```html
 <!-- balance/templates/balance/main.html -->
-{% extends 'balance/base.html' %}
-{% load static %}
+&#123;% extends 'balance/base.html' %&#125;
+&#123;% load static %&#125;
 
-{% block title %}밸런스 게임 - 메인{% endblock %}
+&#123;% block title %&#125;밸런스 게임 - 메인&#123;% endblock %&#125;
 
-{% block content %}
+&#123;% block content %&#125;
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card text-center">
@@ -423,7 +423,7 @@ urlpatterns = [
                         <div class="card bg-light">
                             <div class="card-body">
                                 <h5 class="card-title">총 질문 수</h5>
-                                <h2 class="text-primary">{% raw %}{{ total_questions }}{% endraw %}</h2>
+                                <h2 class="text-primary">&#123;% raw %&#125;&#123;&#123; total_questions &#125;&#125;&#123;% endraw %&#125;</h2>
                             </div>
                         </div>
                     </div>
@@ -431,38 +431,38 @@ urlpatterns = [
                         <div class="card bg-light">
                             <div class="card-body">
                                 <h5 class="card-title">총 답변 수</h5>
-                                <h2 class="text-success">{% raw %}{{ total_answers }}{% endraw %}</h2>
+                                <h2 class="text-success">&#123;% raw %&#125;&#123;&#123; total_answers &#125;&#125;&#123;% endraw %&#125;</h2>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <a href="{% url 'balance:index' question_id=1 %}" class="btn btn-primary btn-lg mt-4">
+                <a href="&#123;% url 'balance:index' question_id=1 %&#125;" class="btn btn-primary btn-lg mt-4">
                     게임 시작하기
                 </a>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ### 게임 페이지 템플릿
 
 ```html
 <!-- balance/templates/balance/index.html -->
-{% extends 'balance/base.html' %}
-{% load static %}
+&#123;% extends 'balance/base.html' %&#125;
+&#123;% load static %&#125;
 
-{% block title %}밸런스 게임 - {% raw %}{{ question.question_a }}{% endraw %} vs {% raw %}{{ question.question_b }}{% endraw %}{% endblock %}
+&#123;% block title %&#125;밸런스 게임 - &#123;% raw %&#125;&#123;&#123; question.question_a &#125;&#125;&#123;% endraw %&#125; vs &#123;% raw %&#125;&#123;&#123; question.question_b &#125;&#125;&#123;% endraw %&#125;&#123;% endblock %&#125;
 
-{% block content %}
+&#123;% block content %&#125;
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
             <div class="card-header text-center">
                 <h4>밸런스 게임</h4>
-                <small class="text-muted">총 {% raw %}{{ total_answers }}{% endraw %}명이 참여했습니다</small>
+                <small class="text-muted">총 &#123;% raw %&#125;&#123;&#123; total_answers &#125;&#125;&#123;% endraw %&#125;명이 참여했습니다</small>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -470,10 +470,10 @@ urlpatterns = [
                     <div class="col-md-6">
                         <div class="choice-card" data-choice="a">
                             <div class="choice-content">
-                                <h5>{% raw %}{{ question.question_a }}{% endraw %}</h5>
+                                <h5>&#123;% raw %&#125;&#123;&#123; question.question_a &#125;&#125;&#123;% endraw %&#125;</h5>
                                 <div class="choice-stats">
-                                    <span class="badge bg-primary">{% raw %}{{ choice_a_count }}{% endraw %}명</span>
-                                    <span class="badge bg-secondary">{% raw %}{{ choice_a_percent }}{% endraw %}%</span>
+                                    <span class="badge bg-primary">&#123;% raw %&#125;&#123;&#123; choice_a_count &#125;&#125;&#123;% endraw %&#125;명</span>
+                                    <span class="badge bg-secondary">&#123;% raw %&#125;&#123;&#123; choice_a_percent &#125;&#125;&#123;% endraw %&#125;%</span>
                                 </div>
                             </div>
                         </div>
@@ -488,10 +488,10 @@ urlpatterns = [
                     <div class="col-md-6">
                         <div class="choice-card" data-choice="b">
                             <div class="choice-content">
-                                <h5>{% raw %}{{ question.question_b }}{% endraw %}</h5>
+                                <h5>&#123;% raw %&#125;&#123;&#123; question.question_b &#125;&#125;&#123;% endraw %&#125;</h5>
                                 <div class="choice-stats">
-                                    <span class="badge bg-primary">{% raw %}{{ choice_b_count }}{% endraw %}명</span>
-                                    <span class="badge bg-secondary">{% raw %}{{ choice_b_percent }}{% endraw %}%</span>
+                                    <span class="badge bg-primary">&#123;% raw %&#125;&#123;&#123; choice_b_count &#125;&#125;&#123;% endraw %&#125;명</span>
+                                    <span class="badge bg-secondary">&#123;% raw %&#125;&#123;&#123; choice_b_percent &#125;&#125;&#123;% endraw %&#125;%</span>
                                 </div>
                             </div>
                         </div>
@@ -501,12 +501,12 @@ urlpatterns = [
                 <!-- 진행률 바 -->
                 <div class="progress mt-4" style="height: 20px;">
                     <div class="progress-bar bg-primary" role="progressbar" 
-                         style="width: {% raw %}{{ choice_a_percent }}{% endraw %}%">
-                        {% raw %}{{ choice_a_percent }}{% endraw %}%
+                         style="width: &#123;% raw %&#125;&#123;&#123; choice_a_percent &#125;&#125;&#123;% endraw %&#125;%">
+                        &#123;% raw %&#125;&#123;&#123; choice_a_percent &#125;&#125;&#123;% endraw %&#125;%
                     </div>
                     <div class="progress-bar bg-secondary" role="progressbar" 
-                         style="width: {% raw %}{{ choice_b_percent }}{% endraw %}%">
-                        {% raw %}{{ choice_b_percent }}{% endraw %}%
+                         style="width: &#123;% raw %&#125;&#123;&#123; choice_b_percent &#125;&#125;&#123;% endraw %&#125;%">
+                        &#123;% raw %&#125;&#123;&#123; choice_b_percent &#125;&#125;&#123;% endraw %&#125;%
                     </div>
                 </div>
             </div>
@@ -518,137 +518,137 @@ urlpatterns = [
 document.querySelectorAll('.choice-card').forEach(card => {
     card.addEventListener('click', function() {
         const choice = this.dataset.choice;
-        window.location.href = `{% url 'balance:answer_click' question_id=question.id %}?choice=${choice}`;
+        window.location.href = `&#123;% url 'balance:answer_click' question_id=question.id %&#125;?choice=${choice}`;
     });
 });
 </script>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ### 질문 생성 템플릿
 
 ```html
 <!-- balance/templates/balance/form.html -->
-{% extends 'balance/base.html' %}
-{% load static %}
+&#123;% extends 'balance/base.html' %&#125;
+&#123;% load static %&#125;
 
-{% block title %}질문 생성{% endblock %}
+&#123;% block title %&#125;질문 생성&#123;% endblock %&#125;
 
-{% block content %}
+&#123;% block content %&#125;
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                <h4>{% if question %}질문 수정{% else %}새 질문 생성{% endif %}</h4>
+                <h4>&#123;% if question %&#125;질문 수정&#123;% else %&#125;새 질문 생성&#123;% endif %&#125;</h4>
             </div>
             <div class="card-body">
                 <form method="post">
-                    {% csrf_token %}
+                    &#123;% csrf_token %&#125;
                     <div class="mb-3">
-                        <label for="{% raw %}{{ form.question_a.id_for_label }}{% endraw %}" class="form-label">선택지 A</label>
-                        {% raw %}{{ form.question_a }}{% endraw %}
-                        {% if form.question_a.errors %}
-                            <div class="text-danger">{% raw %}{{ form.question_a.errors }}{% endraw %}</div>
-                        {% endif %}
+                        <label for="&#123;% raw %&#125;&#123;&#123; form.question_a.id_for_label &#125;&#125;&#123;% endraw %&#125;" class="form-label">선택지 A</label>
+                        &#123;% raw %&#125;&#123;&#123; form.question_a &#125;&#125;&#123;% endraw %&#125;
+                        &#123;% if form.question_a.errors %&#125;
+                            <div class="text-danger">&#123;% raw %&#125;&#123;&#123; form.question_a.errors &#125;&#125;&#123;% endraw %&#125;</div>
+                        &#123;% endif %&#125;
                     </div>
                     <div class="mb-3">
-                        <label for="{% raw %}{{ form.question_b.id_for_label }}{% endraw %}" class="form-label">선택지 B</label>
-                        {% raw %}{{ form.question_b }}{% endraw %}
-                        {% if form.question_b.errors %}
-                            <div class="text-danger">{% raw %}{{ form.question_b.errors }}{% endraw %}</div>
-                        {% endif %}
+                        <label for="&#123;% raw %&#125;&#123;&#123; form.question_b.id_for_label &#125;&#125;&#123;% endraw %&#125;" class="form-label">선택지 B</label>
+                        &#123;% raw %&#125;&#123;&#123; form.question_b &#125;&#125;&#123;% endraw %&#125;
+                        &#123;% if form.question_b.errors %&#125;
+                            <div class="text-danger">&#123;% raw %&#125;&#123;&#123; form.question_b.errors &#125;&#125;&#123;% endraw %&#125;</div>
+                        &#123;% endif %&#125;
                     </div>
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-primary">저장</button>
-                        <a href="{% url 'balance:settings' %}" class="btn btn-secondary">취소</a>
+                        <a href="&#123;% url 'balance:settings' %&#125;" class="btn btn-secondary">취소</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ### 질문 관리 템플릿
 
 ```html
 <!-- balance/templates/balance/setting.html -->
-{% extends 'balance/base.html' %}
-{% load static %}
+&#123;% extends 'balance/base.html' %&#125;
+&#123;% load static %&#125;
 
-{% block title %}질문 관리{% endblock %}
+&#123;% block title %&#125;질문 관리&#123;% endblock %&#125;
 
-{% block content %}
+&#123;% block content %&#125;
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2>질문 관리</h2>
-    <a href="{% url 'balance:create' %}" class="btn btn-primary">새 질문 생성</a>
+    <a href="&#123;% url 'balance:create' %&#125;" class="btn btn-primary">새 질문 생성</a>
 </div>
 
 <div class="row">
-    {% for question in questions %}
+    &#123;% for question in questions %&#125;
     <div class="col-md-6 mb-3">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{% raw %}{{ question.question_a }}{% endraw %} vs {% raw %}{{ question.question_b }}{% endraw %}</h5>
+                <h5 class="card-title">&#123;% raw %&#125;&#123;&#123; question.question_a &#125;&#125;&#123;% endraw %&#125; vs &#123;% raw %&#125;&#123;&#123; question.question_b &#125;&#125;&#123;% endraw %&#125;</h5>
                 <p class="card-text">
                     <small class="text-muted">
-                        답변 수: {% raw %}{{ question.answer_count }}{% endraw %}개 | 
-                        생성일: {% raw %}{{ question.created_at|date:"Y-m-d H:i" }}{% endraw %}
+                        답변 수: &#123;% raw %&#125;&#123;&#123; question.answer_count &#125;&#125;&#123;% endraw %&#125;개 | 
+                        생성일: &#123;% raw %&#125;&#123;&#123; question.created_at|date:"Y-m-d H:i" &#125;&#125;&#123;% endraw %&#125;
                     </small>
                 </p>
                 <div class="btn-group" role="group">
-                    <a href="{% url 'balance:index' question_id=question.id %}" 
+                    <a href="&#123;% url 'balance:index' question_id=question.id %&#125;" 
                        class="btn btn-sm btn-outline-primary">게임하기</a>
-                    <a href="{% url 'balance:edit' question_id=question.id %}" 
+                    <a href="&#123;% url 'balance:edit' question_id=question.id %&#125;" 
                        class="btn btn-sm btn-outline-secondary">수정</a>
-                    <a href="{% url 'balance:delete' question_id=question.id %}" 
+                    <a href="&#123;% url 'balance:delete' question_id=question.id %&#125;" 
                        class="btn btn-sm btn-outline-danger"
                        onclick="return confirm('정말 삭제하시겠습니까?')">삭제</a>
                 </div>
             </div>
         </div>
     </div>
-    {% empty %}
+    &#123;% empty %&#125;
     <div class="col-12">
         <div class="alert alert-info text-center">
             <h4>아직 질문이 없습니다</h4>
             <p>첫 번째 질문을 생성해보세요!</p>
-            <a href="{% url 'balance:create' %}" class="btn btn-primary">질문 생성하기</a>
+            <a href="&#123;% url 'balance:create' %&#125;" class="btn btn-primary">질문 생성하기</a>
         </div>
     </div>
-    {% endfor %}
+    &#123;% endfor %&#125;
 </div>
 
 <!-- 페이지네이션 -->
-{% if page_obj.has_other_pages %}
+&#123;% if page_obj.has_other_pages %&#125;
 <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
-        {% if page_obj.has_previous %}
+        &#123;% if page_obj.has_previous %&#125;
             <li class="page-item">
                 <a class="page-link" href="?page=1">처음</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="?page={% raw %}{{ page_obj.previous_page_number }}{% endraw %}">이전</a>
+                <a class="page-link" href="?page=&#123;% raw %&#125;&#123;&#123; page_obj.previous_page_number &#125;&#125;&#123;% endraw %&#125;">이전</a>
             </li>
-        {% endif %}
+        &#123;% endif %&#125;
         
         <li class="page-item active">
-            <span class="page-link">{% raw %}{{ page_obj.number }}{% endraw %} / {% raw %}{{ page_obj.paginator.num_pages }}{% endraw %}</span>
+            <span class="page-link">&#123;% raw %&#125;&#123;&#123; page_obj.number &#125;&#125;&#123;% endraw %&#125; / &#123;% raw %&#125;&#123;&#123; page_obj.paginator.num_pages &#125;&#125;&#123;% endraw %&#125;</span>
         </li>
         
-        {% if page_obj.has_next %}
+        &#123;% if page_obj.has_next %&#125;
             <li class="page-item">
-                <a class="page-link" href="?page={% raw %}{{ page_obj.next_page_number }}{% endraw %}">다음</a>
+                <a class="page-link" href="?page=&#123;% raw %&#125;&#123;&#123; page_obj.next_page_number &#125;&#125;&#123;% endraw %&#125;">다음</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="?page={% raw %}{{ page_obj.paginator.num_pages }}{% endraw %}">마지막</a>
+                <a class="page-link" href="?page=&#123;% raw %&#125;&#123;&#123; page_obj.paginator.num_pages &#125;&#125;&#123;% endraw %&#125;">마지막</a>
             </li>
-        {% endif %}
+        &#123;% endif %&#125;
     </ul>
 </nav>
-{% endif %}
-{% endblock %}
+&#123;% endif %&#125;
+&#123;% endblock %&#125;
 ```
 
 ## 7. 스타일링 (CSS)

@@ -681,30 +681,30 @@ if settings.DEBUG:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Instagram Clone{% endblock %}</title>
+    <title>&#123;% block title %&#125;Instagram Clone&#123;% endblock %&#125;</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="&#123;% static 'css/style.css' %&#125;">
 </head>
 <body>
-    {% include '_nav.html' %}
+    &#123;% include '_nav.html' %&#125;
     
     <main class="container mt-4">
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{% raw %}{{ message.tags }}{% endraw %} alert-dismissible fade show" role="alert">
-                    {% raw %}{{ message }}{% endraw %}
+        &#123;% if messages %&#125;
+            &#123;% for message in messages %&#125;
+                <div class="alert alert-&#123;% raw %&#125;&#123;&#123; message.tags &#125;&#125;&#123;% endraw %&#125; alert-dismissible fade show" role="alert">
+                    &#123;% raw %&#125;&#123;&#123; message &#125;&#125;&#123;% endraw %&#125;
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
-            {% endfor %}
-        {% endif %}
+            &#123;% endfor %&#125;
+        &#123;% endif %&#125;
         
-        {% block content %}
-        {% endblock %}
+        &#123;% block content %&#125;
+        &#123;% endblock %&#125;
     </main>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="&#123;% static 'js/main.js' %&#125;"></script>
 </body>
 </html>
 ```
@@ -715,25 +715,25 @@ if settings.DEBUG:
 <!-- templates/_nav.html -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="{% url 'posts:index' %}">
+        <a class="navbar-brand fw-bold" href="&#123;% url 'posts:index' %&#125;">
             <i class="fab fa-instagram"></i> Instagram
         </a>
         
         <div class="navbar-nav ms-auto">
-            {% if user.is_authenticated %}
-                <a class="nav-link" href="{% url 'posts:create' %}">
+            &#123;% if user.is_authenticated %&#125;
+                <a class="nav-link" href="&#123;% url 'posts:create' %&#125;">
                     <i class="fas fa-plus"></i> 새 게시물
                 </a>
-                <a class="nav-link" href="{% url 'accounts:profile' user.id %}">
+                <a class="nav-link" href="&#123;% url 'accounts:profile' user.id %&#125;">
                     <i class="fas fa-user"></i> 프로필
                 </a>
-                <a class="nav-link" href="{% url 'accounts:logout' %}">
+                <a class="nav-link" href="&#123;% url 'accounts:logout' %&#125;">
                     <i class="fas fa-sign-out-alt"></i> 로그아웃
                 </a>
-            {% else %}
-                <a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
-                <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
-            {% endif %}
+            &#123;% else %&#125;
+                <a class="nav-link" href="&#123;% url 'accounts:login' %&#125;">로그인</a>
+                <a class="nav-link" href="&#123;% url 'accounts:signup' %&#125;">회원가입</a>
+            &#123;% endif %&#125;
         </div>
     </div>
 </nav>
@@ -745,47 +745,47 @@ if settings.DEBUG:
 <!-- templates/_card.html -->
 <div class="card mb-4">
     <div class="card-header d-flex align-items-center">
-        <img src="{% raw %}{{ post.user.profile_image.url|default:'/static/images/default-profile.png' }}{% endraw %}" 
+        <img src="&#123;% raw %&#125;&#123;&#123; post.user.profile_image.url|default:'/static/images/default-profile.png' &#125;&#125;&#123;% endraw %&#125;" 
              class="rounded-circle me-2" width="32" height="32" alt="프로필">
         <div>
             <h6 class="mb-0">
-                <a href="{% url 'accounts:profile' post.user.id %}" class="text-decoration-none">
-                    {% raw %}{{ post.user.username }}{% endraw %}
+                <a href="&#123;% url 'accounts:profile' post.user.id %&#125;" class="text-decoration-none">
+                    &#123;% raw %&#125;&#123;&#123; post.user.username &#125;&#125;&#123;% endraw %&#125;
                 </a>
             </h6>
-            <small class="text-muted">{% raw %}{{ post.created_at|timesince }}{% endraw %} 전</small>
+            <small class="text-muted">&#123;% raw %&#125;&#123;&#123; post.created_at|timesince &#125;&#125;&#123;% endraw %&#125; 전</small>
         </div>
     </div>
     
     <div class="card-body p-0">
-        <img src="{% raw %}{{ post.image.url }}{% endraw %}" class="card-img-top" alt="게시물 이미지">
+        <img src="&#123;% raw %&#125;&#123;&#123; post.image.url &#125;&#125;&#123;% endraw %&#125;" class="card-img-top" alt="게시물 이미지">
         
         <div class="p-3">
             <div class="d-flex align-items-center mb-2">
-                <button class="btn btn-link p-0 me-2 like-btn" data-post-id="{% raw %}{{ post.id }}{% endraw %}">
-                    <i class="fas fa-heart {% if post.is_liked_by:user %}text-danger{% else %}text-muted{% endif %}"></i>
+                <button class="btn btn-link p-0 me-2 like-btn" data-post-id="&#123;% raw %&#125;&#123;&#123; post.id &#125;&#125;&#123;% endraw %&#125;">
+                    <i class="fas fa-heart &#123;% if post.is_liked_by:user %&#125;text-danger&#123;% else %&#125;text-muted&#123;% endif %&#125;"></i>
                 </button>
-                <button class="btn btn-link p-0 me-2" data-bs-toggle="collapse" data-bs-target="#comments-{% raw %}{{ post.id }}{% endraw %}">
+                <button class="btn btn-link p-0 me-2" data-bs-toggle="collapse" data-bs-target="#comments-&#123;% raw %&#125;&#123;&#123; post.id &#125;&#125;&#123;% endraw %&#125;">
                     <i class="far fa-comment text-muted"></i>
                 </button>
-                <span class="text-muted">{% raw %}{{ post.get_likes_count }}{% endraw %}명이 좋아합니다</span>
+                <span class="text-muted">&#123;% raw %&#125;&#123;&#123; post.get_likes_count &#125;&#125;&#123;% endraw %&#125;명이 좋아합니다</span>
             </div>
             
             <div class="mb-2">
-                <strong>{% raw %}{{ post.user.username }}{% endraw %}</strong> {% raw %}{{ post.content }}{% endraw %}
+                <strong>&#123;% raw %&#125;&#123;&#123; post.user.username &#125;&#125;&#123;% endraw %&#125;</strong> &#123;% raw %&#125;&#123;&#123; post.content &#125;&#125;&#123;% endraw %&#125;
             </div>
             
-            <div class="collapse" id="comments-{% raw %}{{ post.id }}{% endraw %}">
+            <div class="collapse" id="comments-&#123;% raw %&#125;&#123;&#123; post.id &#125;&#125;&#123;% endraw %&#125;">
                 <div class="comments-section">
-                    {% for comment in post.comments.all %}
+                    &#123;% for comment in post.comments.all %&#125;
                     <div class="mb-1">
-                        <strong>{% raw %}{{ comment.user.username }}{% endraw %}</strong> {% raw %}{{ comment.content }}{% endraw %}
+                        <strong>&#123;% raw %&#125;&#123;&#123; comment.user.username &#125;&#125;&#123;% endraw %&#125;</strong> &#123;% raw %&#125;&#123;&#123; comment.content &#125;&#125;&#123;% endraw %&#125;
                     </div>
-                    {% endfor %}
+                    &#123;% endfor %&#125;
                 </div>
                 
-                <form class="comment-form mt-2" data-post-id="{% raw %}{{ post.id }}{% endraw %}">
-                    {% csrf_token %}
+                <form class="comment-form mt-2" data-post-id="&#123;% raw %&#125;&#123;&#123; post.id &#125;&#125;&#123;% endraw %&#125;">
+                    &#123;% csrf_token %&#125;
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="댓글 달기..." maxlength="200">
                         <button class="btn btn-outline-primary" type="submit">게시</button>
@@ -801,57 +801,57 @@ if settings.DEBUG:
 
 ```html
 <!-- posts/templates/posts/index.html -->
-{% extends 'base.html' %}
-{% load static %}
+&#123;% extends 'base.html' %&#125;
+&#123;% load static %&#125;
 
-{% block title %}홈 - Instagram Clone{% endblock %}
+&#123;% block title %&#125;홈 - Instagram Clone&#123;% endblock %&#125;
 
-{% block content %}
+&#123;% block content %&#125;
 <div class="row justify-content-center">
     <div class="col-md-6">
-        {% if posts %}
-            {% for post in posts %}
-                {% include '_card.html' %}
-            {% endfor %}
+        &#123;% if posts %&#125;
+            &#123;% for post in posts %&#125;
+                &#123;% include '_card.html' %&#125;
+            &#123;% endfor %&#125;
             
             <!-- 페이지네이션 -->
-            {% if page_obj.has_other_pages %}
+            &#123;% if page_obj.has_other_pages %&#125;
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
-                    {% if page_obj.has_previous %}
+                    &#123;% if page_obj.has_previous %&#125;
                         <li class="page-item">
                             <a class="page-link" href="?page=1">처음</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="?page={% raw %}{{ page_obj.previous_page_number }}{% endraw %}">이전</a>
+                            <a class="page-link" href="?page=&#123;% raw %&#125;&#123;&#123; page_obj.previous_page_number &#125;&#125;&#123;% endraw %&#125;">이전</a>
                         </li>
-                    {% endif %}
+                    &#123;% endif %&#125;
                     
                     <li class="page-item active">
-                        <span class="page-link">{% raw %}{{ page_obj.number }}{% endraw %} / {% raw %}{{ page_obj.paginator.num_pages }}{% endraw %}</span>
+                        <span class="page-link">&#123;% raw %&#125;&#123;&#123; page_obj.number &#125;&#125;&#123;% endraw %&#125; / &#123;% raw %&#125;&#123;&#123; page_obj.paginator.num_pages &#125;&#125;&#123;% endraw %&#125;</span>
                     </li>
                     
-                    {% if page_obj.has_next %}
+                    &#123;% if page_obj.has_next %&#125;
                         <li class="page-item">
-                            <a class="page-link" href="?page={% raw %}{{ page_obj.next_page_number }}{% endraw %}">다음</a>
+                            <a class="page-link" href="?page=&#123;% raw %&#125;&#123;&#123; page_obj.next_page_number &#125;&#125;&#123;% endraw %&#125;">다음</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="?page={% raw %}{{ page_obj.paginator.num_pages }}{% endraw %}">마지막</a>
+                            <a class="page-link" href="?page=&#123;% raw %&#125;&#123;&#123; page_obj.paginator.num_pages &#125;&#125;&#123;% endraw %&#125;">마지막</a>
                         </li>
-                    {% endif %}
+                    &#123;% endif %&#125;
                 </ul>
             </nav>
-            {% endif %}
-        {% else %}
+            &#123;% endif %&#125;
+        &#123;% else %&#125;
             <div class="text-center py-5">
                 <h4>아직 팔로우하는 사용자가 없습니다</h4>
                 <p class="text-muted">다른 사용자를 팔로우하여 게시물을 확인해보세요!</p>
-                <a href="{% url 'posts:create' %}" class="btn btn-primary">첫 게시물 작성하기</a>
+                <a href="&#123;% url 'posts:create' %&#125;" class="btn btn-primary">첫 게시물 작성하기</a>
             </div>
-        {% endif %}
+        &#123;% endif %&#125;
     </div>
 </div>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 8. JavaScript 기능

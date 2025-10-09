@@ -123,23 +123,23 @@ def create(request):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Django Board{% endblock %}</title>
+    <title>&#123;% block title %&#125;Django Board&#123;% endblock %&#125;</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'articles:index' %}">Django Board</a>
+            <a class="navbar-brand" href="&#123;% url 'articles:index' %&#125;">Django Board</a>
             <div class="navbar-nav">
-                <a class="nav-link" href="{% url 'articles:index' %}">Home</a>
-                <a class="nav-link" href="{% url 'articles:create' %}">Create</a>
+                <a class="nav-link" href="&#123;% url 'articles:index' %&#125;">Home</a>
+                <a class="nav-link" href="&#123;% url 'articles:create' %&#125;">Create</a>
             </div>
         </div>
     </nav>
 
     <div class="container mt-4">
-        {% block body %}
-        {% endblock %}
+        &#123;% block body %&#125;
+        &#123;% endblock %&#125;
     </div>
 </body>
 </html>
@@ -149,40 +149,40 @@ def create(request):
 
 `articles/templates/articles/create.html`:
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}새 글 작성 - Django Board{% endblock %}
+&#123;% block title %&#125;새 글 작성 - Django Board&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <h1>새 글 작성</h1>
 
 <form action="" method="POST">
-    {% csrf_token %}
-    {% raw %}{{ form.as_p }}{% endraw %}
+    &#123;% csrf_token %&#125;
+    &#123;% raw %&#125;&#123;&#123; form.as_p &#125;&#125;&#123;% endraw %&#125;
     <button type="submit" class="btn btn-primary">작성</button>
-    <a href="{% url 'articles:index' %}" class="btn btn-secondary">취소</a>
+    <a href="&#123;% url 'articles:index' %&#125;" class="btn btn-secondary">취소</a>
 </form>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ### 폼 렌더링 옵션
 
 ```html
 <!-- 기본 렌더링 -->
-{% raw %}{{ form }}{% endraw %}
+&#123;% raw %&#125;&#123;&#123; form &#125;&#125;&#123;% endraw %&#125;
 
 <!-- 각 필드를 <p> 태그로 감싸기 -->
-{% raw %}{{ form.as_p }}{% endraw %}
+&#123;% raw %&#125;&#123;&#123; form.as_p &#125;&#125;&#123;% endraw %&#125;
 
 <!-- 각 필드를 <table> 태그로 감싸기 -->
-{% raw %}{{ form.as_table }}{% endraw %}
+&#123;% raw %&#125;&#123;&#123; form.as_table &#125;&#125;&#123;% endraw %&#125;
 
 <!-- 각 필드를 <ul> 태그로 감싸기 -->
-{% raw %}{{ form.as_ul }}{% endraw %}
+&#123;% raw %&#125;&#123;&#123; form.as_ul &#125;&#125;&#123;% endraw %&#125;
 
 <!-- 개별 필드 렌더링 -->
-{% raw %}{{ form.title }}{% endraw %}
-{% raw %}{{ form.content }}{% endraw %}
+&#123;% raw %&#125;&#123;&#123; form.title &#125;&#125;&#123;% endraw %&#125;
+&#123;% raw %&#125;&#123;&#123; form.content &#125;&#125;&#123;% endraw %&#125;
 ```
 
 ## 5. Update 기능 통합
@@ -220,20 +220,20 @@ def update(request, id):
 
 `articles/templates/articles/update.html`:
 ```html
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}글 수정 - Django Board{% endblock %}
+&#123;% block title %&#125;글 수정 - Django Board&#123;% endblock %&#125;
 
-{% block body %}
+&#123;% block body %&#125;
 <h1>글 수정</h1>
 
 <form action="" method="POST">
-    {% csrf_token %}
-    {% raw %}{{ form.as_p }}{% endraw %}
+    &#123;% csrf_token %&#125;
+    &#123;% raw %&#125;&#123;&#123; form.as_p &#125;&#125;&#123;% endraw %&#125;
     <button type="submit" class="btn btn-primary">수정</button>
-    <a href="{% url 'articles:detail' article.id %}" class="btn btn-secondary">취소</a>
+    <a href="&#123;% url 'articles:detail' article.id %&#125;" class="btn btn-secondary">취소</a>
 </form>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 6. 완전한 CRUD 구현
@@ -399,20 +399,20 @@ def __init__(self, *args, **kwargs):
 ### 3. 폼 에러 처리
 ```html
 <form method="POST">
-    {% csrf_token %}
-    {% raw %}{{ form.as_p }}{% endraw %}
+    &#123;% csrf_token %&#125;
+    &#123;% raw %&#125;&#123;&#123; form.as_p &#125;&#125;&#123;% endraw %&#125;
     
-    {% if form.errors %}
+    &#123;% if form.errors %&#125;
         <div class="alert alert-danger">
             <ul>
-                {% for field, errors in form.errors.items %}
-                    {% for error in errors %}
-                        <li>{% raw %}{{ error }}{% endraw %}</li>
-                    {% endfor %}
-                {% endfor %}
+                &#123;% for field, errors in form.errors.items %&#125;
+                    &#123;% for error in errors %&#125;
+                        <li>&#123;% raw %&#125;&#123;&#123; error &#125;&#125;&#123;% endraw %&#125;</li>
+                    &#123;% endfor %&#125;
+                &#123;% endfor %&#125;
             </ul>
         </div>
-    {% endif %}
+    &#123;% endif %&#125;
     
     <button type="submit">제출</button>
 </form>

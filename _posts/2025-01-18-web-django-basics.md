@@ -148,7 +148,7 @@ templates 폴더에서 HTML 파일들을 생성합니다:
     <title>Greeting</title>
 </head>
 <body>
-    <h1>{% raw %}{{name}}{% endraw %}님 안녕하세요</h1>
+    <h1>&#123;&#123;name&#125;&#125;님 안녕하세요</h1>
 </body>
 </html>
 ```
@@ -162,14 +162,14 @@ templates 폴더에서 HTML 파일들을 생성합니다:
     <title>Cube</title>
 </head>
 <body>
-    <h1>{% raw %}{{num}}{% endraw %}을 세제곱한 결과는 {% raw %}{{cube}}{% endraw %}입니다.</h1>
+    <h1>&#123;&#123;num&#125;&#125;을 세제곱한 결과는 &#123;&#123;cube&#125;&#125;입니다.</h1>
 </body>
 </html>
 ```
 
 **템플릿 문법:**
-- `{% raw %}{{변수명}}{% endraw %}` - 변수 출력
-- `{% 태그 %}` - 템플릿 태그 (조건문, 반복문 등)
+- `&#123;&#123;변수명&#125;&#125;` - 변수 출력
+- `&#123;% 태그 %&#125;` - 템플릿 태그 (조건문, 반복문 등)
 
 ### 6. 웹 실행 (HTML Response)
 서버를 실행하고 결과를 확인합니다:
@@ -227,7 +227,7 @@ def article_detail(request, article_id):
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}My Site{% endblock %}</title>
+    <title>&#123;% block title %&#125;My Site&#123;% endblock %&#125;</title>
 </head>
 <body>
     <header>
@@ -235,8 +235,8 @@ def article_detail(request, article_id):
     </header>
     
     <main>
-        {% block content %}
-        {% endblock %}
+        &#123;% block content %&#125;
+        &#123;% endblock %&#125;
     </main>
 </body>
 </html>
@@ -244,14 +244,14 @@ def article_detail(request, article_id):
 
 ```html
 <!-- index.html -->
-{% extends 'base.html' %}
+&#123;% extends 'base.html' %&#125;
 
-{% block title %}Home - My Site{% endblock %}
+&#123;% block title %&#125;Home - My Site&#123;% endblock %&#125;
 
-{% block content %}
+&#123;% block content %&#125;
 <h2>Welcome to My Site!</h2>
 <p>This is the home page.</p>
-{% endblock %}
+&#123;% endblock %&#125;
 ```
 
 ## 실무 적용 예시
@@ -276,7 +276,7 @@ def contact(request):
 ```html
 <!-- contact.html -->
 <form method="POST">
-    {% csrf_token %}
+    &#123;% csrf_token %&#125;
     <input type="text" name="name" placeholder="이름" required>
     <input type="email" name="email" placeholder="이메일" required>
     <textarea name="message" placeholder="메시지" required></textarea>
