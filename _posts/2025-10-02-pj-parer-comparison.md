@@ -4,11 +4,11 @@ categories:
 - 2.PROJECT
 - 2-2.FinIQ
 tags:
-- - parser
-  - API
-  - 비교
-  - 분석
-  - 업스테이지
+- parser
+- API
+- 비교
+- 분석
+- 업스테이지
 toc: true
 date: 2025-10-02
 comments: false
@@ -249,4 +249,93 @@ math: true
 ### 한계: 구조적 처리 부족
 
 - **표 처리**: 바운딩 박스가 부정확하며, HTML/TXT 추출 결과가 나열식으로 출력됨
-- **구조 문제**: 테이블을 별도로 정리하지 않아 청킹과 데이터 중복 문제가 예상
+- **구조 문제**: 테이블을 별도로 정리하지 않아 청킹과 데이터 중복 문제가 예상됨
+
+<details>
+<summary>원본 PDF 1,2페이지 - 바운딩 박스 분석 결과</summary>
+
+![GoogleCloud Document AI 바운딩 박스 결과 1](/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox.PNG)  
+![GoogleCloud Document AI 바운딩 박스 결과 2](/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox2.PNG)
+
+</details>
+
+<details>
+<summary>HTML 추출 결과</summary>
+
+![GoogleCloud Document AI HTML 추출 결과](/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox_분석.PNG)
+
+</details>
+
+### 혼재된 결과: 그래프 추출
+
+- **그래프 처리**: 바운딩 박스는 부정확하지만 HTML/TXT 추출에서 그래프를 탐지
+- **데이터 문제**: 추출된 데이터와 누락된 데이터가 혼재되어 있음
+- **구조적 한계**: 나열식 출력으로 인한 청킹과 데이터 중복 문제 지속
+
+<details>
+<summary>원본 PDF 3페이지 - 그래프 바운딩 박스 분석</summary>
+
+![GoogleCloud Document AI 그래프 바운딩 박스 결과](/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox3.PNG)
+
+</details>
+
+<details>
+<summary>HTML 추출 결과</summary>
+
+![GoogleCloud Document AI 그래프 HTML 추출 결과](/assets/images/PJ/05_GoogleCloud_DocumentAI_bbox_분석3.PNG)
+
+</details>
+
+</details>
+
+---
+
+## 종합 비교 분석
+
+### 성능 순위 (바운딩 박스 정확도 기준)
+
+| 순위 | API                          | 바운딩 박스 정확도 | HTML 추출 품질 | 그래프 인식 | 특별 기능            |
+|------|-------------------------------|---------------------|----------------|--------------|-----------------------|
+| 1위 | **Upstage Parser**           | ⭐⭐⭐⭐⭐              | ⭐⭐⭐⭐⭐         | ⭐⭐         | 일관성 있는 구조 인식 |
+| 2위 | **Gemini API**               | ⭐⭐                 | ⭐⭐⭐⭐          | ⭐⭐⭐⭐      | 그래프 코멘트 제공     |
+| 3위 | **OpenAI API**               | ⭐⭐                 | ⭐⭐⭐⭐          | ⭐⭐⭐⭐      | 그래프 추출 우수       |
+| 4위 | **Llamaparse**               | ⭐⭐                 | ⭐⭐⭐           | ⭐⭐         | 중첩표 구조 인식       |
+| 5위 | **GoogleCloud Document AI** | ⭐                  | ⭐⭐            | ⭐⭐         | GCP 통합 용이          |
+
+---
+
+## 사용 권장사항
+
+### **Upstage Parser API**
+
+- **추천 상황**: 정확한 바운딩 박스와 일관된 구조 인식이 필요한 경우
+- **장점**: 가장 안정적이고 예측 가능한 결과
+- **단점**: 그래프 인식 기능 부족
+
+### **Gemini API**
+
+- **추천 상황**: 그래프 분석과 해석이 필요한 경우
+- **장점**: 그래프에 대한 추가 코멘트 제공
+- **단점**: 일관성 부족, 프롬프트 의존성
+
+### **OpenAI API**
+
+- **추천 상황**: 복잡한 구조와 그래프를 모두 처리해야 하는 경우
+- **장점**: 그래프 추출 능력 우수
+- **단점**: 결과의 일관성 부족
+
+---
+
+## 공통 한계사항
+
+1. **바운딩 박스 정확도**: 모든 API에서 복잡한 구조에서 정확도 저하
+2. **일관성 문제**: LLM 기반 API들은 프롬프트와 파일에 따라 결과 변동
+3. **그래프 처리**: 대부분의 API에서 그래프 인식이 상대적으로 약함
+
+---
+
+## 최적 활용 전략
+
+- **단일 API 사용**: Upstage Parser (안정성 우선)
+- **하이브리드 접근**: Upstage Parser + Gemini API (구조 + 그래프 분석)
+- **GCP 환경**: GoogleCloud Document AI (통합성 우선)
