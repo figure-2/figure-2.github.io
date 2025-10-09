@@ -41,16 +41,16 @@ math: true
 <details>
 <summary> 원본 PDF 1페이지 - 바운딩 박스 분석 결과</summary>
 
-![Upstage Parser 바운딩 박스 결과](../../assets/images/posts_img/PJ/1_parser_upstage_bbox.PNG)
+![Upstage Parser 바운딩 박스 결과](/assets/images/posts_img/PJ/1_parser_upstage_bbox.PNG)
 
 </details>
 
 <details>
 <summary> HTML 추출 결과</summary>
 
-![Upstage Parser HTML 추출 결과 1](../../assets/images/posts_img/PJ/1_parser_upstage_bbox_내용.PNG)
+![Upstage Parser HTML 추출 결과 1](/assets/images/posts_img/PJ/1_parser_upstage_bbox_내용.PNG)
 
-![Upstage Parser HTML 추출 결과 2](../../assets/images/posts_img/PJ/1_parser_upstage_bbox_내용2.PNG)
+![Upstage Parser HTML 추출 결과 2](/assets/images/posts_img/PJ/1_parser_upstage_bbox_내용2.PNG)
 </details>
 
 ###  한계: 복잡한 구조 처리
@@ -59,13 +59,13 @@ math: true
 <details>
 <summary> 원본 PDF 2페이지 - 중첩표 바운딩 박스 분석</summary>
 
-![Upstage Parser 중첩표 바운딩 박스 결과](../../assets/images/posts_img/PJ/1_parser_upstage_bbox2.PNG)
+![Upstage Parser 중첩표 바운딩 박스 결과](/assets/images/posts_img/PJ/1_parser_upstage_bbox2.PNG)
 </details>
 
 <details>
 <summary> HTML 추출 결과</summary>
 
-![Upstage Parser 중첩표 HTML 추출 결과](../../assets/images/posts_img/PJ/1_parser_upstage_bbox2_분석.PNG)
+![Upstage Parser 중첩표 HTML 추출 결과](/assets/images/posts_img/PJ/1_parser_upstage_bbox2_분석.PNG)
 </details>
 
 ###  한계: 그래프 인식 부족
@@ -74,13 +74,13 @@ math: true
 <details>
 <summary> 원본 PDF 3페이지 - 그래프 바운딩 박스 분석</summary>
 
-![Upstage Parser 그래프 바운딩 박스 결과](../../assets/images/posts_img/PJ/1_parser_upstage_bbox3.PNG)
+![Upstage Parser 그래프 바운딩 박스 결과](/assets/images/posts_img/PJ/1_parser_upstage_bbox3.PNG)
 </details>
 
 <details>
 <summary> HTML 추출 결과</summary>
 
-![Upstage Parser 그래프 HTML 추출 결과](../../assets/images/posts_img/PJ/1_parser_upstage_bbox3_분석.PNG)
+![Upstage Parser 그래프 HTML 추출 결과](/assets/images/posts_img/PJ/1_parser_upstage_bbox3_분석.PNG)
 </details>
 
 </details>
@@ -96,13 +96,13 @@ math: true
 <details>
 <summary> 원본 PDF 1페이지 - 바운딩 박스 분석 결과</summary>
 
-![Llamaparse Parser 바운딩 박스 결과](../../assets/images/posts_img/PJ/02_Llamaparse_bbox.PNG)
+![Llamaparse Parser 바운딩 박스 결과](/assets/images/posts_img/PJ/02_Llamaparse_bbox.PNG)
 </details>
 
 <details>
 <summary> HTML 추출 결과</summary>
 
-![Llamaparse Parser HTML 추출 결과](../../assets/images/posts_img/PJ/02_Llamaparse_bbox_분석.PNG)
+![Llamaparse Parser HTML 추출 결과](/assets/images/posts_img/PJ/02_Llamaparse_bbox_분석.PNG)
 </details>
 
 ###  혼재된 결과: 중첩표 처리
@@ -112,13 +112,13 @@ math: true
 <details>
 <summary> 원본 PDF 2페이지 - 중첩표 바운딩 박스 분석</summary>
 
-![Llamaparse Parser 중첩표 바운딩 박스 결과](../../assets/images/posts_img/PJ/02_Llamaparse_bbox2.PNG)
+![Llamaparse Parser 중첩표 바운딩 박스 결과](/assets/images/posts_img/PJ/02_Llamaparse_bbox2.PNG)
 </details>
 
 <details>
 <summary> HTML 추출 결과</summary>
 
-![Llamaparse Parser 중첩표 HTML 추출 결과](../../assets/images/posts_img/PJ/02_Llamaparse_bbox2_분석.PNG)
+![Llamaparse Parser 중첩표 HTML 추출 결과](/assets/images/posts_img/PJ/02_Llamaparse_bbox2_분석.PNG)
 </details>
 </details>
 
@@ -135,14 +135,14 @@ math: true
 <details>
 <summary> 원본 PDF 1,2페이지 - 바운딩 박스 분석 결과</summary>
 
-![OpenAI API 바운딩 박스 결과 1](../../assets/images/posts_img/PJ/03_openAI_bbox.PNG)
-![OpenAI API 바운딩 박스 결과 2](../../assets/images/posts_img/PJ/03_openAI_bbox2.PNG)
+![OpenAI API 바운딩 박스 결과 1](/assets/images/posts_img/PJ/03_openAI_bbox.PNG)
+![OpenAI API 바운딩 박스 결과 2](/assets/images/posts_img/PJ/03_openAI_bbox2.PNG)
 </details>
 
 <details>
 <summary> HTML 추출 결과</summary>
 
-![OpenAI API HTML 추출 결과](../../assets/images/posts_img/PJ/03_openAI_bbox_분석.PNG)
+![OpenAI API HTML 추출 결과](/assets/images/posts_img/PJ/03_openAI_bbox_분석.PNG)
 </details>
 
 ###  장점: 그래프 추출 가능
@@ -150,14 +150,14 @@ math: true
 <details>
 <summary> 원본 PDF 3페이지 - 그래프 바운딩 박스 분석</summary>
 
-![OpenAI API 그래프 바운딩 박스 결과](../../assets/images/posts_img/PJ/03_openAI_bbox3.PNG)
+![OpenAI API 그래프 바운딩 박스 결과](/assets/images/posts_img/PJ/03_openAI_bbox3.PNG)
 
 </details>
 
 <details>
 <summary> HTML 추출 결과</summary>
 
-![OpenAI API 그래프 HTML 추출 결과](../../assets/images/posts_img/PJ/03_openAI_bbox_분석2.PNG)
+![OpenAI API 그래프 HTML 추출 결과](/assets/images/posts_img/PJ/03_openAI_bbox_분석2.PNG)
 </details>
 
 </details>
@@ -176,14 +176,14 @@ OpenAI API와 유사한 결과를 보이며, 차이점은 HTML 추출 결과에�
 <details>
 <summary> 원본 PDF 1,2페이지 - 바운딩 박스 분석 결과</summary>
 
-![Gemini API 바운딩 박스 결과 1](../../assets/images/posts_img/PJ/04_Gemini_bbox.PNG)
-![Gemini API 바운딩 박스 결과 2](../../assets/images/posts_img/PJ/04_Gemini_bbox2.PNG)
+![Gemini API 바운딩 박스 결과 1](/assets/images/posts_img/PJ/04_Gemini_bbox.PNG)
+![Gemini API 바운딩 박스 결과 2](/assets/images/posts_img/PJ/04_Gemini_bbox2.PNG)
 </details>
 
 <details>
 <summary> HTML 추출 결과</summary>
 
-![Gemini API HTML 추출 결과](../../assets/images/posts_img/PJ/04_Gemini_bbox_분석1.PNG)
+![Gemini API HTML 추출 결과](/assets/images/posts_img/PJ/04_Gemini_bbox_분석1.PNG)
 </details>
 
 ###  장점: 그래프 추출 및 코멘트 제공
@@ -192,14 +192,14 @@ OpenAI API와 유사한 결과를 보이며, 차이점은 HTML 추출 결과에�
 <details>
 <summary> 원본 PDF 3페이지 - 그래프 바운딩 박스 분석</summary>
 
-![Gemini API 그래프 바운딩 박스 결과](../../assets/images/posts_img/PJ/04_Gemini_bbox3.PNG)
+![Gemini API 그래프 바운딩 박스 결과](/assets/images/posts_img/PJ/04_Gemini_bbox3.PNG)
 
 </details>
 
 <details>
 <summary> HTML 추출 결과</summary>
 
-![Gemini API 그래프 HTML 추출 결과](../../assets/images/posts_img/PJ/04_Gemini_bbox_분석2.PNG)
+![Gemini API 그래프 HTML 추출 결과](/assets/images/posts_img/PJ/04_Gemini_bbox_분석2.PNG)
 </details>
 </details>
 
@@ -217,14 +217,14 @@ GCP 환경을 이용하는 경우에는 GoogleCloud Document AI API 사용을 �
 <details>
 <summary> 원본 PDF 1,2페이지 - 바운딩 박스 분석 결과</summary>
 
-![GoogleCloud Document AI 바운딩 박스 결과 1](../../assets/images/posts_img/PJ/05_GoogleCloud_DocumentAI_bbox.PNG)
-![GoogleCloud Document AI 바운딩 박스 결과 2](../../assets/images/posts_img/PJ/05_GoogleCloud_DocumentAI_bbox2.PNG)
+![GoogleCloud Document AI 바운딩 박스 결과 1](/assets/images/posts_img/PJ/05_GoogleCloud_DocumentAI_bbox.PNG)
+![GoogleCloud Document AI 바운딩 박스 결과 2](/assets/images/posts_img/PJ/05_GoogleCloud_DocumentAI_bbox2.PNG)
 </details>
 
 <details>
 <summary> HTML 추출 결과</summary>
 
-![GoogleCloud Document AI HTML 추출 결과](../../assets/images/posts_img/PJ/05_GoogleCloud_DocumentAI_bbox_분석.PNG)
+![GoogleCloud Document AI HTML 추출 결과](/assets/images/posts_img/PJ/05_GoogleCloud_DocumentAI_bbox_분석.PNG)
 
 </details>
 
@@ -235,14 +235,14 @@ GCP 환경을 이용하는 경우에는 GoogleCloud Document AI API 사용을 �
 <details>
 <summary> 원본 PDF 3페이지 - 그래프 바운딩 박스 분석</summary>
 
-![GoogleCloud Document AI 그래프 바운딩 박스 결과](../../assets/images/posts_img/PJ/05_GoogleCloud_DocumentAI_bbox3.PNG)
+![GoogleCloud Document AI 그래프 바운딩 박스 결과](/assets/images/posts_img/PJ/05_GoogleCloud_DocumentAI_bbox3.PNG)
 
 </details>
 
 <details>
 <summary> HTML 추출 결과</summary>
 
-![GoogleCloud Document AI 그래프 HTML 추출 결과](../../assets/images/posts_img/PJ/05_GoogleCloud_DocumentAI_bbox_분석3.PNG)
+![GoogleCloud Document AI 그래프 HTML 추출 결과](/assets/images/posts_img/PJ/05_GoogleCloud_DocumentAI_bbox_분석3.PNG)
 
 </details>
 </details>
