@@ -93,14 +93,14 @@ git remote rm origin
 5. git commit -m "git 개념 추가"
     - 'staging area'에 올라간 파일들의 스냅샷을 찍어 '.git directory'에 저장
     - 일반적으로 '-m' 옵션을 넣어서 커밋메세지를 추가하여 등록
-    -![commit_message](/assets/images/posts_img/git-기초/commit_message.png)
+    -![commit_message](./images/git-기초/commit_message.png)
                         
 6. git remote add origin https://github.com/figure_2/TIL.git
     - remote : 원격 저장소를 관리하는 명령어 
     - 주소는 나의 github에 새로운 repository를 만든다.
-    - ![create_repository](/assets/images/posts_img/git-기초/create_repository.png)
-    - ![url](/assets/images/posts_img/git-기초/url.png)
-    - ![repository_확인](/assets/images/posts_img/git-기초/repository_생성확인.png)
+    - ![create_repository](./images/git-기초/create_repository.png)
+    - ![url](./images/git-기초/url.png)
+    - ![repository_확인](./images/git-기초/repository_생성확인.png)
     - **최초로 한 번 설정**
 
 7. git push origin master
