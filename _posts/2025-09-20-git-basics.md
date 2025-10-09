@@ -1,7 +1,8 @@
 ---
 title: Git 기초
 categories:
-- 01.Git
+- 1.TIL
+- 1-1.Git
 tags:
 - - git
   - 버전관리
