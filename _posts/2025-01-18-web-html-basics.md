@@ -232,7 +232,7 @@ file:///C:/Users/yujin/Desktop/camp29/web/2.form.html?username=yujin&pw=a1234
 
 ### label 태그와 input 태그 순서의 차이
 
-![순서 차이](/assets/230818-input_label_order.png)
+<!-- 이미지 제거됨: 순서 차이 -->
 
 - **label - input인 경우**: label 내용 + input박스
 - **input - label인 경우**: input박스 + label 내용
