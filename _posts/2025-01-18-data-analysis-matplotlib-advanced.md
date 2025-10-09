@@ -1,24 +1,20 @@
 ---
-title: "Matplotlib 고급 시각화 - 데이터 분석을 위한 전문 기법"
-
+title: Matplotlib 고급 시각화 - 데이터 분석을 위한 전문 기법
 categories:
-  - DATA_ANALYSIS
+- 07_DATA_ANALYSIS
 tags:
-  - matplotlib
-  - 고급시각화
-  - seaborn
-  - plotly
-  - 데이터시각화
-  - 분석도구
-
+- matplotlib
+- 고급시각화
+- seaborn
+- plotly
+- 데이터시각화
+- 분석도구
 toc: true
-
 date: 2023-09-24 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Matplotlib 고급 시각화 - 데이터 분석을 위한 전문 기법
 
 ## 개요

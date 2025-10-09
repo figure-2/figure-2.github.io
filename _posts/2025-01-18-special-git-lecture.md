@@ -1,23 +1,22 @@
 ---
-title: "Git 강의 - 깃, 깃허브, 소스트리"
+title: Git 강의 - 깃, 깃허브, 소스트리
 categories:
-  - SPECIAL
+- 14_SPECIAL
 tags:
-  - 특강
-  - Git
-  - GitHub
-  - Sourcetree
-  - 버전관리
-  - 협업
-  - 리눅스명령어
-  - Markdown
+- 특강
+- Git
+- GitHub
+- Sourcetree
+- 버전관리
+- 협업
+- 리눅스명령어
+- Markdown
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 > 2023-08-16 학습내용
 
 # 깃, 깃허브, 소스트리

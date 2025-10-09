@@ -1,24 +1,20 @@
 ---
-title: "Pandas concat과 merge - 데이터 연결과 병합"
-
+title: Pandas concat과 merge - 데이터 연결과 병합
 categories:
-  - DATA_ANALYSIS
+- 07_DATA_ANALYSIS
 tags:
-  - pandas
-  - concat
-  - merge
-  - 데이터연결
-  - 데이터병합
-  - join
-
+- pandas
+- concat
+- merge
+- 데이터연결
+- 데이터병합
+- join
 toc: true
-
 date: 2023-07-25 16:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Pandas concat과 merge - 데이터 연결과 병합
 
 ## concat() - 데이터 연결

@@ -1,22 +1,21 @@
 ---
-title: "현대자동차 가격 예측 실습"
+title: 현대자동차 가격 예측 실습
 categories:
-  - MACHINE_LEARNING
+- 08_MACHINE_LEARNING
 tags:
-  - 머신러닝
-  - 회귀분석
-  - 선형회귀
-  - 결정트리
-  - KNN
-  - 현대자동차
-  - 가격예측
+- 머신러닝
+- 회귀분석
+- 선형회귀
+- 결정트리
+- KNN
+- 현대자동차
+- 가격예측
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # 실습2. 현대자동차 가격 예측
 230916
 > - 데이터로드 및 확인  

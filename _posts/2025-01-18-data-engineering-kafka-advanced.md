@@ -1,23 +1,22 @@
 ---
-title: "Apache Kafka 상세 내용"
+title: Apache Kafka 상세 내용
 categories:
-  - Kafka
+- Kafka
 tags:
-  - Apache Kafka
-  - 파티셔닝
-  - 컨슈머그룹
-  - 오프셋관리
-  - 이벤트스트리밍
-  - 로그수집
-  - 데이터파이프라인
-  - 모니터링
+- Apache Kafka
+- 파티셔닝
+- 컨슈머그룹
+- 오프셋관리
+- 이벤트스트리밍
+- 로그수집
+- 데이터파이프라인
+- 모니터링
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Kafka 상세 내용
 
 > 231122 학습한 내용 정리

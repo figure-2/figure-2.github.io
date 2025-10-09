@@ -1,22 +1,21 @@
 ---
-title: "Apache Spark 기초 개념"
+title: Apache Spark 기초 개념
 categories:
-  - Spark
+- Spark
 tags:
-  - Apache Spark
-  - RDD
-  - SparkContext
-  - 분산컴퓨팅
-  - 메모리기반연산
-  - 지연실행
-  - 장애복구
+- Apache Spark
+- RDD
+- SparkContext
+- 분산컴퓨팅
+- 메모리기반연산
+- 지연실행
+- 장애복구
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Apache Spark 기초 개념
 > 대용량 데이터 처리를 위한 분산 컴퓨팅 프레임워크
 

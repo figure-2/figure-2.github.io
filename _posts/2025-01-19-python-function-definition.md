@@ -1,25 +1,21 @@
 ---
-title: "Python 함수의 인수 - 위치인수, 기본값, 키워드인자, 가변인자"
-
+title: Python 함수의 인수 - 위치인수, 기본값, 키워드인자, 가변인자
 categories:
-  - PYTHON
+- 02_PYTHON
 tags:
-  - python
-  - 함수
-  - 인수
-  - 위치인수
-  - 기본값
-  - 키워드인자
-  - 가변인자
-
+- python
+- 함수
+- 인수
+- 위치인수
+- 기본값
+- 키워드인자
+- 가변인자
 toc: true
-
 date: 2023-07-25 00:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Python 함수의 인수 - 위치인수, 기본값, 키워드인자, 가변인자
 
 ## 함수의 인수

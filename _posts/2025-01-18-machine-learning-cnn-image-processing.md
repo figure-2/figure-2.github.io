@@ -1,23 +1,22 @@
 ---
-title: "CNN (Convolutional Neural Network) 이미지 처리"
+title: CNN (Convolutional Neural Network) 이미지 처리
 categories:
-  - MACHINE_LEARNING
+- 08_MACHINE_LEARNING
 tags:
-  - CNN
-  - 합성곱신경망
-  - 이미지처리
-  - 데이터증강
-  - 전이학습
-  - 특징맵시각화
-  - Grad-CAM
-  - 성능최적화
+- CNN
+- 합성곱신경망
+- 이미지처리
+- 데이터증강
+- 전이학습
+- 특징맵시각화
+- Grad-CAM
+- 성능최적화
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # CNN (Convolutional Neural Network) 이미지 처리
 
 > 231017 학습한 내용 정리

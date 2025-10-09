@@ -1,20 +1,16 @@
 ---
-title: "NumPy 랑 친해지기"
-
+title: NumPy 랑 친해지기
 categories:
-  - PYTHON
+- 02_PYTHON
 tags:
-  - python
-  - numpy
-
+- python
+- numpy
 toc: true
-
 date: 2025-08-31 00:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 ## 🦥 본문
 
 > 💡 `import numpy as np`

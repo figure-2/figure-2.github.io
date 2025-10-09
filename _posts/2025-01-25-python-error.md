@@ -1,25 +1,21 @@
 ---
-title: "Python 에러와 예외처리 - try, except, finally"
-
+title: Python 에러와 예외처리 - try, except, finally
 categories:
-  - PYTHON
+- 02_PYTHON
 tags:
-  - python
-  - 에러
-  - 예외처리
-  - try
-  - except
-  - finally
-  - raise
-
+- python
+- 에러
+- 예외처리
+- try
+- except
+- finally
+- raise
 toc: true
-
 date: 2023-07-25 00:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Python 에러와 예외처리 - try, except, finally
 
 ## Error

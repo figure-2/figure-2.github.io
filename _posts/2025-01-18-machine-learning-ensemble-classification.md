@@ -1,22 +1,21 @@
 ---
-title: "앙상블 분류 모델"
+title: 앙상블 분류 모델
 categories:
-  - MACHINE_LEARNING
+- 08_MACHINE_LEARNING
 tags:
-  - 앙상블
-  - 배깅
-  - 부스팅
-  - 스태킹
-  - 랜덤포레스트
-  - AdaBoost
-  - 그라디언트부스팅
+- 앙상블
+- 배깅
+- 부스팅
+- 스태킹
+- 랜덤포레스트
+- AdaBoost
+- 그라디언트부스팅
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # 앙상블 분류 모델
 
 > 230926 학습한 내용 정리

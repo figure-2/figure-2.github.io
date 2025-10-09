@@ -1,24 +1,20 @@
 ---
-title: "Django 1:N 관계 완성 - 사용자와 게시물 연결"
-
+title: Django 1:N 관계 완성 - 사용자와 게시물 연결
 categories:
-  - WEB_DEVELOPMENT
+- 04_WEB_DEVELOPMENT
 tags:
-  - django
-  - 1n관계
-  - foreignkey
-  - login_required
-  - django-bootstrap
-  - requirements
-
+- django
+- 1n관계
+- foreignkey
+- login_required
+- django-bootstrap
+- requirements
 toc: true
-
 date: 2023-08-29 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Django 1:N 관계 완성 - 사용자와 게시물 연결
 
 ## 개요

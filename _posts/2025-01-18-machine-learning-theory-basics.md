@@ -1,25 +1,21 @@
 ---
-title: "머신러닝 이론과 기본 - AI의 핵심 개념 이해"
-
+title: 머신러닝 이론과 기본 - AI의 핵심 개념 이해
 categories:
-  - MACHINE_LEARNING
+- 08_MACHINE_LEARNING
 tags:
-  - 머신러닝
-  - AI
-  - 지도학습
-  - 비지도학습
-  - 강화학습
-  - 이론
-  - 기본개념
-
+- 머신러닝
+- AI
+- 지도학습
+- 비지도학습
+- 강화학습
+- 이론
+- 기본개념
 toc: true
-
 date: 2023-09-26 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # 머신러닝 이론과 기본 - AI의 핵심 개념 이해
 
 ## 개요

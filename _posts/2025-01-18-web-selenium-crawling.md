@@ -1,24 +1,20 @@
 ---
-title: "Selenium 크롤링 - 동적 웹 페이지 자동화"
-
+title: Selenium 크롤링 - 동적 웹 페이지 자동화
 categories:
-  - WEB_DEVELOPMENT
+- 04_WEB_DEVELOPMENT
 tags:
-  - selenium
-  - 웹자동화
-  - webdriver
-  - 동적콘텐츠
-  - 크롤링
-  - 브라우저자동화
-
+- selenium
+- 웹자동화
+- webdriver
+- 동적콘텐츠
+- 크롤링
+- 브라우저자동화
 toc: true
-
 date: 2023-10-20 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Selenium 크롤링 - 동적 웹 페이지 자동화
 
 ## 개요

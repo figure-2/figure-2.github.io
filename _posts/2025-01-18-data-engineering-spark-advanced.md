@@ -1,23 +1,22 @@
 ---
-title: "Apache Spark 상세 내용"
+title: Apache Spark 상세 내용
 categories:
-  - Spark
+- Spark
 tags:
-  - Apache Spark
-  - DataFrame
-  - 윈도우함수
-  - UDF
-  - 캐싱
-  - 스트리밍
-  - MLlib
-  - 성능최적화
+- Apache Spark
+- DataFrame
+- 윈도우함수
+- UDF
+- 캐싱
+- 스트리밍
+- MLlib
+- 성능최적화
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Spark 상세 내용
 
 > 231114~231124 학습한 내용 정리

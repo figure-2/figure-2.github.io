@@ -1,24 +1,23 @@
 ---
-title: "RNN (Recurrent Neural Network) 자연어 처리"
+title: RNN (Recurrent Neural Network) 자연어 처리
 categories:
-  - MACHINE_LEARNING
+- 08_MACHINE_LEARNING
 tags:
-  - RNN
-  - 순환신경망
-  - LSTM
-  - GRU
-  - Seq2Seq
-  - 어텐션
-  - 트랜스포머
-  - 자연어처리
-  - 시계열예측
+- RNN
+- 순환신경망
+- LSTM
+- GRU
+- Seq2Seq
+- 어텐션
+- 트랜스포머
+- 자연어처리
+- 시계열예측
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # RNN (Recurrent Neural Network) 자연어 처리
 
 > 231018 학습한 내용 정리

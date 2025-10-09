@@ -1,25 +1,21 @@
 ---
-title: "Python 메소드 - 문자열, 리스트, 딕셔너리, 세트 메소드"
-
+title: Python 메소드 - 문자열, 리스트, 딕셔너리, 세트 메소드
 categories:
-  - PYTHON
+- 02_PYTHON
 tags:
-  - python
-  - 메소드
-  - 문자열
-  - 리스트
-  - 딕셔너리
-  - 세트
-  - comprehension
-
+- python
+- 메소드
+- 문자열
+- 리스트
+- 딕셔너리
+- 세트
+- comprehension
 toc: true
-
 date: 2023-07-25 00:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Python 메소드 - 문자열, 리스트, 딕셔너리, 세트 메소드
 
 # 메소드

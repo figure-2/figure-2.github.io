@@ -1,26 +1,20 @@
 ---
-title: "HTML 기초 - 웹 개발의 첫 걸음"
-
+title: HTML 기초 - 웹 개발의 첫 걸음
 categories:
-  - WEB
+- 04_WEB
 tags:
-  - html
-  - 웹개발
-  - 기초
-  - 태그
-  - form
-  - 시맨틱
-
-
+- html
+- 웹개발
+- 기초
+- 태그
+- form
+- 시맨틱
 toc: true
-
 date: 2023-08-18 09:00:00 +0900
-toc: true
 comments: false
 mermaid: true
 math: true
 ---
-
 # HTML 기초 - 웹 개발의 첫 걸음
 
 ## 웹서비스 개요

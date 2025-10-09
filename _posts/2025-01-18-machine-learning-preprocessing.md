@@ -1,24 +1,20 @@
 ---
-title: "머신러닝 전처리 - 데이터 품질 향상을 위한 핵심 기법"
-
+title: 머신러닝 전처리 - 데이터 품질 향상을 위한 핵심 기법
 categories:
-  - MACHINE_LEARNING
+- 08_MACHINE_LEARNING
 tags:
-  - 머신러닝
-  - 전처리
-  - 결측치
-  - 이상치
-  - 인코딩
-  - 데이터정제
-
+- 머신러닝
+- 전처리
+- 결측치
+- 이상치
+- 인코딩
+- 데이터정제
 toc: true
-
 date: 2023-09-27 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # 머신러닝 전처리 - 데이터 품질 향상을 위한 핵심 기법
 
 ## 개요

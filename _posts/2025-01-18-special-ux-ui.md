@@ -1,23 +1,22 @@
 ---
-title: "UX/UI 디자인 기초"
+title: UX/UI 디자인 기초
 categories:
-  - SPECIAL
+- 14_SPECIAL
 tags:
-  - 특강
-  - UX
-  - UI
-  - 사용자경험
-  - 사용자인터페이스
-  - 디자인
-  - 공공디자인
-  - 어포던스
+- 특강
+- UX
+- UI
+- 사용자경험
+- 사용자인터페이스
+- 디자인
+- 공공디자인
+- 어포던스
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 UX : 내가 컨텐츠를 만들면 그걸 이용하는 사용자 관점에서 봤을 때 조사하여 개발하는 것  
 UI : UX를 통해서 기획된 것이 최적화되도록 디자인하기
 

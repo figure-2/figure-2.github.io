@@ -1,24 +1,23 @@
 ---
-title: "웹 크롤링 기초"
+title: 웹 크롤링 기초
 categories:
-  - SPECIAL
+- 14_SPECIAL
 tags:
-  - 특강
-  - 웹크롤링
-  - 스크래핑
-  - API
-  - 카카오API
-  - DOM구조
-  - 네이버증권
-  - requests
-  - BeautifulSoup
+- 특강
+- 웹크롤링
+- 스크래핑
+- API
+- 카카오API
+- DOM구조
+- 네이버증권
+- requests
+- BeautifulSoup
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 > 스크래핑 vs 웹크롤링  
 
 > API 크롤링

@@ -1,24 +1,20 @@
 ---
-title: "Django 이미지 업로드 - 사진 업로드와 프로필 관리"
-
+title: Django 이미지 업로드 - 사진 업로드와 프로필 관리
 categories:
-  - WEB_DEVELOPMENT
+- 04_WEB_DEVELOPMENT
 tags:
-  - django
-  - 이미지업로드
-  - pillow
-  - media
-  - 프로필
-  - 컴포넌트화
-
+- django
+- 이미지업로드
+- pillow
+- media
+- 프로필
+- 컴포넌트화
 toc: true
-
 date: 2023-08-30 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Django 이미지 업로드 - 사진 업로드와 프로필 관리
 
 ## 개요

@@ -1,24 +1,20 @@
 ---
-title: "Django M:N 관계 - 좋아요와 팔로우 기능"
-
+title: Django M:N 관계 - 좋아요와 팔로우 기능
 categories:
-  - WEB_DEVELOPMENT
+- 04_WEB_DEVELOPMENT
 tags:
-  - django
-  - mn관계
-  - manytomany
-  - 좋아요
-  - 팔로우
-  - 댓글
-
+- django
+- mn관계
+- manytomany
+- 좋아요
+- 팔로우
+- 댓글
 toc: true
-
 date: 2023-08-31 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Django M:N 관계 - 좋아요와 팔로우 기능
 
 ## 개요

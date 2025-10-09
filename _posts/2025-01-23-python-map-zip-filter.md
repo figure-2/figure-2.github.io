@@ -1,24 +1,20 @@
 ---
-title: "Python map(), zip(), filter() 함수"
-
+title: Python map(), zip(), filter() 함수
 categories:
-  - PYTHON
+- 02_PYTHON
 tags:
-  - python
-  - map
-  - zip
-  - filter
-  - 함수형프로그래밍
-  - iterable
-
+- python
+- map
+- zip
+- filter
+- 함수형프로그래밍
+- iterable
 toc: true
-
 date: 2023-07-25 00:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Python map(), zip(), filter() 함수
 
 ## 5. map(), zip(), filer()

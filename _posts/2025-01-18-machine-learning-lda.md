@@ -1,21 +1,20 @@
 ---
-title: "LDA (Linear Discriminant Analysis)"
+title: LDA (Linear Discriminant Analysis)
 categories:
-  - MACHINE_LEARNING
+- 08_MACHINE_LEARNING
 tags:
-  - LDA
-  - 선형판별분석
-  - 차원축소
-  - 지도학습
-  - 분류성능
-  - 판별함수
+- LDA
+- 선형판별분석
+- 차원축소
+- 지도학습
+- 분류성능
+- 판별함수
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # LDA (Linear Discriminant Analysis)
 
 > 231004 학습한 내용 정리

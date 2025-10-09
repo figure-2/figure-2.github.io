@@ -1,24 +1,20 @@
 ---
-title: "Django CRUD 업데이트 - URL 구조화와 템플릿 상속"
-
+title: Django CRUD 업데이트 - URL 구조화와 템플릿 상속
 categories:
-  - WEB_DEVELOPMENT
+- 04_WEB_DEVELOPMENT
 tags:
-  - django
-  - crud
-  - url구조화
-  - 템플릿상속
-  - post메서드
-  - base.html
-
+- django
+- crud
+- url구조화
+- 템플릿상속
+- post메서드
+- base.html
 toc: true
-
 date: 2023-08-23 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Django CRUD 업데이트 - URL 구조화와 템플릿 상속
 
 ## 개요

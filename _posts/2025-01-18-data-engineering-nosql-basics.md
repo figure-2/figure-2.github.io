@@ -1,26 +1,25 @@
 ---
-title: "NoSQL 기초 개념"
+title: NoSQL 기초 개념
 categories:
-  - NoSQL
+- NoSQL
 tags:
-  - 데이터엔지니어링
-  - NoSQL
-  - 비관계형데이터베이스
-  - ACID
-  - BASE
-  - 키값데이터베이스
-  - 문서데이터베이스
-  - 컬럼패밀리
-  - 그래프데이터베이스
-  - 확장성
-  - 유연성
+- 데이터엔지니어링
+- NoSQL
+- 비관계형데이터베이스
+- ACID
+- BASE
+- 키값데이터베이스
+- 문서데이터베이스
+- 컬럼패밀리
+- 그래프데이터베이스
+- 확장성
+- 유연성
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # NoSQL 기초 개념
 > 관계형 데이터베이스의 한계를 극복한 새로운 데이터 저장 방식
 

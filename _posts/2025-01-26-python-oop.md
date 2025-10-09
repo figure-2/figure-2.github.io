@@ -1,25 +1,21 @@
 ---
-title: "Python 객체지향 프로그래밍(OOP) - 클래스, 상속, 다중상속"
-
+title: Python 객체지향 프로그래밍(OOP) - 클래스, 상속, 다중상속
 categories:
-  - PYTHON
+- 02_PYTHON
 tags:
-  - python
-  - OOP
-  - 객체지향
-  - 클래스
-  - 인스턴스
-  - 상속
-  - 다중상속
-
+- python
+- OOP
+- 객체지향
+- 클래스
+- 인스턴스
+- 상속
+- 다중상속
 toc: true
-
 date: 2023-07-25 00:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Python 객체지향 프로그래밍(OOP) - 클래스, 상속, 다중상속
 
 # 객체지행 프로그래밍(OOP)

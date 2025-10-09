@@ -1,25 +1,24 @@
 ---
-title: "Apache Airflow 기초 개념"
+title: Apache Airflow 기초 개념
 categories:
-  - Airflow
+- Airflow
 tags:
-  - 데이터엔지니어링
-  - Airflow
-  - 워크플로우
-  - 오케스트레이션
-  - DAG
-  - Task
-  - Operator
-  - Sensor
-  - XCom
-  - 스케줄링
+- 데이터엔지니어링
+- Airflow
+- 워크플로우
+- 오케스트레이션
+- DAG
+- Task
+- Operator
+- Sensor
+- XCom
+- 스케줄링
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Apache Airflow 기초 개념
 > 워크플로우 오케스트레이션을 위한 플랫폼
 

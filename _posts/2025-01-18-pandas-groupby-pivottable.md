@@ -1,24 +1,20 @@
 ---
-title: "Pandas groupby와 pivot_table - 그룹화와 피벗테이블"
-
+title: Pandas groupby와 pivot_table - 그룹화와 피벗테이블
 categories:
-  - DATA_ANALYSIS
+- 07_DATA_ANALYSIS
 tags:
-  - pandas
-  - groupby
-  - pivot_table
-  - 그룹화
-  - 집계
-  - 피벗테이블
-
+- pandas
+- groupby
+- pivot_table
+- 그룹화
+- 집계
+- 피벗테이블
 toc: true
-
 date: 2023-07-25 15:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Pandas groupby와 pivot_table - 그룹화와 피벗테이블
 
 ## apply() - 함수적용

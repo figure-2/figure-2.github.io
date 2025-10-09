@@ -1,26 +1,25 @@
 ---
-title: "Apache Airflow 상세 내용"
+title: Apache Airflow 상세 내용
 categories:
-  - Airflow
+- Airflow
 tags:
-  - 데이터엔지니어링
-  - Airflow
-  - 워크플로우
-  - 오케스트레이션
-  - DAG
-  - ETL
-  - 데이터품질검사
-  - 머신러닝파이프라인
-  - 모니터링
-  - 성능최적화
-  - 보안
+- 데이터엔지니어링
+- Airflow
+- 워크플로우
+- 오케스트레이션
+- DAG
+- ETL
+- 데이터품질검사
+- 머신러닝파이프라인
+- 모니터링
+- 성능최적화
+- 보안
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Airflow 상세 내용
 
 > 231120~231121, 231215~231222 학습한 내용 정리

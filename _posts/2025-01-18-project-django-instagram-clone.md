@@ -1,24 +1,20 @@
 ---
-title: "Django Instagram 클론 프로젝트 - 소셜미디어 플랫폼 개발"
-
+title: Django Instagram 클론 프로젝트 - 소셜미디어 플랫폼 개발
 categories:
-  - 실무프로젝트
+- 실무프로젝트
 tags:
-  - django
-  - 프로젝트
-  - instagram
-  - 소셜미디어
-  - M:N관계
-  - 이미지처리
-
+- django
+- 프로젝트
+- instagram
+- 소셜미디어
+- M:N관계
+- 이미지처리
 toc: true
-
 date: 2023-09-15 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # Django Instagram 클론 프로젝트 - 소셜미디어 플랫폼 개발
 
 ## 프로젝트 개요

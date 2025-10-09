@@ -1,27 +1,26 @@
 ---
-title: "NoSQL/MongoDB 상세 내용"
+title: NoSQL/MongoDB 상세 내용
 categories:
-  - NoSQL
+- NoSQL
 tags:
-  - 데이터엔지니어링
-  - NoSQL
-  - MongoDB
-  - 문서데이터베이스
-  - 키값데이터베이스
-  - 컬럼패밀리
-  - 그래프데이터베이스
-  - 트랜잭션
-  - 변경스트림
-  - 지리공간쿼리
-  - 성능최적화
-  - 실무적용
+- 데이터엔지니어링
+- NoSQL
+- MongoDB
+- 문서데이터베이스
+- 키값데이터베이스
+- 컬럼패밀리
+- 그래프데이터베이스
+- 트랜잭션
+- 변경스트림
+- 지리공간쿼리
+- 성능최적화
+- 실무적용
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # NoSQL/MongoDB 상세 내용
 
 > 231228~231229 학습한 내용 정리

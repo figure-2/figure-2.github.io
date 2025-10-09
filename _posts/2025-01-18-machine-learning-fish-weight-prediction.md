@@ -1,21 +1,20 @@
 ---
-title: "농어 길이로 무게 예측 실습"
+title: 농어 길이로 무게 예측 실습
 categories:
-  - MACHINE_LEARNING
+- 08_MACHINE_LEARNING
 tags:
-  - 머신러닝
-  - 회귀분석
-  - 선형회귀
-  - 다항회귀
-  - 결정트리
-  - 농어예측
+- 머신러닝
+- 회귀분석
+- 선형회귀
+- 다항회귀
+- 결정트리
+- 농어예측
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # 실습1. 농어길이로 무게 예측
 230913
 > 데이터 수집 및 확인  

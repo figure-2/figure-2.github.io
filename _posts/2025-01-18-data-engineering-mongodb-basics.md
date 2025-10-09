@@ -1,24 +1,23 @@
 ---
-title: "MongoDB 기초"
+title: MongoDB 기초
 categories:
-  - NoSQL
+- NoSQL
 tags:
-  - 데이터엔지니어링
-  - MongoDB
-  - NoSQL
-  - 문서데이터베이스
-  - CRUD
-  - 집계
-  - 인덱싱
-  - 성능최적화
-  - 확장성
+- 데이터엔지니어링
+- MongoDB
+- NoSQL
+- 문서데이터베이스
+- CRUD
+- 집계
+- 인덱싱
+- 성능최적화
+- 확장성
 toc: true
 date: 2025-01-18 09:00:00 +0900
 comments: false
 mermaid: true
 math: true
 ---
-
 # MongoDB 기초
 > 가장 인기 있는 NoSQL 문서 데이터베이스
 
