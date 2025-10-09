@@ -163,8 +163,8 @@ def index(request):
     <h1>게시판</h1>
     
     {% for post in posts %}
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.content|truncatewords:20 }}</p>
+        <h3>{% raw %}{{ post.title }}{% endraw %}</h3>
+        <p>{% raw %}{{ post.content|truncatewords:20 }}{% endraw %}</p>
         <a href="{% url 'detail' post.id %}">자세히 보기</a>
         <hr>
     {% endfor %}
@@ -192,13 +192,13 @@ def detail(request, id):
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>{{ post.title }}</title>
+    <title>{% raw %}{{ post.title }}{% endraw %}</title>
 </head>
 <body>
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
-    <p>작성일: {{ post.created_at }}</p>
-    <p>수정일: {{ post.updated_at }}</p>
+    <h1>{% raw %}{{ post.title }}{% endraw %}</h1>
+    <p>{% raw %}{{ post.content }}{% endraw %}</p>
+    <p>작성일: {% raw %}{{ post.created_at }}{% endraw %}</p>
+    <p>수정일: {% raw %}{{ post.updated_at }}{% endraw %}</p>
     
     <a href="{% url 'index' %}">목록으로</a>
     <a href="{% url 'edit' post.id %}">수정</a>
@@ -344,11 +344,11 @@ def update(request, id):
         {% csrf_token %}
         <div>
             <label for="title">제목:</label>
-            <input type="text" id="title" name="title" value="{{ post.title }}" required>
+            <input type="text" id="title" name="title" value="{% raw %}{{ post.title }}{% endraw %}" required>
         </div>
         <div>
             <label for="content">내용:</label>
-            <textarea id="content" name="content" rows="10" cols="50" required>{{ post.content }}</textarea>
+            <textarea id="content" name="content" rows="10" cols="50" required>{% raw %}{{ post.content }}{% endraw %}</textarea>
         </div>
         <button type="submit">수정</button>
     </form>

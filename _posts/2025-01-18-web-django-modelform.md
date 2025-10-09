@@ -158,7 +158,7 @@ def create(request):
 
 <form action="" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% raw %}{{ form.as_p }}{% endraw %}
     <button type="submit" class="btn btn-primary">작성</button>
     <a href="{% url 'articles:index' %}" class="btn btn-secondary">취소</a>
 </form>
@@ -169,20 +169,20 @@ def create(request):
 
 ```html
 <!-- 기본 렌더링 -->
-{{ form }}
+{% raw %}{{ form }}{% endraw %}
 
 <!-- 각 필드를 <p> 태그로 감싸기 -->
-{{ form.as_p }}
+{% raw %}{{ form.as_p }}{% endraw %}
 
 <!-- 각 필드를 <table> 태그로 감싸기 -->
-{{ form.as_table }}
+{% raw %}{{ form.as_table }}{% endraw %}
 
 <!-- 각 필드를 <ul> 태그로 감싸기 -->
-{{ form.as_ul }}
+{% raw %}{{ form.as_ul }}{% endraw %}
 
 <!-- 개별 필드 렌더링 -->
-{{ form.title }}
-{{ form.content }}
+{% raw %}{{ form.title }}{% endraw %}
+{% raw %}{{ form.content }}{% endraw %}
 ```
 
 ## 5. Update 기능 통합
@@ -229,7 +229,7 @@ def update(request, id):
 
 <form action="" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% raw %}{{ form.as_p }}{% endraw %}
     <button type="submit" class="btn btn-primary">수정</button>
     <a href="{% url 'articles:detail' article.id %}" class="btn btn-secondary">취소</a>
 </form>
@@ -400,14 +400,14 @@ def __init__(self, *args, **kwargs):
 ```html
 <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% raw %}{{ form.as_p }}{% endraw %}
     
     {% if form.errors %}
         <div class="alert alert-danger">
             <ul>
                 {% for field, errors in form.errors.items %}
                     {% for error in errors %}
-                        <li>{{ error }}</li>
+                        <li>{% raw %}{{ error }}{% endraw %}</li>
                     {% endfor %}
                 {% endfor %}
             </ul>

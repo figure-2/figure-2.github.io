@@ -148,7 +148,7 @@ templates 폴더에서 HTML 파일들을 생성합니다:
     <title>Greeting</title>
 </head>
 <body>
-    <h1>{{name}}님 안녕하세요</h1>
+    <h1>{% raw %}{{name}}{% endraw %}님 안녕하세요</h1>
 </body>
 </html>
 ```
@@ -162,13 +162,13 @@ templates 폴더에서 HTML 파일들을 생성합니다:
     <title>Cube</title>
 </head>
 <body>
-    <h1>{{num}}을 세제곱한 결과는 {{cube}}입니다.</h1>
+    <h1>{% raw %}{{num}}{% endraw %}을 세제곱한 결과는 {% raw %}{{cube}}{% endraw %}입니다.</h1>
 </body>
 </html>
 ```
 
 **템플릿 문법:**
-- `{{변수명}}` - 변수 출력
+- `{% raw %}{{변수명}}{% endraw %}` - 변수 출력
 - `{% 태그 %}` - 템플릿 태그 (조건문, 반복문 등)
 
 ### 6. 웹 실행 (HTML Response)

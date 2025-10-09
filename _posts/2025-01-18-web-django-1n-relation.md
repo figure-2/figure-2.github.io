@@ -143,11 +143,11 @@ def index(request):
 {% for article in articles %}
 <div class="card mb-3">
     <div class="card-header">
-        <h5>{{ article.title }}</h5>
-        <small class="text-muted">작성자: {{ article.user.username }} | {{ article.created_at }}</small>
+        <h5>{% raw %}{{ article.title }}{% endraw %}</h5>
+        <small class="text-muted">작성자: {% raw %}{{ article.user.username }}{% endraw %} | {% raw %}{{ article.created_at }}{% endraw %}</small>
     </div>
     <div class="card-body">
-        <p>{{ article.content|truncatewords:20 }}</p>
+        <p>{% raw %}{{ article.content|truncatewords:20 }}{% endraw %}</p>
         <a href="{% url 'articles:detail' article.id %}" class="btn btn-primary">자세히 보기</a>
     </div>
     
@@ -415,21 +415,21 @@ def comment_create(request, article_id):
 {% for article in articles %}
 <div class="card mb-3">
     <div class="card-header">
-        <h5>{{ article.title }}</h5>
-        <small class="text-muted">작성자: {{ article.user.username }} | {{ article.created_at }}</small>
+        <h5>{% raw %}{{ article.title }}{% endraw %}</h5>
+        <small class="text-muted">작성자: {% raw %}{{ article.user.username }}{% endraw %} | {% raw %}{{ article.created_at }}{% endraw %}</small>
     </div>
     <div class="card-body">
-        <p>{{ article.content|truncatewords:20 }}</p>
+        <p>{% raw %}{{ article.content|truncatewords:20 }}{% endraw %}</p>
         <a href="{% url 'articles:detail' article.id %}" class="btn btn-primary">자세히 보기</a>
     </div>
     
     <!-- 댓글 목록 -->
     {% if article.comment_set.all %}
     <div class="card-footer">
-        <h6>댓글 ({{ article.comment_set.count }}개)</h6>
+        <h6>댓글 ({% raw %}{{ article.comment_set.count }}{% endraw %}개)</h6>
         {% for comment in article.comment_set.all|slice:":3" %}
         <div class="border-bottom pb-1 mb-1">
-            <small class="text-muted">{{ comment.user.username }}: {{ comment.content|truncatewords:10 }}</small>
+            <small class="text-muted">{% raw %}{{ comment.user.username }}{% endraw %}: {% raw %}{{ comment.content|truncatewords:10 }}{% endraw %}</small>
         </div>
         {% endfor %}
         {% if article.comment_set.count > 3 %}
