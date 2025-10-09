@@ -62,7 +62,7 @@ math: true
 - if 충돌이 발생한 경우 (=pull을 진행하지 않고 push한 경우)
     -VScode 선택하여 해결
         - 3가지 방법 중에서 한 가지 선택
-        ![충돌해결](/assets/images/posts_img/3가지선택.png)
+        ![충돌해결](/assets/images/posts_img/git-고급/3가지선택.png)
         - git add . -> git commit -m "message" -> git push origin master
         - 과정
             - git add .   
@@ -95,7 +95,7 @@ math: true
 - camp29에서 만든 repository(백일장)을 folk 진행.
 - Owner은 내계정으로 바꿔주고 repository name도 그대로 유지
 - create fork 진행
-![fork](/assets/images/posts_img/fork.png)
+![fork](/assets/images/posts_img/git-고급/fork.png)
 - fork를 제대로 해왔는지 확인 후 code에서 https 복사
 - camp29 폴더에서 git bash 으로 열기
 - git clone <https url> 진행
