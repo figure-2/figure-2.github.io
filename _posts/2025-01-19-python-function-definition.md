@@ -1,0 +1,123 @@
+---
+title: "Python 함수의 인수 - 위치인수, 기본값, 키워드인자, 가변인자"
+
+categories:
+  - PYTHON
+tags:
+  - python
+  - 함수
+  - 인수
+  - 위치인수
+  - 기본값
+  - 키워드인자
+  - 가변인자
+
+toc: true
+
+date: 2023-07-25 00:00:00 +0900
+comments: false
+mermaid: true
+math: true
+---
+
+# Python 함수의 인수 - 위치인수, 기본값, 키워드인자, 가변인자
+
+## 함수의 인수
+### 위치 인수
+- 기본적으로 함수는 인수의 위치로 판단함.
+- 위치에 따라서 데이터가 순서대로 들어간다.
+
+```python
+def cylinder(r,h):
+    return 3.14 * r**2 * h
+
+print(cylinder(10,5))
+print(cylinder(5, 10))
+```
+
+### 기본값
+```python
+def func(p1=v1):
+    return v1
+```
+
+```python
+def greeting(name='익명'):
+    return f'{name}님 반갑습니다.'
+
+print(greeting())
+
+익명님 반갑습니다.  # 출력값
+```
+```python
+def greeting(age, name = '익명'):
+    return f'{name}님은 {age}살입니다.'
+
+print(greeting(10, '홍길동'))
+print(greeting(20))
+
+홍길동님은 10살입니다.  # 출력값
+익명님은 20살입니다.  # 출력값
+```
+### 키워드 인자
+- 함수를 호출(실행)할때 내가 원하는 위치에 직접작으로 특정인자를 전달가능
+
+```python
+def greeting(age, name = '익명'):
+    return f'{name}님은 {age}살입니다.'
+
+print(greeting(10,'홍길동'))
+print(greeting(name='홍길동',age=10)) 
+#원래는 위치인수대로 차례로 넣어줘야하지만 키워드를 적고 직접 명령함으로써 바꿀 수 있음.
+```
+### 가변 인자 리스트
+- 인자가 몇개 들어올 지 모르는 상황(가변적인 상황)에서 하나의 튜플로 나옴
+
+```python
+def my_print(*words):
+    print(words)  
+
+my_print('hi','hello')
+
+('hi', 'hello')  # 출력값
+```
+
+### 정의되지 않은 키워드 인자 처리하기
+- 딕셔너리 형태로 출력됨.
+```python
+def func(**kwargs):
+    pass
+```
+
+- **뒤에는 아무렇게나 지어도됨 (kwargs : keyward arguments)
+```python
+def fake_dict(**kwargs):   
+    print(kwargs)
+    print(type(kwargs))
+
+fake_dict(korean = "안녕", english = "hello")
+
+{'korean' : '안녕','english':'hello'}  # 출력값
+```
+
+### 딕셔너리를 인자로 넣기 (unpacking)
+```python
+def sign_up(username, password, password_confirmation):
+    if password == password_confirmation:
+        print(f'{username}님 회원가입이 완료되었습니다.')
+    else:
+        print('비밀번호가 일치하지 않습니다.')
+
+sign_up('yj','1234','12342') 
+```
+
+```python
+# = sign_up('yj','1234','12342') 말고 딕셔너리 형태로 넣은 것
+my_account = {
+    'username' : 'yj',
+    'password' : '1234',
+    'password_confirmation' : '1234'   
+}
+
+sign_up(**my_account)
+```
