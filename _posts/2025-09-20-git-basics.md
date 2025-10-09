@@ -98,7 +98,7 @@ git remote rm origin
     - remote : 원격 저장소를 관리하는 명령어 
     - 주소는 나의 github에 새로운 repository를 만든다.
     - ![create_repository](/assets/images/posts_img/git-기초/create_repository.png)
-    - ![url](/assets/images/posts_img/url.png)
+    - ![url](/assets/images/posts_img/git-기초/url.png)
     - ![repository_확인](/assets/images/posts_img/git-기초/repository_생성확인.png)
     - **최초로 한 번 설정**
 
