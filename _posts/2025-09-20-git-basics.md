@@ -20,11 +20,11 @@ math: true
 
 ## 분산 버전 관리 시스템 (DVCS)
 
-![DVCS](/assets/images/posts_img/git-기초/distributed.png)
+![DVCS](./images/git-기초/distributed.png)
 
 ## 세가지 상태
 
-![areas](/assets/images/posts_img/git-기초/areas.png)
+![areas](./images/git-기초/areas.png)
 
 ## 명령어 (GIt Bash)
 
@@ -81,7 +81,7 @@ git remote rm origin
 1. 바탕화면에 폴더 생성 C:\Users\yujin\Desktop\camp29\TIL
 2. TIL 폴더에 들어가서 마우스 오른쪽 -> Code로 열기 진행
 3. git init
-![master](/assets/images/posts_img/git-기초/git_init.png)
+![master](./images/git-기초/git_init.png)
     - 현재 폴더에 `.git` 폴더를 생성
     - .git directory를 만든 것
     - **최초로 한 번 설정**

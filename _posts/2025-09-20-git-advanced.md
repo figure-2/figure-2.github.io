@@ -22,7 +22,7 @@ math: true
 1. 템플릿으로 개인 site 만들기 [start Bootstrap](https://startbootstrap.com/theme/personal)
 2. camp29에 다운로드 받은 템플릿 압축해제후 그 폴더에서 code로 열기
 3. git init -> git add . -> git commit -m "message" -> (repository 생성) -> git remote add origin <remote url> -> git push origin master
-![remote_url](/assets/images/posts_img/git-고급/remote_url.png)
+![remote_url](./images/git-고급/remote_url.png)
     3-1. repository name : githubID.github.io (규칙을 지켜야 도메인 호스팅을 해줌)   
     3-2. 확장프로그램 : open in browser 설치   
     3-3. html 문서에 마우스 오른쪽 Open In default Browser로 Site 열어줌
