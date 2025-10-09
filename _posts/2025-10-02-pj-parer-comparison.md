@@ -15,6 +15,8 @@ comments: false
 mermaid: true
 math: true
 ---
+
+<script src="/assets/js/details-toggle.js"></script>
 # PJ Parser API 비교 분석
 
 다양한 PJ Parser API의 성능과 특징을 비교 분석해보겠습니다.
