@@ -382,8 +382,8 @@ urlpatterns = [
     {% if messages %}
         <div class="container mt-3">
             {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                    {{ message }}
+                <div class="alert alert-{% raw %}{{ message.tags }}{% endraw %} alert-dismissible fade show" role="alert">
+                    {% raw %}{{ message }}{% endraw %}
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
             {% endfor %}
@@ -423,7 +423,7 @@ urlpatterns = [
                         <div class="card bg-light">
                             <div class="card-body">
                                 <h5 class="card-title">총 질문 수</h5>
-                                <h2 class="text-primary">{{ total_questions }}</h2>
+                                <h2 class="text-primary">{% raw %}{{ total_questions }}{% endraw %}</h2>
                             </div>
                         </div>
                     </div>
@@ -431,7 +431,7 @@ urlpatterns = [
                         <div class="card bg-light">
                             <div class="card-body">
                                 <h5 class="card-title">총 답변 수</h5>
-                                <h2 class="text-success">{{ total_answers }}</h2>
+                                <h2 class="text-success">{% raw %}{{ total_answers }}{% endraw %}</h2>
                             </div>
                         </div>
                     </div>
@@ -454,7 +454,7 @@ urlpatterns = [
 {% extends 'balance/base.html' %}
 {% load static %}
 
-{% block title %}밸런스 게임 - {{ question.question_a }} vs {{ question.question_b }}{% endblock %}
+{% block title %}밸런스 게임 - {% raw %}{{ question.question_a }}{% endraw %} vs {% raw %}{{ question.question_b }}{% endraw %}{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
@@ -462,7 +462,7 @@ urlpatterns = [
         <div class="card">
             <div class="card-header text-center">
                 <h4>밸런스 게임</h4>
-                <small class="text-muted">총 {{ total_answers }}명이 참여했습니다</small>
+                <small class="text-muted">총 {% raw %}{{ total_answers }}{% endraw %}명이 참여했습니다</small>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -470,10 +470,10 @@ urlpatterns = [
                     <div class="col-md-6">
                         <div class="choice-card" data-choice="a">
                             <div class="choice-content">
-                                <h5>{{ question.question_a }}</h5>
+                                <h5>{% raw %}{{ question.question_a }}{% endraw %}</h5>
                                 <div class="choice-stats">
-                                    <span class="badge bg-primary">{{ choice_a_count }}명</span>
-                                    <span class="badge bg-secondary">{{ choice_a_percent }}%</span>
+                                    <span class="badge bg-primary">{% raw %}{{ choice_a_count }}{% endraw %}명</span>
+                                    <span class="badge bg-secondary">{% raw %}{{ choice_a_percent }}{% endraw %}%</span>
                                 </div>
                             </div>
                         </div>
@@ -488,10 +488,10 @@ urlpatterns = [
                     <div class="col-md-6">
                         <div class="choice-card" data-choice="b">
                             <div class="choice-content">
-                                <h5>{{ question.question_b }}</h5>
+                                <h5>{% raw %}{{ question.question_b }}{% endraw %}</h5>
                                 <div class="choice-stats">
-                                    <span class="badge bg-primary">{{ choice_b_count }}명</span>
-                                    <span class="badge bg-secondary">{{ choice_b_percent }}%</span>
+                                    <span class="badge bg-primary">{% raw %}{{ choice_b_count }}{% endraw %}명</span>
+                                    <span class="badge bg-secondary">{% raw %}{{ choice_b_percent }}{% endraw %}%</span>
                                 </div>
                             </div>
                         </div>
@@ -501,12 +501,12 @@ urlpatterns = [
                 <!-- 진행률 바 -->
                 <div class="progress mt-4" style="height: 20px;">
                     <div class="progress-bar bg-primary" role="progressbar" 
-                         style="width: {{ choice_a_percent }}%">
-                        {{ choice_a_percent }}%
+                         style="width: {% raw %}{{ choice_a_percent }}{% endraw %}%">
+                        {% raw %}{{ choice_a_percent }}{% endraw %}%
                     </div>
                     <div class="progress-bar bg-secondary" role="progressbar" 
-                         style="width: {{ choice_b_percent }}%">
-                        {{ choice_b_percent }}%
+                         style="width: {% raw %}{{ choice_b_percent }}{% endraw %}%">
+                        {% raw %}{{ choice_b_percent }}{% endraw %}%
                     </div>
                 </div>
             </div>
@@ -545,17 +545,17 @@ document.querySelectorAll('.choice-card').forEach(card => {
                 <form method="post">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label for="{{ form.question_a.id_for_label }}" class="form-label">선택지 A</label>
-                        {{ form.question_a }}
+                        <label for="{% raw %}{{ form.question_a.id_for_label }}{% endraw %}" class="form-label">선택지 A</label>
+                        {% raw %}{{ form.question_a }}{% endraw %}
                         {% if form.question_a.errors %}
-                            <div class="text-danger">{{ form.question_a.errors }}</div>
+                            <div class="text-danger">{% raw %}{{ form.question_a.errors }}{% endraw %}</div>
                         {% endif %}
                     </div>
                     <div class="mb-3">
-                        <label for="{{ form.question_b.id_for_label }}" class="form-label">선택지 B</label>
-                        {{ form.question_b }}
+                        <label for="{% raw %}{{ form.question_b.id_for_label }}{% endraw %}" class="form-label">선택지 B</label>
+                        {% raw %}{{ form.question_b }}{% endraw %}
                         {% if form.question_b.errors %}
-                            <div class="text-danger">{{ form.question_b.errors }}</div>
+                            <div class="text-danger">{% raw %}{{ form.question_b.errors }}{% endraw %}</div>
                         {% endif %}
                     </div>
                     <div class="d-grid gap-2">
@@ -590,11 +590,11 @@ document.querySelectorAll('.choice-card').forEach(card => {
     <div class="col-md-6 mb-3">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{ question.question_a }} vs {{ question.question_b }}</h5>
+                <h5 class="card-title">{% raw %}{{ question.question_a }}{% endraw %} vs {% raw %}{{ question.question_b }}{% endraw %}</h5>
                 <p class="card-text">
                     <small class="text-muted">
-                        답변 수: {{ question.answer_count }}개 | 
-                        생성일: {{ question.created_at|date:"Y-m-d H:i" }}
+                        답변 수: {% raw %}{{ question.answer_count }}{% endraw %}개 | 
+                        생성일: {% raw %}{{ question.created_at|date:"Y-m-d H:i" }}{% endraw %}
                     </small>
                 </p>
                 <div class="btn-group" role="group">
@@ -629,20 +629,20 @@ document.querySelectorAll('.choice-card').forEach(card => {
                 <a class="page-link" href="?page=1">처음</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">이전</a>
+                <a class="page-link" href="?page={% raw %}{{ page_obj.previous_page_number }}{% endraw %}">이전</a>
             </li>
         {% endif %}
         
         <li class="page-item active">
-            <span class="page-link">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+            <span class="page-link">{% raw %}{{ page_obj.number }}{% endraw %} / {% raw %}{{ page_obj.paginator.num_pages }}{% endraw %}</span>
         </li>
         
         {% if page_obj.has_next %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.next_page_number }}">다음</a>
+                <a class="page-link" href="?page={% raw %}{{ page_obj.next_page_number }}{% endraw %}">다음</a>
             </li>
             <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">마지막</a>
+                <a class="page-link" href="?page={% raw %}{{ page_obj.paginator.num_pages }}{% endraw %}">마지막</a>
             </li>
         {% endif %}
     </ul>

@@ -151,7 +151,7 @@ urlpatterns = [
 {% load bootstrap5 %}
 
 <div class="card mt-5">
-    <img src="{{ post.image.url }}" class="card-img-top" alt="...">
+    <img src="{% raw %}{{ post.image.url }}{% endraw %}" class="card-img-top" alt="...">
     <div class="card-body">
         <a href="{% url 'posts:like' post_id=post.id %}" class="text-reset text-decoration-none">
             {% if post in user.like_posts.all %}
@@ -159,13 +159,13 @@ urlpatterns = [
             {% else %}
                 <i class="bi bi-heart"></i>
             {% endif %}
-        </a> {{ post.like_users.all|length }}명이 좋아합니다.
+        </a> {% raw %}{{ post.like_users.all|length }}{% endraw %}명이 좋아합니다.
         
-        <p class="card-text">{{ post.content }}</p>
-        <small class="text-muted">{{ post.created_at|timesince }} 전</small>
+        <p class="card-text">{% raw %}{{ post.content }}{% endraw %}</p>
+        <small class="text-muted">{% raw %}{{ post.created_at|timesince }}{% endraw %} 전</small>
         <br>
         <a href="{% url 'accounts:profile' username=post.user %}" class="text-reset text-decoration-none">
-            {{ post.user }}
+            {% raw %}{{ post.user }}{% endraw %}
         </a>
     </div>
     
@@ -173,7 +173,7 @@ urlpatterns = [
     <div class="card-footer">
         <hr>
         {% for comment in post.comment_set.all %}
-            <li>{{ comment.user }}: {{ comment.content }}</li>
+            <li>{% raw %}{{ comment.user }}{% endraw %}: {% raw %}{{ comment.content }}{% endraw %}</li>
         {% endfor %}
         
         <!-- 댓글 작성 (로그인한 경우에만) -->
@@ -301,9 +301,9 @@ def like(request, post_id):
         {% else %}
             <i class="bi bi-heart"></i>
         {% endif %}
-    </a> {{ post.like_users.all|length }}명이 좋아합니다.
+    </a> {% raw %}{{ post.like_users.all|length }}{% endraw %}명이 좋아합니다.
     
-    <p class="card-text">{{ post.content }}</p>
+    <p class="card-text">{% raw %}{{ post.content }}{% endraw %}</p>
     <!-- ... 기타 내용 ... -->
 </div>
 ```
@@ -400,16 +400,16 @@ urlpatterns = [
 ```html
 {% extends 'base.html' %}
 
-{% block title %}{{ user_info.username }}의 프로필{% endblock %}
+{% block title %}{% raw %}{{ user_info.username }}{% endraw %}의 프로필{% endblock %}
 
 {% block body %}
 <div class="row mb-4">
     <div class="col-4">
         {% if user_info.profile_image %}
-            <img src="{{ user_info.profile_image.url }}" alt="" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+            <img src="{% raw %}{{ user_info.profile_image.url }}{% endraw %}" alt="" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
         {% else %}
             <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center" style="width: 150px; height: 150px;">
-                <span class="text-white">{{ user_info.username|first|upper }}</span>
+                <span class="text-white">{% raw %}{{ user_info.username|first|upper }}{% endraw %}</span>
             </div>
         {% endif %}
     </div>
@@ -417,7 +417,7 @@ urlpatterns = [
     <div class="col-8">
         <div class="row mb-3">
             <div class="col-3">
-                <h4>{{ user_info.username }}</h4>
+                <h4>{% raw %}{{ user_info.username }}{% endraw %}</h4>
             </div>
             <div class="col-4">
                 <!-- user: 로그인한 사람, user_info: 프로필 페이지 유저 -->
@@ -432,15 +432,15 @@ urlpatterns = [
         </div>
         <div class="row">
             <div class="col">
-                <strong>{{ user_info.post_set.all|length }}</strong><br>
+                <strong>{% raw %}{{ user_info.post_set.all|length }}{% endraw %}</strong><br>
                 <span>게시물</span>
             </div>
             <div class="col">
-                <strong>{{ user_info.followers.all|length }}</strong><br>
+                <strong>{% raw %}{{ user_info.followers.all|length }}{% endraw %}</strong><br>
                 <span>팔로워</span>
             </div>
             <div class="col">
-                <strong>{{ user_info.followings.all|length }}</strong><br>
+                <strong>{% raw %}{{ user_info.followings.all|length }}{% endraw %}</strong><br>
                 <span>팔로잉</span>
             </div>
         </div>
@@ -451,7 +451,7 @@ urlpatterns = [
     {% for post in user_info.post_set.all %}
     <div class="col">
         <div class="card">
-            <img src="{{ post.image.url }}" alt="" class="card-img-top" style="height: 200px; object-fit: cover;">
+            <img src="{% raw %}{{ post.image.url }}{% endraw %}" alt="" class="card-img-top" style="height: 200px; object-fit: cover;">
         </div>
     </div>
     {% empty %}

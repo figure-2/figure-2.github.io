@@ -441,15 +441,15 @@ fetchAndPrint();
     {% else %}
         <i class="bi bi-heart"></i>
     {% endif %}
-</a> {{ post.like_users.all|length }}명이 좋아합니다.
+</a> {% raw %}{{ post.like_users.all|length }}{% endraw %}명이 좋아합니다.
 
 <!-- 수정 후 -->
 {% if post in user.like_posts.all %}
-    <i class="bi bi-heart-fill heart" style="color: red;" data-post-id="{{ post.id }}"></i>
+    <i class="bi bi-heart-fill heart" style="color: red;" data-post-id="{% raw %}{{ post.id }}{% endraw %}"></i>
 {% else %}
-    <i class="bi bi-heart heart" data-post-id="{{ post.id }}"></i>
+    <i class="bi bi-heart heart" data-post-id="{% raw %}{{ post.id }}{% endraw %}"></i>
 {% endif %}
-{{ post.like_users.all|length }}명이 좋아합니다.
+{% raw %}{{ post.like_users.all|length }}{% endraw %}명이 좋아합니다.
 ```
 
 #### JavaScript 코드

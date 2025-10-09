@@ -93,7 +93,7 @@ create.html과 update.html이 완전히 동일해졌으므로 공통 템플릿�
 
 <form action="" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% raw %}{{ form.as_p }}{% endraw %}
     <button type="submit" class="btn btn-primary">
         {% if article %}수정{% else %}작성{% endif %}
     </button>
@@ -232,18 +232,18 @@ def detail(request, id):
 ```html
 {% extends 'base.html' %}
 
-{% block title %}{{ article.title }} - Django Board{% endblock %}
+{% block title %}{% raw %}{{ article.title }}{% endraw %} - Django Board{% endblock %}
 
 {% block body %}
 <div class="card mt-4">
     <div class="card-header">
-        <h2>{{ article.title }}</h2>
+        <h2>{% raw %}{{ article.title }}{% endraw %}</h2>
     </div>
     <div class="card-body">
-        <p>{{ article.content|linebreaks }}</p>
+        <p>{% raw %}{{ article.content|linebreaks }}{% endraw %}</p>
     </div>
     <div class="card-footer">
-        <small class="text-muted">{{ article.created_at }}</small>
+        <small class="text-muted">{% raw %}{{ article.created_at }}{% endraw %}</small>
         <div class="float-end">
             <a href="{% url 'articles:update' article.id %}" class="btn btn-warning">수정</a>
             <a href="{% url 'articles:delete' article.id %}" class="btn btn-danger">삭제</a>
@@ -259,7 +259,7 @@ def detail(request, id):
     <div class="card-body">
         <form action="{% url 'articles:comment_create' article_id=article.id %}" method="POST">
             {% csrf_token %}
-            {{ comment_form.as_p }}
+            {% raw %}{{ comment_form.as_p }}{% endraw %}
             <button type="submit" class="btn btn-primary">댓글 작성</button>
         </form>
     </div>
@@ -277,9 +277,9 @@ def detail(request, id):
         
         {% for comment in article.comment_set.all %}
         <div class="border-bottom pb-2 mb-2">
-            <p>{{ comment.content }}</p>
+            <p>{% raw %}{{ comment.content }}{% endraw %}</p>
             <small class="text-muted">
-                {{ comment.created_at }}
+                {% raw %}{{ comment.created_at }}{% endraw %}
                 <a href="{% url 'articles:comment_delete' article_id=article.id id=comment.id %}" 
                    class="text-danger ms-2">삭제</a>
             </small>
@@ -331,7 +331,7 @@ class Comment(models.Model):
 템플릿에서 사용:
 ```html
 {% for comment in article.comments.all %}
-    <p>{{ comment.content }}</p>
+    <p>{% raw %}{{ comment.content }}{% endraw %}</p>
 {% endfor %}
 ```
 
@@ -341,7 +341,7 @@ class Comment(models.Model):
 
 ```html
 <div class="card-header">
-    <h4>댓글 목록 ({{ article.comment_set.count }}개)</h4>
+    <h4>댓글 목록 ({% raw %}{{ article.comment_set.count }}{% endraw %}개)</h4>
 </div>
 ```
 
@@ -403,7 +403,7 @@ def comment_update(request, article_id, id):
 
 <form action="" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {% raw %}{{ form.as_p }}{% endraw %}
     <button type="submit" class="btn btn-primary">수정</button>
     <a href="{% url 'articles:detail' comment.article.id %}" class="btn btn-secondary">취소</a>
 </form>

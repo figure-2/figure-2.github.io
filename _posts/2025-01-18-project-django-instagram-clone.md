@@ -692,8 +692,8 @@ if settings.DEBUG:
     <main class="container mt-4">
         {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                    {{ message }}
+                <div class="alert alert-{% raw %}{{ message.tags }}{% endraw %} alert-dismissible fade show" role="alert">
+                    {% raw %}{{ message }}{% endraw %}
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
             {% endfor %}
@@ -745,46 +745,46 @@ if settings.DEBUG:
 <!-- templates/_card.html -->
 <div class="card mb-4">
     <div class="card-header d-flex align-items-center">
-        <img src="{{ post.user.profile_image.url|default:'/static/images/default-profile.png' }}" 
+        <img src="{% raw %}{{ post.user.profile_image.url|default:'/static/images/default-profile.png' }}{% endraw %}" 
              class="rounded-circle me-2" width="32" height="32" alt="프로필">
         <div>
             <h6 class="mb-0">
                 <a href="{% url 'accounts:profile' post.user.id %}" class="text-decoration-none">
-                    {{ post.user.username }}
+                    {% raw %}{{ post.user.username }}{% endraw %}
                 </a>
             </h6>
-            <small class="text-muted">{{ post.created_at|timesince }} 전</small>
+            <small class="text-muted">{% raw %}{{ post.created_at|timesince }}{% endraw %} 전</small>
         </div>
     </div>
     
     <div class="card-body p-0">
-        <img src="{{ post.image.url }}" class="card-img-top" alt="게시물 이미지">
+        <img src="{% raw %}{{ post.image.url }}{% endraw %}" class="card-img-top" alt="게시물 이미지">
         
         <div class="p-3">
             <div class="d-flex align-items-center mb-2">
-                <button class="btn btn-link p-0 me-2 like-btn" data-post-id="{{ post.id }}">
+                <button class="btn btn-link p-0 me-2 like-btn" data-post-id="{% raw %}{{ post.id }}{% endraw %}">
                     <i class="fas fa-heart {% if post.is_liked_by:user %}text-danger{% else %}text-muted{% endif %}"></i>
                 </button>
-                <button class="btn btn-link p-0 me-2" data-bs-toggle="collapse" data-bs-target="#comments-{{ post.id }}">
+                <button class="btn btn-link p-0 me-2" data-bs-toggle="collapse" data-bs-target="#comments-{% raw %}{{ post.id }}{% endraw %}">
                     <i class="far fa-comment text-muted"></i>
                 </button>
-                <span class="text-muted">{{ post.get_likes_count }}명이 좋아합니다</span>
+                <span class="text-muted">{% raw %}{{ post.get_likes_count }}{% endraw %}명이 좋아합니다</span>
             </div>
             
             <div class="mb-2">
-                <strong>{{ post.user.username }}</strong> {{ post.content }}
+                <strong>{% raw %}{{ post.user.username }}{% endraw %}</strong> {% raw %}{{ post.content }}{% endraw %}
             </div>
             
-            <div class="collapse" id="comments-{{ post.id }}">
+            <div class="collapse" id="comments-{% raw %}{{ post.id }}{% endraw %}">
                 <div class="comments-section">
                     {% for comment in post.comments.all %}
                     <div class="mb-1">
-                        <strong>{{ comment.user.username }}</strong> {{ comment.content }}
+                        <strong>{% raw %}{{ comment.user.username }}{% endraw %}</strong> {% raw %}{{ comment.content }}{% endraw %}
                     </div>
                     {% endfor %}
                 </div>
                 
-                <form class="comment-form mt-2" data-post-id="{{ post.id }}">
+                <form class="comment-form mt-2" data-post-id="{% raw %}{{ post.id }}{% endraw %}">
                     {% csrf_token %}
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="댓글 달기..." maxlength="200">
@@ -823,20 +823,20 @@ if settings.DEBUG:
                             <a class="page-link" href="?page=1">처음</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">이전</a>
+                            <a class="page-link" href="?page={% raw %}{{ page_obj.previous_page_number }}{% endraw %}">이전</a>
                         </li>
                     {% endif %}
                     
                     <li class="page-item active">
-                        <span class="page-link">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+                        <span class="page-link">{% raw %}{{ page_obj.number }}{% endraw %} / {% raw %}{{ page_obj.paginator.num_pages }}{% endraw %}</span>
                     </li>
                     
                     {% if page_obj.has_next %}
                         <li class="page-item">
-                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">다음</a>
+                            <a class="page-link" href="?page={% raw %}{{ page_obj.next_page_number }}{% endraw %}">다음</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">마지막</a>
+                            <a class="page-link" href="?page={% raw %}{{ page_obj.paginator.num_pages }}{% endraw %}">마지막</a>
                         </li>
                     {% endif %}
                 </ul>

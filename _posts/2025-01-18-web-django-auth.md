@@ -154,7 +154,7 @@ def signup(request):
             <div class="card-body">
                 <form action="" method="POST">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {% raw %}{{ form.as_p }}{% endraw %}
                     <button type="submit" class="btn btn-primary">회원가입</button>
                     <a href="{% url 'accounts:login' %}" class="btn btn-secondary">로그인</a>
                 </form>
@@ -225,7 +225,7 @@ def login(request):
             <div class="card-body">
                 <form action="" method="POST">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {% raw %}{{ form.as_p }}{% endraw %}
                     <button type="submit" class="btn btn-primary">로그인</button>
                     <a href="{% url 'accounts:signup' %}" class="btn btn-secondary">회원가입</a>
                 </form>
@@ -272,7 +272,7 @@ def logout(request):
                 <!-- 사용자 인증 상태에 따른 메뉴 표시 -->
                 {% if user.is_authenticated %}
                     <a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a>
-                    <span class="navbar-text ms-3">안녕하세요, {{ user.username }}님!</span>
+                    <span class="navbar-text ms-3">안녕하세요, {% raw %}{{ user.username }}{% endraw %}님!</span>
                 {% else %}
                     <a class="nav-link" href="{% url 'accounts:signup' %}">Signup</a>
                     <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
@@ -396,9 +396,9 @@ def comment_create(request, article_id):
 ```html
 {% for comment in article.comment_set.all %}
 <div class="border-bottom pb-2 mb-2">
-    <p>{{ comment.content }}</p>
+    <p>{% raw %}{{ comment.content }}{% endraw %}</p>
     <small class="text-muted">
-        {{ comment.author.username }} | {{ comment.created_at }}
+        {% raw %}{{ comment.author.username }}{% endraw %} | {% raw %}{{ comment.created_at }}{% endraw %}
         {% if comment.author == user %}
             <a href="{% url 'articles:comment_delete' article_id=article.id id=comment.id %}" 
                class="text-danger ms-2">삭제</a>

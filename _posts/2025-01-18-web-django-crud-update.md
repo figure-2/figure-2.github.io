@@ -170,8 +170,8 @@ TEMPLATES = [
     <tbody>
         {% for post in posts %}
         <tr>
-            <td>{{ post.title }}</td>
-            <td>{{ post.created_at|date:"Y-m-d" }}</td>
+            <td>{% raw %}{{ post.title }}{% endraw %}</td>
+            <td>{% raw %}{{ post.created_at|date:"Y-m-d" }}{% endraw %}</td>
             <td><a href="{% url 'posts:detail' post.id %}">상세보기</a></td>
         </tr>
         {% endfor %}
@@ -355,18 +355,18 @@ def delete(request, id):
 ```html
 {% extends 'base.html' %}
 
-{% block title %}{{ post.title }} - Django Board{% endblock %}
+{% block title %}{% raw %}{{ post.title }}{% endraw %} - Django Board{% endblock %}
 
 {% block content %}
 <div class="card mt-4">
     <div class="card-header">
-        <h2>{{ post.title }}</h2>
+        <h2>{% raw %}{{ post.title }}{% endraw %}</h2>
     </div>
     <div class="card-body">
-        <p>{{ post.content|linebreaks }}</p>
+        <p>{% raw %}{{ post.content|linebreaks }}{% endraw %}</p>
     </div>
     <div class="card-footer">
-        <small class="text-muted">{{ post.created_at }}</small>
+        <small class="text-muted">{% raw %}{{ post.created_at }}{% endraw %}</small>
         <div class="float-end">
             <a href="{% url 'posts:edit' post.id %}" class="btn btn-warning">수정</a>
             <a href="{% url 'posts:delete' post.id %}" class="btn btn-danger">삭제</a>
@@ -414,11 +414,11 @@ def delete(request, id):
     {% csrf_token %}
     <div class="mb-3">
         <label for="title" class="form-label">제목</label>
-        <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}" required>
+        <input type="text" class="form-control" id="title" name="title" value="{% raw %}{{ post.title }}{% endraw %}" required>
     </div>
     <div class="mb-3">
         <label for="content" class="form-label">내용</label>
-        <textarea class="form-control" id="content" name="content" rows="10" required>{{ post.content }}</textarea>
+        <textarea class="form-control" id="content" name="content" rows="10" required>{% raw %}{{ post.content }}{% endraw %}</textarea>
     </div>
     <button type="submit" class="btn btn-primary">수정</button>
     <a href="{% url 'posts:detail' post.id %}" class="btn btn-secondary">취소</a>
