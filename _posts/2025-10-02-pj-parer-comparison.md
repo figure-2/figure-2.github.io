@@ -1,7 +1,8 @@
 ---
 title: PJ Parser API 비교 분석
 categories:
-- FinIQ
+- 2.PROJECT
+- 2-2.FinIQ
 tags:
 - - parser
   - API

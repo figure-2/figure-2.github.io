@@ -1,7 +1,8 @@
 ---
 title: Python 메소드 - 문자열, 리스트, 딕셔너리, 세트 메소드
 categories:
-- 02_PYTHON
+- 1.TIL
+- 1-2.PYTHON
 tags:
 - python
 - 메소드

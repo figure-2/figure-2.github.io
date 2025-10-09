@@ -1,7 +1,8 @@
 ---
 title: Python map(), zip(), filter() 함수
 categories:
-- 02_PYTHON
+- 1.TIL
+- 1-2.PYTHON
 tags:
 - python
 - map

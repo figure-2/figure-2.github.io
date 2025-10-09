@@ -1,7 +1,8 @@
 ---
 title: Pandas 자료구조 - Series와 DataFrame
 categories:
-- 03.Pandas
+- 1.TIL
+- 1-3.PANDAS
 tags:
 - - pandas
   - 자료구조
@@ -9,7 +10,7 @@ tags:
   - DataFrame
   - 데이터분석
 toc: true
-date: 2023-07-25 09:00:00
+date: 2023-08-11 09:00:00 +0900
 comments: false
 mermaid: true
 math: true

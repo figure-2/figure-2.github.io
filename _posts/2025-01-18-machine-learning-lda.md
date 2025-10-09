@@ -1,7 +1,8 @@
 ---
 title: LDA (Linear Discriminant Analysis)
 categories:
-- 08_MACHINE_LEARNING
+- 1.TIL
+- 1-8.MACHINE_LEARNING
 tags:
 - LDA
 - 선형판별분석
@@ -10,7 +11,7 @@ tags:
 - 분류성능
 - 판별함수
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-09-15 12:00:00 +0900
 comments: false
 mermaid: true
 math: true

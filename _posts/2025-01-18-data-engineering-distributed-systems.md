@@ -1,7 +1,8 @@
 ---
 title: 분산시스템의 이해
 categories:
-- DATA_ENGINEERING
+- 1.TIL
+- 1-9.DATA_ENGINEERING
 tags:
 - 분산시스템
 - RPC
@@ -12,7 +13,7 @@ tags:
 - 확장성
 - 가용성
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-11-06 09:00:00 +0900
 comments: false
 mermaid: true
 math: true

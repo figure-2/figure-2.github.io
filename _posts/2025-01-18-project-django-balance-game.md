@@ -1,7 +1,8 @@
 ---
 title: Django 밸런스 게임 프로젝트 - 실무 웹 애플리케이션 개발
 categories:
-- 실무프로젝트
+- 1.TIL
+- 1-6.PROJECT
 tags:
 - django
 - 프로젝트
@@ -10,7 +11,7 @@ tags:
 - 실무
 - CRUD
 toc: true
-date: 2023-09-10 09:00:00 +0900
+date: 2023-09-01 09:00:00 +0900
 comments: false
 mermaid: true
 math: true

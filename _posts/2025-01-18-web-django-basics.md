@@ -1,7 +1,8 @@
 ---
 title: Django 기초 - Python 웹 프레임워크의 핵심
 categories:
-- 04_WEB_DEVELOPMENT
+- 1.TIL
+- 1-5.WEB
 tags:
 - django
 - python

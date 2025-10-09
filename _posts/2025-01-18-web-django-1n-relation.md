@@ -1,7 +1,8 @@
 ---
 title: Django 1:N 관계 완성 - 사용자와 게시물 연결
 categories:
-- 04_WEB_DEVELOPMENT
+- 1.TIL
+- 1-5.WEB
 tags:
 - django
 - 1n관계

@@ -1,7 +1,8 @@
 ---
 title: Apache Spark 상세 내용
 categories:
-- Spark
+- 1.TIL
+- 1-9.DATA_ENGINEERING
 tags:
 - Apache Spark
 - DataFrame
@@ -12,7 +13,7 @@ tags:
 - MLlib
 - 성능최적화
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-11-07 10:00:00 +0900
 comments: false
 mermaid: true
 math: true

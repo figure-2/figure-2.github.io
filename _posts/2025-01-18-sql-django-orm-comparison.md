@@ -1,7 +1,8 @@
 ---
 title: Django ORM과 SQL 비교 - 데이터베이스 조작의 두 가지 방법
 categories:
-- 05_SQL
+- 1.TIL
+- 1-6.SQL
 tags:
 - django
 - orm

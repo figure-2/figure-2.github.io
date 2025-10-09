@@ -1,7 +1,8 @@
 ---
 title: Django ModelForm - 폼 자동화와 URL 통합
 categories:
-- 04_WEB_DEVELOPMENT
+- 1.TIL
+- 1-5.WEB
 tags:
 - django
 - modelform

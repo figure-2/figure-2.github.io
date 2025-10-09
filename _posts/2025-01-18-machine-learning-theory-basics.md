@@ -1,7 +1,8 @@
 ---
 title: 머신러닝 이론과 기본 - AI의 핵심 개념 이해
 categories:
-- 08_MACHINE_LEARNING
+- 1.TIL
+- 1-8.MACHINE_LEARNING
 tags:
 - 머신러닝
 - AI
@@ -11,7 +12,7 @@ tags:
 - 이론
 - 기본개념
 toc: true
-date: 2023-09-26 09:00:00 +0900
+date: 2023-09-13 09:00:00 +0900
 comments: false
 mermaid: true
 math: true

@@ -1,7 +1,8 @@
 ---
 title: Python 반복문 - while, for, break, continue, else
 categories:
-- 02_PYTHON
+- 1.TIL
+- 1-2.PYTHON
 tags:
 - python
 - 반복문
@@ -13,7 +14,7 @@ tags:
 - enumerate
 - match
 toc: true
-date: 2023-07-25 00:00:00 +0900
+date: 2023-07-27 00:00:00 +0900
 comments: false
 mermaid: true
 math: true

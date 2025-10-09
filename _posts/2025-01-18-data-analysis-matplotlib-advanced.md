@@ -1,7 +1,8 @@
 ---
 title: Matplotlib 고급 시각화 - 데이터 분석을 위한 전문 기법
 categories:
-- 07_DATA_ANALYSIS
+- 1.TIL
+- 1-7.DATA_ANALYSIS
 tags:
 - matplotlib
 - 고급시각화

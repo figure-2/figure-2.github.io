@@ -1,7 +1,8 @@
 ---
 title: NoSQL/MongoDB 상세 내용
 categories:
-- NoSQL
+- 1.TIL
+- 1-9.DATA_ENGINEERING
 tags:
 - 데이터엔지니어링
 - NoSQL
@@ -16,7 +17,7 @@ tags:
 - 성능최적화
 - 실무적용
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-11-10 11:00:00 +0900
 comments: false
 mermaid: true
 math: true

@@ -1,7 +1,8 @@
 ---
 title: Pandas 데이터 전처리 - 컬럼추가, 삭제, 타입변환, datetime, cut/qcut
 categories:
-- 03.Pandas
+- 1.TIL
+- 1-3.PANDAS
 tags:
 - - pandas
   - 전처리

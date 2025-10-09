@@ -1,7 +1,8 @@
 ---
 title: Python 재귀함수 - 팩토리얼과 피보나치 수열
 categories:
-- 02_PYTHON
+- 1.TIL
+- 1-2.PYTHON
 tags:
 - - python
   - 재귀

@@ -1,7 +1,8 @@
 ---
 title: Pandas 결측치 처리 - isnull, fillna, dropna
 categories:
-- 03.Pandas
+- 1.TIL
+- 1-3.PANDAS
 tags:
 - - pandas
   - 결측치

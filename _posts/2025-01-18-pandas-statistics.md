@@ -1,7 +1,8 @@
 ---
 title: Pandas 통계 함수 - describe, mean, median, corr 등
 categories:
-- 03.Pandas
+- 1.TIL
+- 1-3.PANDAS
 tags:
 - - pandas
   - 통계
@@ -11,7 +12,7 @@ tags:
   - corr
   - 집계함수
 toc: true
-date: 2023-07-25 12:00:00
+date: 2023-08-11 12:00:00 +0900
 comments: false
 mermaid: true
 math: true

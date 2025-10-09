@@ -1,7 +1,8 @@
 ---
 title: 농어 길이로 무게 예측 실습
 categories:
-- 08_MACHINE_LEARNING
+- 1.TIL
+- 1-8.MACHINE_LEARNING
 tags:
 - 머신러닝
 - 회귀분석
@@ -10,7 +11,7 @@ tags:
 - 결정트리
 - 농어예측
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-09-17 09:00:00 +0900
 comments: false
 mermaid: true
 math: true

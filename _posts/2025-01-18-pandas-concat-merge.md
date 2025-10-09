@@ -1,7 +1,8 @@
 ---
 title: Pandas concat과 merge - 데이터 연결과 병합
 categories:
-- 03_PANDAS
+- 1.TIL
+- 1-3.PANDAS
 tags:
 - pandas
 - concat
@@ -10,7 +11,7 @@ tags:
 - 데이터병합
 - join
 toc: true
-date: 2023-07-25 16:00:00 +0900
+date: 2023-08-12 10:00:00 +0900
 comments: false
 mermaid: true
 math: true

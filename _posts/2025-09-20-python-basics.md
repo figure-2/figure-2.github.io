@@ -1,7 +1,8 @@
 ---
 title: Python 기초
 categories:
-- 02_PYTHON
+- 1.TIL
+- 1-2.PYTHON
 tags:
 - python
 - 기초

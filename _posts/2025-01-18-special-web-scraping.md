@@ -1,7 +1,8 @@
 ---
 title: HTML 스크래핑
 categories:
-- 14_SPECIAL
+- 1.TIL
+- 1-10.SPECIAL
 tags:
 - 특강
 - HTML스크래핑
@@ -13,7 +14,7 @@ tags:
 - CSS선택자
 - 속성값추출
 toc: true
-date: 2025-01-18 09:00:00 +0900
+date: 2023-08-15 12:00:00 +0900
 comments: false
 mermaid: true
 math: true

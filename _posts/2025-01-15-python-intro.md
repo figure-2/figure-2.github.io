@@ -1,7 +1,7 @@
 ---
 title: Python 기초 - 변수, 연산자, 자료형
 categories:
-- 01.TIL
+- 1.TIL
 - 1-2.PYTHON
 
 tags:
@@ -11,7 +11,7 @@ tags:
 - 연산자
 - 자료형
 - 자료구조
-date: 2023-07-25 00:00:00 +0900
+date: 2023-07-26 00:00:00 +0900
 toc: true
 comments: false
 mermaid: true

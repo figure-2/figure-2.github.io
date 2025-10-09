@@ -1,7 +1,8 @@
 ---
 title: EDA 도구 활용 - 효율적인 탐색적 데이터 분석
 categories:
-- 07_DATA_ANALYSIS
+- 1.TIL
+- 1-7.DATA_ANALYSIS
 tags:
 - EDA
 - sweetviz

@@ -1,7 +1,8 @@
 ---
 title: EDA(탐색적 데이터 분석) - 데이터 이해의 첫 걸음
 categories:
-- 07_DATA_ANALYSIS
+- 1.TIL
+- 1-7.DATA_ANALYSIS
 tags:
 - EDA
 - 탐색적데이터분석

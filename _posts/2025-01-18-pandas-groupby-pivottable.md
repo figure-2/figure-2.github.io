@@ -1,7 +1,8 @@
 ---
 title: Pandas groupby와 pivot_table - 그룹화와 피벗테이블
 categories:
-- 07_DATA_ANALYSIS
+- 1.TIL
+- 1-3.PANDAS
 tags:
 - pandas
 - groupby
@@ -10,7 +11,7 @@ tags:
 - 집계
 - 피벗테이블
 toc: true
-date: 2023-07-25 15:00:00 +0900
+date: 2023-08-12 09:00:00 +0900
 comments: false
 mermaid: true
 math: true

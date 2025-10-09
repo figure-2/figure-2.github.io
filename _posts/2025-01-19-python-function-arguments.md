@@ -1,7 +1,8 @@
 ---
 title: Python 함수의 인수 - 위치인수, 기본값, 키워드인자, 가변인자
 categories:
-- 02_PYTHON
+- 1.TIL
+- 1-2.PYTHON
 tags:
 - - python
   - 함수
@@ -11,7 +12,7 @@ tags:
   - 키워드인자
   - 가변인자
 toc: true
-date: 2023-07-25
+date: 2023-07-28 00:00:00 +0900
 comments: false
 mermaid: true
 math: true

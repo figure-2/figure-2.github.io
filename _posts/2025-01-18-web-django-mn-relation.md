@@ -1,7 +1,8 @@
 ---
 title: Django M:N 관계 - 좋아요와 팔로우 기능
 categories:
-- 04_WEB_DEVELOPMENT
+- 1.TIL
+- 1-5.WEB
 tags:
 - django
 - mn관계

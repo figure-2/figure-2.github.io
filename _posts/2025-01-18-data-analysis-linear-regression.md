@@ -1,7 +1,8 @@
 ---
 title: 선형회귀분석 - 머신러닝의 기초와 농어 무게 예측
 categories:
-- 07_DATA_ANALYSIS
+- 1.TIL
+- 1-7.DATA_ANALYSIS
 tags:
 - 머신러닝
 - 선형회귀

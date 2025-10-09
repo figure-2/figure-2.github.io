@@ -2,7 +2,7 @@
 title: 가상환경 설정
 categories:
 - 1.TIL
-- 1-1.Git
+- 1-1.GIT
 tags:
 - - python
   - 가상환경
