@@ -1,7 +1,9 @@
 ---
 title: Python 제어문 - 조건문과 조건표현식
 categories:
-- 02_PYTHON
+- 01.TIL
+- 1-2.PYTHON
+
 tags:
 - python
 - 제어문
