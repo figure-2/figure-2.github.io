@@ -11,7 +11,7 @@ tags:
 - Streamlit
 - Project
 toc: true
-date: 2025-09-30
+date: 2025-11-23
 comments: true
 mermaid: true
 math: true
