@@ -2,7 +2,8 @@
 title: 분산시스템의 이해
 categories:
 - 1.TIL
-- 1-9.DATA_ENGINEERING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-9.DATA_ENGINEERING
 tags:
 - 분산시스템
 - RPC

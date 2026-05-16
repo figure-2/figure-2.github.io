@@ -2,7 +2,8 @@
 title: Python 에러와 예외처리 - try, except, finally
 categories:
 - 1.TIL
-- 1-2.PYTHON
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-2.PYTHON
 tags:
 - python
 - 에러

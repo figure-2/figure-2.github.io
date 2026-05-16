@@ -2,7 +2,8 @@
 title: JavaScript 기초 - 웹 상호작용의 핵심
 categories:
 - 1.TIL
-- 1-5.WEB
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-5.WEB
 tags:
 - javascript
 - dom

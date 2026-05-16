@@ -2,7 +2,8 @@
 title: SWEA 알고리즘 - String 및 패턴 매칭
 categories:
 - 1.TIL
-- 1-4.ALGORITHM
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-4.ALGORITHM
 
 tags:
 - algorithm

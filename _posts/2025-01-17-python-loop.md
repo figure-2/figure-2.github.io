@@ -2,7 +2,8 @@
 title: Python 반복문 - while, for, break, continue, else
 categories:
 - 1.TIL
-- 1-2.PYTHON
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-2.PYTHON
 tags:
 - python
 - 반복문

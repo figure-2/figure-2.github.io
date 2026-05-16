@@ -2,7 +2,8 @@
 title: SWEA 알고리즘 - Queue 및 BFS
 categories:
 - 1.TIL
-- 1-4.ALGORITHM
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-4.ALGORITHM
 
 tags:
 - algorithm

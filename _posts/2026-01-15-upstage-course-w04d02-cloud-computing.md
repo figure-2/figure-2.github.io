@@ -1,0 +1,72 @@
+---
+title: "클라우드 컴퓨팅 시작하기"
+categories:
+- 1.TIL
+- 1-2.UPSTAGE_AI_AGENT
+- 1-2-4.NETWORK_CLOUD
+- COURSE_NOTE
+tags:
+- upstage
+- sesac
+- ai-agent
+- cloud
+- course-note
+- network-cloud
+toc: true
+date: 2026-01-15 09:00:00 +0900
+comments: false
+mermaid: true
+math: true
+---
+# 클라우드 컴퓨팅 시작하기
+
+## 핵심 개념
+
+> **요약**
+> 로컬 개발 환경에서 실제 서비스로 전환하려면 24시간 공개된 서버가 필요하다. 클라우드 컴퓨팅은 이러한 서버를 유연하게 빌려 쓸 수 있는 방식이다. AWS EC2 인스턴스 생성, IAM 권한 관리, SSH 접속, Linux(Ubuntu) 기본 명령어, 포트 포워딩, 웹서버 띄우기를 다룬다.
+
+## 주요 내용
+
+### 1. 클라우드 컴퓨팅 개념
+- 서비스를 인터넷에 올리려면 **24시간 공개된 서버**가 필요
+- 서버: 항상 켜져 있고, 고정된 IP를 가짐
+- 트래픽 급증 시 유연하게 스케일링 가능
+- 관련: 클라우드 컴퓨팅
+
+### 2. AWS 계정과 EC2
+- AWS 계정 시스템: **root** 계정과 **IAM** 사용자
+- EC2 인스턴스 생성 및 관리
+- **키페어(pem)**를 통한 SSH 접속
+- 관련: AWS EC2, IAM
+
+### 3. 클라우드 서버 다루기
+- Linux 웹서버용 인프라: 365일 안정성, 가벼운 개발환경
+- **Ubuntu** 서버: 무료, 가벼움, 패키지 설치 용이
+- GUI 대신 **CUI**(명령줄 인터페이스) 사용
+- 관련: Linux, Ubuntu
+
+### 4. Linux 기본 명령어
+- `ls`: 파일/폴더 목록 (-l, -a, -al 옵션)
+- `cd`, `mkdir`, `rm`, `mv`, `cp`: 파일/디렉토리 조작
+- `chmod`: 파일 권한 관리
+- `ssh`: 원격 접속
+- `grep`: 패턴 검색
+- 관련: Linux 명령어
+
+### 5. EC2에 웹서버 띄우기
+- **Port Forwarding** 설정
+- FastAPI 웹서버 실행
+- 네트워크 도구 활용
+- 관련: FastAPI, 포트 포워딩
+
+## 흐름도
+
+![클라우드 컴퓨팅 시작하기 다이어그램 1](/assets/images/upstage-ai-agent/diagrams/01-modules-network-cloud-w04d02-cloud-computing-diagram-1.svg)
+
+## 연결된 개념
+- 클라우드 컴퓨팅
+- AWS EC2
+- Linux
+- Ubuntu
+- FastAPI
+- 포트 포워딩

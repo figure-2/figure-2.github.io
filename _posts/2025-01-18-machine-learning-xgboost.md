@@ -2,7 +2,8 @@
 title: XGBoost (eXtreme Gradient Boosting)
 categories:
 - 1.TIL
-- 1-8.MACHINE_LEARNING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-8.MACHINE_LEARNING
 tags:
 - XGBoost
 - 그라디언트부스팅

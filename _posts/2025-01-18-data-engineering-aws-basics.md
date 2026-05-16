@@ -2,7 +2,8 @@
 title: AWS 기초 - 인스턴스, 보안그룹, 탄력적IP
 categories:
 - 1.TIL
-- 1-9.DATA_ENGINEERING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-9.DATA_ENGINEERING
 tags:
 - AWS
 - EC2

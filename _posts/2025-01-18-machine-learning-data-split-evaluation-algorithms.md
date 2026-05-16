@@ -2,7 +2,8 @@
 title: 머신러닝 데이터분리, 평가척도, 알고리즘 - 실전 머신러닝의 핵심
 categories:
 - 1.TIL
-- 1-8.MACHINE_LEARNING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-8.MACHINE_LEARNING
 tags:
 - 머신러닝
 - 데이터분리

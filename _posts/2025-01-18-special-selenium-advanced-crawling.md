@@ -2,7 +2,8 @@
 title: Selenium을 활용한 고급 크롤링
 categories:
 - 1.TIL
-- 1-10.SPECIAL
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-10.SPECIAL
 tags:
 - 특강
 - Selenium

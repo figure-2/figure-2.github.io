@@ -2,7 +2,8 @@
 title: Django CRUD 업데이트 - URL 구조화와 템플릿 상속
 categories:
 - 1.TIL
-- 1-5.WEB
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-5.WEB
 tags:
 - django
 - crud

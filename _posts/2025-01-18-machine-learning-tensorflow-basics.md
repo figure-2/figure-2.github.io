@@ -2,7 +2,8 @@
 title: TensorFlow 기본 모델링
 categories:
 - 1.TIL
-- 1-8.MACHINE_LEARNING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-8.MACHINE_LEARNING
 tags:
 - TensorFlow
 - 딥러닝

@@ -2,7 +2,8 @@
 title: Django 밸런스 게임 프로젝트 - 실무 웹 애플리케이션 개발
 categories:
 - 1.TIL
-- 1-6.PROJECT
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-11.PROJECT
 tags:
 - django
 - 프로젝트

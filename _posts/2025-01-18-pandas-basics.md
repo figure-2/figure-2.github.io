@@ -2,7 +2,8 @@
 title: Pandas concat과 merge - 데이터 연결과 병합
 categories:
 - 1.TIL
-- 1-3.PANDAS
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-3.PANDAS
 tags:
 - pandas
 - concat

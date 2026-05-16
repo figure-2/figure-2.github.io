@@ -2,7 +2,8 @@
 title: RNN (Recurrent Neural Network) 자연어 처리
 categories:
 - 1.TIL
-- 1-8.MACHINE_LEARNING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-8.MACHINE_LEARNING
 tags:
 - RNN
 - 순환신경망

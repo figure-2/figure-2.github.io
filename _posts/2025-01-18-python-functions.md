@@ -2,7 +2,8 @@
 title: Python 함수 - 선언, 호출, return
 categories:
 - 1.TIL
-- 1-2.PYTHON
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-2.PYTHON
 tags:
 - - python
   - 함수

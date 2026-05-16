@@ -2,7 +2,8 @@
 title: Pandas 데이터 조회, 정렬, 조건필터 - loc, iloc, where, isin
 categories:
 - 1.TIL
-- 1-3.PANDAS
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-3.PANDAS
 tags:
 - - pandas
   - 데이터조회

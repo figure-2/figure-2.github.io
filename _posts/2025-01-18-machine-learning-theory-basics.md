@@ -2,7 +2,8 @@
 title: 머신러닝 이론과 기본 - AI의 핵심 개념 이해
 categories:
 - 1.TIL
-- 1-8.MACHINE_LEARNING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-8.MACHINE_LEARNING
 tags:
 - 머신러닝
 - AI

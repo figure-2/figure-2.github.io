@@ -2,7 +2,8 @@
 title: 카카오 API 크롤링 - 다양한 서비스 활용하기
 categories:
 - 1.TIL
-- 1-5.WEB
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-5.WEB
 tags:
 - kakao
 - api

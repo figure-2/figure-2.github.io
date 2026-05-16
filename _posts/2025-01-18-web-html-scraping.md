@@ -2,7 +2,8 @@
 title: HTML 스크래핑 - 웹 데이터 수집의 핵심
 categories:
 - 1.TIL
-- 1-5.WEB
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-5.WEB
 tags:
 - html
 - 스크래핑

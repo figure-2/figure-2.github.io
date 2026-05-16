@@ -2,7 +2,8 @@
 title: Python 함수의 인수 - 위치인수, 기본값, 키워드인자, 가변인자
 categories:
 - 1.TIL
-- 1-2.PYTHON
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-2.PYTHON
 tags:
 - - python
   - 함수

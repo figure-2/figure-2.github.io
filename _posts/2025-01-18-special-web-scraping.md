@@ -2,7 +2,8 @@
 title: HTML 스크래핑
 categories:
 - 1.TIL
-- 1-10.SPECIAL
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-10.SPECIAL
 tags:
 - 특강
 - HTML스크래핑

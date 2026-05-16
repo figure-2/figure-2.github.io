@@ -2,7 +2,8 @@
 title: UX/UI 디자인 기초
 categories:
 - 1.TIL
-- 1-10.SPECIAL
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-10.SPECIAL
 tags:
 - 특강
 - UX

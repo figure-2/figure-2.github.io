@@ -1,0 +1,64 @@
+---
+title: "학습 로드맵"
+categories:
+- 1.TIL
+- 1-2.UPSTAGE_AI_AGENT
+- 1-2-11.RESOURCES
+- REFERENCE_NOTE
+tags:
+- upstage
+- sesac
+- ai-agent
+- roadmap
+- reference-note
+- resources
+toc: true
+date: 2025-12-22 09:00:00 +0900
+comments: false
+mermaid: true
+math: true
+---
+# 학습 로드맵
+
+> **과정 개요**
+> AI Literacy / LLM Product Engineering 교육 과정입니다.
+> AI 기초부터 Agent 아키텍처, LLMOps까지 실무 중심으로 학습합니다.
+
+## 커리큘럼 흐름도
+
+![학습 로드맵 다이어그램 1](/assets/images/upstage-ai-agent/diagrams/00-home-00-learning-roadmap-diagram-1.svg)
+
+## 주차별 인덱스
+
+| 주차 | 주제 | 모듈 폴더 | 인덱스 |
+|------|------|----------|--------|
+| Week 01 | AI Literacy | `AI-기초` | Week01-AI-Literacy |
+| Week 02 | 자료구조와 알고리즘 | `자료구조-알고리즘` | Week02-자료구조-알고리즘 |
+| Week 03 | 개발환경, Git, Docker | `개발환경-버전관리` | Week03-개발환경-Git-Docker |
+| Week 04 | 네트워크와 클라우드 | `네트워크-클라우드` | Week04-네트워크-클라우드 |
+| Week 05 | Prompt Engineering & RAG | `Prompt-Engineering-RAG` | Week05-Prompt-Engineering-RAG |
+| Week 06 | Agentic Workflow | `Agentic-Workflow` | Week06-Agentic-Workflow |
+| Week 07 | AI 서비스 프로젝트 | `서비스-기획` | Week07-프로젝트 |
+| Week 08 | Agent 아키텍처 | `Agent-아키텍처` | Week08-Agent-아키텍처 |
+| Week 09 | LLMOps / 배포 | `LLMOps-운영` | Week09-LLMOps |
+
+## 핵심 개념 허브
+
+> **팁** Graph View에서 아래 개념 노트들이 허브 역할을 합니다.
+
+### Tier 1: Super Hubs
+- RAG - RAG 기초~Agentic RAG
+- LangGraph - 에이전트 프레임워크
+- Prompt-Engineering - 프롬프팅 기법
+- Agent-Architecture - 에이전트 설계 패턴
+- FastAPI - 백엔드 프레임워크
+
+### Tier 2: Major Hubs
+- Git · Docker · Agentic-Workflow · Tool-Calling · MCP · LLM-보안 · Supabase
+
+## 대시보드
+- 전체-대시보드
+- 미션-대시보드
+
+## 프로젝트
+- ppt-workspace · llm-api-server · idol-agent-v02 · idol-agent-v06 · idol-agent-v07 · fitness-buddy-기획

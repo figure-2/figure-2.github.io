@@ -2,7 +2,8 @@
 title: 머신러닝 전처리 - 데이터 품질 향상을 위한 핵심 기법
 categories:
 - 1.TIL
-- 1-8.MACHINE_LEARNING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-8.MACHINE_LEARNING
 tags:
 - 머신러닝
 - 전처리

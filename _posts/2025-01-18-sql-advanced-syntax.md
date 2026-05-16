@@ -2,7 +2,8 @@
 title: SQL 고급 문법 - GROUP BY, JOIN, 서브쿼리 완전 가이드
 categories:
 - 1.TIL
-- 1-6.SQL
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-6.SQL
 tags:
 - sql
 - groupby

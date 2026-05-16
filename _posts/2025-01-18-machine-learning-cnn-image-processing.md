@@ -2,7 +2,8 @@
 title: CNN (Convolutional Neural Network) 이미지 처리
 categories:
 - 1.TIL
-- 1-8.MACHINE_LEARNING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-8.MACHINE_LEARNING
 tags:
 - CNN
 - 합성곱신경망

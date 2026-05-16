@@ -2,7 +2,8 @@
 title: Django CRUD - 게시판 만들기의 핵심
 categories:
 - 1.TIL
-- 1-5.WEB
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-5.WEB
 tags:
 - django
 - crud

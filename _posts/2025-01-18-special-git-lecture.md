@@ -2,7 +2,8 @@
 title: Git 강의 - 깃, 깃허브, 소스트리
 categories:
 - 1.TIL
-- 1-10.SPECIAL
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-10.SPECIAL
 tags:
 - 특강
 - Git

@@ -1,0 +1,48 @@
+---
+title: "Week 02 - 자료구조와 알고리즘"
+categories:
+- 1.TIL
+- 1-2.UPSTAGE_AI_AGENT
+- 1-2-2.DATA_STRUCTURE_ALGORITHM
+- COURSE_NOTE
+tags:
+- upstage
+- sesac
+- ai-agent
+- data-structures
+- algorithms
+- course-note
+- data-structure-algorithm
+toc: true
+date: 2025-12-30 09:00:00 +0900
+comments: false
+mermaid: true
+math: true
+---
+# Week 02 - 자료구조와 알고리즘
+
+> **요약** 주차 개요
+> 컴퓨터 과학의 핵심 기초인 자료구조와 알고리즘을 체계적으로 학습한다. 알고리즘 분석(Big-O)부터 선형 자료구조(배열, 링크드 리스트, 스택, 큐, 해시), 비선형 자료구조(트리, 그래프), 재귀/탐색, 정렬 알고리즘, 문제 풀이까지 전 범위를 다룬다.
+
+## 강의 노트
+
+| 일차 | 제목 | 핵심 주제 |
+|------|------|----------|
+| Day 01 | W02D01-알고리즘-분석 | 알고리즘 정의, Big-O, 배열, 링크드 리스트 |
+| Day 02 | W02D02-스택-큐-해시 | 스택(LIFO), 큐(FIFO), 해시 테이블 |
+| Day 03 | W02D03-트리-그래프-탐색 | 트리, BST, 그래프, DFS/BFS |
+| Day 04 | W02D04-힙-재귀-탐색 | 우선순위 큐, 힙, 재귀호출, 탐색 알고리즘 |
+| Day 05 | W02D05-정렬-문제풀이 | 정렬 알고리즘, 코딩 문제 풀이 |
+
+## 핵심 개념 맵
+
+![Week 02 - 자료구조와 알고리즘 다이어그램 1](/assets/images/upstage-ai-agent/diagrams/01-modules-data-structure-algorithm-week02-data-structure-algorithm-diagram-1.svg)
+
+## 연결된 개념
+- Big-O - 시간/공간 복잡도 분석
+- 스택 - LIFO 구조
+- 큐 - FIFO 구조
+- 해시-테이블 - O(1) 삽입/검색/삭제
+- BST - 이진 탐색 트리
+- DFS - 깊이 우선 탐색
+- BFS - 너비 우선 탐색

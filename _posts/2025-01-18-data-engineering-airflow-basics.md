@@ -2,7 +2,8 @@
 title: Apache Airflow 기초 개념
 categories:
 - 1.TIL
-- 1-9.DATA_ENGINEERING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-9.DATA_ENGINEERING
 tags:
 - 데이터엔지니어링
 - Airflow

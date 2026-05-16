@@ -2,7 +2,8 @@
 title: Python 객체지향 프로그래밍(OOP) - 클래스, 상속, 다중상속
 categories:
 - 1.TIL
-- 1-2.PYTHON
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-2.PYTHON
 tags:
 - python
 - OOP

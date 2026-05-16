@@ -2,7 +2,8 @@
 title: Django 이미지 업로드 - 사진 업로드와 프로필 관리
 categories:
 - 1.TIL
-- 1-5.WEB
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-5.WEB
 tags:
 - django
 - 이미지업로드

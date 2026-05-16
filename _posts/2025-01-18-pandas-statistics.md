@@ -2,7 +2,8 @@
 title: Pandas 통계 함수 - describe, mean, median, corr 등
 categories:
 - 1.TIL
-- 1-3.PANDAS
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-3.PANDAS
 tags:
 - - pandas
   - 통계

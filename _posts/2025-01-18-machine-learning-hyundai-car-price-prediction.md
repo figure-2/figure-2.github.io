@@ -2,7 +2,8 @@
 title: 현대자동차 가격 예측 실습
 categories:
 - 1.TIL
-- 1-8.MACHINE_LEARNING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-8.MACHINE_LEARNING
 tags:
 - 머신러닝
 - 회귀분석

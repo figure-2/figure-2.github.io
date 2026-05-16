@@ -2,7 +2,8 @@
 title: Selenium 크롤링 - 동적 웹 페이지 자동화
 categories:
 - 1.TIL
-- 1-5.WEB
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-5.WEB
 tags:
 - selenium
 - 웹자동화

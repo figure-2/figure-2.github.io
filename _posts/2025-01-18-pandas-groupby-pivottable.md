@@ -2,7 +2,8 @@
 title: Pandas groupby와 pivot_table - 그룹화와 피벗테이블
 categories:
 - 1.TIL
-- 1-3.PANDAS
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-3.PANDAS
 tags:
 - pandas
 - groupby

@@ -2,7 +2,8 @@
 title: CSS 기초 - 웹 스타일링의 핵심
 categories:
 - 1.TIL
-- 1-5.WEB
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-5.WEB
 tags:
 - css
 - 스타일링

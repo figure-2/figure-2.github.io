@@ -2,7 +2,8 @@
 title: Python 기초 - 변수, 연산자, 자료형
 categories:
 - 1.TIL
-- 1-2.PYTHON
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-2.PYTHON
 
 tags:
 - python

@@ -2,7 +2,8 @@
 title: PCA (Principal Component Analysis)
 categories:
 - 1.TIL
-- 1-8.MACHINE_LEARNING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-8.MACHINE_LEARNING
 tags:
 - PCA
 - 차원축소

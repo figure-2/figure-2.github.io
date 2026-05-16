@@ -2,7 +2,8 @@
 title: Django Instagram 클론 프로젝트 - 소셜미디어 플랫폼 개발
 categories:
 - 1.TIL
-- 1-6.PROJECT
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-11.PROJECT
 tags:
 - django
 - 프로젝트

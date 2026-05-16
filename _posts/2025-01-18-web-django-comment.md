@@ -2,7 +2,8 @@
 title: Django 댓글 시스템 - 1:N 관계와 댓글 CRUD
 categories:
 - 1.TIL
-- 1-5.WEB
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-5.WEB
 tags:
 - django
 - 댓글시스템

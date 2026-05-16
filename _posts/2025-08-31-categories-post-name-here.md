@@ -2,7 +2,8 @@
 title: NumPy 랑 친해지기
 categories:
 - 1.TIL
-- 1-2.PYTHON
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-2.PYTHON
 tags:
 - python
 - numpy

@@ -2,7 +2,8 @@
 title: Pandas 자료구조 - Series와 DataFrame
 categories:
 - 1.TIL
-- 1-3.PANDAS
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-3.PANDAS
 tags:
 - - pandas
   - 자료구조

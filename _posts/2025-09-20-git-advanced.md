@@ -2,7 +2,8 @@
 title: Git 고급
 categories:
 - 1.TIL
-- 1-1.GIT
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-1.GIT
 tags:
 - - git
   - 협업

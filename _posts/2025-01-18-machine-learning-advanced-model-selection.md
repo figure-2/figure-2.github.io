@@ -2,7 +2,8 @@
 title: '고급 머신러닝: 모델 선택과 평가'
 categories:
 - 1.TIL
-- 1-8.MACHINE_LEARNING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-8.MACHINE_LEARNING
 tags:
 - 머신러닝
 - 모델선택

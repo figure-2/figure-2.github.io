@@ -2,7 +2,8 @@
 title: 앙상블 분류 모델
 categories:
 - 1.TIL
-- 1-8.MACHINE_LEARNING
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-8.MACHINE_LEARNING
 tags:
 - 앙상블
 - 배깅

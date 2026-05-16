@@ -2,7 +2,8 @@
 title: 가상환경 설정
 categories:
 - 1.TIL
-- 1-1.GIT
+- 1-1.MULTICAMPUS_DATA_ENGINEERING
+- 1-1-1.GIT
 tags:
 - - python
   - 가상환경
