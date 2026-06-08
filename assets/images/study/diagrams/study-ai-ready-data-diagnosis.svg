@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 720" width="1180" height="720" role="img" aria-labelledby="title desc">
+  <title id="title">AI-Ready Data Diagnosis Flow</title>
+  <desc id="desc">AI 결과가 이상할 때 원본 데이터에 답이 있는가, 데이터가 정확하고 최신인가, AI가 소비 가능한 구조인가, 검색된 context가 적절한가를 순서대로 확인하는 진단 흐름.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/></marker>
+    <style>text{font-family:"Pretendard","Noto Sans KR",Inter,Arial,sans-serif;fill:#172033}.title{font-size:26px;font-weight:800}.sub{font-size:13px;fill:#64748b}.start{fill:#eef2ff;stroke:#6366f1;stroke-width:1.8}.q{fill:#fff7ed;stroke:#fb923c;stroke-width:1.7}.issue{fill:#fee2e2;stroke:#ef4444;stroke-width:1.5}.ok{fill:#ecfdf5;stroke:#10b981;stroke-width:1.7}.label{font-size:16px;font-weight:800}.small{font-size:12px;fill:#64748b}.arrow{stroke:#2563eb;stroke-width:2;fill:none;marker-end:url(#arrow)}</style></defs>
+  <rect width="1180" height="720" fill="#ffffff"/>
+  <text x="40" y="48" class="title">AI 결과가 이상할 때: 모델보다 데이터를 먼저 본다</text>
+  <text x="40" y="76" class="sub">대부분의 문제는 모델/프롬프트 이전에 원본 데이터, 구조, 검색 context에서 발견된다.</text>
+  <g transform="translate(455 112)"><rect width="270" height="58" rx="12" class="start"/><text x="135" y="35" text-anchor="middle" class="label">AI 결과가 이상함</text></g>
+  <g transform="translate(455 210)"><rect width="270" height="58" rx="12" class="q"/><text x="135" y="35" text-anchor="middle" class="label">원본 데이터에 답이 있는가?</text></g>
+  <g transform="translate(80 210)"><rect width="240" height="58" rx="12" class="issue"/><text x="120" y="35" text-anchor="middle" class="label">데이터 수집 문제</text></g>
+  <g transform="translate(455 310)"><rect width="270" height="58" rx="12" class="q"/><text x="135" y="35" text-anchor="middle" class="label">데이터가 정확하고 최신인가?</text></g>
+  <g transform="translate(80 310)"><rect width="240" height="58" rx="12" class="issue"/><text x="120" y="35" text-anchor="middle" class="label">데이터 품질 문제</text></g>
+  <g transform="translate(455 410)"><rect width="270" height="58" rx="12" class="q"/><text x="135" y="35" text-anchor="middle" class="label">AI가 소비 가능한 구조인가?</text></g>
+  <g transform="translate(80 410)"><rect width="240" height="58" rx="12" class="issue"/><text x="120" y="35" text-anchor="middle" class="label">구조화 문제</text></g>
+  <g transform="translate(455 510)"><rect width="270" height="58" rx="12" class="q"/><text x="135" y="35" text-anchor="middle" class="label">검색된 context가 적절한가?</text></g>
+  <g transform="translate(80 510)"><rect width="240" height="58" rx="12" class="issue"/><text x="120" y="29" text-anchor="middle" class="label">청킹 / 검색</text><text x="120" y="48" text-anchor="middle" class="label">필터링 문제</text></g>
+  <g transform="translate(455 610)"><rect width="270" height="58" rx="12" class="ok"/><text x="135" y="29" text-anchor="middle" class="label">프롬프트 / 모델</text><text x="135" y="48" text-anchor="middle" class="label">출력 형식 점검</text></g>
+  <path d="M590 170V210" class="arrow"/><path d="M455 239H320" class="arrow"/><text x="360" y="230" class="small">없음</text><path d="M590 268V310" class="arrow"/><text x="605" y="292" class="small">있음</text>
+  <path d="M455 339H320" class="arrow"/><text x="350" y="330" class="small">아니오</text><path d="M590 368V410" class="arrow"/><text x="605" y="392" class="small">예</text>
+  <path d="M455 439H320" class="arrow"/><text x="350" y="430" class="small">아니오</text><path d="M590 468V510" class="arrow"/><text x="605" y="492" class="small">예</text>
+  <path d="M455 539H320" class="arrow"/><text x="350" y="530" class="small">아니오</text><path d="M590 568V610" class="arrow"/><text x="605" y="592" class="small">예</text>
+</svg>

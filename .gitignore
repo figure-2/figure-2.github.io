@@ -8,6 +8,9 @@ Gemfile.lock
 .jekyll-metadata
 _site
 
+# Local drafts and private audit notes
+_drafts/
+
 # RubyGems
 *.gem
 

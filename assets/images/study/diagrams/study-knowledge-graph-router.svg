@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500" role="img" aria-labelledby="title desc">
+  <title id="title">Hybrid Router for RAG</title>
+  <desc id="desc">질문 유형에 따라 문서 유사도는 Vector RAG, 개체 관계는 GraphRAG, DB와 문서 혼합은 Hybrid Router, 도구 선택 필요는 Agentic RAG로 분기한다.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/></marker>
+    <style>text{font-family:"Pretendard","Noto Sans KR",Inter,Arial,sans-serif;fill:#172033}.title{font-size:26px;font-weight:800}.sub{font-size:13px;fill:#64748b}.q{fill:#fff7ed;stroke:#fb923c;stroke-width:1.8}.node{fill:#ffffff;stroke:#94a3b8;stroke-width:1.5}.route{fill:#eef2ff;stroke:#6366f1;stroke-width:1.7}.label{font-size:17px;font-weight:800}.small{font-size:12px;fill:#64748b}.arrow{stroke:#2563eb;stroke-width:2.1;fill:none;marker-end:url(#arrow)}</style></defs>
+  <rect width="1000" height="500" fill="#ffffff"/>
+  <text x="40" y="48" class="title">Hybrid Router: 질문 유형에 따라 검색 방식을 나눈다</text>
+  <text x="40" y="76" class="sub">Vector RAG와 GraphRAG는 대체 관계가 아니라 질문 유형별 선택지다.</text>
+  <g transform="translate(70 220)"><rect width="130" height="64" rx="12" class="node"/><text x="65" y="38" text-anchor="middle" class="label">질문</text></g>
+  <g transform="translate(280 200)"><path d="M105 0 L210 52 L105 104 L0 52 Z" class="q"/><text x="105" y="46" text-anchor="middle" class="label">질문 유형</text><text x="105" y="67" text-anchor="middle" class="small">Question Type</text></g>
+  <g transform="translate(600 100)"><rect width="180" height="58" rx="12" class="route"/><text x="90" y="34" text-anchor="middle" class="label">Vector RAG</text><text x="90" y="52" text-anchor="middle" class="small">문서 유사도</text></g>
+  <g transform="translate(600 190)"><rect width="180" height="58" rx="12" class="route"/><text x="90" y="34" text-anchor="middle" class="label">GraphRAG</text><text x="90" y="52" text-anchor="middle" class="small">개체 관계</text></g>
+  <g transform="translate(600 280)"><rect width="180" height="58" rx="12" class="route"/><text x="90" y="34" text-anchor="middle" class="label">Hybrid Router</text><text x="90" y="52" text-anchor="middle" class="small">DB + 문서 혼합</text></g>
+  <g transform="translate(600 370)"><rect width="180" height="58" rx="12" class="route"/><text x="90" y="34" text-anchor="middle" class="label">Agentic RAG</text><text x="90" y="52" text-anchor="middle" class="small">도구 선택 필요</text></g>
+  <path d="M200 252H280" class="arrow"/><path d="M490 252C540 252 540 129 600 129" class="arrow"/><path d="M490 252C540 252 540 219 600 219" class="arrow"/><path d="M490 252C540 252 540 309 600 309" class="arrow"/><path d="M490 252C540 252 540 399 600 399" class="arrow"/>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 520" width="1120" height="520" role="img" aria-labelledby="title desc">
+  <title id="title">GraphRAG Flow</title>
+  <desc id="desc">사용자 질문에서 entity와 relation을 추출하고 graph traversal과 vector search를 함께 사용해 관계 기반 context를 만들고 LLM 답변으로 이어지는 구조.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/></marker>
+    <style>text{font-family:"Pretendard","Noto Sans KR",Inter,Arial,sans-serif;fill:#172033}.title{font-size:26px;font-weight:800}.sub{font-size:13px;fill:#64748b}.node{fill:#fff;stroke:#94a3b8;stroke-width:1.5}.kg{fill:#eef2ff;stroke:#6366f1;stroke-width:1.8}.vec{fill:#f0fdf4;stroke:#10b981;stroke-width:1.8}.ctx{fill:#fff7ed;stroke:#fb923c;stroke-width:1.8}.label{font-size:17px;font-weight:800}.small{font-size:12px;fill:#64748b}.arrow{stroke:#2563eb;stroke-width:2.2;fill:none;marker-end:url(#arrow)}</style></defs>
+  <rect width="1120" height="520" fill="#ffffff"/>
+  <text x="40" y="48" class="title">GraphRAG: 관계 탐색과 의미 검색을 함께 쓴다</text>
+  <text x="40" y="76" class="sub">질문에서 개체와 관계를 추출한 뒤 graph traversal과 vector search 결과를 합쳐 context를 구성한다.</text>
+  <g transform="translate(60 225)"><rect width="150" height="70" rx="14" class="node"/><text x="75" y="31" text-anchor="middle" class="label">사용자 질문</text><text x="75" y="52" text-anchor="middle" class="small">User Query</text></g>
+  <g transform="translate(270 225)"><rect width="180" height="70" rx="14" class="node"/><text x="90" y="29" text-anchor="middle" class="label">Entity / Relation</text><text x="90" y="51" text-anchor="middle" class="small">추출</text></g>
+  <g transform="translate(535 135)"><rect width="180" height="70" rx="14" class="kg"/><text x="90" y="31" text-anchor="middle" class="label">Graph Traversal</text><text x="90" y="52" text-anchor="middle" class="small">관계 탐색</text></g>
+  <g transform="translate(535 315)"><rect width="180" height="70" rx="14" class="vec"/><text x="90" y="31" text-anchor="middle" class="label">Vector Search</text><text x="90" y="52" text-anchor="middle" class="small">의미 검색</text></g>
+  <g transform="translate(790 225)"><rect width="170" height="70" rx="14" class="ctx"/><text x="85" y="29" text-anchor="middle" class="label">관계 기반</text><text x="85" y="51" text-anchor="middle" class="label">Context</text></g>
+  <g transform="translate(1010 225)"><rect width="70" height="70" rx="14" class="node"/><text x="35" y="42" text-anchor="middle" class="label">LLM</text></g>
+  <g transform="translate(930 408)"><rect width="150" height="60" rx="12" class="vec"/><text x="75" y="36" text-anchor="middle" class="label">근거 기반 답변</text></g>
+  <path d="M210 260H270" class="arrow"/><path d="M450 260C500 260 495 170 535 170" class="arrow"/><path d="M450 260C500 260 495 350 535 350" class="arrow"/><path d="M715 170C760 170 752 260 790 260" class="arrow"/><path d="M715 350C760 350 752 260 790 260" class="arrow"/><path d="M960 260H1010" class="arrow"/><path d="M1045 295V408" class="arrow"/>
+</svg>

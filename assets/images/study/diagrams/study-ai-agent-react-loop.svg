@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 460" width="980" height="460" role="img" aria-labelledby="title desc">
+  <title id="title">ReAct Loop</title>
+  <desc id="desc">Thought, Action, Observation을 반복하고 충분하면 Final Answer로 종료하는 ReAct 루프.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+    <style>
+      text{font-family:"Pretendard","Noto Sans KR",Inter,Arial,sans-serif;fill:#172033}
+      .title{font-size:26px;font-weight:800}
+      .sub{font-size:13px;fill:#64748b}
+      .node{fill:#ffffff;stroke:#94a3b8;stroke-width:1.6}
+      .decision{fill:#fff7ed;stroke:#fb923c;stroke-width:1.8}
+      .final{fill:#ecfdf5;stroke:#10b981;stroke-width:1.8}
+      .label{font-size:18px;font-weight:800}
+      .small{font-size:13px;fill:#64748b}
+      .arrow{stroke:#2563eb;stroke-width:2.3;fill:none;marker-end:url(#arrow)}
+      .loop{stroke:#fb923c;stroke-width:2.3;fill:none;marker-end:url(#arrow);stroke-dasharray:7 6}
+    </style>
+  </defs>
+  <rect width="980" height="460" fill="#ffffff"/>
+  <text x="40" y="48" class="title">ReAct Loop: Think → Act → Observe</text>
+  <text x="40" y="76" class="sub">도구 결과를 보고 충분하지 않으면 다시 생각하고, 충분하면 최종 답변으로 종료한다.</text>
+
+  <g transform="translate(70 190)">
+    <rect width="170" height="82" rx="14" class="node"/>
+    <text x="85" y="35" text-anchor="middle" class="label">Thought</text>
+    <text x="85" y="58" text-anchor="middle" class="small">무엇을 해야 하는가</text>
+  </g>
+  <g transform="translate(300 190)">
+    <rect width="170" height="82" rx="14" class="node"/>
+    <text x="85" y="35" text-anchor="middle" class="label">Action</text>
+    <text x="85" y="58" text-anchor="middle" class="small">도구 호출</text>
+  </g>
+  <g transform="translate(530 190)">
+    <rect width="170" height="82" rx="14" class="node"/>
+    <text x="85" y="35" text-anchor="middle" class="label">Observation</text>
+    <text x="85" y="58" text-anchor="middle" class="small">도구 결과</text>
+  </g>
+  <g transform="translate(755 178)">
+    <path d="M90 0 L180 53 L90 106 L0 53 Z" class="decision"/>
+    <text x="90" y="47" text-anchor="middle" class="label">충분한가?</text>
+    <text x="90" y="70" text-anchor="middle" class="small">Enough?</text>
+  </g>
+  <g transform="translate(730 340)">
+    <rect width="230" height="72" rx="14" class="final"/>
+    <text x="115" y="31" text-anchor="middle" class="label">Final Answer</text>
+    <text x="115" y="53" text-anchor="middle" class="small">최종 답변</text>
+  </g>
+
+  <path d="M240 231H300" class="arrow"/>
+  <path d="M470 231H530" class="arrow"/>
+  <path d="M700 231H755" class="arrow"/>
+  <path d="M845 284V340" class="arrow"/>
+  <text x="870" y="322" class="small">예</text>
+  <path d="M845 178C820 105 145 100 155 190" class="loop"/>
+  <text x="467" y="120" class="small">아니오</text>
+</svg>

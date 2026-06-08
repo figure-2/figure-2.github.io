@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 360" width="1120" height="360" role="img" aria-labelledby="title desc">
+  <title id="title">RAG Evolution</title>
+  <desc id="desc">Naive RAG, Advanced RAG, Modular RAG, Agentic RAG로 이어지는 RAG 진화 흐름.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+    <style>
+      text{font-family:"Pretendard","Noto Sans KR",Inter,Arial,sans-serif;fill:#172033}
+      .title{font-size:26px;font-weight:800}
+      .sub{font-size:13px;fill:#64748b}
+      .box{fill:#ffffff;stroke:#94a3b8;stroke-width:1.5}
+      .box1{fill:#f8fafc}
+      .box2{fill:#eff6ff;stroke:#60a5fa}
+      .box3{fill:#f0fdf4;stroke:#34d399}
+      .box4{fill:#fff7ed;stroke:#fb923c}
+      .head{font-size:20px;font-weight:800}
+      .body{font-size:14px;fill:#475569}
+      .arrow{stroke:#2563eb;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1120" height="360" fill="#ffffff"/>
+  <text x="40" y="48" class="title">RAG의 진화: 검색해서 넣기에서 검색 판단까지</text>
+  <text x="40" y="76" class="sub">각 단계는 더 복잡한 질문과 실패 모드를 다루기 위해 추가된다.</text>
+
+  <g transform="translate(50 130)">
+    <rect width="210" height="132" rx="14" class="box box1"/>
+    <text x="105" y="38" text-anchor="middle" class="head">Naive RAG</text>
+    <text x="105" y="70" text-anchor="middle" class="body">검색해서 넣기</text>
+    <text x="105" y="96" text-anchor="middle" class="sub">chunking</text>
+    <text x="105" y="116" text-anchor="middle" class="sub">embedding</text>
+  </g>
+  <g transform="translate(315 130)">
+    <rect width="210" height="132" rx="14" class="box box2"/>
+    <text x="105" y="38" text-anchor="middle" class="head">Advanced RAG</text>
+    <text x="105" y="70" text-anchor="middle" class="body">검색 품질 개선</text>
+    <text x="105" y="96" text-anchor="middle" class="sub">hybrid search</text>
+    <text x="105" y="116" text-anchor="middle" class="sub">reranker</text>
+  </g>
+  <g transform="translate(580 130)">
+    <rect width="210" height="132" rx="14" class="box box3"/>
+    <text x="105" y="38" text-anchor="middle" class="head">Modular RAG</text>
+    <text x="105" y="70" text-anchor="middle" class="body">질문별 경로 분리</text>
+    <text x="105" y="96" text-anchor="middle" class="sub">router</text>
+    <text x="105" y="116" text-anchor="middle" class="sub">judge / memory</text>
+  </g>
+  <g transform="translate(845 130)">
+    <rect width="230" height="132" rx="14" class="box box4"/>
+    <text x="115" y="38" text-anchor="middle" class="head">Agentic RAG</text>
+    <text x="115" y="70" text-anchor="middle" class="body">검색 판단과 재검색</text>
+    <text x="115" y="96" text-anchor="middle" class="sub">planning</text>
+    <text x="115" y="116" text-anchor="middle" class="sub">tool use</text>
+  </g>
+
+  <path d="M260 196H315" class="arrow"/>
+  <path d="M525 196H580" class="arrow"/>
+  <path d="M790 196H845" class="arrow"/>
+</svg>

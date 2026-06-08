@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 820" width="1180" height="820" role="img" aria-labelledby="title desc">
+  <title id="title">Agentic Pattern Selection Tree</title>
+  <desc id="desc">작업 자동화 여부에서 시작해 고정 순서, 라우팅, 병렬화, 동적 작업 분해, 반복 평가, 장기 실행, 위험 작업 여부에 따라 패턴을 선택하는 트리.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+    <style>
+      text{font-family:"Pretendard","Noto Sans KR",Inter,Arial,sans-serif;fill:#172033}
+      .title{font-size:26px;font-weight:800}
+      .sub{font-size:13px;fill:#64748b}
+      .q{fill:#fff7ed;stroke:#fb923c;stroke-width:1.6}
+      .p{fill:#eef2ff;stroke:#6366f1;stroke-width:1.6}
+      .safe{fill:#ecfdf5;stroke:#10b981;stroke-width:1.6}
+      .label{font-size:15px;font-weight:800}
+      .small{font-size:12px;fill:#64748b}
+      .arrow{stroke:#2563eb;stroke-width:1.9;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1180" height="820" fill="#ffffff"/>
+  <text x="40" y="48" class="title">Agentic Pattern Selection Tree</text>
+  <text x="40" y="76" class="sub">위에서 아래로 질문에 답하며 가장 단순한 패턴부터 선택한다.</text>
+
+  <g transform="translate(460 112)"><rect width="260" height="58" rx="12" class="q"/><text x="130" y="35" text-anchor="middle" class="label">작업을 자동화할 것인가?</text></g>
+  <g transform="translate(460 210)"><rect width="260" height="58" rx="12" class="q"/><text x="130" y="35" text-anchor="middle" class="label">고정 순서로 해결되는가?</text></g>
+  <g transform="translate(120 300)"><rect width="220" height="58" rx="12" class="p"/><text x="110" y="35" text-anchor="middle" class="label">Prompt Chaining</text></g>
+  <g transform="translate(460 300)"><rect width="260" height="58" rx="12" class="q"/><text x="130" y="35" text-anchor="middle" class="label">입력 유형별 경로가 다른가?</text></g>
+  <g transform="translate(120 390)"><rect width="220" height="58" rx="12" class="p"/><text x="110" y="35" text-anchor="middle" class="label">Routing</text></g>
+  <g transform="translate(460 390)"><rect width="260" height="58" rx="12" class="q"/><text x="130" y="35" text-anchor="middle" class="label">독립 작업을 동시에 처리?</text></g>
+  <g transform="translate(120 480)"><rect width="220" height="58" rx="12" class="p"/><text x="110" y="35" text-anchor="middle" class="label">Parallelization</text></g>
+  <g transform="translate(460 480)"><rect width="260" height="58" rx="12" class="q"/><text x="130" y="35" text-anchor="middle" class="label">실행 중 작업 분해가 필요한가?</text></g>
+  <g transform="translate(805 480)"><rect width="240" height="58" rx="12" class="p"/><text x="120" y="35" text-anchor="middle" class="label">Orchestrator-Workers</text></g>
+  <g transform="translate(460 570)"><rect width="260" height="58" rx="12" class="q"/><text x="130" y="35" text-anchor="middle" class="label">반복 평가로 품질을 올릴 수?</text></g>
+  <g transform="translate(805 570)"><rect width="240" height="58" rx="12" class="p"/><text x="120" y="35" text-anchor="middle" class="label">Evaluator-Optimizer</text></g>
+  <g transform="translate(460 660)"><rect width="260" height="58" rx="12" class="q"/><text x="130" y="35" text-anchor="middle" class="label">장기 실행과 도구 사용?</text></g>
+  <g transform="translate(805 660)"><rect width="240" height="58" rx="12" class="p"/><text x="120" y="35" text-anchor="middle" class="label">Autonomous Agent</text></g>
+  <g transform="translate(120 660)"><rect width="220" height="58" rx="12" class="safe"/><text x="110" y="35" text-anchor="middle" class="label">단순 Workflow</text></g>
+  <g transform="translate(805 300)"><rect width="240" height="58" rx="12" class="q"/><text x="120" y="35" text-anchor="middle" class="label">되돌릴 수 없는 작업?</text></g>
+  <g transform="translate(805 390)"><rect width="240" height="58" rx="12" class="p"/><text x="120" y="35" text-anchor="middle" class="label">Human-in-the-Loop</text></g>
+
+  <path d="M590 170V210" class="arrow"/>
+  <path d="M460 239H340V329" class="arrow"/><text x="385" y="230" class="small">예</text>
+  <path d="M590 268V300" class="arrow"/><text x="604" y="288" class="small">아니오</text>
+  <path d="M460 329H340V419" class="arrow"/><text x="385" y="320" class="small">예</text>
+  <path d="M590 358V390" class="arrow"/>
+  <path d="M460 419H340V509" class="arrow"/><text x="385" y="410" class="small">예</text>
+  <path d="M590 448V480" class="arrow"/>
+  <path d="M720 509H805" class="arrow"/><text x="746" y="500" class="small">예</text>
+  <path d="M590 538V570" class="arrow"/>
+  <path d="M720 599H805" class="arrow"/><text x="746" y="590" class="small">예</text>
+  <path d="M590 628V660" class="arrow"/>
+  <path d="M460 689H340" class="arrow"/><text x="385" y="680" class="small">아니오</text>
+  <path d="M720 689H805" class="arrow"/><text x="746" y="680" class="small">예</text>
+  <path d="M925 358V390" class="arrow"/>
+  <path d="M340 419C690 418 704 329 805 329" class="arrow"/>
+  <path d="M925 538V358" class="arrow"/>
+  <path d="M925 718V448" class="arrow"/>
+</svg>

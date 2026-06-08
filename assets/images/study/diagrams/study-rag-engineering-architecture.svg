@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760" role="img" aria-labelledby="title desc">
+  <title id="title">Production RAG Engineering Architecture</title>
+  <desc id="desc">Offline ingestion pipeline and online query pipeline for production RAG, including data sources, parser, chunker, context enrichment, embedding, index store, semantic cache, query processing, router, hybrid search, reranker, LLM generation, evaluation monitoring, and guardrails.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-soft" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#64748b"/>
+    </marker>
+    <style>
+      text{font-family:"Pretendard","Noto Sans KR",Inter,Arial,sans-serif;fill:#172033}
+      .title{font-size:28px;font-weight:800}
+      .subtitle{font-size:13px;fill:#64748b}
+      .group{fill:#f8fafc;stroke:#cbd5e1;stroke-width:1.5}
+      .group-title{font-size:15px;font-weight:800;letter-spacing:.08em;fill:#475569}
+      .node{fill:#ffffff;stroke:#94a3b8;stroke-width:1.4}
+      .purple{fill:#f5f3ff;stroke:#8b5cf6;stroke-width:1.7}
+      .blue{fill:#eff6ff;stroke:#3b82f6;stroke-width:1.7}
+      .green{fill:#ecfdf5;stroke:#10b981;stroke-width:1.7}
+      .orange{fill:#fff7ed;stroke:#fb923c;stroke-width:1.7}
+      .pink{fill:#fdf2f8;stroke:#ec4899;stroke-width:1.7}
+      .red{fill:#fef2f2;stroke:#ef4444;stroke-width:1.7}
+      .label{font-size:14px;font-weight:800}
+      .small{font-size:11px;fill:#64748b}
+      .tiny{font-size:10px;fill:#64748b}
+      .arrow{stroke:#2563eb;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .soft{stroke:#64748b;stroke-width:1.5;fill:none;stroke-dasharray:6 5;marker-end:url(#arrow-soft)}
+    </style>
+  </defs>
+  <rect width="1280" height="760" fill="#ffffff"/>
+  <text x="40" y="48" class="title">Production RAG Architecture</text>
+  <text x="40" y="76" class="subtitle">Offline ingestion, online query, evaluation, guardrails를 한 흐름으로 설계한다.</text>
+
+  <rect x="40" y="110" width="1200" height="190" rx="16" class="group"/>
+  <text x="64" y="142" class="group-title">OFFLINE — INGESTION PIPELINE</text>
+
+  <g transform="translate(70 180)">
+    <rect width="130" height="66" rx="12" class="purple"/>
+    <text x="65" y="28" text-anchor="middle" class="label">Data Sources</text>
+    <text x="65" y="48" text-anchor="middle" class="small">PDF, DB, API, Web</text>
+  </g>
+  <g transform="translate(235 180)">
+    <rect width="110" height="66" rx="12" class="purple"/>
+    <text x="55" y="28" text-anchor="middle" class="label">Parser</text>
+    <text x="55" y="48" text-anchor="middle" class="small">Unstructured</text>
+  </g>
+  <g transform="translate(380 180)">
+    <rect width="130" height="66" rx="12" class="purple"/>
+    <text x="65" y="28" text-anchor="middle" class="label">Chunker</text>
+    <text x="65" y="48" text-anchor="middle" class="small">Recursive / Semantic</text>
+  </g>
+  <g transform="translate(545 170)">
+    <rect width="170" height="86" rx="12" class="purple"/>
+    <text x="85" y="28" text-anchor="middle" class="label">Context Enrichment</text>
+    <text x="85" y="49" text-anchor="middle" class="small">Contextual Prefix</text>
+    <text x="85" y="67" text-anchor="middle" class="small">Metadata Tagging</text>
+  </g>
+  <g transform="translate(750 180)">
+    <rect width="130" height="66" rx="12" class="purple"/>
+    <text x="65" y="28" text-anchor="middle" class="label">Embed Model</text>
+    <text x="65" y="48" text-anchor="middle" class="small">Dense + Sparse</text>
+  </g>
+  <g transform="translate(930 155)">
+    <rect width="245" height="116" rx="14" class="blue"/>
+    <text x="122.5" y="31" text-anchor="middle" class="label">Index Store</text>
+    <rect x="24" y="44" width="197" height="20" rx="5" fill="#ffffff" stroke="#bfdbfe"/>
+    <text x="122.5" y="58" text-anchor="middle" class="tiny">Dense Vector Index</text>
+    <rect x="24" y="68" width="197" height="20" rx="5" fill="#ffffff" stroke="#fed7aa"/>
+    <text x="122.5" y="82" text-anchor="middle" class="tiny">Sparse BM25 Index</text>
+    <rect x="24" y="92" width="197" height="18" rx="5" fill="#ffffff" stroke="#bbf7d0"/>
+    <text x="122.5" y="105" text-anchor="middle" class="tiny">Metadata Store</text>
+  </g>
+
+  <path d="M200 213H235" class="arrow"/>
+  <path d="M345 213H380" class="arrow"/>
+  <path d="M510 213H545" class="arrow"/>
+  <path d="M715 213H750" class="arrow"/>
+  <path d="M880 213H930" class="arrow"/>
+
+  <rect x="40" y="335" width="1200" height="360" rx="16" class="group"/>
+  <text x="64" y="367" class="group-title">ONLINE — QUERY PIPELINE</text>
+
+  <g transform="translate(70 430)">
+    <rect width="120" height="66" rx="12" class="node"/>
+    <text x="60" y="28" text-anchor="middle" class="label">User Query</text>
+    <text x="60" y="48" text-anchor="middle" class="small">입력</text>
+  </g>
+  <g transform="translate(70 540)">
+    <rect width="120" height="58" rx="12" class="green"/>
+    <text x="60" y="25" text-anchor="middle" class="label">Semantic Cache</text>
+    <text x="60" y="43" text-anchor="middle" class="small">Hit → 바로 응답</text>
+  </g>
+  <g transform="translate(235 410)">
+    <rect width="170" height="106" rx="14" class="blue"/>
+    <text x="85" y="29" text-anchor="middle" class="label">Query Processing</text>
+    <text x="85" y="52" text-anchor="middle" class="small">Classification</text>
+    <text x="85" y="70" text-anchor="middle" class="small">Rewriting / HyDE</text>
+    <text x="85" y="88" text-anchor="middle" class="small">Decomposition</text>
+  </g>
+  <g transform="translate(450 430)">
+    <rect width="110" height="66" rx="12" class="orange"/>
+    <text x="55" y="28" text-anchor="middle" class="label">Router</text>
+    <text x="55" y="48" text-anchor="middle" class="small">경로 분기</text>
+  </g>
+  <g transform="translate(610 405)">
+    <rect width="190" height="116" rx="14" class="blue"/>
+    <text x="95" y="30" text-anchor="middle" class="label">Hybrid Search</text>
+    <rect x="22" y="44" width="146" height="22" rx="5" fill="#ffffff" stroke="#bfdbfe"/>
+    <text x="95" y="59" text-anchor="middle" class="tiny">Dense: ANN (HNSW / IVF)</text>
+    <rect x="22" y="72" width="146" height="22" rx="5" fill="#ffffff" stroke="#fed7aa"/>
+    <text x="95" y="87" text-anchor="middle" class="tiny">Sparse: BM25 / SPLADE</text>
+    <text x="95" y="108" text-anchor="middle" class="tiny">RRF / alpha weighting</text>
+  </g>
+  <g transform="translate(845 430)">
+    <rect width="130" height="66" rx="12" class="blue"/>
+    <text x="65" y="28" text-anchor="middle" class="label">Reranker</text>
+    <text x="65" y="48" text-anchor="middle" class="small">Top-K → Top-N</text>
+  </g>
+  <g transform="translate(1020 425)">
+    <rect width="130" height="76" rx="14" class="green"/>
+    <text x="65" y="30" text-anchor="middle" class="label">LLM Generation</text>
+    <text x="65" y="51" text-anchor="middle" class="small">+ Citation</text>
+  </g>
+  <g transform="translate(1010 555)">
+    <rect width="150" height="54" rx="12" class="green"/>
+    <text x="75" y="32" text-anchor="middle" class="label">Response</text>
+  </g>
+  <g transform="translate(430 585)">
+    <rect width="280" height="72" rx="14" class="pink"/>
+    <text x="140" y="28" text-anchor="middle" class="label">Evaluation &amp; Monitoring</text>
+    <text x="140" y="49" text-anchor="middle" class="small">Faithfulness · Relevancy · Latency · Cost</text>
+  </g>
+  <g transform="translate(760 585)">
+    <rect width="210" height="72" rx="14" class="red"/>
+    <text x="105" y="28" text-anchor="middle" class="label">Guardrails</text>
+    <text x="105" y="49" text-anchor="middle" class="small">Hallucination · PII · Toxicity</text>
+  </g>
+
+  <path d="M190 463H235" class="arrow"/>
+  <path d="M130 496V540" class="soft"/>
+  <path d="M405 463H450" class="arrow"/>
+  <path d="M560 463H610" class="arrow"/>
+  <path d="M800 463H845" class="arrow"/>
+  <path d="M975 463H1020" class="arrow"/>
+  <path d="M1085 501V555" class="arrow"/>
+  <path d="M1052 271C1052 330 705 340 705 405" class="soft"/>
+  <path d="M505 496C505 550 505 565 505 585" class="soft"/>
+  <path d="M705 521C660 550 610 560 570 585" class="soft"/>
+  <path d="M1085 609C970 635 805 635 710 621" class="soft"/>
+  <path d="M505 496C505 545 925 535 1020 501" class="soft"/>
+  <text x="585" y="545" class="tiny">no-retrieval path</text>
+</svg>

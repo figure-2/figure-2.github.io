@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 460" width="1080" height="460" role="img" aria-labelledby="title desc">
+  <title id="title">AI-Ready Data and RAG Failure Points</title>
+  <desc id="desc">Raw Data, 정제, Metadata, Chunking, Indexing, Retrieval, Answer 흐름에서 정제, metadata, chunking 실패가 그럴듯한 오답으로 이어질 수 있음을 보여준다.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/></marker>
+    <style>text{font-family:"Pretendard","Noto Sans KR",Inter,Arial,sans-serif;fill:#172033}.title{font-size:26px;font-weight:800}.sub{font-size:13px;fill:#64748b}.node{fill:#fff;stroke:#94a3b8;stroke-width:1.5}.bad{fill:#fee2e2;stroke:#ef4444;stroke-width:1.7}.label{font-size:16px;font-weight:800}.small{font-size:12px;fill:#64748b}.arrow{stroke:#2563eb;stroke-width:2.1;fill:none;marker-end:url(#arrow)}.fail{stroke:#ef4444;stroke-width:2;fill:none;marker-end:url(#arrow);stroke-dasharray:7 6}</style></defs>
+  <rect width="1080" height="460" fill="#ffffff"/>
+  <text x="40" y="48" class="title">RAG 실패는 검색 단계에서 보이지만 원인은 앞단에 있을 수 있다</text>
+  <text x="40" y="76" class="sub">정제, metadata, chunking 품질이 낮으면 retrieval 이후에는 그럴듯한 오답으로 전파된다.</text>
+  <g transform="translate(40 185)"><rect width="120" height="64" rx="12" class="node"/><text x="60" y="38" text-anchor="middle" class="label">Raw Data</text></g>
+  <g transform="translate(190 185)"><rect width="110" height="64" rx="12" class="node"/><text x="55" y="38" text-anchor="middle" class="label">정제</text></g>
+  <g transform="translate(330 185)"><rect width="120" height="64" rx="12" class="node"/><text x="60" y="38" text-anchor="middle" class="label">Metadata</text></g>
+  <g transform="translate(480 185)"><rect width="120" height="64" rx="12" class="node"/><text x="60" y="38" text-anchor="middle" class="label">Chunking</text></g>
+  <g transform="translate(630 185)"><rect width="110" height="64" rx="12" class="node"/><text x="55" y="38" text-anchor="middle" class="label">Indexing</text></g>
+  <g transform="translate(770 185)"><rect width="120" height="64" rx="12" class="node"/><text x="60" y="38" text-anchor="middle" class="label">Retrieval</text></g>
+  <g transform="translate(920 185)"><rect width="120" height="64" rx="12" class="node"/><text x="60" y="38" text-anchor="middle" class="label">Answer</text></g>
+  <g transform="translate(455 330)"><rect width="180" height="66" rx="14" class="bad"/><text x="90" y="30" text-anchor="middle" class="label">그럴듯한 오답</text><text x="90" y="51" text-anchor="middle" class="small">Plausible Failure</text></g>
+  <path d="M160 217H190" class="arrow"/><path d="M300 217H330" class="arrow"/><path d="M450 217H480" class="arrow"/><path d="M600 217H630" class="arrow"/><path d="M740 217H770" class="arrow"/><path d="M890 217H920" class="arrow"/>
+  <path d="M245 249C250 315 380 346 455 363" class="fail"/><path d="M390 249C410 305 455 328 500 330" class="fail"/><path d="M540 249C540 305 535 328 545 330" class="fail"/>
+  <text x="228" y="292" class="small">품질 낮음</text><text x="382" y="292" class="small">권한/버전 없음</text><text x="552" y="292" class="small">문맥 절단</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 380" width="980" height="380" role="img" aria-labelledby="title desc">
+  <title id="title">Knowledge Graph Triple</title>
+  <desc id="desc">Subject 상품B, Predicate 적용된다, Object 정책C, Predicate 예외조건이다, Object 조건D로 이어지는 triple 예시.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/></marker>
+    <style>
+      text{font-family:"Pretendard","Noto Sans KR",Inter,Arial,sans-serif;fill:#172033}
+      .title{font-size:26px;font-weight:800}.sub{font-size:13px;fill:#64748b}
+      .entity{fill:#eef2ff;stroke:#6366f1;stroke-width:1.8}.rel{fill:#fff7ed;stroke:#fb923c;stroke-width:1.8}
+      .label{font-size:18px;font-weight:800}.small{font-size:13px;fill:#64748b}.arrow{stroke:#2563eb;stroke-width:2.3;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="980" height="380" fill="#ffffff"/>
+  <text x="40" y="48" class="title">Triple: 지식 그래프의 기본 단위</text>
+  <text x="40" y="76" class="sub">문장 안에 숨어 있던 관계를 Subject → Predicate → Object 형태로 명시한다.</text>
+  <g transform="translate(60 170)"><rect width="150" height="76" rx="14" class="entity"/><text x="75" y="32" text-anchor="middle" class="small">Subject</text><text x="75" y="56" text-anchor="middle" class="label">상품B</text></g>
+  <g transform="translate(260 170)"><rect width="150" height="76" rx="14" class="rel"/><text x="75" y="32" text-anchor="middle" class="small">Predicate</text><text x="75" y="56" text-anchor="middle" class="label">적용된다</text></g>
+  <g transform="translate(460 170)"><rect width="150" height="76" rx="14" class="entity"/><text x="75" y="32" text-anchor="middle" class="small">Object</text><text x="75" y="56" text-anchor="middle" class="label">정책C</text></g>
+  <g transform="translate(660 170)"><rect width="150" height="76" rx="14" class="rel"/><text x="75" y="32" text-anchor="middle" class="small">Predicate</text><text x="75" y="56" text-anchor="middle" class="label">예외조건이다</text></g>
+  <g transform="translate(830 170)"><rect width="110" height="76" rx="14" class="entity"/><text x="55" y="32" text-anchor="middle" class="small">Object</text><text x="55" y="56" text-anchor="middle" class="label">조건D</text></g>
+  <path d="M210 208H260" class="arrow"/><path d="M410 208H460" class="arrow"/><path d="M610 208H660" class="arrow"/><path d="M810 208H830" class="arrow"/>
+</svg>
