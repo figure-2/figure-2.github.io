@@ -106,5 +106,5 @@ flowchart TD
 
 다음 글에서는 이 판단이 실제 파이프라인 구조로 어떻게 이어졌는지 정리한다.
 
-- 이전 글: [SeSAC:Note - 멀티모달 AI 강의 노트 서비스 개발기]({% post_url 2026-02-10-project-sesac-note-case-study %})
+- 이전 글: [SeSAC:Note Visual Portfolio - 6장으로 보는 프로젝트 요약]({% post_url 2026-02-10-project-sesac-note-visual-portfolio %})
 - 다음 글: [STT, VLM, Fusion으로 강의 영상을 노트로 바꾸는 구조]({% post_url 2026-02-10-project-sesac-note-architecture %})

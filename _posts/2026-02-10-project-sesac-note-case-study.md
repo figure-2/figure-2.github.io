@@ -120,4 +120,4 @@ flowchart TB
 
 이 프로젝트는 한 글로 끝내면 중요한 판단들이 묻힌다. 이후 글에서는 문제 정의, 아키텍처, 캡처/VLM 개선, 비동기 처리, 영상 근거 기반 QA, Judge 평가, 검증과 보안 범위를 나누어 정리한다.
 
-- 다음 글: [강의 영상 요약 문제를 어떻게 재정의했는가]({% post_url 2026-02-10-project-sesac-note-problem-definition %})
+- 다음 글: [SeSAC:Note Visual Portfolio - 6장으로 보는 프로젝트 요약]({% post_url 2026-02-10-project-sesac-note-visual-portfolio %})

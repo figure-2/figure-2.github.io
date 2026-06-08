@@ -117,12 +117,13 @@ flowchart LR
 이번 시리즈는 SeSAC:Note를 하나의 긴 개발 흐름으로 정리했다.
 
 1. [SeSAC:Note - 멀티모달 AI 강의 노트 서비스 개발기]({% post_url 2026-02-10-project-sesac-note-case-study %})
-2. [강의 영상 요약 문제를 어떻게 재정의했는가]({% post_url 2026-02-10-project-sesac-note-problem-definition %})
-3. [STT, VLM, Fusion으로 강의 영상을 노트로 바꾸는 구조]({% post_url 2026-02-10-project-sesac-note-architecture %})
-4. [슬라이드 중복 캡처와 VLM 입력 품질을 줄이는 과정]({% post_url 2026-02-10-project-sesac-note-capture-vlm %})
-5. [긴 영상 처리에서 상태 추적과 체감 대기시간을 다룬 방법]({% post_url 2026-02-10-project-sesac-note-async-pipeline %})
-6. [단순 챗봇이 아니라 영상 근거 안에서 답하는 QA 흐름 만들기]({% post_url 2026-02-10-project-sesac-note-evidence-qa %})
-7. [LLM Judge로 요약 품질을 점검할 때 조심해야 할 것]({% post_url 2026-02-10-project-sesac-note-judge-evaluation %})
-8. [검증 범위, 보안 보강, 그리고 프로젝트 회고]({% post_url 2026-02-10-project-sesac-note-validation-retrospective %})
+2. [SeSAC:Note Visual Portfolio - 6장으로 보는 프로젝트 요약]({% post_url 2026-02-10-project-sesac-note-visual-portfolio %})
+3. [강의 영상 요약 문제를 어떻게 재정의했는가]({% post_url 2026-02-10-project-sesac-note-problem-definition %})
+4. [STT, VLM, Fusion으로 강의 영상을 노트로 바꾸는 구조]({% post_url 2026-02-10-project-sesac-note-architecture %})
+5. [슬라이드 중복 캡처와 VLM 입력 품질을 줄이는 과정]({% post_url 2026-02-10-project-sesac-note-capture-vlm %})
+6. [긴 영상 처리에서 상태 추적과 체감 대기시간을 다룬 방법]({% post_url 2026-02-10-project-sesac-note-async-pipeline %})
+7. [단순 챗봇이 아니라 영상 근거 안에서 답하는 QA 흐름 만들기]({% post_url 2026-02-10-project-sesac-note-evidence-qa %})
+8. [LLM Judge로 요약 품질을 점검할 때 조심해야 할 것]({% post_url 2026-02-10-project-sesac-note-judge-evaluation %})
+9. [검증 범위, 보안 보강, 그리고 프로젝트 회고]({% post_url 2026-02-10-project-sesac-note-validation-retrospective %})
 
 - 이전 글: [LLM Judge로 요약 품질을 점검할 때 조심해야 할 것]({% post_url 2026-02-10-project-sesac-note-judge-evaluation %})
