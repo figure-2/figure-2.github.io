@@ -319,7 +319,6 @@ math: true
 - [GPT-2: Language Models are Unsupervised Multitask Learners]({% post_url 2026-01-21-upstage-reference-gpt-2-paper %}) — `05_Resources/GPT-2-논문.md`
 - [GPT-3: Language Models are Few-Shot Learners]({% post_url 2026-01-21-upstage-reference-gpt-3-paper %}) — `05_Resources/GPT-3-논문.md`
 - [AI Product Engineer - Interactive Learning System]({% post_url 2026-05-15-upstage-reference-claude-learning-system %}) — `CLAUDE.md`
-- [AI Product Engineer - Interactive Learning]({% post_url 2026-05-15-upstage-reference-repository-readme %}) — `README.md`
 
 ## 원칙
 
