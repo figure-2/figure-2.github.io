@@ -1,5 +1,5 @@
 ---
-title: "04. 강의 영상 요약 문제를 어떻게 재정의했는가"
+title: "04. 문제 정의: STT 요약을 넘어 독립형 강의 노트로"
 categories:
 - 2.PROJECT
 - 2-5. SeSAC-Note
@@ -15,7 +15,7 @@ mermaid: true
 math: true
 ---
 
-# 04. 강의 영상 요약 문제를 어떻게 재정의했는가
+# 04. 문제 정의: STT 요약을 넘어 독립형 강의 노트로
 
 SeSAC:Note의 출발점은 "강의 영상을 요약하자"가 아니었다. 더 정확한 문제는 "학습자가 영상을 다시 보지 않아도 핵심 개념과 근거를 읽을 수 있게 만들 수 있는가"였다.
 
@@ -106,5 +106,5 @@ flowchart TD
 
 다음 글에서는 이 판단이 실제 파이프라인 구조로 어떻게 이어졌는지 정리한다.
 
-- 이전 글: [03. SeSAC:Note Visual Portfolio - 6장으로 보는 프로젝트 요약]({% post_url 2025-12-05-project-sesac-note-03-visual-portfolio %})
-- 다음 글: [05. STT, VLM, Fusion으로 강의 영상을 노트로 바꾸는 구조]({% post_url 2025-12-16-project-sesac-note-05-architecture %})
+- 이전 글: [03. 6장으로 보는 SeSAC:Note 포트폴리오 요약]({% post_url 2025-12-05-project-sesac-note-03-visual-portfolio %})
+- 다음 글: [05. 아키텍처: STT, VLM, Fusion을 연결하는 방법]({% post_url 2025-12-16-project-sesac-note-05-architecture %})

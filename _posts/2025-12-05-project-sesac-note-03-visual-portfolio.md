@@ -1,5 +1,5 @@
 ---
-title: "03. SeSAC:Note Visual Portfolio - 6장으로 보는 프로젝트 요약"
+title: "03. 6장으로 보는 SeSAC:Note 포트폴리오 요약"
 categories:
 - 2.PROJECT
 - 2-5. SeSAC-Note
@@ -16,7 +16,7 @@ mermaid: true
 math: true
 ---
 
-# 03. SeSAC:Note Visual Portfolio - 6장으로 보는 프로젝트 요약
+# 03. 6장으로 보는 SeSAC:Note 포트폴리오 요약
 
 이 글은 SeSAC:Note 프로젝트를 기술 상세보다 먼저 빠르게 이해하기 위한 시각 요약본이다. 원본 웹 포트폴리오 산출물은 밝은 배경, 얇은 보더, 카드형 UI, 민트/틸 포인트를 기준으로 만들었고, 이미지 자체를 붙이는 방식보다 텍스트와 카드, 도식을 수정 가능한 구조로 정리하는 방향을 잡았다.
 
@@ -153,5 +153,5 @@ JD Fit은 다음 우선순위로 정리한다.
 
 이 글은 기술 상세로 들어가기 전의 포트폴리오 요약본이다. 따라서 대표 케이스스터디 다음에 두는 것이 맞다. 이후 글에서 문제 정의, 아키텍처, 캡처/VLM, 비동기 처리, QA, Judge, 검증과 회고를 하나씩 자세히 보면 된다.
 
-- 이전 글: [02. SeSAC:Note README 기준 프로젝트 구조 정리]({% post_url 2025-12-02-project-sesac-note-02-readme-overview %})
-- 다음 글: [04. 강의 영상 요약 문제를 어떻게 재정의했는가]({% post_url 2025-12-09-project-sesac-note-04-problem-definition %})
+- 이전 글: [02. SeSAC:Note 핵심 기능과 구조]({% post_url 2025-12-02-project-sesac-note-02-readme-overview %})
+- 다음 글: [04. 문제 정의: STT 요약을 넘어 독립형 강의 노트로]({% post_url 2025-12-09-project-sesac-note-04-problem-definition %})

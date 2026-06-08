@@ -1,5 +1,5 @@
 ---
-title: "09. LLM Judge로 요약 품질을 점검할 때 조심해야 할 것"
+title: "09. Judge 설계: 요약 품질을 보조 평가하는 방법"
 categories:
 - 2.PROJECT
 - 2-5. SeSAC-Note
@@ -15,7 +15,7 @@ mermaid: true
 math: true
 ---
 
-# 09. LLM Judge로 요약 품질을 점검할 때 조심해야 할 것
+# 09. Judge 설계: 요약 품질을 보조 평가하는 방법
 
 SeSAC:Note에서 Judge는 정답 판별기가 아니다. Judge는 Summarizer가 만든 노트를 원본 segment와 비교해 groundedness, note quality, multimodal use를 보조적으로 점검하는 gate다.
 
@@ -106,5 +106,5 @@ SeSAC:Note에서 Judge의 역할은 다음으로 제한한다.
 
 다음 글에서는 마지막으로 검증 범위, 보안 보강, 그리고 이 프로젝트를 공개 글로 쓸 때 지켜야 할 claim boundary를 정리한다.
 
-- 이전 글: [08. 단순 챗봇이 아니라 영상 근거 안에서 답하는 QA 흐름 만들기]({% post_url 2026-01-20-project-sesac-note-08-evidence-qa %})
-- 다음 글: [10. 검증 범위, 보안 보강, 그리고 프로젝트 회고]({% post_url 2026-02-10-project-sesac-note-10-validation-retrospective %})
+- 이전 글: [08. QA 설계: 영상 근거 안에서만 답하게 만들기]({% post_url 2026-01-20-project-sesac-note-08-evidence-qa %})
+- 다음 글: [10. 프로젝트 회고: 검증 범위, 보안 보강, 남은 한계]({% post_url 2026-02-10-project-sesac-note-10-validation-retrospective %})

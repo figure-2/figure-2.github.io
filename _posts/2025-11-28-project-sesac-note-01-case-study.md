@@ -1,5 +1,5 @@
 ---
-title: "01. SeSAC:Note - 멀티모달 AI 강의 노트 서비스 개발기"
+title: "01. SeSAC:Note 프로젝트 개요: 강의 영상을 AI 학습 노트로 바꾸기"
 categories:
 - 2.PROJECT
 - 2-5. SeSAC-Note
@@ -17,7 +17,7 @@ mermaid: true
 math: true
 ---
 
-# 01. SeSAC:Note - 멀티모달 AI 강의 노트 서비스 개발기
+# 01. SeSAC:Note 프로젝트 개요: 강의 영상을 AI 학습 노트로 바꾸기
 
 SeSAC:Note는 강의 영상의 음성 정보와 화면 정보를 시간축으로 결합해, 영상 없이도 복습 가능한 AI 강의 노트와 영상별 질의응답을 제공하는 멀티모달 AI 서비스다.
 
@@ -120,4 +120,4 @@ flowchart TB
 
 이 프로젝트는 한 글로 끝내면 중요한 판단들이 묻힌다. 이후 글에서는 문제 정의, 아키텍처, 캡처/VLM 개선, 비동기 처리, 영상 근거 기반 QA, Judge 평가, 검증과 보안 범위를 나누어 정리한다.
 
-- 다음 글: [02. SeSAC:Note README 기준 프로젝트 구조 정리]({% post_url 2025-12-02-project-sesac-note-02-readme-overview %})
+- 다음 글: [02. SeSAC:Note 핵심 기능과 구조]({% post_url 2025-12-02-project-sesac-note-02-readme-overview %})

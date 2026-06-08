@@ -1,5 +1,5 @@
 ---
-title: "02. SeSAC:Note README 기준 프로젝트 구조 정리"
+title: "02. SeSAC:Note 핵심 기능과 구조"
 categories:
 - 2.PROJECT
 - 2-5. SeSAC-Note
@@ -17,7 +17,7 @@ mermaid: true
 math: true
 ---
 
-# 02. SeSAC:Note README 기준 프로젝트 구조 정리
+# 02. SeSAC:Note 핵심 기능과 구조
 
 이 글은 SeSAC:Note README에 정리된 실제 구현 내용을 기준으로 프로젝트의 기능, 아키텍처, 기술 스택, 실행 구조를 상위 관점에서 정리한 글이다.
 
@@ -150,5 +150,5 @@ README에는 실제 개발과 운영에 필요한 항목이 많지만, 블로그
 
 따라서 이후 글들은 README를 상위 기준으로 삼되, 상세 구현 회고는 공개 가능한 범위로 재작성한다.
 
-- 이전 글: [01. SeSAC:Note - 멀티모달 AI 강의 노트 서비스 개발기]({% post_url 2025-11-28-project-sesac-note-01-case-study %})
-- 다음 글: [03. SeSAC:Note Visual Portfolio - 6장으로 보는 프로젝트 요약]({% post_url 2025-12-05-project-sesac-note-03-visual-portfolio %})
+- 이전 글: [01. SeSAC:Note 프로젝트 개요: 강의 영상을 AI 학습 노트로 바꾸기]({% post_url 2025-11-28-project-sesac-note-01-case-study %})
+- 다음 글: [03. 6장으로 보는 SeSAC:Note 포트폴리오 요약]({% post_url 2025-12-05-project-sesac-note-03-visual-portfolio %})

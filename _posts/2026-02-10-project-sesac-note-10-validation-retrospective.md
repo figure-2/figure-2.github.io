@@ -1,5 +1,5 @@
 ---
-title: "10. 검증 범위, 보안 보강, 그리고 프로젝트 회고"
+title: "10. 프로젝트 회고: 검증 범위, 보안 보강, 남은 한계"
 categories:
 - 2.PROJECT
 - 2-5. SeSAC-Note
@@ -16,7 +16,7 @@ mermaid: true
 math: true
 ---
 
-# 10. 검증 범위, 보안 보강, 그리고 프로젝트 회고
+# 10. 프로젝트 회고: 검증 범위, 보안 보강, 남은 한계
 
 SeSAC:Note를 공개 프로젝트 글로 정리할 때 가장 중요한 것은 "무엇을 만들었는가"만이 아니었다. "무엇을 어디까지 검증했는가"를 같은 비중으로 적어야 했다.
 
@@ -116,15 +116,15 @@ flowchart LR
 
 이번 시리즈는 SeSAC:Note를 하나의 긴 개발 흐름으로 정리했다.
 
-1. [01. SeSAC:Note - 멀티모달 AI 강의 노트 서비스 개발기]({% post_url 2025-11-28-project-sesac-note-01-case-study %})
-2. [02. SeSAC:Note README 기준 프로젝트 구조 정리]({% post_url 2025-12-02-project-sesac-note-02-readme-overview %})
-3. [03. SeSAC:Note Visual Portfolio - 6장으로 보는 프로젝트 요약]({% post_url 2025-12-05-project-sesac-note-03-visual-portfolio %})
-4. [04. 강의 영상 요약 문제를 어떻게 재정의했는가]({% post_url 2025-12-09-project-sesac-note-04-problem-definition %})
-5. [05. STT, VLM, Fusion으로 강의 영상을 노트로 바꾸는 구조]({% post_url 2025-12-16-project-sesac-note-05-architecture %})
-6. [06. 슬라이드 중복 캡처와 VLM 입력 품질을 줄이는 과정]({% post_url 2025-12-23-project-sesac-note-06-capture-vlm %})
-7. [07. 긴 영상 처리에서 상태 추적과 체감 대기시간을 다룬 방법]({% post_url 2026-01-06-project-sesac-note-07-async-pipeline %})
-8. [08. 단순 챗봇이 아니라 영상 근거 안에서 답하는 QA 흐름 만들기]({% post_url 2026-01-20-project-sesac-note-08-evidence-qa %})
-9. [09. LLM Judge로 요약 품질을 점검할 때 조심해야 할 것]({% post_url 2026-01-30-project-sesac-note-09-judge-evaluation %})
-10. [10. 검증 범위, 보안 보강, 그리고 프로젝트 회고]({% post_url 2026-02-10-project-sesac-note-10-validation-retrospective %})
+1. [01. SeSAC:Note 프로젝트 개요: 강의 영상을 AI 학습 노트로 바꾸기]({% post_url 2025-11-28-project-sesac-note-01-case-study %})
+2. [02. SeSAC:Note 핵심 기능과 구조]({% post_url 2025-12-02-project-sesac-note-02-readme-overview %})
+3. [03. 6장으로 보는 SeSAC:Note 포트폴리오 요약]({% post_url 2025-12-05-project-sesac-note-03-visual-portfolio %})
+4. [04. 문제 정의: STT 요약을 넘어 독립형 강의 노트로]({% post_url 2025-12-09-project-sesac-note-04-problem-definition %})
+5. [05. 아키텍처: STT, VLM, Fusion을 연결하는 방법]({% post_url 2025-12-16-project-sesac-note-05-architecture %})
+6. [06. 캡처와 VLM 개선: 중복 슬라이드와 입력 품질 다루기]({% post_url 2025-12-23-project-sesac-note-06-capture-vlm %})
+7. [07. 비동기 처리: 긴 영상의 대기시간과 상태 추적 줄이기]({% post_url 2026-01-06-project-sesac-note-07-async-pipeline %})
+8. [08. QA 설계: 영상 근거 안에서만 답하게 만들기]({% post_url 2026-01-20-project-sesac-note-08-evidence-qa %})
+9. [09. Judge 설계: 요약 품질을 보조 평가하는 방법]({% post_url 2026-01-30-project-sesac-note-09-judge-evaluation %})
+10. [10. 프로젝트 회고: 검증 범위, 보안 보강, 남은 한계]({% post_url 2026-02-10-project-sesac-note-10-validation-retrospective %})
 
-- 이전 글: [09. LLM Judge로 요약 품질을 점검할 때 조심해야 할 것]({% post_url 2026-01-30-project-sesac-note-09-judge-evaluation %})
+- 이전 글: [09. Judge 설계: 요약 품질을 보조 평가하는 방법]({% post_url 2026-01-30-project-sesac-note-09-judge-evaluation %})

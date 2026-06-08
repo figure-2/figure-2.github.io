@@ -1,5 +1,5 @@
 ---
-title: "05. STT, VLM, Fusion으로 강의 영상을 노트로 바꾸는 구조"
+title: "05. 아키텍처: STT, VLM, Fusion을 연결하는 방법"
 categories:
 - 2.PROJECT
 - 2-5. SeSAC-Note
@@ -16,7 +16,7 @@ mermaid: true
 math: true
 ---
 
-# 05. STT, VLM, Fusion으로 강의 영상을 노트로 바꾸는 구조
+# 05. 아키텍처: STT, VLM, Fusion을 연결하는 방법
 
 SeSAC:Note의 핵심 구조는 `영상 -> 음성 근거 + 화면 근거 -> 시간축 결합 -> 노트와 QA`다. 이 구조를 만들기 위해 STT, 슬라이드 캡처, VLM, Fusion, Summarizer, Judge, QA 흐름을 하나의 서비스 파이프라인으로 연결했다.
 
@@ -110,5 +110,5 @@ Storage/R2 계열 저장소는 원본 영상과 캡처 이미지를 담당하고
 
 이 구조에서 가장 먼저 병목이 드러난 곳은 화면 캡처와 VLM 입력이었다. 중복 슬라이드가 많으면 VLM 호출이 늘고, VLM 출력이 흔들리면 요약과 Judge까지 흔들린다. 다음 글에서는 이 부분을 어떻게 줄였는지 정리한다.
 
-- 이전 글: [04. 강의 영상 요약 문제를 어떻게 재정의했는가]({% post_url 2025-12-09-project-sesac-note-04-problem-definition %})
-- 다음 글: [06. 슬라이드 중복 캡처와 VLM 입력 품질을 줄이는 과정]({% post_url 2025-12-23-project-sesac-note-06-capture-vlm %})
+- 이전 글: [04. 문제 정의: STT 요약을 넘어 독립형 강의 노트로]({% post_url 2025-12-09-project-sesac-note-04-problem-definition %})
+- 다음 글: [06. 캡처와 VLM 개선: 중복 슬라이드와 입력 품질 다루기]({% post_url 2025-12-23-project-sesac-note-06-capture-vlm %})
