@@ -15,186 +15,276 @@ comments: false
 mermaid: true
 math: true
 ---
-# Agentic AI 패턴 가이드 2: 8가지 패턴
+02 · Patterns
 
-> **한줄 정의**
-> Agentic pattern은 LLM을 한 번 호출할지, 순차로 엮을지, 분기할지, 병렬화할지, 평가 loop를 둘지, agent에게 맡길지를 고르는 선택지다.
+## 8가지 핵심 패턴
 
-## 전체 목록
+Input / User
 
-| 번호 | 패턴 | 핵심 |
-| --- | --- | --- |
-| 00 | Augmented LLM | LLM + Tools + Memory + Retrieval |
-| 01 | Prompt Chaining | 순차 pipeline |
-| 02 | Routing | 입력 분류 후 전문 handler로 분기 |
-| 03 | Parallelization | 독립 작업 병렬 실행 또는 voting |
-| 04 | Orchestrator-Workers | 중앙 orchestrator가 worker에게 동적 위임 |
-| 05 | Evaluator-Optimizer | 생성과 평가를 반복 |
-| 06 | Autonomous Agent | LLM이 경로와 도구를 자율 선택 |
-| 07 | Human-in-the-Loop | 위험 행동 직전 사람 승인 |
+LLM Call
 
-## 00. Augmented LLM
+Decision / Check
 
-모든 패턴의 기본 블록이다.
+Tool / Worker
 
-```text
-LLM
-  -> Tools
-  -> Memory
-  -> Retrieval
-```
+Memory / Storage
 
-LLM이 tool, memory, retrieval을 언제 어떻게 쓸지 결정한다. 단일 call이지만 외부 세계와 연결된다.
+Success Output
 
-## 01. Prompt Chaining
+Error / Exit
 
-작업을 순차 단계로 나눈다.
+00
 
-```text
-Brief
-  -> Outline
-  -> Gate
-  -> Draft
-  -> Refine
-  -> Final
-```
+Augmented LLM
 
-| 관점 | 내용 |
-| --- | --- |
-| 언제 쓰나 | 작업을 고정 단계로 나눌 수 있을 때 |
-| 예 | 마케팅 카피, 번역, 보고서 초안 |
-| 장점 | 단계별 검증 가능 |
-| 실패 모드 | 앞 단계 오류가 뒤로 전파 |
+— 모든 패턴의 기본 블록
 
-Gate를 넣어 조건 미달 시 retry하거나 종료한다.
+Foundation
 
-## 02. Routing
+에이전틱 시스템의 가장 작은 단위. LLM + Tools + Memory + Retrieval의 조합입니다. 아래 모든 패턴은 이 기본 블록을 어떻게 여러 개 엮느냐의 문제로 환원됩니다.
 
-입력을 분류해 전문 handler로 보낸다.
+핵심 원리
 
-```text
-Ticket
-  -> Router
-  -> Billing Handler
-  -> Tech Handler
-  -> FAQ Handler
-```
+LLM이 자기 스스로
 
-| 관점 | 내용 |
-| --- | --- |
-| 언제 쓰나 | 입력 유형이 명확히 나뉠 때 |
-| 예 | 고객지원, 문서 분류, 모델 routing |
-| 장점 | handler별 prompt/tool/model 최적화 |
-| 비용 전략 | router는 작은 모델, handler는 필요한 모델 |
+언제/어떻게
 
-## 03. Parallelization
+tools/memory/retrieval을 쓸지 결정
 
-작업을 병렬로 나눠 실행한다.
+인터페이스
 
-| 변형 | 설명 | 예 |
-| --- | --- | --- |
-| Sectioning | 서로 다른 관점을 나눠 병렬 처리 | 보안/성능/스타일 code review |
-| Voting | 같은 작업을 여러 번 실행 후 다수결 | fact-check, 분류 신뢰도 향상 |
+Function calling · Tool use API · Retrieval augmentation
 
-장점은 latency를 줄이고 관점별 집중도를 높이는 것이다. 단점은 비용이 늘어난다.
+왜 중요한가
 
-## 04. Orchestrator-Workers
+아래 모든 패턴은 이 블록을
 
-중앙 orchestrator가 runtime에 하위 작업을 분해하고 worker에게 위임한다.
+어떻게 조합
 
-```text
-User Goal
-  -> Orchestrator
-  -> Grep Worker
-  -> Read Worker
-  -> Edit Worker
-  -> Bash Worker
-  -> Verify
-```
+하느냐의 문제
 
-| 관점 | 내용 |
-| --- | --- |
-| 언제 쓰나 | subtask가 실행 중 결정될 때 |
-| 예 | coding agent, research agent |
-| 핵심 | shared context와 재계획 |
-| 차이 | Parallelization은 고정 분할, Orchestrator는 동적 분할 |
+01
 
-## 04+. Multi-Agent Topologies
+Prompt Chaining
 
-Orchestrator-Workers는 Supervisor topology의 한 형태다.
+Sequential
 
-| topology | 제어 구조 | 특징 |
-| --- | --- | --- |
-| Supervisor | 중앙 집중 | 명확한 역할 분담, 결과 통합 |
-| Swarm | peer handoff | 유연하지만 debugging 어려움 |
-| Hierarchical | 다층 구조 | 대규모 책임 격리 |
+Simple
 
-## 05. Evaluator-Optimizer
+작업을 순차 단계로 쪼개서 이전 LLM의 출력이 다음 LLM의 입력이 됩니다. 중간에 게이트(검증)를 넣어 조건에 맞지 않으면 중단하거나 재시도할 수 있습니다.
 
-Generator가 만들고 Evaluator가 평가해 반복 개선한다.
+언제 쓰나
 
-```text
-Generate
-  -> Evaluate
-  -> Feedback
-  -> Improve
-  -> Stop when pass
-```
+작업을
 
-| 언제 쓰나 | 예 |
-| --- | --- |
-| 품질 기준이 명확할 때 | 번역, 코드 리뷰, 답변 품질 개선 |
-| 반복 개선이 가치 있을 때 | 고품질 문서, 고객 응대 |
-| 자동 평가가 가능할 때 | schema, test, rubric |
+고정된 단계
 
-평가 기준이 없으면 loop가 비용만 쓰고 좋아졌는지 알 수 없다.
+로 명확히 쪼갤 수 있을 때
 
-## 06. Autonomous Agent
+대표 예시
 
-목표만 주고 LLM이 경로, 도구, 종료를 판단한다.
+마케팅 카피: 아웃라인 → 초안 → 번역 → 검수
 
-| 장점 | 위험 |
-| --- | --- |
-| open-ended task에 강함 | 비용과 latency 예측 어려움 |
-| 사람의 단계 설계 부담 감소 | tool misuse, infinite loop |
-| 복잡한 탐색 가능 | debugging 어려움 |
+실패 모드
 
-필수 안전장치:
+앞 단계 에러가 뒷 단계로 전파 → 게이트 필수
 
-- max steps
-- cost limit
-- sandbox
-- permission gate
-- trace
+02
 
-## 07. Human-in-the-Loop
+Routing
 
-실패 비용이 큰 행동 직전 사람을 넣는다.
+Classifier
 
-| 작업 | 승인 필요 이유 |
-| --- | --- |
-| 결제 | 금전 피해 |
-| 발송 | 외부 커뮤니케이션 사고 |
-| 삭제 | 복구 불가능성 |
-| 권한 변경 | 보안 사고 |
-| 배포 | 사용자 영향 |
+Simple
 
-HITL은 agent 성능 부족의 보완책이 아니라 production 표준 안전장치다.
+입력을 분류해서 적절한 전문 핸들러로 라우팅합니다. 각 핸들러가 자기 작업에만 특화되어 품질이 올라갑니다.
 
-## 내 기준
+언제 쓰나
 
-패턴 선택은 멋이 아니라 실패 비용의 문제다.
+입력 타입이
 
-```text
-단순하면 단일 호출
-절차가 있으면 chain
-유형이 갈리면 routing
-관점이 나뉘면 parallel
-동적으로 쪼개야 하면 orchestrator
-품질 기준이 있으면 evaluator
-실패 비용이 크면 HITL
-```
+명확히 구분
 
-## 다음 글
+되고 각각 다른 처리가 필요할 때
 
-- [Agentic AI 패턴 가이드 3: 선택 기준, 비용, 토폴로지]({% post_url 2026-04-17-study-agentic-pattern-selection-topology %})
+대표 예시
+
+고객지원: 환불/기술지원/일반 분류 → 전문 에이전트로
+
+팁
+
+Router는 작은 모델(Haiku)로, Handler는 적절한 크기 모델로 → 비용 절감
+
+03
+
+Parallelization
+
+Parallel
+
+Sectioning · Voting
+
+작업을 병렬로 쪼개 실행 후 집계합니다. Sectioning은 독립 하위 작업 분할, Voting은 같은 작업을 여러 번 실행해 다수결.
+
+언제 쓰나
+
+작업이
+
+독립적
+
+이거나
+
+신뢰도
+
+를 높여야 할 때
+
+대표 예시
+
+코드 리뷰: 보안/성능/스타일 관점을 동시에 검토
+
+장점
+
+레이턴시 단축 + 컨텍스트 분리로 각 관점 집중
+
+04
+
+Orchestrator-Workers
+
+Dynamic
+
+Advanced
+
+중앙 Orchestrator LLM이 런타임에 하위 작업을 동적으로 분해하고 워커들에게 위임합니다. 서브태스크를 미리 정해둘 수 없는 문제에 적합합니다.
+
+언제 쓰나
+
+서브태스크가
+
+런타임에 결정
+
+되고 병렬화 가능할 때
+
+대표 예시
+
+Claude Code의 sub-agents, 검색 에이전트
+
+핵심 차이
+
+Parallelization은 고정 분할, Orchestrator는
+
+동적 분할
+
+04+
+
+Multi-agent Topologies
+
+— Orchestrator 확장
+
+LangGraph
+
+Extension
+
+Orchestrator-Workers는 Supervisor 토폴로지의 한 형태입니다. 실무에서는 제어 구조에 따라 세 가지로 나뉩니다: Supervisor(중앙 조정) · Swarm(피어 handoff) · Hierarchical(다층 구조).
+
+Supervisor
+
+현재 우리의 Orchestrator-Workers. 코드 에이전트, Claude Code의 sub-agents
+
+Swarm
+
+고객지원 multi-specialist, 다중 역할 롤플레잉, OpenAI Swarm SDK
+
+Hierarchical
+
+엔터프라이즈 에이전트 플랫폼 (회계·법무·고객 팀 병렬 운영)
+
+05
+
+Evaluator-Optimizer
+
+Iterative
+
+Feedback Loop
+
+한 LLM이 생성(Generator), 다른 LLM이 피드백(Evaluator). 기준을 충족할 때까지 반복해 품질을 끌어올립니다.
+
+언제 쓰나
+
+정답은 없지만
+
+품질 기준이 명확
+
+할 때
+
+대표 예시
+
+번역, 에세이 개선, 코드 리팩토링
+
+주의
+
+최대 반복 횟수(예: 3회) 제한 필수 → 무한루프 방지
+
+06
+
+Autonomous Agent
+
+Autonomous
+
+High Complexity
+
+LLM이 스스로 도구 사용과 경로를 결정합니다. 환경에서 피드백을 받고 계획을 수정하며 종료 조건까지 자율 실행. 유연하지만 비용과 실패 위험이 큽니다.
+
+언제 쓰나
+
+경로가
+
+완전히 열려있고
+
+자율성이 핵심 가치일 때
+
+대표 예시
+
+Claude Code, Computer Use, 리서치 에이전트
+
+필수 가드레일
+
+Max steps · 비용 한도 · Human check-in · 테스트 샌드박스
+
+07
+
+Human-in-the-Loop
+
+— Pause · Approve · Resume
+
+Production-grade
+
+Safety
+
+에이전트가 중요한 결정 직전에 일시정지하고 사람의 검토/승인/수정을 기다린 뒤 재개합니다. 자율성과 안전성의 균형을 잡는 프로덕션 1순위 패턴. LangGraph는 이를 checkpoint + interrupt로 구현합니다.
+
+언제 쓰나
+
+실수의 비용이
+
+크고 되돌릴 수 없는
+
+모든 상황
+
+대표 예시
+
+코드 PR 머지 · 송금 · 이메일 발송 · 회의 예약 · 리소스 삭제
+
+구현 핵심
+
+상태 직렬화(checkpoint) · 비동기 대기 · 알림 · 재개 가능 메시지 큐
+
+---
+
+## 추가 정리
+
+### 핵심 요약
+
+8가지 패턴은 서로 경쟁하는 기술이 아니라 조합 가능한 설계 블록이다. Prompt Chaining, Routing, Parallelization, Orchestrator-Workers, Evaluator-Optimizer, Autonomous Agent, Human-in-the-Loop는 문제의 불확실성 수준에 따라 선택된다.
+
+### 보충 해설
+
+고정 절차는 Prompt Chaining이 적합하고, 입력 유형이 갈리면 Routing이 적합하다. 병렬 검토가 필요하면 Parallelization을 쓰고, 하위 작업이 실행 중에 정해지면 Orchestrator-Workers가 필요하다. 위험한 행동은 Human-in-the-Loop로 멈춤 지점을 만들어야 한다.

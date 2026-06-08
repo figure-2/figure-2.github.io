@@ -15,172 +15,504 @@ comments: false
 mermaid: true
 math: true
 ---
-# AI Agent 완벽 가이드 2: Agent 성숙도 7단계
+Levels 0-6
 
-> **한줄 정의**
-> Agent 성숙도는 LLM 호출이 얼마나 자율적으로 도구를 쓰고, 흐름을 결정하고, 실패를 복구하는지에 따라 올라간다.
+## Agent 성숙도 7단계
 
-## 단계 요약
+단순 LLM 호출부터 멀티 에이전트 시스템까지, 각 레벨의 구조와 특징을 살펴봅니다
 
-| 레벨 | 이름 | 자율성 | 도구 사용 | 흐름 결정 | 대표 기술 |
-| --- | --- | --- | --- | --- | --- |
-| L0 | Simple LLM Call | 없음 | 없음 | 코드 | 기본 ChatGPT/Claude 호출 |
-| L1 | Augmented LLM | 낮음 | 단일 턴 | 코드 | RAG, Function Calling |
-| L2 | Chained / Sequential Agent | 낮음 | 순차 | 코드 | LangChain Chains |
-| L3 | Router / Branching Agent | 중간 | 분기 | 코드 + LLM | Semantic Router |
-| L4 | ReAct / Loop Agent | 높음 | loop | LLM | ReAct, Claude Tool Use |
-| L5 | Planning Agent | 높음 | 계획 + loop | LLM | Plan-and-Execute, ADK |
-| L6 | Multi-Agent System | 매우 높음 | 분산 | 다수 LLM | CrewAI, AutoGen |
+🧩
 
-## L0. Simple LLM Call
+함께 보기
 
-```text
-User Prompt -> LLM -> Response
-```
+어떤 패턴을 내 상황에 써야 할지
 
-외부 도구, memory, loop가 없다. 빠르고 단순하지만 최신 정보나 사내 데이터에는 접근하지 못한다.
+선택이 고민이라면 — 패턴별 실전 예시·비용/레이턴시 비교·조합 레시피가 담긴
 
-| 사용 예시 | 한계 |
-| --- | --- |
-| 이메일 초안 | 최신 정보 접근 불가 |
-| 마케팅 카피 | 사내 데이터 참조 불가 |
-| 코드 리뷰 초안 | 근거 없는 판단 가능 |
+Agentic AI 패턴 가이드
 
-## L1. Augmented LLM
+를 보세요.
 
-```text
-User Query
-  -> LLM
-  -> Tool Call
-  -> Tool Result
-  -> Final Answer
-```
+패턴 가이드 →
 
-LLM이 필요할 때 외부 도구를 한 번 호출한다. RAG와 function calling이 여기에 속한다.
+Simple
 
-| 특징 | 설명 |
-| --- | --- |
-| 장점 | 외부 데이터 접근 가능 |
-| 한계 | 결과가 부족해도 재시도하지 않음 |
-| 예시 | 날씨 API, DB query, naive RAG |
+Autonomous
 
-## L2. Chained / Sequential Agent
+Multi-Agent
 
-순서가 고정된 pipeline이다.
+L0
 
-```text
-Analyze -> Draft -> Validate -> Polish -> Output
-```
+### Simple LLM Call
 
-각 단계에서 LLM을 쓸 수 있지만, 단계 순서는 코드가 정한다.
+No Tools
 
-| 장점 | 한계 |
-| --- | --- |
-| 예측 가능하고 디버깅 쉬움 | 분기와 재계획이 약함 |
-| gate로 품질 관리 가능 | 간단한 요청도 전체 pipeline 통과 |
+No Memory
 
-## L3. Router / Branching Agent
+Single Turn
 
-입력을 분류해 적절한 workflow로 보낸다.
+자율성
 
-```text
+가장 기본적인 형태입니다. 프롬프트를 넣으면 응답이 나오는 단순 호출로, LLM의 학습된 지식만으로 답변합니다. 외부 도구 접근이 없어 할루시네이션 리스크가 가장 높습니다.
+
+U
+
+User
+
+Prompt
+
+L
+
+LLM
+
+Response
+
+R
+
+Output
+
+#### 사용 예시
+
+- "이메일 초안 써줘"
+
+- "이 코드 리뷰해줘"
+
+- "마케팅 카피 만들어줘"
+
+#### 한계
+
+- 최신 정보 접근 불가
+
+- 사내 데이터 참조 불가
+
+- 정보를 지어낼 수 있음
+
+#### 관련 기술
+
+- Chain-of-Thought (Wei et al., 2022)
+
+- Zero-shot / Few-shot Prompting
+
+- 기본 ChatGPT / Claude 호출
+
+L1
+
+### Augmented LLM (Tool Use)
+
+Function Calling
+
+RAG
+
+Single Cycle
+
+자율성
+
+LLM이 필요할 때 외부 도구를 한 번 호출할 수 있습니다. 도구를 쓸지 말지를 LLM이 판단하고, 결과를 받아 최종 응답을 생성합니다. 하지만 한 번의 사이클로 끝나며, 결과가 부족해도 재시도하지 않습니다.
+
+U
+
+User
+
+Query
+
+L
+
+LLM
+
+Tool Call
+
+API / DB / Search
+
+Response
+
+R
+
+Output
+
+#### 도구 유형
+
+- 검색: RAG, 웹 검색
+
+- API: 날씨, 주가, DB 쿼리
+
+- 실행: 코드 인터프리터, 계산기
+
+#### 사용 예시
+
+- "오늘 서울 날씨 알려줘" → weather API
+
+- "Q3 매출 데이터 찾아줘" → DB 쿼리
+
+- Naive RAG: 벡터 검색 → 답변 생성
+
+#### 관련 기술
+
+- Toolformer (Schick et al., 2023)
+
+- MRKL Systems (Karpas et al., 2022)
+
+- Function Calling / Structured Output
+
+L2
+
+### Chained / Sequential Agent
+
+Pipeline
+
+Deterministic
+
+Multi-Step
+
+자율성
+
+여러 단계를 미리 정의된 순서대로 실행합니다. 앞 단계의 출력이 뒷 단계의 입력이 됩니다. Gate(검증 단계)를 넣어 품질을 체크할 수 있지만, 전체 흐름은 코드로 고정되어 있습니다.
+
+1
+
+분석
+
+2
+
+처리
+
+G
+
+검증
+
+3
+
+출력
+
+##### 문서 번역 파이프라인
+
+원문 분석
+
+→
+
+초벌 번역
+
+→
+
+용어 검증
+
+→
+
+최종 다듬기
+
+##### 코드 생성 파이프라인
+
+요구사항
+
+→
+
+코드 생성
+
+→
+
+린트/테스트
+
+→
+
+리뷰/수정
+
+#### 특징
+
+- 실행 순서가 코드로 고정 (deterministic)
+
+- 각 단계에서 LLM이 동작하지만 전체 흐름은 LLM이 결정하지 않음
+
+- Latency = 각 단계의 합산
+
+#### 한계
+
+- 분기(branching)가 없음
+
+- 간단한 요청도 전체 파이프라인 통과 필요
+
+- 한 단계 실패 시 전체 중단
+
+L3
+
+### Router / Branching Agent
+
+Dynamic Routing
+
+Classifier
+
+Parallel
+
+자율성
+
+입력을 분석해서 적절한 경로로 분기합니다. LLM이 분류기(classifier) 역할을 수행하며, 각 브랜치는 독립적인 워크플로우입니다. 리소스 효율적이고 병렬 실행도 가능합니다.
+
+U
+
 Input
-  -> Router
-  -> Billing Handler
-  -> Tech Handler
-  -> FAQ Handler
-```
 
-| 적합한 경우 | 예시 |
-| --- | --- |
-| 입력 유형이 명확히 나뉨 | 고객 문의 분류 |
-| handler별 prompt와 도구가 다름 | 환불, 기술지원, 일반 문의 |
-| 비용 최적화가 필요 | router는 작은 모델, handler는 적절한 모델 |
+R
 
-## L4. ReAct / Loop Agent
+Router
 
-여기서부터 진짜 agent에 가깝다.
+Simple
 
-![ReAct loop](/assets/images/study/diagrams/study-ai-agent-react-loop.svg){: width="100%"}
+직접 답변
 
-```text
-Thought -> Action -> Observe -> Thought -> ... -> Answer
-```
+Data
 
-| 구성 | 의미 |
-| --- | --- |
-| Thought | 상황 분석과 다음 행동 판단 |
-| Action | 도구 선택과 실행 |
-| Observe | 실행 결과 확인 |
-| Answer | 충분하면 종료 |
+검색 파이프라인
 
-필수 안전장치는 `max_iterations`다. 종료 조건이 없으면 loop가 비용과 시간을 계속 소비한다.
+Code
 
-## L5. Planning Agent
+코드 생성
 
-Planning Agent는 실행 전에 전체 계획을 세우고, 중간 실패에 따라 계획을 수정한다.
+##### 고객 지원 시스템
 
-```text
-Plan
-  -> Execute Task 1
-  -> Execute Task 2
-  -> Reflect
-  -> Re-plan
-  -> Continue
-```
+고객 메시지
 
-| 적합한 작업 | 이유 |
-| --- | --- |
-| 경쟁사 분석 보고서 | 정보 수집, 비교, 작성이 순차적이지만 중간 재검색 필요 |
-| 코드베이스 migration | 많은 파일을 나누어 처리하고 실패 시 재계획 필요 |
-| 긴 research task | 하위 질문이 실행 중 바뀜 |
+"환불 요청" → 환불 처리 워크플로우
 
-## L6. Multi-Agent System
+"기술 문의" → 기술 지원 워크플로우
 
-여러 agent가 역할별로 협업한다.
+"일반 문의" → FAQ 기반 응답
 
-```text
+L4
+
+### ReAct / Loop Agent
+
+True Agent
+
+Self-Correction
+
+Autonomous Loop
+
+자율성
+
+여기서부터 진정한 Agent입니다
+
+LLM이 루프를 돌면서 스스로 판단하고, 도구를 선택하고, 결과를 평가하고, 필요하면 다시 시도합니다. ReAct(Reasoning + Acting) 패턴이 핵심이며, 종료 조건도 LLM이 판단합니다.
+
+반복
+
+T
+
+Thought
+
+상황 분석 & 판단
+
+A
+
+Action
+
+도구 선택 & 실행
+
+O
+
+Observe
+
+결과 확인 & 평가
+
+!
+
+Answer
+
+#### ReAct 실행 예시: 리서치 에이전트
+
+Thought
+
+사용자가 2024년 한국 GDP를 묻고 있다. 최신 데이터니까 검색이 필요하다.
+
+Action
+
+web_search("2024 한국 GDP")
+
+Observe
+
+검색 결과가 2023년 데이터뿐이다. 더 최신 쿼리가 필요.
+
+Thought
+
+쿼리를 변경해서 재검색하자.
+
+Action
+
+web_search("South Korea GDP 2024 IMF estimate")
+
+Observe
+
+IMF 기준 1.7조 달러라는 결과 확인. 신뢰할 만한 출처.
+
+Answer
+
+2024년 한국 GDP는 IMF 추정 기준 약 1.7조 달러입니다...
+
+#### 핵심 특징
+
+- LLM이 실행 흐름을 제어
+
+- 자기 수정(self-correction) 가능
+
+- 종료 조건을 LLM이 판단
+
+- max_iterations 설정 필수
+
+#### 관련 논문
+
+- ReAct (Yao et al., 2022) - ICLR 2023
+
+- Reflexion (Shinn et al., 2023)
+
+- Tree of Thoughts (Yao et al., 2023)
+
+L5
+
+### Planning Agent
+
+Task Decomposition
+
+Adaptive Replanning
+
+Reflection
+
+자율성
+
+실행 전에 먼저 전체 계획을 세우고, 계획에 따라 단계별로 실행하며, 상황에 따라 계획을 동적으로 수정합니다. 장기 목표(long-horizon task) 처리가 가능합니다.
+
+P
+
+##### Plan
+
+작업 분해
+
+Task 1
+
+Task 2
+
+Task 3
+
+Task 4
+
+E
+
+##### Execute
+
+단계별 ReAct 실행
+
+R
+
+##### Reflect
+
+결과 평가 & 계획 수정
+
+Re-plan
+
+##### "경쟁사 분석 보고서 만들어줘"
+
+✓
+
+1. 경쟁사 리스트 확정
+
+✗
+
+2. 재무 데이터 수집
+
+회사 B 데이터 못 찾음
+
+↻
+
+2'. Re-plan: 대안 소스에서 재검색
+
+✓
+
+2'. 대안 소스에서 수집 완료
+
+●
+
+3. SWOT 분석
+
+●
+
+4. 보고서 작성
+
+L6
+
+### Multi-Agent System
+
+Collaboration
+
+Specialization
+
+Distributed
+
+자율성
+
+여러 에이전트가 각자의 역할, 도구, 프롬프트를 가지고 협업합니다. Orchestrator가 작업을 분배하고 결과를 통합하며, 각 에이전트가 독립된 컨텍스트를 가져 컨텍스트 윈도우 한계를 완화합니다.
+
+O
+
 Orchestrator
-  -> Researcher
-  -> Coder
-  -> Reviewer
-  -> Writer
-```
 
-| 패턴 | 설명 |
-| --- | --- |
-| Orchestrator-Worker | 중앙 agent가 작업을 나누고 결과를 통합 |
-| Evaluator-Optimizer | generator가 만들고 evaluator가 평가 후 수정 |
-| Debate / Adversarial | 서로 다른 agent가 주장과 반론을 만들고 moderator가 판정 |
+R
 
-Multi-Agent는 context window 한계를 줄이고 역할 전문화를 줄 수 있지만, debugging과 cost가 크게 늘어난다.
+Researcher
 
-## 단계 선택 기준
+Search, Fetch
 
-| 상황 | 권장 단계 |
-| --- | --- |
-| 단순 생성 | L0 |
-| 외부 데이터 한 번 조회 | L1 |
-| 고정 절차 | L2 |
-| 입력별 분기 | L3 |
-| 도구 결과에 따라 재시도 | L4 |
-| 장기 목표와 재계획 | L5 |
-| 역할별 병렬 협업 | L6 |
+C
 
-## 내 기준
+Coder
 
-성숙도가 높다는 것은 무조건 좋은 것이 아니다.
+IDE, Terminal
 
-```text
-낮은 단계
-  -> 싸고 빠르고 예측 가능
+Q
 
-높은 단계
-  -> 강하지만 비싸고 관찰이 필요
-```
+Reviewer
 
-문제가 L2로 풀리면 L4를 쓰지 않는다. 문제 해결에 필요한 최소 자율성만 추가한다.
+Lint, Test
 
-## 다음 글
+W
 
-- [AI Agent 완벽 가이드 3: Memory, RAG, Guardrails, Cost]({% post_url 2026-04-04-study-ai-agent-architecture-operations %})
+Writer
+
+Docs, Format
+
+##### Orchestrator-Worker
+
+중앙 관리자가 작업을 분배하고 결과를 통합. 가장 일반적인 패턴.
+
+Claude Code의 sub-agents
+
+##### Evaluator-Optimizer
+
+Generator가 생성, Evaluator가 평가 후 피드백. 반복적 개선.
+
+코드 리뷰 자동화
+
+##### Debate / Adversarial
+
+Agent A가 주장, Agent B가 반론. Moderator가 최종 판정.
+
+의사결정 지원 시스템
+
+### 단계별 비교 요약
+
+| 레벨 | 자율성 | 도구 사용 | 흐름 결정 | 대표 기술 |
+| --- | --- | --- | --- | --- |
+| L0 | 없음 | 없음 | 코드 | ChatGPT 기본 호출 |
+| L1 | 낮음 | 단일 턴 | 코드 | RAG, Function Calling |
+| L2 | 낮음 | 순차 | 코드 | LangChain Chains |
+| L3 | 중간 | 분기 | 코드+LLM | Semantic Router |
+| L4 | 높음 | 루프 | LLM | ReAct, Claude Tool Use |
+| L5 | 높음 | 계획+루프 | LLM | Plan-and-Execute, ADK |
+| L6 | 매우 높음 | 분산 | 다수 LLM | CrewAI, AutoGen |
+
+---
+
+## 추가 정리
+
+### 핵심 요약
+
+성숙도 7단계는 에이전트를 한 번에 복잡하게 만들지 않기 위한 기준이다. Simple LLM Call에서 시작해 Tool Use, Routing, ReAct, Planning, Multi-Agent로 올라갈수록 자율성은 커지지만 비용과 실패 가능성도 함께 커진다.
+
+### 보충 해설
+
+각 단계의 핵심 질문은 "이 단계의 복잡도가 실제 문제를 해결하는가"다. 도구 호출이 필요 없는데 Tool Use를 넣거나, 고정 절차로 충분한데 Planning Agent를 쓰면 디버깅 지점만 늘어난다. 성숙도는 목표가 아니라 선택 기준이다.

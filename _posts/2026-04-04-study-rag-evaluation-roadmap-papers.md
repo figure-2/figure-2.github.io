@@ -15,122 +15,196 @@ comments: false
 mermaid: true
 math: true
 ---
-# RAG 완전 가이드 3: 평가, 도입 로드맵, 논문 타임라인
+EVALUATION
 
-> **한줄 정의**
-> RAG 평가는 검색 품질과 생성 품질을 분리해서 봐야 하고, 도입은 MVP에서 Hybrid/Reranker, 평가, Modular/Agentic 순서로 진행하는 편이 안전하다.
+## RAG 평가하기
 
-## 검색과 생성을 분리해서 평가한다
+RAG 시스템의 품질을 어떻게 측정할까요? 검색과 생성을 분리해서 각각 평가합니다.
 
-RAG 답변이 틀렸을 때 원인은 둘 중 하나다.
+F
 
-```text
-검색 실패
-  -> 필요한 문서가 context에 없음
+#### Faithfulness
 
-생성 실패
-  -> 문서는 들어왔지만 답변이 근거를 잘못 사용
-```
+응답이 검색된 문서에 충실한가? 지어낸 내용 없이 문서 내용만으로 답변하는지 측정합니다.
 
-그래서 metric도 나눠야 한다.
+충실도 = 문서로 뒷받침되는 주장 수 / 전체 주장 수
 
-| 영역 | 지표 | 의미 | 계산 관점 |
-| --- | --- | --- | --- |
-| Retrieval | Context Precision | 검색된 문서 중 관련 문서 비율 | 관련 문서 / 검색 문서 |
-| Retrieval | Context Recall | 필요한 정보가 검색 결과에 들어왔는가 | 검색된 관련 문서 / 전체 관련 문서 |
-| Retrieval | MRR | 첫 관련 문서가 얼마나 위에 있는가 | reciprocal rank 평균 |
-| Generation | Faithfulness | 답변이 검색 문서에 충실한가 | 문서로 뒷받침되는 주장 비율 |
-| Generation | Answer Relevancy | 답변이 질문에 적절한가 | 질문과 답변의 관련성 |
-| Generation | Answer Correctness | 정답과 비교한 사실 정확도 | ground truth 필요 |
+R
 
-원본 노트에서 가장 중요하게 본 지표는 `Faithfulness`다. 검색 문서가 들어왔는데도 답변이 없는 내용을 만들면 RAG의 신뢰성이 무너진다.
+#### Answer Relevancy
 
-## 평가 도구
+응답이 질문에 적절한가? 질문과 관련 없는 내용이 답변에 포함되지 않았는지 평가합니다.
 
-| 도구 | 쓰는 위치 | 핵심 용도 |
-| --- | --- | --- |
-| RAGAS | 개발 단계 | faithfulness, relevancy, context precision/recall 자동 평가 |
-| DeepEval | CI/CD | pytest 스타일 RAG 유닛 테스트와 회귀 방지 |
-| LLM-as-Judge | 유연한 평가 | pairwise, pointwise, reference-based 평가 |
-| TruLens / Langfuse | 운영 | trace, feedback, 품질 모니터링 |
-| RAGBench | 벤치마크 | 원본 기준 12개 도메인, 100K+ 예제 |
+관련도 = 응답에서 생성된 질문과 원래 질문의 유사도 평균
 
-평가 도구는 하나만 고르는 문제가 아니다. 개발 단계의 자동 평가, CI의 회귀 테스트, 운영 trace가 서로 연결되어야 한다.
+P
 
-## 추천 프로덕션 스택
+#### Context Precision
 
-| 계층 | 후보 |
-| --- | --- |
-| Application | LangChain, LlamaIndex, Custom |
-| LLM | Claude, GPT, Gemini, open-source model |
-| Reranker | Cohere Rerank, bge-reranker, FlashRank |
-| Embedding | Cohere embed, OpenAI text-embedding, BGE, E5 |
-| Search | Hybrid, Dense + BM25 |
-| Vector DB | Pinecone, Weaviate, Qdrant, pgvector, Chroma |
+검색된 문서가 정밀한가? 관련 없는 문서가 너무 많이 포함되지 않았는지 확인합니다.
 
-스택 선택보다 중요한 것은 평가 데이터셋이다. 평가셋이 없으면 어느 선택이 나아졌는지 판단할 수 없다.
+정밀도 = 관련 문서 수 / 검색된 전체 문서 수
 
-## 단계별 도입 로드맵
+C
 
-| 단계 | 목표 | 구현 |
-| --- | --- | --- |
-| 1. MVP | 빠른 가치 검증 | 고정 크기 청킹, 단순 벡터 검색, LLM 생성 |
-| 2. 품질 향상 | 검색 품질 개선 | BM25 + Dense hybrid, reranker 추가 |
-| 3. 청킹 최적화 | 검색 단위 개선 | Recursive/Semantic chunking, contextual retrieval, metadata tagging |
-| 4. 평가 체계 | 개선 효과 측정 | RAGAS, DeepEval, regression set |
-| 5. 고도화 | 복잡 질문 처리 | Modular RAG, Agentic RAG, router, judge, iterative retrieval |
+#### Context Recall
 
-처음부터 Agentic RAG로 가면 실패 원인 분리가 어렵다. 먼저 검색과 생성 평가를 나눠야 한다.
+필요한 문서를 빠짐없이 검색했는가? 정답에 필요한 정보가 모두 검색 결과에 포함되었는지 봅니다.
 
-## 청킹 전략 비교
+재현율 = 검색된 관련 문서 수 / 전체 관련 문서 수
 
-| 전략 | 방식 | 장점 | 단점 | 추천 상황 |
-| --- | --- | --- | --- | --- |
-| Fixed-size | 고정 token 수로 분할 | 구현 간단, 예측 가능 | 문맥 단절 | 빠른 prototype |
-| Recursive | 구분자 계층으로 재귀 분할 | 원본 기준 69% 승률, 안정적 | 구분자 설정 필요 | 범용 기본값 |
-| Semantic | 의미 변화 지점에서 분할 | 높은 재현율 | 조각이 너무 작을 수 있음 | 다주제 문서 |
-| Parent-Child | 작은 chunk로 검색, 큰 chunk 반환 | 정밀 검색과 풍부한 context | 인덱스 복잡도 증가 | 긴 문서, 보고서 |
-| Sentence Window | 문장 단위 + 주변 문장 | 문장 수준 정밀도 | 짧은 문서에는 비효율 | FAQ, 매뉴얼 |
+### 평가 도구
 
-원본 기준으로 chunk 크기는 256~512 token이 가장 안정적인 범위로 정리되어 있다.
+#### RAGAS
+
+가장 대표적인 오픈소스 평가 프레임워크. Faithfulness, Relevancy, Context Precision/Recall 등 핵심 메트릭을 자동으로 계산합니다.
+
+오픈소스
+
+#### DeepEval
+
+CI/CD 파이프라인에 통합 가능한 유닛 테스트 스타일 평가. pytest처럼 RAG 평가를 자동화합니다.
+
+CI/CD 통합
+
+#### TruLens
+
+프로덕션 환경에서 실시간 모니터링. 피드백 함수로 지속적인 품질 추적이 가능합니다.
+
+프로덕션 모니터링
+
+#### RAGBench
+
+12개 도메인에 걸친 100K+ 예제 벤치마크. 산업별 RAG 성능 비교에 활용됩니다.
+
+벤치마크
+
+REFERENCES
 
 ## 주요 논문 타임라인
 
-| 연도 | 항목 | 핵심 기여 |
-| --- | --- | --- |
-| 2020 | RAG | DPR + BART 결합, RAG-Sequence와 RAG-Token 제안 |
-| 2020 | DPR | dense vector 기반 passage retrieval 표준화 |
-| 2022 | HyDE | 질문 대신 가상 답변을 생성해 검색 |
-| 2023 | Self-RAG | reflection token으로 검색 필요성과 근거성을 자체 판단 |
-| 2024 | CRAG | 검색 결과를 Correct, Incorrect, Ambiguous로 분류 후 보정 |
-| 2024 | RAPTOR | recursive clustering과 summary tree로 다단계 추상화 |
-| 2024 | GraphRAG | 지식 그래프와 계층적 community summary 결합 |
-| 2024 | Contextual Retrieval | chunk에 문서 수준 맥락을 접두사로 추가 |
-| 2024 | Adaptive RAG | 질문 복잡도에 따라 retrieval strategy를 동적으로 선택 |
-| 2024 | Late Chunking | 전체 문서 임베딩 후 token vector에서 chunk representation 추출 |
-| 2024 | RAFT | RAG와 fine-tuning 결합, distractor 무시 학습 |
-| 2025 | SimRAG | unlabeled corpus에서 synthetic QA 생성과 self-training |
-| 2025 | MCP | 외부 도구와 데이터 연결 표준화 |
-| 2026 | Context Engineering | RAG, memory, tool context를 통합하는 방향 |
+RAG 연구의 핵심 논문들을 시간순으로 정리했습니다.
 
-이 표의 연도와 수치는 원본 학습 노트 기준이다. 발행 시 최신 논문 상태로 단정하지 않는다.
+2020
 
-## 내 기준
+#### RAG: Retrieval-Augmented Generation
 
-RAG 평가의 목적은 점수 만들기가 아니다. 실패 원인을 분리하는 것이다.
+Lewis et al. — NeurIPS 2020
 
-```text
-질문
-  -> 검색 결과
-  -> 답변
-  -> 근거 검증
-  -> 사용자 피드백
-  -> 회귀 평가
-```
+DPR + BART 결합. RAG-Sequence, RAG-Token 두 변형 제안. RAG 연구의 시작점.
 
-이 루프가 없으면 RAG는 제품이 아니라 demo다.
+2020
 
-## 관련 글
+#### Dense Passage Retrieval (DPR)
 
-- [RAG 완전 가이드 2: Naive, Advanced, Modular, Agentic RAG]({% post_url 2026-04-04-study-rag-evolution-patterns %})
-- [Production RAG Engineering 3: Evaluation, Operations, Checklist]({% post_url 2026-04-04-study-production-rag-evaluation-operations %})
+Karpukhin et al. — EMNLP 2020
+
+밀집 벡터 기반 문서 검색의 표준. 기존 TF-IDF/BM25를 뛰어넘는 시맨틱 검색 실현.
+
+2022
+
+#### HyDE: Hypothetical Document Embeddings
+
+Gao et al., 2022
+
+질문 대신 가상 답변을 생성해서 검색. Zero-shot에서도 Fine-tuned 모델 수준의 검색 성능 달성.
+
+2023
+
+#### Self-RAG: Self-Reflective RAG
+
+Asai et al. — ICLR 2024 (Oral)
+
+Reflection Token으로 검색 필요 여부, 문서 관련성, 응답 품질을 LLM이 자체 판단.
+
+2024
+
+#### CRAG: Corrective RAG
+
+Yan et al., 2024
+
+검색 결과를 Correct/Incorrect/Ambiguous로 분류 후 보정 경로 선택. 19~37% 정확도 향상.
+
+2024
+
+#### RAPTOR: Recursive Abstractive Processing
+
+Sarthi et al. — ICLR 2024
+
+재귀적 클러스터링 + 요약으로 다단계 추상화 트리 구축. QuALITY에서 +20% 향상.
+
+2024
+
+#### GraphRAG
+
+Microsoft Research, 2024
+
+지식 그래프 + 계층적 커뮤니티 요약. 여러 문서에 걸친 글로벌 질문에 강점.
+
+2024
+
+#### Contextual Retrieval
+
+Anthropic, 2024
+
+청크에 문서 수준 맥락을 접두사로 추가. BM25와 결합 시 검색 실패율 67% 감소.
+
+2024
+
+#### Adaptive RAG
+
+Jeong et al., 2024
+
+질문 복잡도에 따라 No Retrieval / Single-step / Multi-step을 동적으로 선택.
+
+2024
+
+#### Late Chunking
+
+Jina AI, 2024
+
+전체 문서를 먼저 임베딩 → 토큰 벡터에서 청크 추출. 추가 LLM 비용 없이 문맥 보존. jina-v3에서 API 지원.
+
+2024
+
+#### RAFT (Retrieval Augmented Fine-Tuning)
+
+UC Berkeley, 2024
+
+RAG + Fine-tuning 결합. 방해 문서를 무시하도록 학습. 전문 도메인에서 순수 RAG보다 높은 성능.
+
+2025
+
+#### SimRAG (Self-Improving RAG)
+
+NAACL 2025
+
+비라벨 코퍼스에서 자체 QA 쌍 생성 + self-training. 라벨링 비용 없이 도메인 적응. 11개 데이터셋 검증.
+
+2025
+
+#### MCP (Model Context Protocol)
+
+Anthropic, 2025
+
+AI 모델과 외부 도구/데이터를 연결하는 오픈 표준 프로토콜. Agentic RAG의 도구 통합을 표준화.
+
+2026
+
+#### Context Engineering & Knowledge Runtime
+
+Industry Paradigm Shift
+
+RAG → Context Engineering으로 패러다임 확장. RAG(정적 지식) + Memory(동적 이력) + MCP(도구 연결)를 통합하는 Knowledge Runtime 개념 등장.
+
+---
+
+## 추가 정리
+
+### 핵심 요약
+
+RAG 평가는 answer quality만 보면 부족하다. retrieval quality, context quality, faithfulness, citation accuracy를 나누어 봐야 한다.
+
+### 보충 해설
+
+답변이 틀렸을 때 원인은 여러 가지일 수 있다. 검색이 틀렸는지, 맞는 문서를 찾았지만 context에 못 넣었는지, context는 맞지만 모델이 무시했는지, citation이 잘못 붙었는지 분리해야 한다. 논문 타임라인은 이 문제들이 어떤 순서로 발전했는지 보는 기준으로 활용하면 된다.

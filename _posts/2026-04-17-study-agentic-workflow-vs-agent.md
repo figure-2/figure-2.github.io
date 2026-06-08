@@ -14,93 +14,78 @@ comments: false
 mermaid: true
 math: true
 ---
-# Agentic AI 패턴 가이드 1: Workflow vs Agent
+Building Effective Agents · 2026.04
 
-> **한줄 정의**
-> Workflow는 LLM을 정해진 경로로 오케스트레이션하고, Agent는 LLM이 경로와 도구를 동적으로 결정한다.
+# Agentic AI 패턴 가이드
 
-## 핵심 구분
+LLM으로 실제로 동작하는 시스템을 설계할 때 쓰이는 6가지 핵심 패턴. 언제 어느 패턴을 써야 하는지, 어떻게 조합하는지, 무엇이 실패 모드인지.
 
-| 관점 | Workflow | Agent |
-| --- | --- | --- |
-| 경로 | 미리 정의 | 실행 중 결정 |
-| 예측 가능성 | 높음 | 낮음 |
-| 디버깅 | 쉬움 | trace 필요 |
-| 비용 | 대체로 예측 가능 | 반복과 도구 호출로 가변 |
-| 실패 위험 | 제한적 | 커짐 |
-| 적합한 문제 | 절차가 명확한 업무 | open-ended task |
+8
 
-원본 노트의 핵심 원칙은 단순하다. 대부분의 문제는 단일 LLM 호출, RAG, 잘 쓴 prompt로 해결된다. 복잡도는 측정 가능한 이득이 있을 때만 추가한다.
+핵심 패턴
 
-## Augmented LLM이 기본 블록
+3
 
-모든 agentic pattern은 `LLM + Tools + Memory + Retrieval`을 어떻게 엮느냐의 문제다.
+Multi-agent 토폴로지
 
-```text
-LLM
-  + Tools
-  + Memory
-  + Retrieval
-  = Augmented LLM
-```
+10+
 
-| 구성 | 역할 |
-| --- | --- |
-| LLM | reasoning core |
-| Tools | function call, web, DB, API |
-| Memory | state, short-term, long-term |
-| Retrieval | RAG, search, vector, BM25 |
+실전 다이어그램
 
-## 복잡도 추가 원칙
+8가지 패턴 보러가기 →
 
-```text
-Single LLM
-  -> RAG
-  -> Prompt Chaining
-  -> Routing
-  -> Parallelization
-  -> Orchestrator
-  -> Evaluator loop
-  -> Autonomous Agent
-  -> HITL
-```
+어떤 걸 써야 할까?
 
-아래로 갈수록 강력하지만 비용, latency, debugging 부담이 커진다.
+01 · Introduction
 
-## Workflow가 맞는 경우
+## Workflow vs Agent
 
-| 조건 | 예 |
-| --- | --- |
-| 단계가 명확함 | outline -> draft -> review |
-| 실패 조건을 정의할 수 있음 | 길이, tone, 금칙어 검사 |
-| 입력 유형이 제한적 | FAQ, 고객지원 분류 |
-| 품질 gate를 넣기 쉬움 | 테스트, schema validation |
+Workflows는 미리 정의된 경로로 LLM을 오케스트레이션합니다. 예측 가능하고 디버깅하기 쉽습니다. Agents는 LLM이 스스로 도구와 경로를 결정합니다. 유연하지만 비용과 실패 위험이 높습니다.
 
-Workflow는 덜 멋있지만 운영에 강하다.
+대부분의 문제는 단일 LLM 호출 + RAG + 잘 쓴 프롬프트로 해결됩니다. 복잡도는 측정 가능한 성능 이득이 있을 때만 추가하세요. 이 가이드는 Anthropic의 "Building effective agents" 분류를 기반으로 합니다.
 
-## Agent가 맞는 경우
+🤖
 
-| 조건 | 예 |
-| --- | --- |
-| 다음 행동이 중간 결과에 의존 | debugging, research |
-| tool 선택이 동적 | 검색, DB, code 실행 중 선택 |
-| 실패 후 재계획 필요 | data source가 없을 때 대체 경로 |
-| 완료 조건이 탐색 중 결정 | open-ended investigation |
+함께 보기
 
-Agent를 쓰려면 반드시 max steps, 비용 한도, tool permission, human checkpoint가 필요하다.
+에이전트가 무엇이며 어떻게 진화해왔는지
 
-## 내 기준
+개념부터 알고 싶다면 — 7단계 성숙도·Memory/RAG/Guardrails 아키텍처가 담긴
 
-Workflow와 Agent의 차이는 "AI를 쓰냐"가 아니다. "누가 흐름을 결정하냐"다.
+AI Agent 완벽 가이드
 
-```text
-흐름을 코드가 결정하면 Workflow
-흐름을 모델이 결정하면 Agent
-```
+를 보세요.
 
-기본 선택은 Workflow다. Agent는 필요한 지점에만 부분적으로 넣는다.
+Agent 가이드 →
 
-## 다음 글
+목차
 
-- [Agentic AI 패턴 가이드 2: 8가지 패턴]({% post_url 2026-04-17-study-agentic-patterns-core %})
-- [Agentic AI 패턴 가이드 3: 선택 기준, 비용, 토폴로지]({% post_url 2026-04-17-study-agentic-pattern-selection-topology %})
+- 00Augmented LLM (foundation)
+
+- 01Prompt Chaining
+
+- 02Routing
+
+- 03Parallelization
+
+- 04Orchestrator-Workers
+
+- 04+Multi-agent Topologies
+
+- 05Evaluator-Optimizer
+
+- 06Autonomous Agent
+
+- 07Human-in-the-Loop
+
+---
+
+## 추가 정리
+
+### 핵심 요약
+
+Workflow와 Agent의 차이는 자율성의 위치다. Workflow는 사람이 경로를 정하고, Agent는 모델이 실행 중에 경로를 선택한다.
+
+### 보충 해설
+
+실무에서는 Agent라는 이름을 붙이기 전에 제어 흐름이 정말 동적인지 확인해야 한다. 고정된 단계를 자동화하는 문제라면 Workflow가 더 적합하다. Agent는 불확실성과 탐색이 필요한 문제에서 가치가 생긴다.

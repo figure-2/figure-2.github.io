@@ -17,39 +17,54 @@ comments: false
 mermaid: true
 math: true
 ---
-# Knowledge Graph 개인 학습 로드맵
+Practice
 
-## 학습 목적
+## 실전: 어디서부터 시작할까
 
-온톨로지와 지식 그래프를 데이터 구조화 관점에서 이해하고, RAG와 GraphRAG로 연결되는 지점을 정리한다.
+온톨로지를 처음 만드는 사람을 위한 단계별 접근
 
-## 정리 범위
+1
 
-| 소주제 | 정리 관점 |
-| --- | --- |
-| Glossary / Taxonomy | 용어와 분류 체계 |
-| Ontology | 개념, 관계, 제약을 명시하는 구조 |
-| Knowledge Graph | entity와 relation 기반 지식 표현 |
-| Triple | subject, predicate, object 단위 |
-| GraphRAG | 그래프 기반 검색과 생성의 결합 |
-| Entity Resolution | 같은 대상을 하나로 묶는 문제 |
-| Tool Ecosystem | Neo4j, Graphiti, LangGraph 등 |
+#### DB 스키마에서 시작하라
 
-## 작성할 글
+연구에 따르면, DB 스키마에서 온톨로지를 추출하면 텍스트에서 추출한 것과 성능이 비슷하면서 비용은 훨씬 낮다. DDL(테이블 정의)을 LLM에게 주면 클래스, 속성, 관계를 자동 추출할 수 있다. 이미 있는 데이터의 구조를 활용하라.
 
-| 순서 | 게시글 | 소주제 | 상태 |
-| --- | --- | --- | --- |
-| 1 | [온톨로지 & 지식 그래프 가이드 1: 개념, 스펙트럼, 트리플]({% post_url 2026-05-16-study-kg-ontology-triple %}) | ontology, knowledge graph, relational DB 차이, ontology spectrum, triple | 작성 |
-| 2 | [온톨로지 & 지식 그래프 가이드 2: GraphRAG, 도구, 시작법]({% post_url 2026-05-16-study-kg-graphrag-tools %}) | GraphRAG, vector DB 비교, 80/15/5, 도구 생태계, 시작 순서 | 작성 |
+2
 
-## 후속 분리 후보
+#### 작게 시작하라
 
-| 후보 글 | 분리 이유 |
-| --- | --- |
-| GraphRAG benchmark 읽는 법 | 1차 글에 반영 완료. 최신 benchmark 검증은 후속 가능 |
-| GraphRAG 도구 생태계 비교 | 1차 글에 반영 완료. 실제 사용 비교는 후속 가능 |
-| Entity Resolution 체크리스트 | 1차 글에 반영 완료. 운영 체크리스트로 확장 가능 |
+노드 타입 3~7개, 관계 타입 5~15개로 시작. 50개 클래스의 완벽한 온톨로지보다 5개 클래스의 정확한 온톨로지가 낫다. 필요에 따라 점진적으로 확장.
 
-## 작성 기준
+3
 
-Knowledge Graph 글은 용어 설명에서 멈추지 않는다. "이 구조가 검색 품질과 추론 가능성에 어떤 영향을 주는가"를 기준으로 쓴다.
+#### 하이브리드로 가라
+
+벡터 검색을 버리고 그래프로 갈 필요 없다. 80%의 쿼리는 벡터 검색으로 충분하다. 복잡한 관계 추론이 필요한 15%에 그래프를 쓰고, 나머지는 벡터에 맡겨라.
+
+4
+
+#### 엔티티 해소(Entity Resolution)에 투자하라
+
+초기 GraphRAG 구현에서 가장 큰 문제: "John Doe, 45" vs "John Doe, age 45", "Type 2 Diabetes" vs "T2D". 같은 엔티티를 다른 이름으로 인식하면 그래프가 무너진다. 동의어 사전과 정규화가 핵심.
+
+ROI 참고:
+
+2024~2025년 프로덕션 사례
+
+에서 지식 그래프 도입 조직은 300~320% ROI를 달성했다. 단, 이건 데이터가 준비된 조직의 이야기다. 데이터 구조화(
+
+AI-Ready Data
+
+)가 먼저다.
+
+---
+
+## 추가 정리
+
+### 핵심 요약
+
+Knowledge Graph 학습은 개념 정의, triple 모델링, schema 설계, graph query, GraphRAG 순서로 진행하면 된다. 처음부터 대규모 그래프를 만들기보다 작은 도메인으로 시작하는 것이 좋다.
+
+### 보충 해설
+
+가장 좋은 출발점은 이미 존재하는 DB schema나 업무 문서다. 테이블, 컬럼, 문서 제목, 사람, 조직, 제품, 사건 같은 엔티티를 뽑고 관계를 정의하면 작은 지식 그래프를 만들 수 있다. 이후 검색과 RAG에 연결하며 효과를 확인한다.

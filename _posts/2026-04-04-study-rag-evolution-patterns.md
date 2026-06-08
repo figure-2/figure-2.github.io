@@ -15,169 +15,553 @@ comments: false
 mermaid: true
 math: true
 ---
-# RAG 완전 가이드 2: Naive, Advanced, Modular, Agentic RAG
+EVOLUTION
 
-> **한줄 정의**
-> RAG의 진화는 단순 검색-생성 파이프라인에서, 검색 전후를 최적화하고, 라우터와 평가기를 붙이고, 에이전트가 검색을 반복 판단하는 방향으로 진행됐다.
+## RAG의 진화
 
-![RAG evolution](/assets/images/study/diagrams/study-rag-as-product-evolution.svg){: width="100%"}
+RAG는 3세대에 걸쳐 발전해 왔습니다. 각 세대가 이전의 한계를 어떻게 극복하는지 살펴봅니다.
 
-## 1. Naive RAG
+2020~2022
 
-Naive RAG는 가장 단순한 구조다.
+### Naive RAG
 
-```text
-Indexing Phase
-  Documents
-  -> Chunking
-  -> Embedding
-  -> Vector DB
+고정된 파이프라인. Query → Retrieve → Generate. 단순하지만 한계가 명확합니다.
 
-Query Phase
-  User Query
-  -> Query Embedding
-  -> Similarity Search
-  -> Prompt + Context
-  -> LLM
-  -> Response
-```
+Query → Retrieve → Generate
 
-장점은 구현이 빠르다는 것이다. 단점은 검색 결과가 나쁘면 답변도 그대로 망가진다는 점이다.
+2023~2024
 
-| 한계 | 설명 |
-| --- | --- |
-| Garbage In, Garbage Out | 관련 없는 문서가 들어오면 답변도 흔들림 |
-| 단순 청킹 | 고정 크기로 자르면 문맥 단절과 주제 혼합이 생김 |
-| 무분별한 전달 | 검색 결과 품질 평가 없이 LLM에 전달 |
-| 중복/상충 미처리 | 중복 문서나 모순 문서를 구분하지 못함 |
+### Advanced RAG
 
-Naive RAG는 MVP에는 적합하지만, 프로덕션 품질을 기대하기 어렵다.
+검색 전/중/후를 최적화. 쿼리 리라이팅, 하이브리드 검색, 리랭킹 등을 추가합니다.
 
-## 2. Advanced RAG
+Query 최적화 → Hybrid Retrieve → Rerank → Generate
 
-Advanced RAG는 검색 전, 검색 중, 검색 후를 각각 개선한다.
+2024~
+
+### Modular RAG
+
+모듈 단위 조합. 라우터, 평가기, 반복 검색 등을 태스크에 맞게 동적으로 구성합니다.
+
+Router → [동적 모듈 조합] → 자체 평가 → 반복/완료
+
+STAGE 1
+
+## Naive RAG
+
+가장 기본적인 "Retrieve → Read" 파이프라인. RAG의 출발점이지만, 한계가 분명합니다.
 
 ```text
-Pre-Retrieval
-  -> Query Rewriting
-  -> HyDE
-  -> Multi-Query
-
-Retrieval
-  -> Hybrid Search
-  -> Multi-Index
-  -> Metadata Filtering
-
-Post-Retrieval
-  -> Reranker
-  -> Compression
-  -> Deduplication
-```
-
-| 구간 | 기법 | 목적 |
-| --- | --- | --- |
-| Pre-Retrieval | Query Rewriting | 구어체 질문을 검색 친화적 질문으로 변환 |
-| Pre-Retrieval | HyDE | 가상 답변을 만든 뒤 그 답변으로 검색 |
-| Pre-Retrieval | Multi-Query | 여러 관점의 질문으로 검색 재현율 향상 |
-| Retrieval | Hybrid Search | dense semantic과 sparse keyword를 결합 |
-| Retrieval | Fine-tuned Embedding | 도메인 특화 검색 품질 향상 |
-| Retrieval | Multi-Index | 요약, 원문, 메타데이터 인덱스를 계층화 |
-| Post-Retrieval | Reranker | 질문-문서 쌍을 다시 평가해 순위 조정 |
-| Post-Retrieval | Compression | 관련 문장만 남겨 context noise와 비용 감소 |
-| Post-Retrieval | MMR/Dedup | 중복 문서 제거와 다양성 확보 |
-
-원본 학습 노트 기준으로 검색만 개선해도 같은 LLM에서 50% 이상 품질 향상이 가능하다고 정리되어 있다. 모델 교체보다 검색 품질이 먼저다.
-
-## 3. Modular RAG
-
-Modular RAG는 RAG를 고정 파이프라인이 아니라 모듈 조합으로 본다.
-
-```text
+INDEXING PHASE (오프라인)
+QUERY PHASE (온라인)
+Documents
+PDF, DB, Web, API
+Chunking
+고정 크기 분할
+Chunk 1
+Chunk 2
+Chunk N
+Embedding Model
+텍스트 → 벡터 변환
+[0.12, -0.45, 0.78,
+0.33, -0.91, ...]
+Vector DB
+?
 User Query
-  -> Router
-  -> Retrieval / Direct LLM / SQL / Web
-  -> Judge
-  -> Retry or Generate
-  -> Self Evaluation
-  -> Response
+사용자 질문 입력
+Query Embedding
+질문도 벡터로 변환
+Similarity Search
+코사인 유사도 Top-K
+벡터 검색
+Prompt + Context
+질문 + 검색 문서 결합
+LLM
+응답 생성
+Response (답변)
 ```
 
-| 모듈 | 역할 |
-| --- | --- |
-| Router | 검색 필요 여부와 검색 소스 결정 |
-| Judge/Critic | 검색 결과가 충분한지 평가 |
-| Adaptive Retrieval | 필요할 때만 검색 |
-| Multi-Source | Vector DB, Web, SQL, API를 선택 |
-| Iterative Retrieval | 여러 차례 검색과 생성을 반복 |
-| Memory | 이전 대화와 중간 결과를 유지 |
+### Naive RAG의 한계
 
-Modular RAG의 핵심은 "모든 질문을 같은 경로로 처리하지 않는다"는 점이다.
+01
 
-## 4. 대표 구현 패턴
+#### Garbage In, Garbage Out
 
-| 패턴 | 핵심 아이디어 | 보존할 수치/특징 |
-| --- | --- | --- |
-| Self-RAG | LLM이 reflection token으로 검색 필요성, 문서 관련성, 근거성, 유용성을 판단 | `[Retrieve]`, `[IsRel]`, `[IsSup]`, `[IsUse]` |
-| CRAG | 검색 결과를 Correct, Incorrect, Ambiguous로 분류 후 보정 경로 선택 | 원본 기준 정확도 19~37% 향상 |
-| GraphRAG | 지식 그래프와 계층적 커뮤니티 요약으로 글로벌 질문 처리 | 여러 문서에 흩어진 관계 질문에 강점 |
-| RAPTOR | 청크를 클러스터링하고 요약해 다단계 추상화 트리 생성 | 원본 기준 QuALITY +20% 향상 |
+검색 품질이 낮으면 응답도 함께 망가집니다. 관련 없는 문서가 검색되면 LLM은 그걸 기반으로 엉뚱한 답을 만듭니다.
 
-Self-RAG와 CRAG는 "검색 결과를 그대로 믿지 않는다"는 방향이다. GraphRAG와 RAPTOR는 "문서 조각을 더 큰 구조로 묶는다"는 방향이다.
+02
 
-## 5. Agentic RAG
+#### 단순한 청킹
 
-Agentic RAG는 AI Agent가 검색을 도구로 사용한다.
+고정 크기로 문서를 자르면 문맥이 잘리거나, 하나의 청크에 여러 주제가 섞여 노이즈가 됩니다.
+
+03
+
+#### 무분별한 전달
+
+검색된 문서가 질문과 관련 없어도 그대로 LLM에 전달합니다. 필터링이나 품질 평가가 없습니다.
+
+04
+
+#### 중복/상충 미처리
+
+중복 문서, 서로 모순되는 정보에 대한 처리 로직이 없어서 LLM이 혼란에 빠질 수 있습니다.
+
+STAGE 2
+
+## Advanced RAG
+
+Naive RAG의 한계를 검색 전/중/후 각 단계에서 체계적으로 보완합니다.
+
+```text
+PRE-RETRIEVAL
+RETRIEVAL
+POST-RETRIEVAL
+GENERATE
+User Query
+원본 질문
+Query Rewriting
+질문 최적화 / 분해
+HyDE
+Multi-Query
+Optimized Query
+Hybrid Search
+Dense (Vector)
+시맨틱 유사도
+Sparse (BM25)
+키워드 매칭
+RRF 결합
+Top-K 문서
+Vector DB + BM25 Index
+멀티 인덱스 전략
+Post-Processing
+Reranker
+Cross-Encoder 재순위화
+Compression
+관련 부분만 추출
+Dedup & Filter
+중복 제거, MMR
+Refined Context
+Prompt
+Q + Context
+LLM
+생성
+Response
+쿼리 최적화
+하이브리드 검색
+후처리 (Rerank + 압축)
+```
+
+#### Query Rewriting
+
+사용자 질문을 검색에 유리한 형태로 변환합니다. 구어체 → 검색 쿼리, 복합 질문 → 단일 질문 분리 등.
+
+"우리 회사 휴가 어떻게 쓰는 거야?"
+
+→
+
+"연차 휴가 사용 절차 및 규정"
+
+#### HyDE Gao et al., 2022
+
+Hypothetical Document Embeddings — LLM이 먼저 가상의 답변을 생성하고, 그 답변의 임베딩으로 검색합니다. 질문보다 답변이 문서와 더 유사하다는 통찰.
+
+질문
+
+→
+
+가상 답변 생성
+
+→
+
+답변 임베딩으로 검색
+
+#### Query Expansion
+
+하나의 질문을 여러 관점에서 확장해서 검색 범위를 넓힙니다. Multi-Query, Sub-Question Decomposition 등의 기법이 있습니다.
+
+#### 청킹 전략 고도화
+
+고정 크기가 아닌 의미 단위로 문서를 분할합니다.
+
+Recursive
+
+구분자 계층으로 재귀 분할. 가장 안정적 (69% 승률)
+
+Semantic
+
+의미 변화 지점에서 분할. 높은 재현율
+
+Parent-Child
+
+작은 청크로 검색, 큰 청크로 컨텍스트 제공
+
+Sentence Window
+
+문장 단위 검색 + 주변 문장 포함
+
+#### Contextual Retrieval Anthropic, 2024
+
+각 청크에 문서 수준의 맥락을 접두사로 추가한 뒤 임베딩합니다. "이 청크는 2024년 매출 보고서의 3분기 실적 섹션에서 발췌한 내용입니다" 같은 맥락 정보를 붙여서 검색 정확도를 크게 향상시킵니다.
+
+#### 메타데이터 태깅
+
+문서에 날짜, 출처, 카테고리, 작성자 등 부가 정보를 부착합니다. 필터링과 결합하면 검색 정밀도가 크게 올라갑니다.
+
+#### 하이브리드 검색
+
+Dense(벡터) 검색과 Sparse(BM25 키워드) 검색을 결합합니다. 의미 유사성 + 키워드 정확성을 동시에 잡아 가장 안정적인 성능을 제공합니다.
+
+Dense (벡터)
+
+의미 유사성 기반
+
++
+
+Sparse (BM25)
+
+키워드 매칭 기반
+
+=
+
+Hybrid
+
+최적의 검색 결과
+
+#### Fine-tuned Embedding
+
+도메인 특화 데이터로 임베딩 모델을 추가 학습합니다. 일반 모델 대비 12~30% 성능 향상이 보고됩니다. 의료, 법률, 금융 등 전문 도메인에서 효과가 큽니다.
+
+#### Multi-Index 전략
+
+요약 인덱스, 원문 인덱스, 메타데이터 인덱스 등을 계층화합니다. 요약으로 먼저 관련 문서를 좁히고, 원문에서 세부 정보를 가져오는 방식.
+
+#### Late Interaction (ColBERT)
+
+토큰별 임베딩을 저장하고 MaxSim 연산으로 유사도를 계산합니다. Bi-Encoder의 속도와 Cross-Encoder의 정확도 사이에서 좋은 균형을 잡습니다. ColPali/ColQwen은 이를 멀티모달로 확장.
+
+#### Reranker (재순위화)
+
+검색 결과를 Cross-Encoder로 다시 평가해서 순위를 재조정합니다. 질문-문서 쌍을 함께 보기 때문에 더 정밀한 관련성 판단이 가능합니다.
+
+검색 결과 (Before)
+
+문서 A
+
+0.82
+
+문서 B
+
+0.79
+
+문서 C
+
+0.77
+
+문서 D
+
+0.75
+
+Rerank
+
+재순위 (After)
+
+문서 C
+
+0.95
+
+문서 A
+
+0.88
+
+문서 D
+
+0.72
+
+문서 B
+
+0.45
+
+MAP(Mean Average Precision) 52% 향상 보고 — Cohere Rerank, bge-reranker, FlashRank 등
+
+#### 문서 압축 (Compression)
+
+검색된 문서에서 관련 있는 부분만 추출해서 컨텍스트 윈도우를 절약합니다. LongLLMLingua 등의 방식으로 핵심 문장만 남깁니다.
+
+#### 중복 제거 및 필터링
+
+유사도 임계값, MMR(Maximal Marginal Relevance) 등으로 중복 문서를 제거하고 다양성을 확보합니다.
+
+STAGE 3
+
+## Modular RAG
+
+파이프라인을 고정된 순서가 아닌 모듈 단위로 분리해서 태스크에 맞게 조합하는 패러다임입니다.
 
 ```text
 Query
-  -> Plan
-  -> Search / SQL / Web / API / Code
-  -> Observe
-  -> Reflect
-  -> Replan if needed
-  -> Final Answer
+사용자 질문
+Router
+질문 유형 판단
+경로 결정
+Direct LLM
+검색 불필요 → 바로 생성
+단순 질문
+Retrieval
+Multi-Source 검색
+Vector / Web / SQL
+Judge
+충분한가?
+품질 평가
+충분
+부족 → 재검색
+Web Search
+보조 소스
+모호
+Generate
+LLM 응답 생성
++ 출처 첨부
+Self
+Eval
+품질 OK?
+Response
+재생성
+복잡 질문
+Iterative Retrieval + Memory
+멀티스텝 검색-생성 반복
+통과 경로
+재시도 루프
+보정 경로
 ```
 
-| 구성 | 설명 |
-| --- | --- |
-| Plan | 질문을 하위 작업으로 분해 |
-| Reason | 어떤 도구를 쓸지 판단 |
-| Observe | 도구 결과를 읽고 품질 평가 |
-| Reflect | 부족하면 재검색 또는 다른 도구 선택 |
-| Memory | 검색 이력과 중간 결과 유지 |
+🔀
 
-Agentic RAG가 필요한 질문은 단일 검색으로 답하기 어려운 질문이다.
+#### Router
 
-| 질문 유형 | 적합한 방식 |
-| --- | --- |
-| 단순 정의 | Direct LLM 또는 Naive RAG |
-| 사내 정책 조회 | Single-step RAG |
-| 여러 문서 비교 | Advanced/Modular RAG |
-| 수치 계산과 근거 추적 | Agentic RAG 또는 GraphRAG |
-| 도구 실행이 필요한 분석 | Agentic RAG |
+질문 유형을 판단해서 검색이 필요한지, 어떤 소스를 쓸지 결정합니다. 단순 질문은 바로 LLM 생성으로.
 
-## 6. Speculative RAG
+⚖️
 
-원본 학습 노트에는 Speculative RAG도 별도 기법으로 정리되어 있다. 작은 전문가 모델이 여러 초안을 병렬로 만들고, 큰 모델이 검증하는 draft-then-verify 패턴이다.
+#### Judge / Critic
 
-핵심은 정확도와 지연시간을 동시에 개선하려는 것이다. 다만 구현 복잡도와 평가 체계가 필요하므로 기본 RAG 단계에서 바로 도입할 대상은 아니다.
+검색 결과가 충분한지 평가합니다. 부족하면 재검색을 트리거하거나 다른 소스로 전환합니다.
 
-## 내 기준
+🧠
 
-RAG를 고도화하는 순서는 다음이 합리적이다.
+#### Adaptive Retrieval
+
+LLM이 스스로 "지금 검색이 필요한 시점인가?"를 판단합니다. 불필요한 검색을 줄여 효율성을 높입니다.
+
+🔗
+
+#### Multi-Source
+
+벡터 DB, 웹 검색, SQL DB, API 등 여러 소스를 동적으로 선택합니다.
+
+🔄
+
+#### Iterative Retrieval
+
+한 번이 아니라 여러 차례 검색-생성을 반복하며 답변을 정제합니다.
+
+💾
+
+#### Memory
+
+이전 대화나 검색 이력을 활용해서 맥락을 유지합니다.
+
+### 대표 구현 패턴
+
+#### Self-RAG
+
+Asai et al., ICLR 2024
+
+LLM이 Reflection Token으로 검색 필요 여부, 문서 관련성, 응답 품질을 자체 판단합니다.
+
+질문 입력
+
+→
+
+[Retrieve] 토큰?
+
+Yes
+
+검색 수행
+
+→
+
+[IsRel] 관련?
+
+→
+
+생성
+
+→
+
+[IsSup] 근거?
+
+No
+
+바로 생성
+
+핵심 통찰:
+
+모든 질문에 검색을 할 필요 없이, LLM이 필요할 때만 검색합니다. 불필요한 검색으로 인한 노이즈를 줄입니다.
+
+#### CRAG (Corrective RAG)
+
+Yan et al., 2024
+
+검색 결과를 Correct / Incorrect / Ambiguous로 분류 후, 각각 다른 보정 경로를 선택합니다.
+
+검색 수행
+
+→
+
+Retrieval Evaluator
+
+Correct
+
+문서 정제 후 생성
+
+Incorrect
+
+웹 검색으로 대체
+
+Ambiguous
+
+문서 + 웹 검색 결합
+
+성과:
+
+Self-CRAG는 벤치마크에서 정확도
+
+19~37% 향상
+
+을 보고했습니다.
+
+#### Graph RAG
+
+Microsoft, 2024
+
+지식 그래프를 구축해서 엔티티 간 관계 기반 검색을 수행합니다. 여러 문서에 흩어진 정보를 연결하는 "글로벌 질문"에 강점.
 
 ```text
-Naive RAG
-  -> Hybrid Search
-  -> Reranker
-  -> Evaluation
-  -> Router/Judge
-  -> Agentic Loop
+회사A
+기술X
+시장Y
+제품B
+경쟁사C
 ```
 
-검색 품질을 측정하지 않은 상태에서 agentic loop를 붙이면, 더 비싸고 더 느린 실패가 된다.
+핵심:
 
-## 관련 글
+계층적 커뮤니티 요약을 생성해서, "이 산업의 전반적 트렌드는?" 같은 넓은 질문에도 답할 수 있습니다.
 
-- [RAG 완전 가이드 1: 필요성과 기본 구조]({% post_url 2026-04-04-study-rag-why-and-pipeline %})
-- [Production RAG Engineering 2: Chunking, Embedding, Retrieval, Reranking]({% post_url 2026-04-04-study-production-rag-retrieval %})
+#### RAPTOR
+
+Sarthi et al., ICLR 2024
+
+재귀적 트리 요약 — 문서 청크를 클러스터링하고 요약하는 과정을 반복해서 다단계 추상화 트리를 만듭니다.
+
+전체 요약
+
+클러스터 요약 A
+
+클러스터 요약 B
+
+청크 1
+
+청크 2
+
+청크 3
+
+청크 4
+
+성과:
+
+QuALITY 벤치마크에서 GPT-4 기반
+
++20%
+
+향상. 세부 질문은 리프 노드에서, 요약 질문은 상위 노드에서 검색합니다.
+
+NEXT LEVEL
+
+## Agentic RAG
+
+AI Agent가 검색을 도구로 사용하면서 계획-실행-반성 루프를 돌리는 방식입니다. 복잡한 멀티스텝 질문에 효과적입니다.
+
+```text
+AGENT ORCHESTRATOR
+Plan
+하위 작업 분해
+Reason
+판단 & 선택
+Reflect
+자체 품질 평가
+U
+Query
+복잡한 질문
+Response
+최종 답변 + 출처
+완료
+TOOLS
+Vector Search
+벡터 DB 검색
+시맨틱 매칭
+Web Search
+인터넷 검색
+실시간 정보
+SQL Query
+구조화 데이터
+테이블 조회
+Code Exec
+코드 실행
+계산 & 분석
+API Call
+외부 서비스
+데이터 연동
+Memory
+대화 이력
+검색 캐시 / 중간 결과
+Iteration Loop
+Step 1: 정보 수집
+Step 2: 분석 & 추론
+Step N: 답변 정제
+부족 시 재실행
+```
+
+#### Multi-Agent 아키텍처
+
+검색 전문 에이전트, 요약 에이전트, 평가 에이전트 등 역할별로 분리된 에이전트들이 협력합니다. 모달리티별 전문가 에이전트(텍스트, 이미지, 테이블 등)를 둘 수도 있습니다.
+
+#### Tool Use
+
+벡터 검색 외에도 웹 검색, SQL 쿼리, 계산기, 코드 실행 등 다양한 도구를 상황에 맞게 선택해서 사용합니다.
+
+#### Adaptive Retrieval
+
+모든 질문에 검색하지 않습니다. 질문 복잡도를 판단해서 단순 질문은 즉시 답변, 복잡한 질문만 멀티스텝 검색을 수행합니다.
+
+"파이썬이 뭐야?" → 바로 답변
+
+"우리 회사의 3Q 매출을 작년 동기 대비 분석해줘" → 멀티스텝 검색
+
+#### Speculative RAG
+
+추가 기법
+
+작은 전문가 모델이 여러 개의 초안(draft)을 병렬로 생성하고, 큰 범용 모델이 이를 검증하는 방식. Draft-then-Verify 패턴으로 정확도와 지연시간 모두 개선합니다.
+
+---
+
+## 추가 정리
+
+### 핵심 요약
+
+RAG는 Naive RAG에서 Advanced, Modular, Agentic RAG로 갈수록 검색 전후의 제어 지점이 늘어난다. 발전 방향은 단순히 검색을 붙이는 것에서, context를 설계하고 검증하는 쪽으로 이동한다.
+
+### 보충 해설
+
+Naive RAG는 빠르게 만들 수 있지만 실패 원인 분리가 어렵다. Advanced RAG는 query rewriting, reranking, metadata filtering으로 품질을 올린다. Modular RAG는 각 단계를 교체 가능한 모듈로 만들고, Agentic RAG는 검색 전략 자체를 실행 중에 선택한다.

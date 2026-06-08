@@ -15,151 +15,338 @@ comments: false
 mermaid: true
 math: true
 ---
-# Production RAG Engineering 3: Evaluation, Operations, Checklist
-
-> **한줄 정의**
-> 운영 가능한 RAG는 답변 생성뿐 아니라 citation, evaluation, latency, cost, guardrails, fallback을 함께 설계해야 한다.
+06
 
 ## Generation & Prompting
 
-검색된 context를 LLM에 넣는 것만으로는 부족하다. 어떻게 답하게 할지 계약을 정해야 한다.
+검색된 컨텍스트를 LLM에 효과적으로 전달하고, 충실한 응답을 생성하는 전략.
 
-| 전략 | 핵심 | 적합한 경우 |
-| --- | --- | --- |
-| Citation Prompting | 각 주장에 `[1]`, `[2]` 형식 근거 표시 | 사내 QA, 고객 응대, 검증 가능한 답변 |
-| Lost-in-the-Middle 대응 | 관련도 높은 문서를 앞과 끝에 배치 | context가 긴 경우 |
-| Context Compression | 관련 문장만 추출해 token과 noise 감소 | 검색 결과가 길거나 비용이 큰 경우 |
-| Chain-of-Note | 각 문서가 질문에 관련 있는지 메모 후 종합 | noisy retrieval 상황 |
+#### Citation Prompting
 
-답변 정책에는 `모르겠습니다`가 있어야 한다. 검색 결과에 답이 없는데도 생성하면 RAG의 신뢰성이 깨진다.
+응답의 각 주장에 [1], [2] 형식 출처 표기를 강제. 할루시네이션 감소 + 검증 가능성 확보.
+
+사내 QA, 고객 응대 등 신뢰성이 중요한 모든 곳.
+
+#### Lost-in-the-Middle 대응
+
+LLM은 컨텍스트 처음과 끝을 잘 기억하고 중간은 잘 못 봄. 가장 관련 높은 문서를 맨 앞에 배치.
+
+컨텍스트가 길 때 (5개+ 문서). 순서 최적화 필수.
+
+#### Context Compression
+
+검색된 문서를 그대로 넣지 말고 관련 문장만 추출. 토큰 절약 + 노이즈 감소.
+
+컨텍스트 윈도우 제한, 비용 최적화 시. LongLLMLingua 등.
+
+#### Chain-of-Note (CoN)
+
+검색된 각 문서에 대해 "이 문서가 질문에 관련 있는가?"를 메모한 뒤 종합. 노이즈 문서 필터링.
+
+검색 품질이 불안정할 때. Noisy Retrieval 상황.
+
+07
 
 ## Agentic RAG Patterns
 
-| 패턴 | 판단 구조 | 보존 내용 |
-| --- | --- | --- |
-| Self-RAG | 검색 필요성, 문서 관련성, 근거성, 유용성을 LLM이 판단 | `[Retrieve]`, `[IsRel]`, `[IsSup]`, `[IsUse]` |
-| CRAG | 검색 결과를 Correct, Incorrect, Ambiguous로 분류 | Correct는 refinement, Incorrect는 web search, Ambiguous는 결합 |
-| Adaptive RAG | 질문 복잡도에 따라 no retrieval, single-step, multi-step 선택 | simple, moderate, complex 분기 |
-| RAFT | RAG와 fine-tuning 결합 | 관련 문서와 distractor를 함께 학습 |
-| SimRAG | synthetic QA와 self-training | 원본 기준 도메인 적응 1.2~8.6% 향상 |
-| Context Engineering | RAG, memory, MCP를 통합 | Knowledge Runtime 방향 |
-| MCP + Agentic RAG | tool/data 연결을 표준화 | vector DB, SQL, web, API를 공통 interface로 연결 |
+단순 파이프라인을 넘어 자율적으로 검색-판단-반복하는 에이전트 패턴.
 
-Agentic RAG는 검색의 자율성을 높이지만 비용과 실패 면적도 키운다. 그래서 iteration 상한, tool 권한, 평가 로그가 필요하다.
+#### Self-RAG Asai et al., ICLR 2024 Oral
 
-## 핵심 평가 지표
+LLM 자체가 검색 필요 여부를 판단
 
-| 영역 | Metric | 의미 |
-| --- | --- | --- |
-| Retrieval | Context Precision | 검색된 문서 중 관련 문서 비율 |
-| Retrieval | Context Recall | 필요한 정보가 검색 결과에 포함됐는가 |
-| Retrieval | MRR | 첫 관련 문서의 평균 순위 |
-| Generation | Faithfulness | 답변이 문서에 근거하는가 |
-| Generation | Answer Relevancy | 답변이 질문에 맞는가 |
-| Generation | Answer Correctness | 정답과 비교한 사실 정확도 |
+4가지 Reflection Token으로 자기 판단:
 
-검색 metric과 생성 metric을 섞으면 안 된다. 검색이 틀렸는지, 생성이 틀렸는지 분리해야 개선 방향이 나온다.
+[Retrieve]
 
-## 평가 도구 스택
+검색이 필요한가? Yes/No/Continue
 
-| 도구 | 위치 | 역할 |
-| --- | --- | --- |
-| RAGAS | 개발 | ground truth 없이도 LLM 기반 자동 평가 가능 |
-| DeepEval | CI/CD | pytest 스타일 RAG regression test |
-| LLM-as-Judge | 비교 평가 | pairwise, pointwise, reference-based |
-| TruLens / Langfuse | 운영 | trace, feedback, 품질 추적 |
+[IsRel]
 
-운영에서는 개별 답변만 보지 않는다. query type, retrieval source, latency, cost, faithfulness score를 함께 봐야 한다.
+검색된 문서가 관련 있는가? Relevant/Irrelevant
 
-## 레이턴시 예산
+[IsSup]
 
-원본 기준 latency budget은 다음과 같이 잡는다.
+응답이 문서에 근거하는가? Fully/Partially/No
 
-| 단계 | P50 목표 | P99 목표 | 최적화 방법 |
-| --- | --- | --- | --- |
-| Query Processing | 50ms | 150ms | 경량 모델, caching |
-| Embedding | 20ms | 50ms | batch 처리, GPU |
-| Vector Search | 10ms | 30ms | HNSW, in-memory index |
-| Reranker | 60ms | 120ms | FlashRank 또는 caching |
-| LLM Generation | 500ms | 2000ms | streaming, prompt 최적화 |
-| Total E2E | 약 700ms | 약 2.5s | 단계별 병목 추적 |
+[IsUse]
 
-P50만 보면 운영 병목을 놓친다. Reranker와 generation은 P99를 같이 봐야 한다.
+최종 응답이 유용한가? 1~5 등급
 
-## 비용 최적화
+#### Corrective RAG (CRAG) Yan et al., 2024
 
-| 전략 | 방식 | 원본 기준 효과 |
-| --- | --- | --- |
-| Semantic Cache | 유사 질문 embedding 비교 후 cache hit 시 검색/LLM skip | 20~40% 비용 절감 |
-| Matryoshka Embedding | 3072d에서 256d로 차원 축소 | storage 12배 절약, 검색 3배 향상, 정확도 약 5% 감소 |
-| Router | 단순 질문은 검색 없이 직접 답변 | 검색 비용 30~50% 절감 |
-| Prompt Compression | context를 압축해 token 감소 | token 50~70% 절약 |
+정확도 19~37% 향상
 
-비용 절감은 품질 저하와 같이 평가해야 한다. cache hit 기준이 느슨하면 오래된 답변이나 권한이 다른 답변을 재사용할 수 있다.
+검색 결과를 경량 평가기로 Correct / Incorrect / Ambiguous 분류 후 보정 경로 선택:
 
-## Production Checklist
+Correct →
 
-### 검색 품질
+Knowledge Refinement (관련 부분만 추출) → 생성
 
-- 자체 데이터셋 benchmark를 만든다. 최소 100개 이상의 QA 쌍이 필요하다.
-- Hybrid Search, Dense + BM25를 적용한다.
-- Reranker를 도입하고 A/B test한다.
-- Chunking 전략 비교 실험을 완료한다.
+Incorrect →
 
-### 안전성
+Web Search로 대체 → 생성
 
-- hallucination detection pipeline을 둔다.
-- PII filtering과 masking을 적용한다.
-- citation을 강제한다.
-- fallback 응답을 허용한다.
+Ambiguous →
 
-### 모니터링
+내부 문서 + Web Search 결합 → 생성
 
-- latency dashboard를 P50, P95, P99로 본다.
-- faithfulness 자동 평가를 붙인다.
-- 사용자 feedback을 수집한다.
-- per-query cost를 추적한다.
+#### Adaptive RAG Jeong et al., 2024
 
-### 운영
+질문 복잡도 기반 동적 라우팅
 
-- 문서 업데이트 자동화 pipeline을 둔다.
-- index incremental update 전략을 둔다.
-- embedding model 교체 migration 계획을 둔다.
-- 장애 시 graceful degradation 경로를 둔다.
+경량 분류기가 질문 복잡도를 판단해서 최적 전략을 선택합니다:
 
-## 운영 로그 필드
+A — Simple
 
-RAG run을 재현하려면 다음 필드가 필요하다.
+"Python 버전 확인 방법?" →
 
-```text
-run_id
-query
-query_type
-retrieval_strategy
-retrieved_doc_ids
-reranked_doc_ids
-prompt_version
-model
-latency_ms
-cost
-faithfulness_score
-error_type
-```
+No Retrieval
 
-raw prompt와 raw document를 무조건 저장하면 안 된다. 민감 정보는 masking하고, 재현에 필요한 구조화 정보만 남겨야 한다.
+(LLM 직접 답변)
 
-## 내 기준
+B — Moderate
 
-Production RAG의 운영 기준은 다음 문장으로 정리된다.
+"우리 회사 휴가 정책?" →
 
-```text
-답변을 만들 수 있는가보다
-틀렸을 때 왜 틀렸는지 찾을 수 있는가가 중요하다.
-```
+Single-step RAG
 
-운영 로그, 평가셋, citation, fallback이 없으면 RAG는 개선 가능한 시스템이 아니라 운에 맡기는 답변 생성기가 된다.
+C — Complex
 
-## 관련 글
+"3Q 매출을 경쟁사 대비 분석해줘" →
 
-- [Production RAG Engineering 1: 아키텍처와 설계 지점]({% post_url 2026-04-04-study-production-rag-architecture %})
-- [Production RAG Engineering 2: Chunking, Embedding, Retrieval, Reranking]({% post_url 2026-04-04-study-production-rag-retrieval %})
+Multi-step Agentic RAG
+
+### 2025~2026 신규 패턴
+
+#### RAFT (Retrieval Augmented Fine-Tuning) UC Berkeley, 2024
+
+RAG + Fine-tuning 결합
+
+RAG와 파인튜닝을 결합하는 학습 레시피. 훈련 시 관련 문서 + 방해 문서(Distractor)를 함께 주고, 모델이 방해 문서를 무시하도록 학습합니다. 의료·법률 등 전문 도메인에서 단순 RAG보다 높은 정확도. 도메인 데이터가 충분할 때 고려.
+
+#### SimRAG (Self-Improving RAG) NAACL 2025
+
+도메인 적응 1.2~8.6% 향상
+
+비라벨 코퍼스에서 LLM이 자체적으로 QA 쌍을 생성하고, 품질 필터링 후 self-training. 라벨링 비용 없이 도메인 특화 RAG 성능을 올리는 방법. 11개 데이터셋, 3개 도메인에서 검증.
+
+#### Context Engineering 2025~2026 패러다임 전환
+
+RAG → 더 넓은 프레임워크로 진화
+
+"RAG"라는 좁은 패턴을 넘어, LLM에 전달하는 전체 컨텍스트를 체계적으로 설계하는 엔지니어링 분야. RAG(정적 지식 검색) + Memory(동적 대화 이력) + MCP(도구/서비스 연결)를 통합하는 "Knowledge Runtime" 개념으로 확장.
+
+RAG
+
+— 정적 도메인 지식 검색 (문서, DB)
+
+Memory
+
+— 동적 상호작용 데이터 (대화 이력, 세션 상태)
+
+MCP
+
+— 외부 도구/서비스 연결 (API, DB, 파일 시스템)
+
+#### MCP + Agentic RAG Anthropic, 2025~2026
+
+표준화된 도구 연결 프로토콜
+
+Model Context Protocol (MCP)은 AI 모델과 외부 데이터/도구를 연결하는 오픈 표준. 기존에는 도구마다 커스텀 코드가 필요했지만, MCP로 벡터 DB · SQL DB · 웹 검색 · API를 통합 인터페이스로 연결합니다. Agentic RAG의 도구 선택이 동적이고 확장 가능해집니다.
+
+08
+
+## Evaluation Framework
+
+측정 없이 개선 없음. 검색과 생성을 분리 평가하고, 프로덕션에서 지속 모니터링.
+
+### 핵심 메트릭 매트릭스
+
+검색 품질 (Retrieval)
+
+Context Precision
+
+검색된 문서 중 관련 있는 비율. 관련 문서 / 전체 검색 문서
+
+Context Recall
+
+필요한 정보가 검색에 포함된 비율. 검색된 관련 문서 / 전체 관련 문서
+
+MRR (Mean Reciprocal Rank)
+
+첫 번째 관련 문서의 평균 순위. 검색 순서 품질 측정.
+
+생성 품질 (Generation)
+
+Faithfulness
+
+응답이 검색 문서에 충실한가. 지어낸 내용 비율 측정. 가장 중요한 메트릭.
+
+Answer Relevancy
+
+응답이 질문에 적절한가. 관련 없는 내용이 포함되지 않았는지.
+
+Answer Correctness
+
+정답과 비교한 사실적 정확도. Ground truth 필요.
+
+### 평가 도구 스택
+
+#### RAGAS
+
+개발 단계
+
+오픈소스 자동 평가. 별도 ground truth 없이 LLM 기반 평가 가능. CI/CD 통합 가능.
+
+#### DeepEval
+
+CI/CD
+
+pytest 스타일 RAG 유닛 테스트. assert_test로 회귀 방지. 빌드 파이프라인 통합.
+
+#### LLM-as-Judge
+
+유연한 평가
+
+강력한 LLM으로 약한 LLM의 출력을 평가. Pairwise 비교, Pointwise 채점, Reference-based.
+
+#### TruLens / Langfuse
+
+프로덕션 모니터링
+
+실시간 트레이싱, 피드백 함수 기반 품질 추적. 사용자 피드백 루프 구축.
+
+09
+
+## Production Operations
+
+RAG를 프로덕션에서 안정적으로 운영하기 위한 실전 체크리스트.
+
+### 레이턴시 예산 (Latency Budget)
+
+단계
+
+P50 목표
+
+P99 목표
+
+최적화 방법
+
+Query Processing
+
+50ms
+
+150ms
+
+경량 모델, 캐싱
+
+Embedding
+
+20ms
+
+50ms
+
+배치 처리, GPU
+
+Vector Search
+
+10ms
+
+30ms
+
+HNSW, 인메모리 인덱스
+
+Reranker
+
+60ms
+
+120ms
+
+FlashRank 또는 캐싱
+
+LLM Generation
+
+500ms
+
+2000ms
+
+스트리밍, 프롬프트 최적화
+
+Total (E2E)
+
+~700ms
+
+~2.5s
+
+### 비용 최적화 전략
+
+🔄 Semantic Cache
+
+유사 질문 임베딩 비교 → 캐시 히트 시 검색/LLM 스킵. 20~40% 비용 절감. Redis + 코사인 유사도 > 0.95.
+
+📐 Matryoshka Embedding
+
+3072d → 256d로 차원 축소. 스토리지 12x 절약, 검색 속도 3x 향상. 정확도 5%만 감소.
+
+🎯 Router로 분기
+
+단순 질문은 검색 없이 LLM 직접 답변. 30~50% 검색 비용 절감. 경량 분류기로 구현.
+
+📦 Prompt Compression
+
+컨텍스트를 LLMLingua로 압축. 토큰 50~70% 절약. LLM API 비용 직접 절감.
+
+### 프로덕션 체크리스트
+
+#### 🔍 검색 품질
+
+☐ 자체 데이터셋 벤치마크 (최소 100+ QA 쌍)
+
+☐ Hybrid search (Dense + BM25) 적용
+
+☐ Reranker 도입 및 A/B 테스트
+
+☐ 청킹 전략 비교 실험 완료
+
+#### 🛡️ 안전성
+
+☐ 할루시네이션 감지 파이프라인
+
+☐ PII 필터링 (개인정보 마스킹)
+
+☐ 출처 표기 강제 (Citation)
+
+☐ Fallback 응답 ("모르겠습니다" 허용)
+
+#### 📊 모니터링
+
+☐ 레이턴시 대시보드 (P50/P95/P99)
+
+☐ Faithfulness 자동 평가 (RAGAS)
+
+☐ 사용자 피드백 수집 (👍👎)
+
+☐ 비용 추적 (per-query 단가)
+
+#### 🔄 운영
+
+☐ 문서 업데이트 자동화 파이프라인
+
+☐ 인덱스 갱신 전략 (incremental)
+
+☐ 임베딩 모델 교체 마이그레이션 계획
+
+☐ 장애 시 graceful degradation
+
+---
+
+## 추가 정리
+
+### 핵심 요약
+
+Production RAG의 마지막 품질은 evaluation과 operations에서 결정된다. 검색이 맞았는지, 답변이 근거를 따랐는지, 비용과 latency가 허용 범위 안인지 계속 측정해야 한다.
+
+### 보충 해설
+
+평가는 한 번의 벤치마크가 아니라 운영 루프다. 사용자 질문, 검색 결과, reranker 결과, 최종 답변, citation, latency, cost를 함께 남겨야 나중에 실패 원인을 추적할 수 있다. RAG는 모델 성능 문제가 아니라 관측 가능한 시스템 설계 문제에 가깝다.

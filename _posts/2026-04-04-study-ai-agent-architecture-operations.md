@@ -16,153 +16,234 @@ comments: false
 mermaid: true
 math: true
 ---
-# AI Agent 완벽 가이드 3: Memory, RAG, Guardrails, Cost
+Deep Dive
 
-> **한줄 정의**
-> Agent 운영의 핵심은 memory, retrieval, guardrails, protocol, evaluation, cost를 하나의 실행 시스템으로 묶는 것이다.
+## 핵심 아키텍처 개념
 
-## Memory 시스템
+에이전트 시스템의 내부를 구성하는 핵심 개념들
 
-Agent memory는 세 가지로 나눠 본다.
+### Agent Memory 시스템
 
-| 유형 | 의미 | 구현 예 |
-| --- | --- | --- |
-| Short-term Memory | 현재 대화와 즉시 필요한 작업 기억 | context window, working memory |
-| Long-term Memory | 세션을 넘어 지속되는 사실, 규칙, 선호 | vector DB, knowledge graph |
-| Episodic Memory | 과거 경험과 상황별 episode | semantic retrieval, event log |
+Core Component
 
-Memory는 많이 넣는 것이 목표가 아니다. 어떤 정보를 언제 검색하고 언제 폐기할지 정하는 것이 핵심이다.
+인간의 기억 체계에서 영감을 받은 에이전트 메모리 시스템은 세 가지 유형으로 나뉩니다.
 
-## Traditional RAG vs Agentic RAG
+S
 
-| 관점 | Traditional RAG | Agentic RAG |
-| --- | --- | --- |
-| 흐름 | Query -> Search -> Generate | Plan -> Retrieve -> Evaluate -> Re-retrieve -> Synthesize |
-| 검색 횟수 | 보통 1회 | 필요하면 반복 |
-| 결과 평가 | 별도 단계가 없을 수 있음 | 검색 결과를 평가하고 재검색 |
-| 비유 | 책 한 권 빌리기 | 연구 조교가 여러 자료 교차 검증 |
+#### Short-term Memory
 
-Agentic RAG는 복잡 질문에 강하지만, 비용과 지연시간을 늘린다.
+컨텍스트 윈도우 내의 작업 기억. 현재 대화와 즉시 필요한 정보를 유지합니다.
 
-## Guardrails 아키텍처
+구현: Context Window, Working Memory
 
-가드레일은 한 계층으로 충분하지 않다.
+L
 
-```text
+#### Long-term Memory
+
+세션을 넘어 지속되는 기억. 사실, 정의, 규칙 등 구조화된 지식을 저장합니다.
+
+구현: Vector DB, Knowledge Graph
+
+E
+
+#### Episodic Memory
+
+과거 경험과 에피소드를 기록. 유사한 상황에서 과거 경험을 참조합니다.
+
+구현: Vector DB + Semantic Retrieval
+
+Source: Park et al., "Generative Agents" (2023) | IBM, "AI Agent Memory" (2025)
+
+### Agentic RAG vs Traditional RAG
+
+Evolution
+
+#### Traditional RAG
+
+Query
+
+↓
+
+Vector Search
+
+↓
+
+Retrieve Docs
+
+↓
+
+Generate Answer
+
+단일 패스. 검색 결과가 부족해도 재시도 없음. 도서관에서 책 한 권 빌리는 것과 같음.
+
+vs
+
+#### Agentic RAG
+
+Plan
+
+↓
+
+Retrieve
+
+↓
+
+Evaluate
+
+↓ / ↺
+
+Re-retrieve / Tool Use
+
+↓
+
+Synthesize
+
+반복적 검색, 평가, 재검색. 연구 조교가 여러 자료를 찾아 교차 검증하는 것과 같음.
+
+### Guardrails 아키텍처
+
+Safety
+
+가드레일은 계층적 방어(Layered Defense) 원칙으로 설계됩니다. 하나의 가드레일로 모든 것을 잡을 수 없습니다.
+
 Input Guardrails
-  -> Agent Core
-  -> Tool Guardrails
-  -> Output Guardrails
-  -> Human-in-the-Loop
-```
 
-| 계층 | 방어 대상 |
-| --- | --- |
-| Input Guardrails | prompt injection, PII, 유해 입력 |
-| Tool Guardrails | 권한 확인, 실행 전 승인, 파괴적 작업 차단 |
-| Output Guardrails | hallucination, PII 노출, 정책 위반 |
-| Human-in-the-Loop | 결제, 발송, 삭제, 권한 변경 같은 irreversible action |
+PII 감지
 
-Agent는 도구를 실행할 수 있으므로, chatbot보다 권한 경계가 더 중요하다.
+Prompt Injection 방어
 
-## 비용 최적화
+유해성 필터링
 
-원본 학습 노트 기준으로 agent loop는 단일 호출 대비 10~100배 더 많은 token을 쓸 수 있다.
+↓
 
-| 전략 | 원본 기준 효과 | 설명 |
-| --- | --- | --- |
-| Prompt Caching | 60~80% 절감 | system prompt와 tool schema 재사용 |
-| Multi-Model Routing | 30~60% 절감 | 단순 작업은 저렴한 모델, 복잡 추론은 고급 모델 |
-| Batch Processing | 약 50% 절감 | 비동기 batch로 할인 활용 |
-| Prompt Engineering | 15~40% 절감 | 간결한 prompt, JSON 출력, 불필요 tool 제거 |
+Agent Core (LLM + Tools)
 
-비용은 token만이 아니다. 도구 호출, 검색, reranking, code execution, human review 비용도 포함된다.
+↓
 
-## MCP와 A2A
+Output Guardrails
 
-| 프로토콜 | 연결 방향 | 역할 |
-| --- | --- | --- |
-| MCP | Agent -> Tools & Data | tools, resources, prompts를 표준 방식으로 제공 |
-| A2A | Agent -> Agent | agent card, task, message, artifact 교환 |
+할루시네이션 탐지
 
-MCP는 vertical integration이다. Agent가 외부 도구와 데이터에 접근하는 방법을 표준화한다.
+콘텐츠 검수
 
-A2A는 horizontal integration이다. Agent가 다른 agent에게 작업을 위임하고 결과를 받는 방법을 표준화한다.
+PII 제거
 
-## Framework 비교
+Tool Guardrails
 
-| Framework | 중심 구조 | 적합한 경우 |
-| --- | --- | --- |
-| LangGraph | graph-based workflow, durable execution | 복잡한 production workflow |
-| CrewAI | role-based multi-agent | 역할 전문화와 팀 시뮬레이션 |
-| AutoGen | event-driven, actor model | enterprise 분산 agent |
-| Google ADK | code-first, runner 중심 | Google Cloud와 streaming |
-| OpenAI Agents SDK | minimal Python primitives | 빠른 prototype, 단순 agent |
-| Claude Code | terminal agent, sub-agent, permission gate | codebase 작업과 multi-file 변경 |
+실행 전 검증
 
-프레임워크 선택은 기능 수가 아니라 상태 관리, human gate, trace, evaluation 지원으로 판단한다.
+권한 확인
 
-## 흔한 실수 Top 10
+Human-in-the-Loop
 
-| 번호 | 실수 | 문제 |
-| --- | --- | --- |
-| 1 | 과도한 engineering | 단순 LLM이나 workflow로 충분한 문제에 multi-agent 도입 |
-| 2 | 데이터 품질 무시 | 부실한 pipeline 위에 agent를 구축 |
-| 3 | 평가 framework 부재 | 원본 기준 AI team의 15%만 포괄 평가 수행 |
-| 4 | 관찰 도구 누락 | 원본 기준 production agent의 5%만 성숙한 monitoring 보유 |
-| 5 | RPA처럼 취급 | 구축, 배포, 방치 방식은 실패 |
-| 6 | 도구 과다 등록 | 모든 tool schema가 token을 소비 |
-| 7 | Human-in-the-Loop 부재 | 중요한 결정을 완전 자동화 |
-| 8 | 비용 관리 실패 | agent loop는 단일 호출보다 10~100배 token 소비 가능 |
-| 9 | 부실한 tool 문서화 | tool 설명이 약하면 tool 선택이 흔들림 |
-| 10 | 종료 조건 미설정 | exit criteria 없는 agent는 무한 loop 위험 |
+### 비용 최적화 전략
 
-## 주요 통계
+Production
 
-| 수치 | 의미 |
-| --- | --- |
-| 88% | 원본 기준 agent project가 production 전 실패 |
-| 1,445% | 원본 기준 multi-agent 문의 증가율 |
-| 85% | 원본 기준 개발자의 AI coding tool 사용 |
-| $2.1M | 원본 기준 AI 보안 통제 적용 시 평균 비용 절감 |
-| 80.9% | 원본 기준 SWE-bench Verified 최고 점수 |
-| 33% | 원본 기준 2028년까지 agent AI 포함 예측 |
+에이전트 루프는 단일 호출 대비 10~100배 더 많은 토큰을 소비할 수 있습니다. 주요 최적화 전략:
 
-이 수치는 원본 학습 노트 기준이며, 최신 시장 수치로 단정하지 않는다.
+Prompt Caching
 
-## 핵심 논문과 벤치마크
+60-80% 절감
 
-| 항목 | 핵심 |
-| --- | --- |
-| ReAct | Thought, Action, Observation loop |
-| Chain-of-Thought | 단계별 추론 |
-| Toolformer | LLM의 tool use 학습 |
-| Generative Agents | observation, reflection, retrieval 기반 social agent |
-| Reflexion | 언어적 자기 반성 |
-| Tree of Thoughts | 사고 트리 탐색 |
-| MRKL | router가 symbolic tool과 LLM을 연결 |
-| HuggingGPT | LLM이 전문 모델을 orchestrate |
-| SWE-bench Verified | 실제 GitHub issue 해결 |
-| GAIA | multimodal tool use와 reasoning |
-| AgentBench | OS 환경 등 multi-environment agent 평가 |
+캐시된 토큰은 75% 저렴. 시스템 프롬프트, 도구 스키마 재사용
 
-## 내 기준
+Multi-Model Routing
 
-Agent는 다음 순서로 설계한다.
+30-60% 절감
 
-```text
-Task boundary
-  -> Tool boundary
-  -> Memory policy
-  -> Evaluation
-  -> Observability
-  -> Cost limit
-  -> Human approval
-```
+단순 작업은 저렴한 모델, 복잡한 추론만 고급 모델 사용
 
-이 순서를 빼고 framework부터 고르면, agent는 금방 demo는 되지만 production system이 되지 않는다.
+Batch Processing
 
-## 관련 글
+~50% 절감
 
-- [AI Agent 완벽 가이드 1: 정의와 Workflow 구분]({% post_url 2026-04-04-study-ai-agent-definition-workflow %})
-- [Agent Engineering]({% post_url 2026-05-23-study-agent-engineering %})
+비동기 배치 처리로 할인 적용 (OpenAI, Google, Mistral)
+
+Prompt Engineering
+
+15-40% 절감
+
+간결한 프롬프트, JSON 구조화 출력, 사용하지 않는 도구 제거
+
+Protocols
+
+## 에이전트 통신 프로토콜
+
+에이전트 생태계를 연결하는 두 가지 핵심 프로토콜
+
+MCP
+
+### Model Context Protocol
+
+by Anthropic (Nov 2024)
+
+Vertical
+
+Agent ↔ Tools & Data
+
+에이전트가 외부 도구와 데이터에 접근하는 방법을 표준화합니다. N x M 통합 문제를 M + N으로 줄입니다.
+
+Tools
+
+LLM이 호출할 수 있는 함수
+
+Resources
+
+접근할 수 있는 데이터 소스
+
+Prompts
+
+최적 사용을 위한 템플릿
+
+JSON-RPC 2.0 | stdio / HTTP+SSE
+
+A2A
+
+### Agent-to-Agent Protocol
+
+by Google (Apr 2025)
+
+Horizontal
+
+Agent ↔ Agent
+
+에이전트 간 작업을 위임하고 결과를 교환하는 방법을 표준화합니다. Agent Card로 능력을 광고합니다.
+
+Agent Cards
+
+능력 광고 JSON 문서
+
+Tasks
+
+작업 단위 & 라이프사이클
+
+Messages
+
+컨텍스트, 결과, 아티팩트 교환
+
+HTTP + JSON | SSE Streaming | Apache 2.0
+
+MCP
+
+Agent ↔ Tools
+
+Complementary
+
+A2A
+
+Agent ↔ Agent
+
+두 프로토콜은 경쟁이 아닌 상호 보완 관계입니다. 2025년 12월 Linux Foundation의 AAIF(Agentic AI Foundation)에서 OpenAI, Anthropic, Google, Microsoft, AWS가 공동 거버넌스에 합류했습니다.
+
+---
+
+## 추가 정리
+
+### 핵심 요약
+
+이 글의 중심은 에이전트가 단순히 LLM을 호출하는 구조가 아니라는 점이다. 실무 에이전트는 Memory, RAG, Guardrails, Cost Control을 함께 설계해야 운영 가능한 시스템이 된다.
+
+### 보충 해설
+
+Memory는 상태를 유지하기 위한 장치이고, RAG는 외부 지식을 가져오는 장치다. Guardrails는 행동 범위를 제한하고, Cost Control은 반복 실행이 비용 폭주로 이어지지 않게 막는다. 네 요소 중 하나라도 빠지면 데모는 가능해도 운영 안정성이 낮아진다.

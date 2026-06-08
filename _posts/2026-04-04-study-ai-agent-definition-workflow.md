@@ -15,115 +15,128 @@ comments: false
 mermaid: true
 math: true
 ---
-# AI Agent 완벽 가이드 1: 정의와 Workflow 구분
+2026 Complete Guide
 
-> **한줄 정의**
-> AI Agent는 LLM에 memory, planning, tools를 붙여 목표 달성을 위해 판단하고 실행하는 시스템이다.
+# AI Agent 완벽 가이드
 
-## Agent의 4요소
+단순 LLM 호출부터 멀티 에이전트 시스템까지 7단계로 이해하는 AI Agent의 모든 것
 
-원본 학습 노트는 Agent를 다음 조합으로 정리한다.
+7
 
-```text
-Agent = LLM + Memory + Planning + Tools
-```
+Agent Levels
 
-![AI Agent components](/assets/images/study/diagrams/study-ai-agent-components.svg){: width="100%"}
+10+
 
-| 구성요소 | 역할 | 설계 질문 |
-| --- | --- | --- |
-| LLM | 추론, 계획, 생성, 도구 선택 | 어떤 판단을 모델에게 맡길 것인가 |
-| Memory | 현재 context와 장기 정보 유지 | 무엇을 기억하고 무엇을 버릴 것인가 |
-| Planning | 목표를 단계로 분해하고 재계획 | 계획은 고정할 것인가, 동적으로 만들 것인가 |
-| Tools | API, DB, 검색, 코드 실행 등 외부 행동 | 어떤 도구를 어떤 권한으로 허용할 것인가 |
+핵심 논문
 
-LLM만 있으면 chatbot에 가깝다. Agent가 되려면 외부 상태를 읽고, 도구를 호출하고, 그 결과에 따라 다음 행동을 바꿀 수 있어야 한다.
+6
 
-## Workflow와 Agent의 차이
+주요 프레임워크
 
-Agent를 이해할 때 가장 중요한 구분은 workflow와 agent다.
+레벨별 가이드 보기
 
-| 관점 | Workflow | Agent |
-| --- | --- | --- |
-| 실행 흐름 | 코드로 미리 정의 | LLM이 동적으로 결정 |
-| 같은 입력의 경로 | 대체로 동일 | 달라질 수 있음 |
-| 예측 가능성 | 높음 | 낮음 |
-| 디버깅 | 쉬움 | trace와 observability 필요 |
-| 비용 | 예측 가능 | 반복과 도구 호출로 가변 |
-| 적합한 문제 | 명확한 비즈니스 프로세스 | open-ended 문제 |
-| 예시 | 문서 번역 pipeline, 이메일 분류 | 코드 디버깅 agent, research agent |
+Overview 먼저 보기
 
-대부분의 업무는 Agent가 아니라 Workflow로 충분하다. 동적 판단이 꼭 필요할 때만 Agent로 올리는 것이 안전하다.
+Overview
 
-## Workflow 예시
+## AI Agent란 무엇인가?
 
-문서 번역 workflow는 고정된 순서를 갖는다.
+Lilian Weng(OpenAI)의 정의에 따르면, AI Agent는 네 가지 핵심 요소의 조합입니다
 
-```text
-Input Document
-  -> Analyze
-  -> Draft Translation
-  -> Term Check
-  -> Polish
-  -> Output
-```
+Agent
 
-각 단계에서 LLM을 쓸 수 있지만, 전체 흐름은 코드가 결정한다. 실패 위치도 상대적으로 명확하다.
+=
 
-## Agent 예시
+LLM
 
-Research Agent는 같은 질문이라도 검색 결과에 따라 다른 경로를 선택한다.
++
 
-```text
-Goal
-  -> Think
-  -> Search
-  -> Observe
-  -> Decide next tool
-  -> Search again or summarize
-  -> Final answer
-```
+Memory
 
-여기서 핵심은 `Observe` 이후 다음 행동이 바뀐다는 점이다.
++
 
-## 언제 Agent가 필요한가
+Planning
 
-| 상황 | Agent 필요도 | 이유 |
-| --- | --- | --- |
-| 단일 질문 답변 | 낮음 | 일반 LLM 호출 또는 RAG로 충분 |
-| 정해진 절차 처리 | 낮음 | Workflow가 더 예측 가능 |
-| 입력 유형별 분기 | 중간 | Router workflow로 해결 가능 |
-| 긴 작업 중 재계획 | 높음 | 중간 결과에 따라 다음 행동이 달라짐 |
-| 여러 도구를 선택 실행 | 높음 | tool selection과 observation loop 필요 |
-| 실패 후 복구 | 높음 | retry, fallback, replanning이 필요 |
++
 
-## Agent 도입 전 질문
+Tools
 
-Agent는 강력하지만 기본값이 되어서는 안 된다.
+Source: Lilian Weng, "LLM Powered Autonomous Agents" (June 2023)
 
-| 질문 | No라면 |
-| --- | --- |
-| 작업이 open-ended인가 | Workflow로 시작 |
-| 중간 결과에 따라 경로가 달라지는가 | Prompt chaining 또는 routing 사용 |
-| 도구 호출 실패를 복구해야 하는가 | 단순 tool call로 충분 |
-| 사람 승인 경계가 정의됐는가 | Agent 자동 실행 금지 |
-| trace와 cost를 기록할 수 있는가 | production agent 금지 |
+### LLM (두뇌)
 
-## 내 기준
+추론과 의사결정의 핵심 엔진. 자연어를 이해하고, 계획을 세우고, 도구 사용을 결정합니다.
 
-Agent는 자율성이 아니라 책임 경계의 문제다.
+Core Engine
 
-```text
-Model decides
-  -> Code constrains
-  -> Tool enforces
-  -> Human approves
-  -> Log explains
-```
+### Memory (기억)
 
-이 다섯 가지가 없으면 agent는 실행 시스템이 아니라 예측하기 어려운 loop다.
+단기 기억(컨텍스트 윈도우)과 장기 기억(벡터 DB). 경험을 축적하고 과거를 참조합니다.
 
-## 다음 글
+State Management
 
-- [AI Agent 완벽 가이드 2: Agent 성숙도 7단계]({% post_url 2026-04-04-study-ai-agent-maturity-levels %})
-- [AI Agent 완벽 가이드 3: Memory, RAG, Guardrails, Cost]({% post_url 2026-04-04-study-ai-agent-architecture-operations %})
+### Planning (계획)
+
+작업 분해(Task Decomposition)와 자기 반성(Reflection). 복잡한 목표를 실행 가능한 단계로 쪼갭니다.
+
+Strategy
+
+### Tools (도구)
+
+외부 API, 검색 엔진, 코드 실행기 등. LLM의 능력을 실제 세계로 확장합니다.
+
+External Actions
+
+### Workflow vs Agent: 핵심 구분
+
+Anthropic의 "Building Effective Agents"(2024)에서는 Workflow와 Agent를 명확히 구분합니다
+
+#### Workflow
+
+Deterministic
+
+- 실행 흐름이 코드로 미리 정의됨
+
+- 같은 입력 = 같은 경로
+
+- 예측 가능하고 디버깅이 쉬움
+
+- 대부분의 비즈니스 문제에 적합
+
+- 비용이 예측 가능
+
+예시:
+
+문서 번역 파이프라인, 이메일 분류 시스템
+
+vs
+
+#### Agent
+
+Dynamic
+
+- 실행 흐름을 LLM이 동적으로 결정
+
+- 같은 입력이라도 다른 경로 가능
+
+- 관찰(Observability) 도구 필요
+
+- Open-ended 문제에 강함
+
+- 비용이 가변적
+
+예시:
+
+코드 디버깅 에이전트, 리서치 에이전트
+
+---
+
+## 추가 정리
+
+### 핵심 요약
+
+Workflow는 사람이 정한 경로를 LLM이 따라가는 구조이고, Agent는 실행 중에 다음 행동을 스스로 선택하는 구조다. 두 개념을 섞어 쓰면 설계 복잡도가 불필요하게 올라간다.
+
+### 보충 해설
+
+실무에서는 먼저 Workflow로 충분한지 판단해야 한다. 입력 유형이 명확하고 단계가 고정되어 있으면 Workflow가 더 안전하고 저렴하다. Agent가 필요한 경우는 도구 선택, 경로 선택, 재시도 판단이 실행 중에 달라지는 문제다.
