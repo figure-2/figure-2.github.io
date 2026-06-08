@@ -1,5 +1,5 @@
 ---
-title: "슬라이드 중복 캡처와 VLM 입력 품질을 줄이는 과정"
+title: "06. 슬라이드 중복 캡처와 VLM 입력 품질을 줄이는 과정"
 categories:
 - 2.PROJECT
 - 2-5. SeSAC-Note
@@ -10,13 +10,13 @@ tags:
 - Multimodal AI
 - Prompt Engineering
 toc: true
-date: 2026-02-10 09:30:00 +0900
+date: 2025-12-23 09:00:00 +0900
 comments: true
 mermaid: true
 math: true
 ---
 
-# 슬라이드 중복 캡처와 VLM 입력 품질을 줄이는 과정
+# 06. 슬라이드 중복 캡처와 VLM 입력 품질을 줄이는 과정
 
 SeSAC:Note에서 화면 정보는 요약 품질의 출발점이다. 캡처가 중복되면 VLM 비용이 늘고, 캡처가 부정확하면 STT와 화면의 연결이 흔들린다. VLM 입력이 나쁘면 Summarizer와 Judge까지 영향을 받는다.
 
@@ -106,5 +106,5 @@ VLM prompt는 다음 방향으로 정리했다.
 
 다음 글에서는 이렇게 만들어진 입력이 긴 영상 처리에서 어떤 병목을 만들고, 비동기 파이프라인으로 어떻게 다뤘는지 정리한다.
 
-- 이전 글: [STT, VLM, Fusion으로 강의 영상을 노트로 바꾸는 구조]({% post_url 2026-02-10-project-sesac-note-architecture %})
-- 다음 글: [긴 영상 처리에서 상태 추적과 체감 대기시간을 다룬 방법]({% post_url 2026-02-10-project-sesac-note-async-pipeline %})
+- 이전 글: [05. STT, VLM, Fusion으로 강의 영상을 노트로 바꾸는 구조]({% post_url 2025-12-16-project-sesac-note-05-architecture %})
+- 다음 글: [07. 긴 영상 처리에서 상태 추적과 체감 대기시간을 다룬 방법]({% post_url 2026-01-06-project-sesac-note-07-async-pipeline %})

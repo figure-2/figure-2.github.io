@@ -1,5 +1,5 @@
 ---
-title: "SeSAC:Note Visual Portfolio - 6장으로 보는 프로젝트 요약"
+title: "03. SeSAC:Note Visual Portfolio - 6장으로 보는 프로젝트 요약"
 categories:
 - 2.PROJECT
 - 2-5. SeSAC-Note
@@ -10,13 +10,13 @@ tags:
 - Multimodal AI
 - Claim Boundary
 toc: true
-date: 2026-02-10 09:05:00 +0900
+date: 2025-12-05 09:00:00 +0900
 comments: true
 mermaid: true
 math: true
 ---
 
-# SeSAC:Note Visual Portfolio - 6장으로 보는 프로젝트 요약
+# 03. SeSAC:Note Visual Portfolio - 6장으로 보는 프로젝트 요약
 
 이 글은 SeSAC:Note 프로젝트를 기술 상세보다 먼저 빠르게 이해하기 위한 시각 요약본이다. 원본 웹 포트폴리오 산출물은 밝은 배경, 얇은 보더, 카드형 UI, 민트/틸 포인트를 기준으로 만들었고, 이미지 자체를 붙이는 방식보다 텍스트와 카드, 도식을 수정 가능한 구조로 정리하는 방향을 잡았다.
 
@@ -98,9 +98,9 @@ flowchart LR
 | AI 파이프라인 연동 | STT, Capture, VLM, Summary, Judge 결과를 서비스 흐름으로 연결 |
 | 영상 구간 기반 QA | 특정 영상의 evidence 안에서 답변하는 QA 흐름 |
 | Judge 품질 점검 | groundedness와 note quality를 보조 평가하는 gate |
-| clone 보안 보강 | media ticket, upload validation 등 clone 기준 보안 흐름 정리 |
+| 보안 보강 | media ticket, upload validation 등 보안 흐름 정리 |
 
-여기서 조심할 점은 ownership 표현이다. 팀 프로젝트 전체를 단독으로 수행한 것처럼 보이면 안 된다. 공개 글에서는 `프로젝트에서 정리한 구현 축`, `개발 과정에서 다룬 문제`, `설명 가능한 흐름`으로 표현한다.
+여기서 조심할 점은 ownership 표현이다. 프로젝트 전체를 한 사람이 모두 수행한 것처럼 보이면 안 된다. 공개 글에서는 `프로젝트에서 정리한 구현 축`, `개발 과정에서 다룬 문제`, `설명 가능한 흐름`으로 표현한다.
 
 ## 5. Core Implementation: 사용자 흐름과 백엔드 흐름을 분리한다
 
@@ -134,8 +134,8 @@ flowchart TB
 
 | 기준 | 공개 표현 |
 | --- | --- |
-| 원본 Re:View | 원본 팀 프로젝트 구조와 사용자 흐름 |
-| SeSAC:Note clone | 로컬/개발 환경 기준 보완과 문서화 |
+| README 기준 서비스 구조 | 공개 프로젝트 구조와 사용자 흐름 |
+| 보안 보강과 문서화 | 로컬/개발 환경 기준 보완과 문서화 |
 | Sample / Benchmark | 제한된 조건의 Judge, 시간, token 비교 |
 | Test / Build | 코드, 테스트, 빌드 기준 확인 범위 |
 
@@ -153,5 +153,5 @@ JD Fit은 다음 우선순위로 정리한다.
 
 이 글은 기술 상세로 들어가기 전의 포트폴리오 요약본이다. 따라서 대표 케이스스터디 다음에 두는 것이 맞다. 이후 글에서 문제 정의, 아키텍처, 캡처/VLM, 비동기 처리, QA, Judge, 검증과 회고를 하나씩 자세히 보면 된다.
 
-- 이전 글: [SeSAC:Note - 멀티모달 AI 강의 노트 서비스 개발기]({% post_url 2026-02-10-project-sesac-note-case-study %})
-- 다음 글: [강의 영상 요약 문제를 어떻게 재정의했는가]({% post_url 2026-02-10-project-sesac-note-problem-definition %})
+- 이전 글: [02. SeSAC:Note README 기준 프로젝트 구조 정리]({% post_url 2025-12-02-project-sesac-note-02-readme-overview %})
+- 다음 글: [04. 강의 영상 요약 문제를 어떻게 재정의했는가]({% post_url 2025-12-09-project-sesac-note-04-problem-definition %})

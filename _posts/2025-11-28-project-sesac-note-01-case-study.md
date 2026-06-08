@@ -1,5 +1,5 @@
 ---
-title: "SeSAC:Note - 멀티모달 AI 강의 노트 서비스 개발기"
+title: "01. SeSAC:Note - 멀티모달 AI 강의 노트 서비스 개발기"
 categories:
 - 2.PROJECT
 - 2-5. SeSAC-Note
@@ -11,17 +11,17 @@ tags:
 - VLM
 - LLM Judge
 toc: true
-date: 2026-02-10 09:00:00 +0900
+date: 2025-11-28 09:00:00 +0900
 comments: true
 mermaid: true
 math: true
 ---
 
-# SeSAC:Note - 멀티모달 AI 강의 노트 서비스 개발기
+# 01. SeSAC:Note - 멀티모달 AI 강의 노트 서비스 개발기
 
 SeSAC:Note는 강의 영상의 음성 정보와 화면 정보를 시간축으로 결합해, 영상 없이도 복습 가능한 AI 강의 노트와 영상별 질의응답을 제공하는 멀티모달 AI 서비스다.
 
-원본 팀 프로젝트명은 `Re:View`다. `SeSAC:Note`는 원본 프로젝트를 포트폴리오용으로 정리하면서 붙인 공개 정리명이다. 이 글에서는 원본 프로젝트의 구조와 이후 정리된 개선 내용을 함께 다루되, 검증 기준은 분리해서 설명한다.
+이 글은 SeSAC:Note README와 프로젝트 정리 문서를 기준으로, 공개 가능한 기능, 아키텍처, 검증 범위를 정리한다. 개인 식별 정보와 민감한 실행 환경 정보는 제외하고 서비스 구조와 개발 흐름만 다룬다.
 
 ```mermaid
 flowchart LR
@@ -89,7 +89,7 @@ flowchart LR
 | 생성 품질 점검 | Summarizer와 Judge를 분리해 요약 결과를 보조 평가 |
 | 서비스화 | 업로드, 상태 조회, DB 저장, 영상별 QA, 보안 보강 흐름으로 연결 |
 
-이 글에서 말하는 구현 흐름은 팀 프로젝트 전체의 개발 흐름을 공개용으로 재구성한 것이다. 특정 개인이 전체 파이프라인을 혼자 만들었다는 의미가 아니다.
+이 글에서 말하는 구현 흐름은 프로젝트 개발 흐름을 공개용으로 재구성한 것이다. 특정 개인이 전체 파이프라인을 혼자 만들었다는 의미가 아니다.
 
 ## 검증 근거와 한계
 
@@ -97,27 +97,27 @@ flowchart LR
 
 | 기준 | 사용할 수 있는 표현 |
 | --- | --- |
-| 원본 Re:View 구조 | Cloud Run, Vercel, Supabase, Storage/R2를 연결한 팀 프로젝트 구조 |
+| README 기준 서비스 구조 | FastAPI, React/Vite, Supabase, Storage/R2를 연결한 서비스 구조 |
 | 문서상 sample pipeline | sample4 기준 처리 결과가 기록됨 |
 | 제한된 Judge benchmark | Judge 버전별 평가 시간, 토큰, 통과 여부 비교 |
-| SeSAC:Note clone | media ticket, upload validation 등 일부 보안 보강과 테스트 기록 |
+| 보안 보강 기록 | media ticket, upload validation 등 일부 보안 흐름의 테스트 기록 |
 
-반대로 현재 공개 글에서는 운영 환경에서의 성공, 모든 영상 유형에 대한 일반화, 전체 구간 재실행 검증을 주장하지 않는다. Judge 역시 품질을 보장하는 장치가 아니라, 생성 결과를 근거와 비교해 점검하는 보조 gate로 본다.
+반대로 현재 공개 글에서는 운영 환경에서의 성공, 모든 영상 유형에 대한 일반화, 전체 구간 재실행 검증을 주장하지 않는다. Judge 역시 품질을 최종 판정하는 장치가 아니라, 생성 결과를 근거와 비교해 점검하는 보조 gate로 본다.
 
 ```mermaid
 flowchart TB
-    A[공개 글에서 사용할 근거] --> B[원본 Re:View 구조]
+    A[공개 글에서 사용할 근거] --> B[README 기준 서비스 구조]
     A --> C[문서상 sample pipeline]
     A --> D[제한된 Judge benchmark]
-    A --> E[SeSAC:Note clone 보안 테스트]
-    B --> F[팀 프로젝트 구조로만 설명]
+    A --> E[보안 보강 테스트]
+    B --> F[서비스 구조로 설명]
     C --> G[sample4 기준 기록으로만 설명]
     D --> H[평가 단계 benchmark로만 설명]
-    E --> I[clone 기준 보강으로만 설명]
+    E --> I[보안 보강 범위로만 설명]
 ```
 
 ## 시리즈 구성
 
 이 프로젝트는 한 글로 끝내면 중요한 판단들이 묻힌다. 이후 글에서는 문제 정의, 아키텍처, 캡처/VLM 개선, 비동기 처리, 영상 근거 기반 QA, Judge 평가, 검증과 보안 범위를 나누어 정리한다.
 
-- 다음 글: [SeSAC:Note Visual Portfolio - 6장으로 보는 프로젝트 요약]({% post_url 2026-02-10-project-sesac-note-visual-portfolio %})
+- 다음 글: [02. SeSAC:Note README 기준 프로젝트 구조 정리]({% post_url 2025-12-02-project-sesac-note-02-readme-overview %})

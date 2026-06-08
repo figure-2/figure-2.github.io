@@ -1,5 +1,5 @@
 ---
-title: "긴 영상 처리에서 상태 추적과 체감 대기시간을 다룬 방법"
+title: "07. 긴 영상 처리에서 상태 추적과 체감 대기시간을 다룬 방법"
 categories:
 - 2.PROJECT
 - 2-5. SeSAC-Note
@@ -10,13 +10,13 @@ tags:
 - Supabase
 - Backend
 toc: true
-date: 2026-02-10 09:40:00 +0900
+date: 2026-01-06 09:00:00 +0900
 comments: true
 mermaid: true
 math: true
 ---
 
-# 긴 영상 처리에서 상태 추적과 체감 대기시간을 다룬 방법
+# 07. 긴 영상 처리에서 상태 추적과 체감 대기시간을 다룬 방법
 
 강의 영상 분석은 짧은 API 요청처럼 끝나지 않는다. STT, 캡처, VLM, Fusion, Summary, Judge가 순서대로 또는 병렬로 실행되고, 각 단계마다 외부 모델 호출과 저장이 발생한다. 사용자는 이 긴 과정을 기다려야 한다.
 
@@ -117,5 +117,5 @@ latency 수치는 항상 조건이 붙어야 한다.
 
 다음 글에서는 이렇게 만들어진 summary, segment, evidence를 사용자가 질문할 수 있는 QA 흐름으로 어떻게 연결했는지 정리한다.
 
-- 이전 글: [슬라이드 중복 캡처와 VLM 입력 품질을 줄이는 과정]({% post_url 2026-02-10-project-sesac-note-capture-vlm %})
-- 다음 글: [단순 챗봇이 아니라 영상 근거 안에서 답하는 QA 흐름 만들기]({% post_url 2026-02-10-project-sesac-note-evidence-qa %})
+- 이전 글: [06. 슬라이드 중복 캡처와 VLM 입력 품질을 줄이는 과정]({% post_url 2025-12-23-project-sesac-note-06-capture-vlm %})
+- 다음 글: [08. 단순 챗봇이 아니라 영상 근거 안에서 답하는 QA 흐름 만들기]({% post_url 2026-01-20-project-sesac-note-08-evidence-qa %})
