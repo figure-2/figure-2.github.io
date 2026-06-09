@@ -15,11 +15,12 @@ comments: false
 mermaid: true
 math: true
 ---
-06
+
+Production RAG의 품질은 검색 단계에서 끝나지 않는다. 검색된 컨텍스트를 어떻게 생성 단계에 전달하고, 응답을 어떻게 평가하며, 운영 중 어떤 지표를 볼지가 함께 설계되어야 한다.
 
 ## Generation & Prompting
 
-검색된 컨텍스트를 LLM에 효과적으로 전달하고, 충실한 응답을 생성하는 전략.
+검색된 컨텍스트를 LLM에 효과적으로 전달하고, 충실한 응답을 생성하는 전략이다.
 
 #### Citation Prompting
 
@@ -44,8 +45,6 @@ LLM은 컨텍스트 처음과 끝을 잘 기억하고 중간은 잘 못 봄. 가
 검색된 각 문서에 대해 "이 문서가 질문에 관련 있는가?"를 메모한 뒤 종합. 노이즈 문서 필터링.
 
 검색 품질이 불안정할 때. Noisy Retrieval 상황.
-
-07
 
 ## Agentic RAG Patterns
 
@@ -281,25 +280,25 @@ Total (E2E)
 
 ### 비용 최적화 전략
 
-🔄 Semantic Cache
+#### Semantic Cache
 
 유사 질문 임베딩 비교 → 캐시 히트 시 검색/LLM 스킵. 20~40% 비용 절감. Redis + 코사인 유사도 > 0.95.
 
-📐 Matryoshka Embedding
+#### Matryoshka Embedding
 
 3072d → 256d로 차원 축소. 스토리지 12x 절약, 검색 속도 3x 향상. 정확도 5%만 감소.
 
-🎯 Router로 분기
+#### Router로 분기
 
 단순 질문은 검색 없이 LLM 직접 답변. 30~50% 검색 비용 절감. 경량 분류기로 구현.
 
-📦 Prompt Compression
+#### Prompt Compression
 
 컨텍스트를 LLMLingua로 압축. 토큰 50~70% 절약. LLM API 비용 직접 절감.
 
 ### 프로덕션 체크리스트
 
-#### 🔍 검색 품질
+#### 검색 품질
 
 ☐ 자체 데이터셋 벤치마크 (최소 100+ QA 쌍)
 
@@ -309,7 +308,7 @@ Total (E2E)
 
 ☐ 청킹 전략 비교 실험 완료
 
-#### 🛡️ 안전성
+#### 안전성
 
 ☐ 할루시네이션 감지 파이프라인
 
@@ -319,17 +318,17 @@ Total (E2E)
 
 ☐ Fallback 응답 ("모르겠습니다" 허용)
 
-#### 📊 모니터링
+#### 모니터링
 
 ☐ 레이턴시 대시보드 (P50/P95/P99)
 
 ☐ Faithfulness 자동 평가 (RAGAS)
 
-☐ 사용자 피드백 수집 (👍👎)
+☐ 사용자 피드백 수집
 
 ☐ 비용 추적 (per-query 단가)
 
-#### 🔄 운영
+#### 운영
 
 ☐ 문서 업데이트 자동화 파이프라인
 

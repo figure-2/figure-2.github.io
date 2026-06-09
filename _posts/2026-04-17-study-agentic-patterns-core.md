@@ -15,61 +15,27 @@ comments: false
 mermaid: true
 math: true
 ---
-02 · Patterns
+
+Agentic Workflow의 패턴은 결국 `LLM + Tools + Memory + Retrieval` 블록을 어떻게 연결하느냐의 문제다. 아래 8가지 패턴은 단순한 순차 처리부터 자율 실행, Human-in-the-Loop까지 복잡도가 점점 올라간다.
 
 ## 8가지 핵심 패턴
 
-Input / User
+| 패턴 | 핵심 구조 | 적합한 상황 |
+| --- | --- | --- |
+| Augmented LLM | LLM에 tools, memory, retrieval을 결합 | 모든 agentic system의 기본 블록 |
+| Prompt Chaining | 이전 단계 출력이 다음 단계 입력 | 고정된 순차 작업 |
+| Routing | 입력을 분류해 전문 handler로 전달 | 입력 유형이 명확히 갈릴 때 |
+| Parallelization | 여러 관점을 병렬 실행 후 집계 | 독립 하위 작업이 있을 때 |
+| Orchestrator-Workers | 중앙 orchestrator가 worker를 동적 배정 | 작업 분해가 실행 중 결정될 때 |
+| Multi-agent Topologies | 여러 agent가 역할을 나눠 협업 | 규모가 크고 책임 분리가 필요할 때 |
+| Evaluator-Optimizer | 생성과 평가를 반복 | 품질 기준이 명확할 때 |
+| Human-in-the-Loop | 위험 작업 전 사람 승인 | 비용이 큰 실수나 권한 작업 |
 
-LLM Call
+### Augmented LLM
 
-Decision / Check
+모든 패턴의 기본 블록이다. LLM이 언제, 어떻게 tools, memory, retrieval을 쓸지 결정한다.
 
-Tool / Worker
-
-Memory / Storage
-
-Success Output
-
-Error / Exit
-
-00
-
-Augmented LLM
-
-— 모든 패턴의 기본 블록
-
-Foundation
-
-에이전틱 시스템의 가장 작은 단위. LLM + Tools + Memory + Retrieval의 조합입니다. 아래 모든 패턴은 이 기본 블록을 어떻게 여러 개 엮느냐의 문제로 환원됩니다.
-
-핵심 원리
-
-LLM이 자기 스스로
-
-언제/어떻게
-
-tools/memory/retrieval을 쓸지 결정
-
-인터페이스
-
-Function calling · Tool use API · Retrieval augmentation
-
-왜 중요한가
-
-아래 모든 패턴은 이 블록을
-
-어떻게 조합
-
-하느냐의 문제
-
-01
-
-Prompt Chaining
-
-Sequential
-
-Simple
+### Prompt Chaining
 
 작업을 순차 단계로 쪼개서 이전 LLM의 출력이 다음 LLM의 입력이 됩니다. 중간에 게이트(검증)를 넣어 조건에 맞지 않으면 중단하거나 재시도할 수 있습니다.
 
@@ -89,13 +55,7 @@ Simple
 
 앞 단계 에러가 뒷 단계로 전파 → 게이트 필수
 
-02
-
-Routing
-
-Classifier
-
-Simple
+### Routing
 
 입력을 분류해서 적절한 전문 핸들러로 라우팅합니다. 각 핸들러가 자기 작업에만 특화되어 품질이 올라갑니다.
 
@@ -115,13 +75,7 @@ Simple
 
 Router는 작은 모델(Haiku)로, Handler는 적절한 크기 모델로 → 비용 절감
 
-03
-
-Parallelization
-
-Parallel
-
-Sectioning · Voting
+### Parallelization
 
 작업을 병렬로 쪼개 실행 후 집계합니다. Sectioning은 독립 하위 작업 분할, Voting은 같은 작업을 여러 번 실행해 다수결.
 

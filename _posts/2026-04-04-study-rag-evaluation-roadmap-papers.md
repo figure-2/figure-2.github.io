@@ -15,13 +15,12 @@ comments: false
 mermaid: true
 math: true
 ---
-EVALUATION
+
+RAG 평가는 검색과 생성을 분리해서 봐야 한다. 좋은 답변이 나오지 않았을 때 검색 실패인지, 컨텍스트 구성 실패인지, 생성 실패인지 구분할 수 있어야 개선이 가능하다.
 
 ## RAG 평가하기
 
-RAG 시스템의 품질을 어떻게 측정할까요? 검색과 생성을 분리해서 각각 평가합니다.
-
-F
+RAG 시스템의 품질은 faithfulness, answer relevancy, context precision, context recall로 나눠 측정할 수 있다.
 
 #### Faithfulness
 
@@ -29,23 +28,17 @@ F
 
 충실도 = 문서로 뒷받침되는 주장 수 / 전체 주장 수
 
-R
-
 #### Answer Relevancy
 
 응답이 질문에 적절한가? 질문과 관련 없는 내용이 답변에 포함되지 않았는지 평가합니다.
 
 관련도 = 응답에서 생성된 질문과 원래 질문의 유사도 평균
 
-P
-
 #### Context Precision
 
 검색된 문서가 정밀한가? 관련 없는 문서가 너무 많이 포함되지 않았는지 확인합니다.
 
 정밀도 = 관련 문서 수 / 검색된 전체 문서 수
-
-C
 
 #### Context Recall
 
@@ -78,8 +71,6 @@ CI/CD 통합
 12개 도메인에 걸친 100K+ 예제 벤치마크. 산업별 RAG 성능 비교에 활용됩니다.
 
 벤치마크
-
-REFERENCES
 
 ## 주요 논문 타임라인
 

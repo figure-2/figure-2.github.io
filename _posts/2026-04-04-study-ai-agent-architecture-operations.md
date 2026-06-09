@@ -16,19 +16,16 @@ comments: false
 mermaid: true
 math: true
 ---
-Deep Dive
+
+AI Agent를 실제 서비스로 만들 때는 모델 호출보다 운영 구조가 더 중요해진다. Memory, RAG, guardrails, protocol, cost control이 붙는 순간 Agent는 단순 챗봇이 아니라 상태를 가진 시스템이 된다.
 
 ## 핵심 아키텍처 개념
 
-에이전트 시스템의 내부를 구성하는 핵심 개념들
+에이전트 시스템의 내부를 구성하는 핵심 개념을 memory, retrieval, safety, protocol 관점으로 나눠 정리한다.
 
 ### Agent Memory 시스템
 
-Core Component
-
 인간의 기억 체계에서 영감을 받은 에이전트 메모리 시스템은 세 가지 유형으로 나뉩니다.
-
-S
 
 #### Short-term Memory
 
@@ -36,15 +33,11 @@ S
 
 구현: Context Window, Working Memory
 
-L
-
 #### Long-term Memory
 
 세션을 넘어 지속되는 기억. 사실, 정의, 규칙 등 구조화된 지식을 저장합니다.
 
 구현: Vector DB, Knowledge Graph
-
-E
 
 #### Episodic Memory
 
@@ -52,11 +45,9 @@ E
 
 구현: Vector DB + Semantic Retrieval
 
-Source: Park et al., "Generative Agents" (2023) | IBM, "AI Agent Memory" (2025)
+Generative Agents와 AI Agent Memory 관련 정리에서 공통적으로 강조하는 부분은, Agent memory가 단순 로그 저장이 아니라 현재 작업 기억과 장기 지식을 분리해야 한다는 점이다.
 
 ### Agentic RAG vs Traditional RAG
-
-Evolution
 
 #### Traditional RAG
 

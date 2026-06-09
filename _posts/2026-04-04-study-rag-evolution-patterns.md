@@ -15,37 +15,30 @@ comments: false
 mermaid: true
 math: true
 ---
-EVOLUTION
+
+RAG는 단순한 `Query -> Retrieve -> Generate` 구조에서 시작해, 검색 전후 최적화와 동적 모듈 조합으로 확장되어 왔다. 이 글은 Naive, Advanced, Modular, Agentic RAG가 어떤 문제를 해결하려고 등장했는지 정리한다.
 
 ## RAG의 진화
 
-RAG는 3세대에 걸쳐 발전해 왔습니다. 각 세대가 이전의 한계를 어떻게 극복하는지 살펴봅니다.
+RAG는 3세대에 걸쳐 발전해 왔다. 각 세대는 이전 구조의 한계를 보완하는 방식으로 확장됐다.
 
-2020~2022
-
-### Naive RAG
+### Naive RAG (2020~2022)
 
 고정된 파이프라인. Query → Retrieve → Generate. 단순하지만 한계가 명확합니다.
 
 Query → Retrieve → Generate
 
-2023~2024
-
-### Advanced RAG
+### Advanced RAG (2023~2024)
 
 검색 전/중/후를 최적화. 쿼리 리라이팅, 하이브리드 검색, 리랭킹 등을 추가합니다.
 
 Query 최적화 → Hybrid Retrieve → Rerank → Generate
 
-2024~
-
-### Modular RAG
+### Modular RAG (2024~)
 
 모듈 단위 조합. 라우터, 평가기, 반복 검색 등을 태스크에 맞게 동적으로 구성합니다.
 
 Router → [동적 모듈 조합] → 자체 평가 → 반복/완료
-
-STAGE 1
 
 ## Naive RAG
 
@@ -83,31 +76,21 @@ Response (답변)
 
 ### Naive RAG의 한계
 
-01
-
 #### Garbage In, Garbage Out
 
 검색 품질이 낮으면 응답도 함께 망가집니다. 관련 없는 문서가 검색되면 LLM은 그걸 기반으로 엉뚱한 답을 만듭니다.
-
-02
 
 #### 단순한 청킹
 
 고정 크기로 문서를 자르면 문맥이 잘리거나, 하나의 청크에 여러 주제가 섞여 노이즈가 됩니다.
 
-03
-
 #### 무분별한 전달
 
 검색된 문서가 질문과 관련 없어도 그대로 LLM에 전달합니다. 필터링이나 품질 평가가 없습니다.
 
-04
-
 #### 중복/상충 미처리
 
 중복 문서, 서로 모순되는 정보에 대한 처리 로직이 없어서 LLM이 혼란에 빠질 수 있습니다.
-
-STAGE 2
 
 ## Advanced RAG
 
@@ -334,37 +317,25 @@ Iterative Retrieval + Memory
 보정 경로
 ```
 
-🔀
-
 #### Router
 
 질문 유형을 판단해서 검색이 필요한지, 어떤 소스를 쓸지 결정합니다. 단순 질문은 바로 LLM 생성으로.
-
-⚖️
 
 #### Judge / Critic
 
 검색 결과가 충분한지 평가합니다. 부족하면 재검색을 트리거하거나 다른 소스로 전환합니다.
 
-🧠
-
 #### Adaptive Retrieval
 
 LLM이 스스로 "지금 검색이 필요한 시점인가?"를 판단합니다. 불필요한 검색을 줄여 효율성을 높입니다.
-
-🔗
 
 #### Multi-Source
 
 벡터 DB, 웹 검색, SQL DB, API 등 여러 소스를 동적으로 선택합니다.
 
-🔄
-
 #### Iterative Retrieval
 
 한 번이 아니라 여러 차례 검색-생성을 반복하며 답변을 정제합니다.
-
-💾
 
 #### Memory
 

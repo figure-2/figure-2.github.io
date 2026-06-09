@@ -15,119 +15,45 @@ comments: false
 mermaid: true
 math: true
 ---
-2026 Complete Guide
+AI Agent를 설계할 때 가장 먼저 구분해야 하는 것은 `Workflow`와 `Agent`다. 둘 다 LLM을 쓰지만, 실행 흐름을 누가 결정하는지가 다르다. Workflow는 사람이 정한 경로를 따르고, Agent는 실행 중에 다음 행동을 선택한다.
 
-# AI Agent 완벽 가이드
-
-단순 LLM 호출부터 멀티 에이전트 시스템까지 7단계로 이해하는 AI Agent의 모든 것
-
-7
-
-Agent Levels
-
-10+
-
-핵심 논문
-
-6
-
-주요 프레임워크
-
-레벨별 가이드 보기
-
-Overview 먼저 보기
-
-Overview
+이 글은 AI Agent의 기본 정의와 구성 요소, 그리고 Workflow와 Agent의 차이를 정리한다.
 
 ## AI Agent란 무엇인가?
 
-Lilian Weng(OpenAI)의 정의에 따르면, AI Agent는 네 가지 핵심 요소의 조합입니다
+Lilian Weng의 정리를 빌리면, AI Agent는 대략 다음 네 요소의 조합으로 볼 수 있다.
 
-Agent
-
-=
-
-LLM
-
-+
-
-Memory
-
-+
-
-Planning
-
-+
-
-Tools
-
-Source: Lilian Weng, "LLM Powered Autonomous Agents" (June 2023)
+```text
+Agent = LLM + Memory + Planning + Tools
+```
 
 ### LLM (두뇌)
 
-추론과 의사결정의 핵심 엔진. 자연어를 이해하고, 계획을 세우고, 도구 사용을 결정합니다.
-
-Core Engine
+추론과 의사결정의 핵심 엔진이다. 자연어를 이해하고, 계획을 세우고, 도구 사용 여부를 결정한다.
 
 ### Memory (기억)
 
-단기 기억(컨텍스트 윈도우)과 장기 기억(벡터 DB). 경험을 축적하고 과거를 참조합니다.
-
-State Management
+단기 기억은 현재 대화와 작업 맥락을 유지하고, 장기 기억은 과거 경험이나 외부 지식을 다시 참조하게 만든다.
 
 ### Planning (계획)
 
-작업 분해(Task Decomposition)와 자기 반성(Reflection). 복잡한 목표를 실행 가능한 단계로 쪼갭니다.
-
-Strategy
+복잡한 목표를 실행 가능한 단계로 나누고, 필요하면 중간 결과를 보고 계획을 수정한다.
 
 ### Tools (도구)
 
-외부 API, 검색 엔진, 코드 실행기 등. LLM의 능력을 실제 세계로 확장합니다.
-
-External Actions
+검색, API, DB, 코드 실행기처럼 모델 밖의 세계에 접근하는 수단이다. 도구가 붙는 순간 LLM은 답변 생성기를 넘어 작업 실행기로 확장된다.
 
 ### Workflow vs Agent: 핵심 구분
 
-Anthropic의 "Building Effective Agents"(2024)에서는 Workflow와 Agent를 명확히 구분합니다
+Anthropic의 "Building Effective Agents"에서는 Workflow와 Agent를 명확히 구분한다.
 
-#### Workflow
-
-Deterministic
-
-- 실행 흐름이 코드로 미리 정의됨
-
-- 같은 입력 = 같은 경로
-
-- 예측 가능하고 디버깅이 쉬움
-
-- 대부분의 비즈니스 문제에 적합
-
-- 비용이 예측 가능
-
-예시:
-
-문서 번역 파이프라인, 이메일 분류 시스템
-
-vs
-
-#### Agent
-
-Dynamic
-
-- 실행 흐름을 LLM이 동적으로 결정
-
-- 같은 입력이라도 다른 경로 가능
-
-- 관찰(Observability) 도구 필요
-
-- Open-ended 문제에 강함
-
-- 비용이 가변적
-
-예시:
-
-코드 디버깅 에이전트, 리서치 에이전트
+| 구분 | Workflow | Agent |
+| --- | --- | --- |
+| 실행 흐름 | 코드로 미리 정의 | LLM이 실행 중 선택 |
+| 재현성 | 같은 입력이면 대체로 같은 경로 | 같은 입력이라도 다른 경로 가능 |
+| 장점 | 예측 가능, 디버깅 쉬움, 비용 관리 쉬움 | 열린 문제, 도구 선택, 재시도에 강함 |
+| 리스크 | 유연성이 낮음 | 비용과 latency가 가변적 |
+| 예시 | 문서 번역 파이프라인, 이메일 분류 | 코드 디버깅 에이전트, 리서치 에이전트 |
 
 ---
 

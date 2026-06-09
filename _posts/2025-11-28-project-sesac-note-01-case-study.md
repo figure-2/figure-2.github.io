@@ -17,11 +17,7 @@ mermaid: true
 math: true
 ---
 
-# 01. SeSAC:Note 프로젝트 개요: 강의 영상을 AI 학습 노트로 바꾸기
-
 SeSAC:Note는 강의 영상의 음성 정보와 화면 정보를 시간축으로 결합해, 영상 없이도 복습 가능한 AI 강의 노트와 영상별 질의응답을 제공하는 멀티모달 AI 서비스다.
-
-이 글은 SeSAC:Note README와 프로젝트 정리 문서를 기준으로, 공개 가능한 기능, 아키텍처, 검증 범위를 정리한다. 개인 식별 정보와 민감한 실행 환경 정보는 제외하고 서비스 구조와 개발 흐름만 다룬다.
 
 ```mermaid
 flowchart LR
@@ -89,26 +85,24 @@ flowchart LR
 | 생성 품질 점검 | Summarizer와 Judge를 분리해 요약 결과를 보조 평가 |
 | 서비스화 | 업로드, 상태 조회, DB 저장, 영상별 QA, 보안 보강 흐름으로 연결 |
 
-이 글에서 말하는 구현 흐름은 프로젝트 개발 흐름을 공개용으로 재구성한 것이다. 특정 개인이 전체 파이프라인을 혼자 만들었다는 의미가 아니다.
+## 확인한 범위와 한계
 
-## 검증 근거와 한계
+프로젝트를 설명할 때는 구현한 구조와 확인한 범위를 분리해서 보는 편이 안전하다.
 
-검증 근거는 기준을 나누어 봐야 한다.
-
-| 기준 | 사용할 수 있는 표현 |
+| 확인 기준 | 의미 |
 | --- | --- |
-| README 기준 서비스 구조 | FastAPI, React/Vite, Supabase, Storage/R2를 연결한 서비스 구조 |
-| 문서상 sample pipeline | sample4 기준 처리 결과가 기록됨 |
-| 제한된 Judge benchmark | Judge 버전별 평가 시간, 토큰, 통과 여부 비교 |
-| 보안 보강 기록 | media ticket, upload validation 등 일부 보안 흐름의 테스트 기록 |
+| 서비스 구조 | FastAPI, React/Vite, Supabase, Storage/R2를 연결한 구조 |
+| sample pipeline | sample4 기준 처리 결과 기록 |
+| Judge benchmark | Judge 버전별 평가 시간, 토큰, 통과 여부 비교 |
+| 보안 보강 | media ticket, upload validation 등 일부 보안 흐름 테스트 |
 
-반대로 현재 공개 글에서는 운영 환경에서의 성공, 모든 영상 유형에 대한 일반화, 전체 구간 재실행 검증을 주장하지 않는다. Judge 역시 품질을 최종 판정하는 장치가 아니라, 생성 결과를 근거와 비교해 점검하는 보조 gate로 본다.
+이 프로젝트는 슬라이드형 강의 영상을 중심으로 설계됐다. 모든 강의 유형을 같은 수준으로 처리한다고 볼 수는 없다. Judge 역시 품질을 최종 판정하는 장치가 아니라, 생성 결과를 근거와 비교해 점검하는 보조 gate로 보는 것이 맞다.
 
 ```mermaid
 flowchart TB
-    A[공개 글에서 사용할 근거] --> B[README 기준 서비스 구조]
-    A --> C[문서상 sample pipeline]
-    A --> D[제한된 Judge benchmark]
+    A[프로젝트 근거] --> B[서비스 구조]
+    A --> C[sample pipeline]
+    A --> D[Judge benchmark]
     A --> E[보안 보강 테스트]
     B --> F[서비스 구조로 설명]
     C --> G[sample4 기준 기록으로만 설명]

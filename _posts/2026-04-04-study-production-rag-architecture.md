@@ -14,33 +14,14 @@ comments: false
 mermaid: true
 math: true
 ---
-For Engineers Building Production RAG Systems
 
-# RAG Engineering실전 가이드
+Production RAG는 검색 파이프라인 하나로 끝나지 않는다. ingestion, query processing, hybrid retrieval, reranking, generation, evaluation, cache, monitoring이 함께 설계되어야 운영 가능한 시스템이 된다.
 
-프로덕션 수준의 RAG 시스템 설계를 위한 엔지니어링 레퍼런스. 아키텍처 패턴, 벤치마크, 트레이드오프, 운영 노하우를 다룹니다.
-
-9개
-
-프로덕션 설계 영역
-
-2026
-
-최신 논문 & 벤치마크 반영
-
-실전
-
-트레이드오프 · 비용 · 레이턴시
-
-시작하기
-
-← 입문 가이드
-
-01
+이 글은 프로덕션 RAG의 전체 아키텍처와 핵심 설계 지점을 정리한다.
 
 ## Production Architecture
 
-프로덕션 RAG 시스템의 전체 아키텍처와 핵심 설계 결정 포인트.
+프로덕션 RAG 시스템의 전체 흐름은 offline ingestion pipeline과 online query pipeline으로 나눌 수 있다.
 
 ```text
 OFFLINE — INGESTION PIPELINE

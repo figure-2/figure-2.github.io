@@ -17,7 +17,8 @@ comments: false
 mermaid: true
 math: true
 ---
-04 · Use Cases
+
+Agentic Workflow는 패턴 이름을 외우는 것보다 유즈케이스를 어떤 실행 구조로 바꿀지 판단하는 것이 중요하다. 같은 문제도 비용, 품질 기준, 실패 비용에 따라 다른 패턴을 선택할 수 있다.
 
 ## 실전 유즈케이스 매핑
 
@@ -57,13 +58,13 @@ Autonomous Agent
 
 Computer Use: 목표만 주고 클릭·입력·관찰을 스스로 판단.
 
-🐝 Swarm Topology
+Swarm Topology
 
 다역할 고객지원
 
 결제 → 기술 → 법무 상담원끼리 필요시 자율 handoff. 중앙 감독 없음.
 
-🏛️ Hierarchical Topology
+Hierarchical Topology
 
 엔터프라이즈 에이전트 플랫폼
 
@@ -91,27 +92,25 @@ Human-in-the-Loop
 
 - Orchestrator + Evaluator: 워커 결과를 평가자가 검증, 기준 미달 시 재위임
 
-05 · Principles
-
 ## 설계 원칙
 
-🎯 Start simple. 단일 LLM 호출로 풀 수 있으면 거기서 멈추세요. 패턴을 쌓을수록 디버깅이 어려워집니다.
+- Start simple. 단일 LLM 호출로 풀 수 있으면 거기서 멈춘다. 패턴을 쌓을수록 디버깅이 어려워진다.
 
-📏 Measure before adding complexity. 복잡도 추가가 성능 이득을 정량적으로 만드는지 확인 후 결정.
+- Measure before adding complexity. 복잡도 추가가 성능 이득을 정량적으로 만드는지 확인한 뒤 결정한다.
 
-🧱 Augmented LLM이 기본 블록. 모든 패턴은 "LLM + Tools + Memory + Retrieval"을 어떻게 조합하느냐의 문제.
+- Augmented LLM이 기본 블록이다. 모든 패턴은 `LLM + Tools + Memory + Retrieval`을 어떻게 조합하느냐의 문제다.
 
-🚨 Autonomous Agent는 가드레일 필수. Max steps, 비용 한도, Human check-in, 샌드박스 — 네 가지를 반드시.
+- Autonomous Agent에는 가드레일이 필수다. Max steps, 비용 한도, Human check-in, sandbox를 먼저 둔다.
 
-💡 투명성이 곧 신뢰. 에이전트가 무엇을 왜 하는지 로깅하고 보여주세요. 블랙박스는 프로덕션에서 살아남지 못합니다.
+- 투명성이 곧 신뢰다. 에이전트가 무엇을 왜 하는지 로깅하고 보여줘야 한다.
 
-🔄 평가 주도 개발. 에이전트를 만들기 전에 평가셋부터. 이게 없으면 개선도 회귀도 탐지할 수 없습니다.
+- 평가 주도 개발이 필요하다. 에이전트를 만들기 전에 평가셋부터 준비해야 개선과 회귀를 구분할 수 있다.
 
-🧠 Context Engineering. 컨텍스트 윈도우에 무엇을 넣을지가 long-horizon 에이전트의 최대 병목. 어떤 메모리를 압축·요약·폐기할지 설계하세요. (Harrison Chase, 2026)
+- Context Engineering이 long-horizon agent의 병목이다. 어떤 memory를 압축, 요약, 폐기할지 설계해야 한다.
 
-🙋 되돌릴 수 없는 작업엔 HITL. 결제·발송·삭제·권한 변경 — 자율 실행이 유혹이지만 Pause → Approve → Resume이 프로덕션 표준. 사람이 개입할 지점을 미리 설계하세요.
+- 되돌릴 수 없는 작업에는 Human-in-the-Loop가 필요하다. 결제, 발송, 삭제, 권한 변경은 사람이 개입할 지점을 미리 둔다.
 
-💾 State persistence = 에이전트의 undo. 체크포인트(checkpoint)로 모든 스텝 상태를 저장하면 실패 시 되감기, 디버깅 시 time-travel이 가능합니다.
+- State persistence는 agent의 undo 역할을 한다. checkpoint로 step 상태를 저장하면 실패 복구와 디버깅이 쉬워진다.
 
 ---
 

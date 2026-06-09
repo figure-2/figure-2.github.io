@@ -15,33 +15,18 @@ comments: false
 mermaid: true
 math: true
 ---
-Levels 0-6
 
-## Agent 성숙도 7단계
+AI Agent는 한 번에 복잡해지는 것이 아니다. 단순 LLM 호출에서 시작해 도구 사용, 순차 실행, 분기, 반복, 계획, 멀티 에이전트 구조로 점점 자율성과 운영 난도가 올라간다.
 
-단순 LLM 호출부터 멀티 에이전트 시스템까지, 각 레벨의 구조와 특징을 살펴봅니다
-
-🧩
-
-함께 보기
-
-어떤 패턴을 내 상황에 써야 할지
-
-선택이 고민이라면 — 패턴별 실전 예시·비용/레이턴시 비교·조합 레시피가 담긴
-
-Agentic AI 패턴 가이드
-
-를 보세요.
-
-패턴 가이드 →
-
-Simple
-
-Autonomous
-
-Multi-Agent
-
-L0
+| 레벨 | 이름 | 핵심 차이 |
+| --- | --- | --- |
+| L0 | Simple LLM Call | 도구와 기억 없이 한 번 응답 |
+| L1 | Augmented LLM | 외부 도구를 한 번 호출 |
+| L2 | Chained / Sequential Agent | 정해진 단계대로 여러 작업 실행 |
+| L3 | Router / Branching Agent | 입력에 따라 경로 선택 |
+| L4 | ReAct / Loop Agent | 관찰 결과를 보고 반복 실행 |
+| L5 | Planning Agent | 장기 목표를 계획하고 재계획 |
+| L6 | Multi-Agent System | 역할이 나뉜 여러 에이전트가 협업 |
 
 ### Simple LLM Call
 
@@ -185,7 +170,7 @@ G
 
 ##### 문서 번역 파이프라인
 
-원문 분석
+문맥 분석
 
 →
 

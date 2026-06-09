@@ -15,45 +15,19 @@ comments: false
 mermaid: true
 math: true
 ---
-GraphRAG
+
+GraphRAG는 RAG에 지식 그래프를 결합해 관계 추론과 구조화 질의를 강화하는 접근이다. 단순 문서 검색에는 vector RAG가 충분할 수 있지만, 관계 경로, 집계, 스키마 기반 질문에서는 graph 구조가 강점을 가진다.
 
 ## GraphRAG: 지식 그래프 + RAG
 
-벡터 검색만으로 한계에 부딪혔다면 — 그래프가 답일 수 있다
+정리한 벤치마크 기준으로는 질문 유형에 따라 Vector RAG와 GraphRAG의 차이가 크게 갈린다.
 
-멀티홉 추론 (복잡한 질문)
-
-GraphRAG 86% vs Vector 32%
-
-GraphRAG 86%
-
-Vector 32%
-
-수치 추론
-
-GraphRAG 100% vs Vector 50%
-
-GraphRAG 100%
-
-Vector 50%
-
-집계 쿼리 (스키마 기반)
-
-GraphRAG 90% vs Vector 0%
-
-GraphRAG 90%
-
-Vector 0%
-
-단순 의미 검색 (문서 찾기)
-
-비슷 — 그래프 오버헤드만 추가
-
-GraphRAG ~동등
-
-Vector ~동등
-
-출처: FalkorDB, TianPan, Lettria
+| 질문 유형 | GraphRAG | Vector RAG | 해석 |
+| --- | --- | --- | --- |
+| 멀티홉 추론 | 86% | 32% | 복잡한 관계 경로에서 graph가 유리 |
+| 수치 추론 | 100% | 50% | 구조화된 값과 관계가 있을 때 graph가 유리 |
+| 집계 쿼리 | 90% | 0% | schema 기반 집계는 vector만으로 부족 |
+| 단순 의미 검색 | 비슷 | 비슷 | 문서 찾기만 필요하면 vector가 단순 |
 
 | 질문 유형 | Vector RAG | GraphRAG | 추천 |
 | --- | --- | --- | --- |
@@ -63,21 +37,11 @@ Vector ~동등
 | "A가 B에게 미친 영향의 경로?" | 불가 | 적합 | Graph |
 | "이 주제의 최신 논문 요약해줘" | 적합 | 불필요 | Vector |
 
-80/15/5 법칙:
-
-2026년 벤치마크 합의
-
-에 따르면, 기업 쿼리의 약 80%는 단순 의미 검색(Vector), 15%는 구조화된 추론(Graph), 5%는 완전한 에이전트 처리가 필요하다. 둘 중 하나를 고르는 것이 아니라
-
-하이브리드 라우터
-
-가 답이다.
-
-Tools
+80/15/5 법칙으로 보면, 기업 쿼리의 약 80%는 단순 의미 검색, 15%는 구조화된 추론, 5%는 완전한 agent 처리가 필요하다. 따라서 둘 중 하나를 고르는 것이 아니라 hybrid router로 질문 유형을 나누는 편이 현실적이다.
 
 ## 실전 도구 생태계
 
-지식 그래프를 직접 만들어보기 위한 도구들
+지식 그래프를 직접 만들어보기 위한 도구들이다.
 
 Graph DB
 
