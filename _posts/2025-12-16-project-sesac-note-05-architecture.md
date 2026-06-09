@@ -57,6 +57,15 @@ STT 단계는 영상에서 음성을 추출하고, 강사의 설명을 timestamp
 
 STT 결과는 단순 transcript가 아니라 이후 Fusion 단계의 한쪽 입력이다. 음성 설명이 어느 시간대에 등장했는지를 알아야 화면 캡처와 연결할 수 있다.
 
+발표 정리 자료 기준으로 STT 후보는 Clova Speech와 Whisper였다. 공개 글에서는 특정 실험을 전체 성능 비교로 일반화하지 않고, 프로젝트 조건에서의 선택 근거로만 정리한다.
+
+| 후보 | 장점 | 프로젝트에서의 판단 |
+| --- | --- | --- |
+| Clova Speech | 한국어 강의 인식과 긴 문장 처리에 강점 | 주요 STT 엔진으로 사용 |
+| Whisper | 오픈소스, 다국어 지원, 비용 통제 여지 | fallback 후보로 유지 |
+
+또 하나의 실제 이슈는 오디오 채널 처리였다. 일부 영상 포맷에서는 스테레오 역상 상쇄 때문에 모노 변환 후 음성이 약해지거나 사라질 수 있다. 그래서 STT 전처리에서는 영상 파일을 그대로 보내는 것이 아니라, 오디오 상태를 확인하고 적절한 모노 변환 방식을 고르는 보정 흐름이 필요했다.
+
 ## Capture: 의미 있는 화면 변화 추출
 
 화면은 매 프레임을 저장하면 안 된다. 중복 이미지가 많아지고, VLM 호출 비용과 처리 시간이 늘어난다. 그래서 캡처 단계의 목표는 모든 화면을 저장하는 것이 아니라 학습에 의미 있는 변화만 골라내는 것이다.
@@ -83,6 +92,19 @@ Fusion 결과는 segment 단위로 정리된다.
 | evidence | 요약과 QA가 참조할 근거 |
 
 이 segment는 Summarizer, Judge, QA가 공유하는 근거 단위가 된다.
+
+발표 정리 자료에서는 Fusion을 2단계 분할 문제로 설명한다. 1차로 화면 전환 시점을 기준으로 구간을 나누고, 구간이 너무 길어지면 2차로 STT의 침묵 구간을 찾아 다시 나눈다. 화면은 불연속적으로 바뀌고 음성은 연속적으로 흐르기 때문에, 두 기준을 함께 써야 segment가 너무 크거나 작게 쪼개지는 문제를 줄일 수 있다.
+
+```mermaid
+flowchart LR
+    A[STT timeline] --> C[Segment Builder]
+    B[Slide change points] --> C
+    C --> D{Segment too long?}
+    D -->|Yes| E[Split by silence]
+    D -->|No| F[Keep segment]
+    E --> G[Evidence segment]
+    F --> G
+```
 
 ## Summary, Judge, QA로 이어지는 downstream
 
