@@ -48,9 +48,9 @@ flowchart LR
 
 이 구조는 모든 대화를 계속 prompt에 넣지 않기 위한 장치다. Context window는 유한하고, 기억이 늘어날수록 페르소나와 도구 지침이 밀릴 수 있기 때문이다.
 
-## 코드 기준 설정
+## 기본 설정과 실행 설정
 
-Memory Manager의 주요 설정은 다음과 같다.
+Memory Manager의 기본 설정은 다음과 같다.
 
 | 설정 | 값 | 의미 |
 | --- | ---: | --- |
@@ -59,13 +59,13 @@ Memory Manager의 주요 설정은 다음과 같다.
 | `chars_per_token` | 1.5 | 한글 기준 토큰 추정에 사용 |
 | `archive_removed` | true | 제거된 메시지를 요약/저장 |
 
-이 수치는 서비스 품질 지표가 아니라 메모리 관리 로직의 기준값이다.
+GUI 통합 흐름에서는 `token_threshold=8192`, `max_tokens_after_trim=4000`으로 더 긴 대화 맥락을 유지하도록 조정한 지점도 확인된다. 이 수치는 서비스 품질 지표가 아니라 메모리 관리 로직의 기준값이다.
 
 ## ChromaDB 저장과 검색
 
 장기 기억은 ChromaDB에 저장된다. 저장 시에는 user id, type, message count, created at 같은 metadata를 함께 넣는다.
 
-Context Builder는 마지막 사용자 메시지에서 검색 쿼리를 추출하고, ChromaDB에서 관련 기억을 가져온다. 코드 기준 검색은 최대 5개 기억을 가져오며, 유사도 threshold는 0.3이다.
+Context Builder는 마지막 사용자 메시지에서 검색 쿼리를 추출하고, ChromaDB에서 관련 기억을 가져온다. 기본 검색은 최대 5개 기억을 가져오며, 유사도 threshold는 0.3이다. GUI 통합 흐름에서는 threshold를 0.7로 조정해 더 가까운 기억만 쓰도록 한 설정도 확인된다.
 
 | 단계 | 설명 |
 | --- | --- |

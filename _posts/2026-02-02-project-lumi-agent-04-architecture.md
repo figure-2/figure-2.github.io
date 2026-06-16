@@ -57,7 +57,7 @@ flowchart TB
 
 ## Context Builder 설정
 
-코드 기준 Context Builder에는 다음 설정이 있다.
+Context Builder의 기본 설정은 다음과 같다.
 
 | 설정 | 값 | 의미 |
 | --- | ---: | --- |
@@ -65,7 +65,9 @@ flowchart TB
 | `similarity_threshold` | 0.3 | 장기 기억 검색 최소 유사도 |
 | `memory_token_budget` | 2048 | 기억을 prompt에 넣을 때의 예산 |
 
-이 값은 정량 성능 claim이 아니라 설계 기준이다. Agent가 모든 기억을 넣는 대신, 관련 기억 일부만 가져와 system prompt에 결합하도록 설계했다.
+GUI 통합 흐름에서는 `similarity_threshold`를 0.7로 더 엄격하게 조정한 지점도 확인된다. 이 값은 정량 성능 주장이 아니라, 검색 재현율과 정밀도 사이에서 조정해야 하는 설계 파라미터다.
+
+Agent는 모든 기억을 넣는 대신, 관련 기억 일부만 가져와 system prompt에 결합하도록 설계했다.
 
 ## 상태 흐름
 
