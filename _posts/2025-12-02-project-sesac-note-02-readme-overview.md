@@ -123,7 +123,7 @@ Project Structure를 기능 단위로 압축하면 다음과 같다.
 | `src/services` | chat, LangGraph session, pipeline service |
 | `frontend/src` | API client, UI components, auth/context/hooks/pages |
 | `config` | audio, capture, fusion, vlm, judge, pipeline 설정 |
-| `docs` | pipeline, chatbot, local E2E, project guide 문서 |
+| `docs` | pipeline, chatbot, validation, project guide 문서 |
 
 이 구조를 보면 SeSAC:Note는 단일 LLM 호출 스크립트가 아니라, 입력 처리, AI 분석, 저장, 상태 관리, 프론트엔드 조회까지 이어지는 서비스 구조로 만들어졌다는 점이 드러난다.
 

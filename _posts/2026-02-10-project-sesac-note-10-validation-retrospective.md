@@ -50,12 +50,23 @@ flowchart TB
 
 | 확인 항목 | 해석 |
 | --- | --- |
-| sample pipeline | STT, batch, segment, Judge 결과가 단계별로 남는 흐름 확인 |
-| Judge benchmark | prompt 버전별 평가 시간과 token 사용량 비교 |
+| sample pipeline | STT, capture, batch, segment, Judge 결과가 단계별로 남는 흐름 확인 |
+| Judge benchmark | prompt 버전별 평가 시간과 토큰 사용량 비교 |
 | 보안 테스트 | media ticket, upload validation 등 일부 부정 경로 확인 |
 | frontend build | 프론트엔드 빌드 가능성 확인 |
 
-특히 sample4 기준 기록에서는 `Video DONE`, `STT 42개`, `Batch 2/2`, `Segment 8개`, `Judge Scores 8.26 / 8.96` 흐름이 남아 있다. Judge benchmark에서는 v3 기준 평균 평가 시간 14.7초, 평균 토큰 14,734 tokens, benchmark 조건 5/5 통과가 기록되어 있다. 이 수치들은 설계 판단의 근거로 볼 수 있지만, 모든 영상에서 같은 결과를 보장하는 지표는 아니다.
+sample4 기준 파이프라인 기록은 다음처럼 남아 있다. 이 표는 하나의 sample 실행 기록이며, 모든 영상에서 같은 결과를 보장하는 지표가 아니다.
+
+| 항목 | sample4 기준 기록 |
+| --- | --- |
+| Video status | DONE |
+| Captures | 5개 레코드, `time_ranges` 스키마 포함 |
+| STT units | 42개 |
+| Batch progress | 2/2 완료 |
+| Analytic segments | 8개 |
+| Judge scores | Batch 1: 8.26 / Batch 2: 8.96 |
+
+Judge benchmark에서는 v3 기준 평균 평가 시간 14.7초, 평균 토큰 14,734, 제한된 benchmark 조건 5/5 통과가 기록되어 있다. 이 수치들은 설계 판단의 근거로 볼 수 있지만, 모든 영상에서 같은 결과를 보장하는 지표는 아니다.
 
 ## 다음 개선 방향
 

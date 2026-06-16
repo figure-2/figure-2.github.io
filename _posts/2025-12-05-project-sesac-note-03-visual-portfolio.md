@@ -130,7 +130,7 @@ flowchart TB
 | --- | --- |
 | 서비스 구조 | 프로젝트 구조와 사용자 흐름 |
 | 보안 보강과 문서화 | 업로드, 접근 범위, media ticket 흐름 |
-| Sample / Benchmark | 제한된 조건의 Judge, 시간, token 비교 |
+| Sample / Benchmark | 제한된 조건의 Judge, 시간, 토큰 비교 |
 | Test / Build | 코드, 테스트, 빌드 기준 확인 범위 |
 
 이 구분이 있으면 프로젝트가 더 구체적으로 읽힌다. 단순히 "AI 기능을 붙였다"가 아니라, 어떤 흐름을 만들었고 어느 지점에서 병목과 한계를 확인했는지 설명할 수 있다.
@@ -141,7 +141,7 @@ JD Fit은 다음 우선순위로 정리한다.
 | --- | --- | --- |
 | Primary | AI 서비스 개발자 | AI 결과를 API, DB, Storage, 상태 관리와 연결 |
 | Strong | AI Engineer | STT, VLM, Fusion, Judge 기반 멀티모달 처리 |
-| Support | AI Agent 개발자 | LangGraph 기반 video-scoped QA workflow |
+| Support | QA Workflow 개발자 | LangGraph 기반 video-scoped QA workflow |
 
 ## 블로그 시리즈에서 이 글의 위치
 
