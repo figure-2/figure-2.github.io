@@ -31,7 +31,7 @@ Lumi_agent는 여러 외부 도구를 MCP 기반으로 연결한다.
 | Search | Naver Search 계열 검색 |
 | Messenger | Discord, Slack |
 | Calendar | Google Calendar |
-| Knowledge | 일반 지식 검색 계열 |
+| Knowledge | Wikipedia 계열 일반 지식 검색 |
 
 Agent는 사용자의 요청을 보고 필요한 도구를 선택한다. 도구 실행 결과는 다시 Agent로 돌아오고, Agent는 결과를 해석해 응답하거나 다음 도구 호출을 판단한다.
 

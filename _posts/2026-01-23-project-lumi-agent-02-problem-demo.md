@@ -42,7 +42,7 @@ Lumi_agent의 문제 정의는 “답변을 잘하는 챗봇”이 아니었다.
 | Search + Calendar | 행사 정보를 검색한 뒤 일정과 겹치는지 확인 |
 | Search + Messenger | 검색 결과를 요약하고 Discord 또는 Slack으로 전달 |
 
-이 흐름의 핵심은 하나의 도구 호출이 아니라 여러 도구가 이어지는 것이다.
+이 흐름의 핵심은 하나의 도구 호출이 아니라 여러 도구가 이어지는 것이다. 예를 들어 검색, 일정 확인, 메시지 전송이 이어지는 3단계 흐름은 PC Agent가 다뤄야 할 대표적인 멀티홉 작업이다.
 
 ```mermaid
 sequenceDiagram
@@ -79,12 +79,12 @@ sequenceDiagram
 
 ## 범위 밖으로 둔 것
 
-Lumi_agent는 운영 검증이 끝난 비서가 아니다. 당시 회고에서도 Tool Call 안정성과 애니메이션 UX는 개선 과제로 남아 있었다.
+Lumi_agent는 운영 성과보다 구조 검증에 초점을 둔 프로토타입이다. 당시 회고에서도 Tool Call 안정성과 애니메이션 UX는 개선 과제로 남아 있었다.
 
-따라서 이 프로젝트의 성과는 “모든 API를 안정 운영했다”가 아니라 “개인 PC Agent에 필요한 실행 흐름, 권한 경계, 기억 구조, GUI 연결을 하나의 프로토타입으로 엮었다”는 점이다.
+따라서 이 프로젝트의 성과는 외부 API 운영 성과가 아니라, 개인 PC Agent에 필요한 실행 흐름, 권한 경계, 기억 구조, GUI 연결을 하나의 프로토타입으로 엮었다는 점이다.
 
 ## 다음 글
 
-다음 글에서는 commit 흐름을 기준으로 MCP prototype에서 LangGraph Agent까지 어떻게 구조가 바뀌었는지 정리한다.
+다음 글에서는 개발 흐름을 기준으로 MCP prototype에서 LangGraph Agent까지 어떻게 구조가 바뀌었는지 정리한다.
 
 [03. MCP prototype에서 LangGraph Agent까지의 개발 흐름]({% post_url 2026-01-29-project-lumi-agent-03-development-timeline %})
