@@ -20,7 +20,7 @@ Agent를 공부하면서 처음에는 “LLM이 도구를 쓰면 Agent”라고 
 
 실제로 중요한 것은 도구를 언제 부를지, 결과를 어떻게 검증할지, 여러 역할을 나눌 때 latency와 비용을 어떻게 감당할지였다.
 
-![Agent Workflow 실습 정리](/assets/images/study/diagrams/study-practice-agent-workflow.svg)
+![Agent Workflow 실습 정리](/assets/images/study/diagrams/study-practice-agent-workflow.png)
 
 ## Tool Calling은 실행 경계다
 

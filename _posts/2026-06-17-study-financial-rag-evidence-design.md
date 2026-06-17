@@ -20,7 +20,7 @@ math: true
 
 증권 리포트는 길고 정적이다. 뉴스는 짧고 최신성이 중요하다. 표 데이터는 숫자와 단위가 중요하고, 그래프는 추세를 담는다. 이 네 가지를 같은 chunk로 취급하면 답변은 자연스러워도 근거가 흐려진다.
 
-![금융 RAG 근거 설계](/assets/images/study/diagrams/study-practice-financial-rag-evidence.svg)
+![금융 RAG 근거 설계](/assets/images/study/diagrams/study-practice-financial-rag-evidence.png)
 
 ## 금융 RAG에서 먼저 나눌 것
 

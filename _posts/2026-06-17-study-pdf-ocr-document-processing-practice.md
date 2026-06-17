@@ -20,7 +20,7 @@ math: true
 
 여러 구현 자료를 비교하면서 생각이 바뀌었다. PDF/OCR에서 어려운 지점은 “읽는 것”보다 “읽은 결과를 어떤 구조로 남길 것인가”에 있었다. 본문, 표, 그림, 수식, 페이지 번호, caption, section 정보가 섞이면 검색 품질은 OCR 모델 하나로 해결되지 않는다.
 
-![PDF/OCR 문서 처리 흐름](/assets/images/study/diagrams/study-practice-pdf-ocr-pipeline.svg)
+![PDF/OCR 문서 처리 흐름](/assets/images/study/diagrams/study-practice-pdf-ocr-pipeline.png)
 
 ## 내가 헷갈렸던 부분
 

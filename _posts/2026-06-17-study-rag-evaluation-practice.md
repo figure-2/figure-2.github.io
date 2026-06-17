@@ -20,7 +20,7 @@ RAG 평가에서 가장 많이 헷갈린 부분은 “답변이 틀렸다”를 
 
 답변이 틀린 이유는 두 가지로 나뉜다. 검색이 근거를 못 찾았거나, 검색은 맞았는데 생성이 근거를 잘못 썼거나. 이 둘을 나누지 않으면 개선 방향도 흐려진다.
 
-![RAG 평가 분리](/assets/images/study/diagrams/study-practice-rag-evaluation-split.svg)
+![RAG 평가 분리](/assets/images/study/diagrams/study-practice-rag-evaluation-split.png)
 
 ## Retrieval 평가와 Generation 평가
 
