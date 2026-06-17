@@ -47,7 +47,7 @@
     <circle cx="394" cy="564" r="18" fill="#dbeafe"/>
     <text x="394" y="571" text-anchor="middle" class="label" style="fill:#1d4ed8">•</text>
     <text x="424" y="570" class="card-title">ROUGE</text>
-    <text x="388" y="608" class="card-sub">단어 overlap</text>
+    <text x="388" y="608" class="card-sub">단어 겹침</text>
 <text x="388" y="633" class="card-sub">빠르고 단순한 표면 비교</text>
   </g>
   <g filter="url(#soft)">
@@ -65,7 +65,7 @@
     <circle cx="1034" cy="349" r="18" fill="#ede9fe"/>
     <text x="1034" y="356" text-anchor="middle" class="label" style="fill:#6d28d9">•</text>
     <text x="1064" y="355" class="card-title">G-Eval</text>
-    <text x="1028" y="393" class="card-sub">rubric 판단</text>
+    <text x="1028" y="393" class="card-sub">rubric 기준 판단</text>
 <text x="1028" y="418" class="card-sub">정확성·충실성·완결성 평가</text>
   </g>
   <g filter="url(#soft)">
@@ -74,11 +74,11 @@
     <circle cx="1244" cy="544" r="18" fill="#fef3c7"/>
     <text x="1244" y="551" text-anchor="middle" class="label" style="fill:#b45309">•</text>
     <text x="1274" y="550" class="card-title">Human Review</text>
-    <text x="1238" y="588" class="card-sub">최종 기준</text>
+    <text x="1238" y="588" class="card-sub">사람 검토</text>
 <text x="1238" y="613" class="card-sub">위험 케이스와 기준 보정</text>
   </g>
   <g filter="url(#soft)">
     <rect x="220" y="735" width="1160" height="82" rx="24" fill="#faf5ff" stroke="#ddd6fe"/>
     <text x="260" y="786" class="metric" style="fill:#6d28d9">해석 기준</text>
-    <text x="392" y="786" class="card-sub">같은 출력도 평가 질문에 따라 다른 지표가 필요하다. 점수보다 rubric과 실패 사례를 같이 남긴다.</text>
+    <text x="392" y="786" class="card-sub">같은 출력도 평가 질문에 따라 다른 지표가 필요하다. 점수보다 평가 기준과 실패 사례를 같이 남긴다.</text>
   </g></svg>

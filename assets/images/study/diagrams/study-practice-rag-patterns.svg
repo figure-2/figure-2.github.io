@@ -89,9 +89,9 @@
     <text x="190" y="578" class="card-title">실습에서 남기는 비교 로그</text>
     <text x="190" y="616" class="card-sub">같은 질문 세트로 단계별 결과를 저장해야 어떤 패턴이 효과가 있었는지 말할 수 있다.</text>
     <path d="M195 675 H1400" stroke="#e2e8f0" stroke-width="2"/>
-    <text x="210" y="714" class="metric" style="fill:#1d4ed8">query</text>
-    <text x="430" y="714" class="metric" style="fill:#0f766e">retrieved_docs</text>
-    <text x="725" y="714" class="metric" style="fill:#6d28d9">rerank_score</text>
-    <text x="1000" y="714" class="metric" style="fill:#15803d">grounded_answer</text>
-    <text x="1260" y="714" class="metric" style="fill:#b45309">failure_reason</text>
+    <text x="210" y="714" class="metric" style="fill:#1d4ed8">query / 질문</text>
+    <text x="430" y="714" class="metric" style="fill:#0f766e">docs / 검색 근거</text>
+    <text x="725" y="714" class="metric" style="fill:#6d28d9">score / 재정렬 점수</text>
+    <text x="1000" y="714" class="metric" style="fill:#15803d">answer / 근거 답변</text>
+    <text x="1260" y="714" class="metric" style="fill:#b45309">failure / 실패 원인</text>
   </g></svg>

@@ -50,8 +50,8 @@
     <circle cx="419" cy="274" r="18" fill="#ccfbf1"/>
     <text x="419" y="281" text-anchor="middle" class="label" style="fill:#0f766e">02</text>
     <text x="449" y="280" class="card-title">Layout 분석</text>
-    <text x="413" y="318" class="card-sub">title / text / table</text>
-<text x="413" y="343" class="card-sub">figure / formula 분리</text>
+    <text x="413" y="318" class="card-sub">title/text/table 분리</text>
+<text x="413" y="343" class="card-sub">figure/formula 분리</text>
   </g>
   <g filter="url(#soft)">
     <rect x="700" y="230" width="270" height="180" rx="24" fill="#ffffff" stroke="#d8e2ef" stroke-width="1.4"/>
@@ -68,8 +68,8 @@
     <circle cx="1049" cy="274" r="18" fill="#fef3c7"/>
     <text x="1049" y="281" text-anchor="middle" class="label" style="fill:#b45309">04</text>
     <text x="1079" y="280" class="card-title">Block Schema</text>
-    <text x="1043" y="318" class="card-sub">page, bbox, type</text>
-<text x="1043" y="343" class="card-sub">caption, section 저장</text>
+    <text x="1043" y="318" class="card-sub">page/bbox/type 저장</text>
+<text x="1043" y="343" class="card-sub">caption/section 연결</text>
   </g>
   <g filter="url(#soft)">
     <rect x="1330" y="230" width="200" height="180" rx="24" fill="#ffffff" stroke="#d8e2ef" stroke-width="1.4"/>
@@ -77,7 +77,7 @@
     <circle cx="1364" cy="274" r="18" fill="#dcfce7"/>
     <text x="1364" y="281" text-anchor="middle" class="label" style="fill:#15803d">05</text>
     <text x="1394" y="280" class="card-title">Retrieval 입력</text>
-    <text x="1358" y="318" class="card-sub">chunk + metadata</text>
+    <text x="1358" y="318" class="card-sub">chunk/metadata 연결</text>
 <text x="1358" y="343" class="card-sub">근거 위치 추적</text>
   </g>
 <path class="line" d="M340 320 C362.5 320, 362.5 320, 385 320"/>
@@ -88,4 +88,4 @@
     <rect x="120" y="500" width="1360" height="260" rx="30" fill="#0f172a"/>
     <text x="170" y="558" class="card-title" style="fill:#ffffff">검색 품질을 만드는 보존 단위</text>
     <text x="170" y="602" class="card-sub" style="fill:#cbd5e1">OCR text만 저장하면 표의 행/열, 그림의 caption, 수식의 위치가 사라진다.</text>
-    <g transform="translate(170 640)"><rect x="0" y="0" width="230" height="72" rx="18" fill="#1e293b" stroke="#334155"/><text x="22" y="30" class="label" style="fill:#93c5fd">block_type</text><text x="22" y="55" class="small" style="fill:#cbd5e1">title/text/table/figure/formula</text><rect x="250" y="0" width="230" height="72" rx="18" fill="#1e293b" stroke="#334155"/><text x="272" y="30" class="label" style="fill:#93c5fd">bbox</text><text x="272" y="55" class="small" style="fill:#cbd5e1">원문 위치로 돌아가기</text><rect x="500" y="0" width="230" height="72" rx="18" fill="#1e293b" stroke="#334155"/><text x="522" y="30" class="label" style="fill:#93c5fd">page</text><text x="522" y="55" class="small" style="fill:#cbd5e1">citation과 검증</text><rect x="750" y="0" width="230" height="72" rx="18" fill="#1e293b" stroke="#334155"/><text x="772" y="30" class="label" style="fill:#93c5fd">metadata</text><text x="772" y="55" class="small" style="fill:#cbd5e1">section, source, parser</text><rect x="1000" y="0" width="230" height="72" rx="18" fill="#1e293b" stroke="#334155"/><text x="1022" y="30" class="label" style="fill:#93c5fd">raw_link</text><text x="1022" y="55" class="small" style="fill:#cbd5e1">원본 파일 추적</text></g></g></svg>
+    <g transform="translate(170 640)"><rect x="0" y="0" width="230" height="72" rx="18" fill="#1e293b" stroke="#334155"/><text x="22" y="30" class="label" style="fill:#93c5fd">block_type</text><text x="22" y="55" class="small" style="fill:#cbd5e1">블록 종류 보존</text><rect x="250" y="0" width="230" height="72" rx="18" fill="#1e293b" stroke="#334155"/><text x="272" y="30" class="label" style="fill:#93c5fd">bbox</text><text x="272" y="55" class="small" style="fill:#cbd5e1">원문 위치로 돌아가기</text><rect x="500" y="0" width="230" height="72" rx="18" fill="#1e293b" stroke="#334155"/><text x="522" y="30" class="label" style="fill:#93c5fd">page</text><text x="522" y="55" class="small" style="fill:#cbd5e1">인용·검증 위치</text><rect x="750" y="0" width="230" height="72" rx="18" fill="#1e293b" stroke="#334155"/><text x="772" y="30" class="label" style="fill:#93c5fd">metadata</text><text x="772" y="55" class="small" style="fill:#cbd5e1">섹션·출처·파서</text><rect x="1000" y="0" width="230" height="72" rx="18" fill="#1e293b" stroke="#334155"/><text x="1022" y="30" class="label" style="fill:#93c5fd">raw_link</text><text x="1022" y="55" class="small" style="fill:#cbd5e1">원본 파일 추적</text></g></g></svg>

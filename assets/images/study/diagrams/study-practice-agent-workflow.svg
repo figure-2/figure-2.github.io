@@ -92,5 +92,5 @@
   <g filter="url(#shadow)">
     <rect x="205" y="720" width="1190" height="86" rx="28" fill="#ffffff" stroke="#dbe3ef"/>
     <text x="255" y="773" class="metric" style="fill:#1d4ed8">실패 제어</text>
-    <text x="385" y="773" class="card-sub">도구 호출 로그, 평가 기준, reflection memory, HITL gate를 남겨야 반복 실행을 통제할 수 있다.</text>
+    <text x="385" y="773" class="card-sub">도구 호출 로그, 평가 기준, Reflection 메모리, HITL 승인 경계를 남겨야 반복 실행을 통제할 수 있다.</text>
   </g></svg>

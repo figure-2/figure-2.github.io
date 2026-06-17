@@ -41,9 +41,9 @@
     <circle cx="114" cy="294" r="18" fill="#e2e8f0"/>
     <text x="114" y="301" text-anchor="middle" class="label" style="fill:#334155">01</text>
     <text x="144" y="300" class="card-title">평가 케이스</text>
-    <text x="108" y="338" class="card-sub">question</text>
-<text x="108" y="363" class="card-sub">gold source</text>
-<text x="108" y="388" class="card-sub">reference answer</text>
+    <text x="108" y="338" class="card-sub">question: 질문</text>
+<text x="108" y="363" class="card-sub">gold source: 정답 근거</text>
+<text x="108" y="388" class="card-sub">reference: 기준 답변</text>
   </g>
 <path class="line" d="M380 335 C450.0 335, 450.0 335, 520 335"/>
   <g filter="url(#soft)">
