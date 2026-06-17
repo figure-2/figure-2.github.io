@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Python 재귀함수 - 팩토리얼과 피보나치 수열
+## Python 재귀함수 - 팩토리얼과 피보나치 수열
 
 ## 재귀(recursive)
 - 재귀 함수는 함수 내부에서 자기 자신을 호출하는 함수를 의미

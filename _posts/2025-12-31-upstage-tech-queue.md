@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 큐 (Queue)
+## 큐 (Queue)
 
 > **한줄 정의**
 > FIFO(First In, First Out) 구조의 선형 자료구조. 먼저 삽입된 원소가 가장 먼저 삭제된다.

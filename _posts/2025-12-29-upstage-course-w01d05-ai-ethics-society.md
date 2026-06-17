@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# AI 윤리와 사회적 영향
+## AI 윤리와 사회적 영향
 
 ## 핵심 개념
 

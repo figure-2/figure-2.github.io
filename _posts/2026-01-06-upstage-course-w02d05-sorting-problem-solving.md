@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 정렬 알고리즘과 코딩 문제 풀이
+## 정렬 알고리즘과 코딩 문제 풀이
 
 ## 핵심 개념
 

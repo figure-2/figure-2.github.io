@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Pandas groupby와 pivot_table - 그룹화와 피벗테이블
+## Pandas groupby와 pivot_table - 그룹화와 피벗테이블
 
 ## apply() - 함수적용
 - apply()는 데이터 전처리시 굉장히 많이 활용하는 기능

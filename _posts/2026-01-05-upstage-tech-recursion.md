@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 재귀 (Recursion)
+## 재귀 (Recursion)
 
 > **한줄 정의**
 > 함수가 자기 자신을 호출하여 문제를 더 작은 부분 문제로 분해하여 해결하는 알고리즘 기법.

@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Roadmap - 커리큘럼 전체 보기
+## Roadmap - 커리큘럼 전체 보기
 
 사용자가 `/roadmap` 또는 `로드맵`을 입력했습니다. 아래 절차대로 진행하세요.
 

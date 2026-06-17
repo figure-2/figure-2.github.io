@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Kafka 상세 내용
+## Kafka 상세 내용
 
 > 231122 학습한 내용 정리
 

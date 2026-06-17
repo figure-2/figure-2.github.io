@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# XGBoost (eXtreme Gradient Boosting)
+## XGBoost (eXtreme Gradient Boosting)
 
 > 230926 학습한 내용 정리
 

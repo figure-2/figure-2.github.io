@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Agentic Workflow
+## Agentic Workflow
 
 > **한줄 정의**
 > LLM 에이전트가 자율적으로 작업을 계획하고 실행하는 워크플로우. 단순 체인을 넘어 동적 의사결정과 반복 실행이 가능하다.

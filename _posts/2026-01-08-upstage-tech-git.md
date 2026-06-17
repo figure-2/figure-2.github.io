@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Git
+## Git
 
 > **한줄 정의**
 > 분산 버전 관리 시스템. 코드 변경 이력을 추적하고 협업을 가능하게 한다.

@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 머신러닝 이론과 기본 - AI의 핵심 개념 이해
+## 머신러닝 이론과 기본 - AI의 핵심 개념 이해
 
 ## 개요
 

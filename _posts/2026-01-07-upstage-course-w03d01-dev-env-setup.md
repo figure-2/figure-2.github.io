@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 개발환경 구성 - IDE, Python, uv
+## 개발환경 구성 - IDE, Python, uv
 
 ## 핵심 개념
 

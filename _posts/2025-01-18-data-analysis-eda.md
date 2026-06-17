@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# EDA(탐색적 데이터 분석) - 데이터 이해의 첫 걸음
+## EDA(탐색적 데이터 분석) - 데이터 이해의 첫 걸음
 
 ## 개요
 

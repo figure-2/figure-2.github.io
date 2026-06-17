@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Prompt Engineering
+## Prompt Engineering
 
 > **한줄 정의**
 > LLM에 최적의 출력을 유도하기 위한 입력 설계 기법. 프롬프트의 구조, 예시, 지시 방식에 따라 모델 성능이 크게 달라진다.

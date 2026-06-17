@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Week 08: Agent 아키텍처 / 서비스 배포
+## Week 08: Agent 아키텍처 / 서비스 배포
 
 > **개요** 주간 개요
 > LangGraph 기반 에이전트를 실제 서비스로 배포하는 전 과정을 학습한다. 에이전트 아키텍처 설계, LangGraph MVP 구현, 스트리밍 처리, GitHub Actions CI/CD 파이프라인까지 프로덕션 수준의 서비스 배포를 다룬다. idol-agent 프로젝트를 통해 실습한다.

@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 트리/그래프 탐색 실습
+## 트리/그래프 탐색 실습
 
 > **실습 정보**
 > - **주차**: Week 02, Day 03

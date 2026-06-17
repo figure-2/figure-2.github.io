@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Fitness Buddy - AI 운동 버디 서비스 기획
+## Fitness Buddy - AI 운동 버디 서비스 기획
 
 > **프로젝트 정보**
 > - **위치**: `Week07-프로젝트/`

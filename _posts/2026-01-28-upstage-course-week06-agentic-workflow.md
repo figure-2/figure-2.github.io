@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Week 06: Agentic Workflow
+## Week 06: Agentic Workflow
 
 > **개요** 주간 개요
 > 에이전틱 워크플로우를 구성하는 핵심 기술들을 학습한다. AI 서비스 설계와 에이전트 아키텍처, Tool Calling과 MCP, Agentic RAG와 메모리 관리, Context Engineering과 보안, 그리고 평가(Evaluation)와 AgentOps를 다룬다.

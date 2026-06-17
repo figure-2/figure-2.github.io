@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# GitHub 협업 - PR, Issue, 프로젝트 관리
+## GitHub 협업 - PR, Issue, 프로젝트 관리
 
 ## 핵심 개념
 

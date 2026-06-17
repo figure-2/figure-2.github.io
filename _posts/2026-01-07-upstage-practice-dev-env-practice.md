@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 개발환경 구성 실습
+## 개발환경 구성 실습
 
 > **실습 정보**
 > - **주차**: Week 03, Day 01

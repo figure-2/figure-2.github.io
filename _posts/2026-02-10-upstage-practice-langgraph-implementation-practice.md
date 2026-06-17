@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# LangGraph 에이전트 구현 실습
+## LangGraph 에이전트 구현 실습
 
 > **실습 정보**
 > - **주차**: Week 08, Day 02

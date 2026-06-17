@@ -18,7 +18,7 @@ mermaid: true
 math: true
 ---
 
-# SWEA 알고리즘 - String 및 패턴 매칭
+## SWEA 알고리즘 - String 및 패턴 매칭
 
 > **SW Expert Academy** 파이썬 SW문제해결 기본 과정의 String 관련 알고리즘 학습
 

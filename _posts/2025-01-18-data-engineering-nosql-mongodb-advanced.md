@@ -23,7 +23,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# NoSQL/MongoDB 상세 내용
+## NoSQL/MongoDB 상세 내용
 
 > 231228~231229 학습한 내용 정리
 

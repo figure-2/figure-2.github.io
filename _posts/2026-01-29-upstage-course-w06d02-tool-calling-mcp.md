@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Tool Calling Fundamentals & MCP
+## Tool Calling Fundamentals & MCP
 
 ## 핵심 개념
 

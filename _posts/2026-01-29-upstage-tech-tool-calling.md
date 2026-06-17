@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Tool Calling
+## Tool Calling
 
 > **한줄 정의**
 > LLM이 외부 도구(API, 함수)를 호출하여 작업을 수행하는 기법. LLM의 텍스트 생성 능력을 실제 행동 능력으로 확장한다.

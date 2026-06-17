@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Python map(), zip(), filter() 함수
+## Python map(), zip(), filter() 함수
 
 ## 5. map(), zip(), filer()
 ### 5.1 map()

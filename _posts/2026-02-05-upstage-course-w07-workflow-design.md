@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# AI Workflow Design
+## AI Workflow Design
 
 ## 핵심 개념
 

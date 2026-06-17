@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Apache Kafka 기초 개념
+## Apache Kafka 기초 개념
 > 실시간 스트리밍 데이터 플랫폼
 
 ## Kafka란?

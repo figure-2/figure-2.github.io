@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# SQL 고급 문법 - GROUP BY, JOIN, 서브쿼리 완전 가이드
+## SQL 고급 문법 - GROUP BY, JOIN, 서브쿼리 완전 가이드
 
 ## 개요
 

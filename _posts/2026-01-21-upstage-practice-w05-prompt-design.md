@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Week05 실습: 프롬프트 설계 연습
+## Week05 실습: 프롬프트 설계 연습
 
 관련 강의: [W05D01 프롬프팅 기초]({% post_url 2026-01-21-upstage-course-w05d01-prompting-basics %}), [W05D02 고급 프롬프팅]({% post_url 2026-01-22-upstage-course-w05d02-advanced-prompting %})
 

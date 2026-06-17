@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Matplotlib 기초 - 데이터 시각화의 핵심 도구
+## Matplotlib 기초 - 데이터 시각화의 핵심 도구
 
 ## 개요
 

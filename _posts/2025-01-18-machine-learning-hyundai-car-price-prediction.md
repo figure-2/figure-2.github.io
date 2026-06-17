@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 실습2. 현대자동차 가격 예측
+## 실습2. 현대자동차 가격 예측
 230916
 > - 데이터로드 및 확인  
 > - EDA(sweetbiz사용)  

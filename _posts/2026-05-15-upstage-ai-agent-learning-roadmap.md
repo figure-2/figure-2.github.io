@@ -22,7 +22,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 업스테이지 AI Agent 서비스 파이프라인 과정 학습 정리
+## 업스테이지 AI Agent 서비스 파이프라인 과정 학습 정리
 
 ## 개요
 

@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 네트워크와 AI 실습
+## 네트워크와 AI 실습
 
 > **실습 정보**
 > - **주차**: Week 04, Day 05

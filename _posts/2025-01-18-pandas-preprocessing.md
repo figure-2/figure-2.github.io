@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Pandas 데이터 전처리 - 컬럼추가, 삭제, 타입변환, datetime, cut/qcut
+## Pandas 데이터 전처리 - 컬럼추가, 삭제, 타입변환, datetime, cut/qcut
 
 ## 데이터 분석
 ### 컬럼추가

@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 힙 (Heap)
+## 힙 (Heap)
 
 > **한줄 정의**
 > 완전 이진 트리 기반의 자료구조. 부모 노드가 항상 자식보다 크거나(최대 힙) 작은(최소 힙) 성질을 만족한다.

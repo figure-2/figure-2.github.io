@@ -16,7 +16,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Pandas 파일입출력 - Excel과 CSV 파일 처리
+## Pandas 파일입출력 - Excel과 CSV 파일 처리
 
 ## 파일입출력
 

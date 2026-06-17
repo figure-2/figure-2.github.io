@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# AI Product Engineer - Interactive Learning System
+## AI Product Engineer - Interactive Learning System
 
 이 저장소는 AI Literacy / LLM Product Engineering 과정의 **Obsidian 학습 노트 볼트**이자 **인터랙티브 학습 시스템**입니다.
 

@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 산업별 AI 적용 사례 탐구
+## 산업별 AI 적용 사례 탐구
 
 ## 핵심 개념
 

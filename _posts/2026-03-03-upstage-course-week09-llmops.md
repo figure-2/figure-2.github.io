@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Week 09: LLMOps
+## Week 09: LLMOps
 
 > **개요**
 > LLM 기반 서비스를 “만드는 단계”에서 “운영하는 단계”로 확장한 주차다. API 장애 대응, 모델 fallback, 상태 관리, 비용 추적, Observability를 다루고, idol-agent v0.6~v0.7 프로젝트로 연결한다.

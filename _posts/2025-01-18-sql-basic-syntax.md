@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# SQL 기본 문법 - 데이터베이스 조작의 핵심
+## SQL 기본 문법 - 데이터베이스 조작의 핵심
 
 ## 개요
 

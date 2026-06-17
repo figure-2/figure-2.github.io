@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Apache Spark 기초 개념
+## Apache Spark 기초 개념
 > 대용량 데이터 처리를 위한 분산 컴퓨팅 프레임워크
 
 ## Spark란?

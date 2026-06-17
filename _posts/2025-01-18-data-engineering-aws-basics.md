@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# AWS
+## AWS
 > 인스턴스, 보안그룹, 탄력적IP
 
 ## 인스턴스

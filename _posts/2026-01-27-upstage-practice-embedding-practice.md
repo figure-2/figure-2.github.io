@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Visual-Text Embedding Alignment 실습
+## Visual-Text Embedding Alignment 실습
 
 > **실습 정보**
 > - **주차**: Week 05, Day 05

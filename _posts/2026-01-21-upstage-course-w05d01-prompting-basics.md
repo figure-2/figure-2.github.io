@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Introduction & Basic Prompting
+## Introduction & Basic Prompting
 
 ## 수업 위치
 

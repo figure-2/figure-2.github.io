@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# MCP (Model Context Protocol)
+## MCP (Model Context Protocol)
 
 > **한줄 정의**
 > Model Context Protocol — LLM과 외부 도구/데이터를 연결하는 표준 프로토콜. Anthropic이 제안한 개방형 표준으로 도구 통합을 표준화한다.

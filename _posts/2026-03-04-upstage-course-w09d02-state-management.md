@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 상태 관리
+## 상태 관리
 
 ## 수업 위치
 

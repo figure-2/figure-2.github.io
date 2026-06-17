@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Python Lambda, 타입힌트, 이름공간
+## Python Lambda, 타입힌트, 이름공간
 
 ### lambda 표현식
 

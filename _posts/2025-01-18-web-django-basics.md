@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Django 기초 - Python 웹 프레임워크의 핵심
+## Django 기초 - Python 웹 프레임워크의 핵심
 
 ## Django 개요
 
@@ -66,7 +66,7 @@ View로부터 전달된 데이터를 템플릿에 적용하여 Dynamic한 웹페
 ### 1. 클라이언트 요청
 클라이언트가 특정 주소를 요청합니다:
 - `127.0.0.1:8000/index`
-- `127.0.0.1:8000/greeting/yujin`
+- `127.0.0.1:8000/greeting/sample_user`
 - `127.0.0.1:8000/cube/3`
 
 ### 2. urls.py에서 URL 처리
@@ -181,7 +181,7 @@ python manage.py runserver
 #### http://127.0.0.1:8000/index
 ![Index 페이지](/assets/230821_index_page.jpg)
 
-#### http://127.0.0.1:8000/greeting/yujin
+#### http://127.0.0.1:8000/greeting/sample_user
 ![Greeting 페이지](/assets/230821_greeting_page.jpg)
 
 #### http://127.0.0.1:8000/cube/3

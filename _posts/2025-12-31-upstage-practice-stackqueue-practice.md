@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 스택/큐/해시 실습
+## 스택/큐/해시 실습
 
 > **실습 정보**
 > - **주차**: Week 02, Day 02

@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Advanced RAG 2 & LLM 보안
+## Advanced RAG 2 & LLM 보안
 
 # Naive RAG 다음에 바로 막히는 지점
 

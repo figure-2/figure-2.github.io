@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 학습 로드맵
+## 학습 로드맵
 
 > **과정 개요**
 > AI Literacy / LLM Product Engineering 교육 과정입니다.

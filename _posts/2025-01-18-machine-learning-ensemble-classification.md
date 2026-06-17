@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 앙상블 분류 모델
+## 앙상블 분류 모델
 
 > 230926 학습한 내용 정리
 

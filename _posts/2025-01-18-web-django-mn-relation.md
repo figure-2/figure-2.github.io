@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Django M:N 관계 - 좋아요와 팔로우 기능
+## Django M:N 관계 - 좋아요와 팔로우 기능
 
 ## 개요
 

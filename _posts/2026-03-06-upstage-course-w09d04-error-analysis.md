@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Error Analysis
+## Error Analysis
 
 ## 수업 위치
 

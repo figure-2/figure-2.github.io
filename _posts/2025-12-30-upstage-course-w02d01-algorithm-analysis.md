@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 알고리즘 분석 기초 - Big-O, 배열, 링크드 리스트
+## 알고리즘 분석 기초 - Big-O, 배열, 링크드 리스트
 
 ## 핵심 개념
 

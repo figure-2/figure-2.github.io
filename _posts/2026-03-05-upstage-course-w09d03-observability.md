@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Observability
+## Observability
 
 ## 수업 위치
 

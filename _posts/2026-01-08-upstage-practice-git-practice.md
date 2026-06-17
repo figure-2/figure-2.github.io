@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Git 기본/심화 실습
+## Git 기본/심화 실습
 
 > **실습 정보**
 > - **주차**: Week 03, Day 02

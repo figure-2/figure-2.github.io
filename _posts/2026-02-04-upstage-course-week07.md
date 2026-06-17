@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Week 07 - AI 서비스 프로젝트
+## Week 07 - AI 서비스 프로젝트
 
 > **개요**
 > AI 서비스 프로젝트 기획 주차. 기획서 작성법부터 Agentic Workflow 설계, Agent 개발 실무 팁까지 프로젝트 전 과정을 다룬다.

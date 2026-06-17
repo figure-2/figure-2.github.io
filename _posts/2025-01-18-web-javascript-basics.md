@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# JavaScript 기초 - 웹 상호작용의 핵심
+## JavaScript 기초 - 웹 상호작용의 핵심
 
 ## 개요
 

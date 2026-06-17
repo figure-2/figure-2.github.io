@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Agents Companion Guide
+## Agents Companion Guide
 
 > **요약**
 > AI 에이전트 설계와 구현을 위한 종합 가이드. Agentic AI의 패턴, 아키텍처, 실무 적용 방법을 다룸.

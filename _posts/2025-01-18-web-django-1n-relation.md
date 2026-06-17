@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Django 1:N 관계 완성 - 사용자와 게시물 연결
+## Django 1:N 관계 완성 - 사용자와 게시물 연결
 
 ## 개요
 

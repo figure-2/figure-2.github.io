@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Error Analysis 실습
+## Error Analysis 실습
 
 > **실습 정보**
 > - **주차**: Week 09, Day 04

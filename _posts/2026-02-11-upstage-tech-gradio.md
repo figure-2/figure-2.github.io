@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Gradio
+## Gradio
 
 > **한줄 정의**
 > Python 기반의 ML 데모 및 인터랙티브 UI 프레임워크.

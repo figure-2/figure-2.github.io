@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 상태관리 + 비용 추적 실습
+## 상태관리 + 비용 추적 실습
 
 > **실습 정보**
 > - **주차**: Week 09, Day 02

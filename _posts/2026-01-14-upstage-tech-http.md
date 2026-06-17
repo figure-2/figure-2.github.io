@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# HTTP
+## HTTP
 
 > **한줄 정의**
 > HyperText Transfer Protocol — 웹에서 클라이언트와 서버 간 데이터를 주고받는 통신 프로토콜.

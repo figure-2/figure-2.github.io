@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# AI 윤리와 사회적 영향 실습
+## AI 윤리와 사회적 영향 실습
 
 > **실습 정보**
 > - **주차**: Week 01, Day 05

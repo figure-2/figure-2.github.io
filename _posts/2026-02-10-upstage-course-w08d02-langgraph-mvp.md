@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# LangGraph MVP
+## LangGraph MVP
 
 ## 수업 위치
 

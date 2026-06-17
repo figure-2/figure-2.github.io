@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Python 에러와 예외처리 - try, except, finally
+## Python 에러와 예외처리 - try, except, finally
 
 ## Error
 ### synatax error

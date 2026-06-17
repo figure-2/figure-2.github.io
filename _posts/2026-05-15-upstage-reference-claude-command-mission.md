@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Exercise Mode - 실습 도전
+## Exercise Mode - 실습 도전
 
 사용자가 `/mission` 또는 `실습`을 입력했습니다. 아래 절차대로 진행하세요.
 

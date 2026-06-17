@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# CI/CD
+## CI/CD
 
 > **한줄 정의**
 > 지속적 통합(Continuous Integration)과 지속적 배포(Continuous Delivery/Deployment). 코드 변경을 자동으로 빌드·테스트·배포하는 파이프라인이다.

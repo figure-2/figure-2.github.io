@@ -20,7 +20,7 @@ mermaid: true
 math: true
 ---
 
-# SWEA 알고리즘 - Tree, Binary Tree, Heap
+## SWEA 알고리즘 - Tree, Binary Tree, Heap
 
 > **SW Expert Academy** 파이썬 SW문제해결 기본 과정의 Tree 관련 알고리즘 학습
 

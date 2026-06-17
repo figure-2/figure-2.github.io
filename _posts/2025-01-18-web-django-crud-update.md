@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Django CRUD 업데이트 - URL 구조화와 템플릿 상속
+## Django CRUD 업데이트 - URL 구조화와 템플릿 상속
 
 ## 개요
 

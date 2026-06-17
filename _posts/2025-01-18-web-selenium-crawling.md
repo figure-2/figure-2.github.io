@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Selenium 크롤링 - 동적 웹 페이지 자동화
+## Selenium 크롤링 - 동적 웹 페이지 자동화
 
 ## 개요
 
@@ -493,7 +493,7 @@ def automated_form_filling():
         # 폼 작성
         name_input.send_keys("홍길동")
         email_input.send_keys("hong@example.com")
-        phone_input.send_keys("010-1234-5678")
+        phone_input.send_keys("010-0000-0000")
         
         # 체크박스 선택
         if not checkbox1.is_selected():

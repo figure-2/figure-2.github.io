@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Week 01 - AI Literacy
+## Week 01 - AI Literacy
 
 > **요약** 주차 개요
 > AI 리터러시의 핵심 역량을 기르기 위한 첫 주차 과정. 대규모 언어 모델의 이해부터 프롬프트/컨텍스트 엔지니어링, 산업별 AI 적용 사례, AI 윤리와 사회적 영향까지 폭넓게 다룬다.

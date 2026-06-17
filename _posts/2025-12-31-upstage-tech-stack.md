@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 스택 (Stack)
+## 스택 (Stack)
 
 > **한줄 정의**
 > LIFO(Last In, First Out) 구조의 선형 자료구조. 마지막에 삽입된 원소가 가장 먼저 삭제된다.

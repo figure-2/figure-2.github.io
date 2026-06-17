@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Python 기초 - 변수, 연산자, 자료형
+## Python 기초 - 변수, 연산자, 자료형
 
 ## Python
 - Jupyterlab 사용

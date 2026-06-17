@@ -22,7 +22,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# NoSQL 기초 개념
+## NoSQL 기초 개념
 > 관계형 데이터베이스의 한계를 극복한 새로운 데이터 저장 방식
 
 ## NoSQL이란?

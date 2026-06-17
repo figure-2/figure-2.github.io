@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 알고리즘 분석 실습
+## 알고리즘 분석 실습
 
 > **실습 정보**
 > - **주차**: Week 02, Day 01

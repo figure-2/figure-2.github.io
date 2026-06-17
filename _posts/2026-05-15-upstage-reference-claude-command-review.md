@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Review Mode - 복습 퀴즈
+## Review Mode - 복습 퀴즈
 
 사용자가 `/review` 또는 `복습`을 입력했습니다. 아래 절차대로 진행하세요.
 

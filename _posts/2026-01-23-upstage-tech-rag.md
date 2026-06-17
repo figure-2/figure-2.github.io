@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# RAG (Retrieval-Augmented Generation)
+## RAG (Retrieval-Augmented Generation)
 
 RAG는 처음 보면 "검색해서 LLM에 넣는 것"으로 끝나는 개념처럼 보인다. 실제로 큰 흐름은 맞다. 그런데 공부하면서 느낀 건, RAG의 어려움은 생성이 아니라 **검색된 근거를 믿을 수 있게 만드는 과정**에 있다는 점이다.
 

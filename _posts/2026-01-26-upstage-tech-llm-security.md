@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# LLM 보안
+## LLM 보안
 
 LLM 보안은 처음에는 조금 별도 과목처럼 느껴졌다. 그런데 RAG를 배우고 나니 바로 연결됐다.
 

@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# PPT Workspace - HTML to PPTX 변환
+## PPT Workspace - HTML to PPTX 변환
 
 > **프로젝트 정보**
 > - **위치**: `Week01/ppt-workspace/`

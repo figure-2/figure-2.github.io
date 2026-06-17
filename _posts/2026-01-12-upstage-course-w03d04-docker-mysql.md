@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Docker 인프라와 MySQL 데이터베이스
+## Docker 인프라와 MySQL 데이터베이스
 
 ## 핵심 개념
 

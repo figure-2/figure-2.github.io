@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# LiteLLM 통합 + Docker 실습
+## LiteLLM 통합 + Docker 실습
 
 > **실습 정보**
 > - **주차**: Week 09, Day 01

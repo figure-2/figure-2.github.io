@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# CNN (Convolutional Neural Network) 이미지 처리
+## CNN (Convolutional Neural Network) 이미지 처리
 
 > 231017 학습한 내용 정리
 

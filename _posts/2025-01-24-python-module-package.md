@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Python 모듈과 패키지 - import, 내장 패키지
+## Python 모듈과 패키지 - import, 내장 패키지
 
 ## module
 import fibo
@@ -43,7 +43,7 @@ mypackage/
 # 패키지 폴더 전체 가져옴
 import myPackage
 
-print(myPackage) -> <module 'myPackage' from 'C:\\Users\\yujin\\Desktop\\camp29\\python\\myPackage\\__init__.py'>  # 출력값
+print(myPackage) -> <module 'myPackage' from 'C:\\workspace\\python\\myPackage\\__init__.py'>  # 출력값
 
 #패키지에서 필요한 모듈을 꺼내오는 코드
 from myPackage.math import formula  # formula라는 파일로 접근
@@ -57,7 +57,7 @@ formula = 1234
 from myPackage.math import formula as f
 
 print(formula) -> 1234 # 출력값
-print(f) -> <module 'myPackage.math.formula' from 'C:\\Users\\yujin\\Desktop\\camp29\\python\\myPackage\\math\\formula.py'> # 출력값
+print(f) -> <module 'myPackage.math.formula' from 'C:\\workspace\\python\\myPackage\\math\\formula.py'> # 출력값
  ```
 
 ## 파이썬 내장 패키지

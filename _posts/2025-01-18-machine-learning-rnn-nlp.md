@@ -20,7 +20,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# RNN (Recurrent Neural Network) 자연어 처리
+## RNN (Recurrent Neural Network) 자연어 처리
 
 > 231018 학습한 내용 정리
 

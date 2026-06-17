@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Supabase
+## Supabase
 
 > **한줄 정의**
 > PostgreSQL 기반의 오픈소스 BaaS(Backend as a Service). 실시간 데이터베이스, 인증, 스토리지를 통합 제공하며 pgvector로 벡터 검색도 지원한다.

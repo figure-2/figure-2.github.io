@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# CD (Continuous Deployment)
+## CD (Continuous Deployment)
 
 ## 수업 위치
 

@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 고급 LLM 프롬프팅 전략
+## 고급 LLM 프롬프팅 전략
 
 ## 수업 위치
 

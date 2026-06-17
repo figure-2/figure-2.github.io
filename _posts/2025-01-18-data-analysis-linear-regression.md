@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 선형회귀분석 - 머신러닝의 기초와 농어 무게 예측
+## 선형회귀분석 - 머신러닝의 기초와 농어 무게 예측
 
 ## 개요
 

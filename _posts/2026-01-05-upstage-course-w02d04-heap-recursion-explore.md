@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 우선순위 큐, 힙, 재귀호출, 탐색 알고리즘
+## 우선순위 큐, 힙, 재귀호출, 탐색 알고리즘
 
 ## 핵심 개념
 

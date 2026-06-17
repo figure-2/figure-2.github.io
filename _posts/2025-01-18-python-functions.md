@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Python 함수 - 선언, 호출, return
+## Python 함수 - 선언, 호출, return
 
 ## 함수(Function)
 ### 함수의 선언과 호출

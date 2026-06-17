@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Pandas 데이터 조회, 정렬, 조건필터 - loc, iloc, where, isin
+## Pandas 데이터 조회, 정렬, 조건필터 - loc, iloc, where, isin
 
 ## 데이터 분석
 ### 데이터 조회

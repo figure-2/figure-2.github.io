@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Python 함수의 인수 - 위치인수, 기본값, 키워드인자, 가변인자
+## Python 함수의 인수 - 위치인수, 기본값, 키워드인자, 가변인자
 
 ## 함수의 인수
 ### 위치 인수
@@ -106,15 +106,15 @@ def sign_up(username, password, password_confirmation):
     else:
         print('비밀번호가 일치하지 않습니다.')
 
-sign_up('yj','1234','12342') 
+sign_up('sample_user','example_pw','wrong_pw')
 ```
 
 ```python
-# = sign_up('yj','1234','12342') 말고 딕셔너리 형태로 넣은 것
+# = sign_up('sample_user','example_pw','wrong_pw') 말고 딕셔너리 형태로 넣은 것
 my_account = {
-    'username' : 'yj',
-    'password' : '1234',
-    'password_confirmation' : '1234'   
+    'username' : 'sample_user',
+    'password' : 'example_pw',
+    'password_confirmation' : 'example_pw'
 }
 
 sign_up(**my_account)

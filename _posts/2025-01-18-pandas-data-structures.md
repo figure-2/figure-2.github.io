@@ -16,7 +16,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Pandas 자료구조 - Series와 DataFrame
+## Pandas 자료구조 - Series와 DataFrame
 
 ## Pandas
 

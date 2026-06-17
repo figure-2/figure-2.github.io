@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 상태관리 (State Management)
+## 상태관리 (State Management)
 
 > **한줄 정의**
 > LangGraph 에이전트의 실행 상태를 저장, 복원, trimming, 영속화하여 멀티 턴 대화와 운영 추적을 가능하게 하는 메커니즘.

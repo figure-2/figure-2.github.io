@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Agentic RAG
+## Agentic RAG
 
 > **한줄 정의**
 > 에이전트가 자율적으로 검색 전략을 결정하고 실행하는 RAG. 단순 파이프라인을 넘어 동적이고 반복적인 검색이 가능하다.

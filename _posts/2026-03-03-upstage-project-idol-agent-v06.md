@@ -20,7 +20,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# idol-agent v0.6 - LiteLLM + Docker + CI/CD
+## idol-agent v0.6 - LiteLLM + Docker + CI/CD
 
 > **프로젝트 정보**
 > - **위치**: `Week09/Day01/day6-mission/`

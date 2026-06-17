@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 힙/재귀 실습
+## 힙/재귀 실습
 
 > **실습 정보**
 > - **주차**: Week 02, Day 04

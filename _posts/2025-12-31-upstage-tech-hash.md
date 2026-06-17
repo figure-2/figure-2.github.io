@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 해시 (Hash)
+## 해시 (Hash)
 
 > **한줄 정의**
 > 해시 함수로 키를 인덱스로 변환하여 O(1) 평균 탐색/삽입/삭제를 달성하는 자료구조.

@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Django CRUD - 게시판 만들기의 핵심
+## Django CRUD - 게시판 만들기의 핵심
 
 ## CRUD 개요
 

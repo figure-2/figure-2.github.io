@@ -21,7 +21,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Apache Airflow 기초 개념
+## Apache Airflow 기초 개념
 > 워크플로우 오케스트레이션을 위한 플랫폼
 
 ## Airflow란?

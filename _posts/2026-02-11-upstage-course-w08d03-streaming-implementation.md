@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Streaming 구현
+## Streaming 구현
 
 ## 수업 위치
 

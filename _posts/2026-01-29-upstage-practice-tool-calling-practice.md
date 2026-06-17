@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Tool Calling 기본 과제
+## Tool Calling 기본 과제
 
 > **실습 정보**
 > - **주차**: Week 06, Day 02

@@ -21,7 +21,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# MongoDB 기초
+## MongoDB 기초
 > 가장 인기 있는 NoSQL 문서 데이터베이스
 
 ## MongoDB란?

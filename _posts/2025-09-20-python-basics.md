@@ -15,7 +15,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Python 기초
+## Python 기초
 
 ## Python
 - Jupyterlab 사용

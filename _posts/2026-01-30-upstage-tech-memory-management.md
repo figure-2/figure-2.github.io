@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Memory Management
+## Memory Management
 
 > **한줄 정의**
 > LLM 에이전트가 대화 맥락과 과거 경험을 저장·검색하는 메커니즘. 상태 없는 LLM에 지속성을 부여한다.

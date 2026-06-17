@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Agentic RAG & Memory Management
+## Agentic RAG & Memory Management
 
 ## 핵심 개념
 

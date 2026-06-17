@@ -18,7 +18,7 @@ mermaid: true
 math: true
 ---
 
-# Financial-Agent: AI 기반 금융 투자 비서
+## Financial-Agent: AI 기반 금융 투자 비서
 
 > **프로젝트 기간**: 2025.10 ~ 2025.11 (2개월)  
 > **목적**: 자연어 질의를 통해 복잡한 금융 데이터를 조회, 분석하고 개인화된 투자 위험을 관리하는 AI Agent 개발  

@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Django 사용자 인증 - Signup, Login, Logout
+## Django 사용자 인증 - Signup, Login, Logout
 
 ## 개요
 

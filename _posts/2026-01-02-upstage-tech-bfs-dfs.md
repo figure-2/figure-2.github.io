@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# BFS / DFS
+## BFS / DFS
 
 > **한줄 정의**
 > 그래프와 트리를 탐색하는 두 가지 핵심 알고리즘. BFS는 너비 우선, DFS는 깊이 우선으로 노드를 방문한다.

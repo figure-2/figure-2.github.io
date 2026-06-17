@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# RAG Knowledge Conflict 실습
+## RAG Knowledge Conflict 실습
 
 Day4 실습은 RAG에서 제일 불편하지만 중요한 부분을 다뤘다.
 검색된 문서가 항상 맞다고 볼 수 없고, 문서끼리도 서로 다른 말을 할 수 있다는 점이다.

@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Pandas 결측치 처리 - isnull, fillna, dropna
+## Pandas 결측치 처리 - isnull, fillna, dropna
 
 ## 데이터 분석
 

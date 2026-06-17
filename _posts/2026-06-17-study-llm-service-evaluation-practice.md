@@ -17,11 +17,24 @@ mermaid: true
 math: true
 ---
 
-LLM 서비스 평가를 정리하면서 가장 먼저 든 생각은 “평가 지표가 많다”가 아니었다. 같은 출력도 무엇을 보려는지에 따라 지표가 달라진다는 점이 더 중요했다.
+LLM 서비스 평가를 정리하면서 남은 생각은 “평가 지표가 많다”가 아니었다. 같은 출력도 무엇을 보려는지에 따라 지표가 달라진다는 점이었다.
 
 요약 품질을 볼 때와 업무 리포트 품질을 볼 때, RAG 답변의 근거성을 볼 때는 평가 질문이 다르다.
 
-![LLM 서비스 평가 맵](/assets/images/study/diagrams/study-practice-llm-evaluation-map.png)
+```mermaid
+flowchart TD
+  O["LLM Output<br/>요약, 리포트, QA 답변"] --> R["ROUGE<br/>표면 단어 overlap"]
+  O --> B["BERTScore<br/>의미 유사도"]
+  O --> G["G-Eval<br/>rubric 기반 judge"]
+  O --> F["Groundedness<br/>근거 밖 생성 여부"]
+
+  R --> D["Metric Reading<br/>무엇을 좋은 출력으로 볼 것인가"]
+  B --> D
+  G --> D
+  F --> D
+
+  D --> C["Claim Boundary<br/>데이터셋, 기준, 한계와 함께 해석"]
+```
 
 ## ROUGE
 
@@ -45,7 +58,7 @@ BERTScore는 embedding 기반으로 의미 유사도를 본다.
 | 요약의 semantic similarity를 보기 좋다 | 도메인 특화 용어에는 모델 영향이 있다 |
 | ROUGE보다 유연하다 | 해석이 직관적이지 않을 수 있다 |
 
-내가 정리한 기준은 이렇다. ROUGE는 표면 비교, BERTScore는 의미 비교에 가깝다.
+여기서는 ROUGE를 표면 비교, BERTScore를 의미 비교에 가깝게 이해했다.
 
 ## G-Eval
 
@@ -63,7 +76,7 @@ G-Eval은 사람이 채점하듯 rubric을 만들 수 있다는 점이 장점이
 
 ## 지표를 함께 읽기
 
-실습 자료 중에는 개별 요약은 ROUGE와 BERTScore로 보고, 최종 리포트는 G-Eval로 비교한 흐름이 있었다. 이 방식이 꽤 설득력 있었다.
+정리하면서 가장 설득력 있었던 방식은 개별 요약은 ROUGE와 BERTScore로 보고, 최종 리포트는 G-Eval로 비교하는 흐름이었다.
 
 출력의 성격이 다르기 때문이다.
 
@@ -89,16 +102,15 @@ G-Eval은 사람이 채점하듯 rubric을 만들 수 있다는 점이 장점이
 
 예를 들어 어떤 조건에서 G-Eval 점수가 가장 높았다는 기록이 있어도, 그것은 해당 데이터와 rubric 안에서의 결과다. 일반적인 서비스 품질로 바로 확장하면 안 된다.
 
-## 코드 조각으로 다시 보기
+## 평가 지표를 config로 분리하는 코드
 
-![LLM evaluation metrics code note](/assets/images/study/code-notes/study-code-llm-evaluation-metrics.png)
+평가 코드를 직접 적어보면 지표를 함수 안에 고정하지 않고 config에서 선택하는 편이 자연스럽다. 같은 요약 결과라도 ROUGE, BERTScore, G-Eval은 보는 관점이 다르다. 그래서 평가 코드는 “하나의 점수 계산기”보다 “여러 평가 질문을 실행하는 runner”에 가깝다.
 
-이 코드 조각에서 배운 점은 평가 지표를 함수 안에 고정하지 않고 config에서 선택한다는 것이다. 같은 요약 결과라도 ROUGE, BERTScore, G-Eval은 보는 관점이 다르다. 그래서 평가 코드는 “하나의 점수 계산기”보다 “여러 평가 질문을 실행하는 runner”에 가깝다.
-
-내가 압축해서 가져간 형태는 다음과 같다.
+짧게 적으면 다음과 같다.
 
 ```python
 def run_evaluation(outputs: list[str], references: list[str], metrics: list[str]):
+    # 하나의 점수로 합치기 전에, 어떤 질문에 답하는 지표인지 나눠서 본다.
     results = {}
 
     if "rouge" in metrics:
@@ -108,6 +120,7 @@ def run_evaluation(outputs: list[str], references: list[str], metrics: list[str]
         results["semantic_similarity"] = bert_score(outputs, references)
 
     if "g_eval" in metrics:
+        # G-Eval은 모델보다 rubric을 어떻게 쓰는지가 더 중요했다.
         results["rubric_judgement"] = g_eval(
             outputs=outputs,
             references=references,
@@ -119,8 +132,8 @@ def run_evaluation(outputs: list[str], references: list[str], metrics: list[str]
 
 평가 지표를 이렇게 나누면 결과 해석도 같이 달라진다. ROUGE가 낮아도 의미가 맞을 수 있고, G-Eval이 높아도 judge 기준이 느슨하면 위험하다.
 
-## 정리
+## 지표보다 평가 질문
 
 LLM 서비스 평가는 “정답률” 하나로 설명하기 어렵다. 요약은 ROUGE/BERTScore, 리포트는 G-Eval, RAG는 groundedness를 함께 봐야 한다.
 
-내가 가져간 결론은 이것이다. 지표를 고르기 전에 먼저 평가 질문을 정해야 한다. “무엇을 좋은 출력이라고 볼 것인가”가 먼저다.
+지표를 고르기 전에 평가 질문을 정해야 한다. “무엇을 좋은 출력이라고 볼 것인가”가 정해져야 점수도 의미를 가진다.

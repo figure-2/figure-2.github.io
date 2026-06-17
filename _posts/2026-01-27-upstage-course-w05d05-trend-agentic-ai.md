@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Related Works & Agentic AI Summary
+## Related Works & Agentic AI Summary
 
 ## 수업 위치
 

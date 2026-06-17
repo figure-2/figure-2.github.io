@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# TensorFlow 기본 모델링
+## TensorFlow 기본 모델링
 
 > 231016 학습한 내용 정리
 

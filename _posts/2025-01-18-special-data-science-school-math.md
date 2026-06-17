@@ -22,7 +22,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 데이터사이언스스쿨 수학편
+## 데이터사이언스스쿨 수학편
 
 > 230918~230921 학습한 내용 정리
 

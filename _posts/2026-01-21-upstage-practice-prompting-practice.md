@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# MMLU로 확인한 기본 프롬프팅 튜토리얼
+## MMLU로 확인한 기본 프롬프팅 튜토리얼
 
 > **실습 정보**
 > - **주차**: Week 05, Day 01

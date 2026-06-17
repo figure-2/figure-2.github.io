@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Progress - 학습 진도 확인
+## Progress - 학습 진도 확인
 
 사용자가 `/progress` 또는 `진도`를 입력했습니다. 아래 절차대로 진행하세요.
 

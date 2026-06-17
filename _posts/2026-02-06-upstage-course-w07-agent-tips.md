@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Agent 개발 팁, 효과적인 프로젝트 운영 전략
+## Agent 개발 팁, 효과적인 프로젝트 운영 전략
 
 ## 핵심 개념
 

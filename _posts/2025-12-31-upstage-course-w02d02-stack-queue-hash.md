@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 스택, 큐, 해시 테이블
+## 스택, 큐, 해시 테이블
 
 ## 핵심 개념
 

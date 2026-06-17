@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Ask Mode - 질문하기
+## Ask Mode - 질문하기
 
 사용자가 `/ask` 뒤에 질문을 입력했습니다. $ARGUMENTS 를 질문으로 처리하세요.
 

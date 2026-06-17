@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# CSS 기초 - 웹 스타일링의 핵심
+## CSS 기초 - 웹 스타일링의 핵심
 
 ## CSS 색상 적용 방법
 

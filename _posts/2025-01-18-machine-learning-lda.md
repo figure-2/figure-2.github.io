@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# LDA (Linear Discriminant Analysis)
+## LDA (Linear Discriminant Analysis)
 
 > 231004 학습한 내용 정리
 

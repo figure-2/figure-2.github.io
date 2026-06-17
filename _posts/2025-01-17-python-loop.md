@@ -20,7 +20,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Python 반복문 - while, for, break, continue, else
+## Python 반복문 - while, for, break, continue, else
 
 ## 반복문
 ### While문

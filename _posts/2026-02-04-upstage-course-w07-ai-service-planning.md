@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# AI 서비스 기획 가이드
+## AI 서비스 기획 가이드
 
 ## 핵심 개념
 

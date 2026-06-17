@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Agent Architecture 수업 기록
+## Agent Architecture 수업 기록
 
 ## 수업 위치
 

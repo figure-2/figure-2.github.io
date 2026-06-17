@@ -1,10 +1,13 @@
 ---
 title: NumPy Cheat Sheet
 categories:
-- 02_PYTHON
+- 3.STUDY
+- 3-1.PYTHON
 tags:
 - python
 - numpy
+- study
+- reference-note
 toc: true
 date: 2025-09-01 00:00:00 +0900
 comments: false

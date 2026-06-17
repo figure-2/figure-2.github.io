@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Python 객체지향 프로그래밍(OOP) - 클래스, 상속, 다중상속
+## Python 객체지향 프로그래밍(OOP) - 클래스, 상속, 다중상속
 
 # 객체지행 프로그래밍(OOP)
 
@@ -56,7 +56,7 @@ my_list.sort()
 ```python
 # 대상자 1, 2, 3, ...
 power = False
-number = '010-1234-1234'
+number = '010-0000-0000'
 book = {
     '홍길동' : '010-1111-1111',
     '이순신' : '010-2222-2222'
@@ -140,9 +140,9 @@ your_phone = Phone()
 my_phone.number 
 '010-0000-0000' # 출력값
 
-my_phone.number = '010-1234-1234'
+my_phone.number = '010-0000-0000'
 my_phone.number
-'010-1234-1234' # 출력값
+'010-0000-0000' # 출력값
 
 your_phone.number
 '010-0000-0000' # 출력값
@@ -155,7 +155,7 @@ my_phone.power
 True  # 출력값
 
 my_phone.call('112')
-내 번호는 010-1234-1234입니다.  # 출력값
+내 번호는 010-0000-0000입니다.  # 출력값
 112번호로 전화거는중
 ```
 
@@ -205,11 +205,11 @@ class Person:
 ```python
 p1 = Person()  # =>  Person.__init__(p1,)
 print(p1.name)
-p1.name = 'yujin'
+p1.name = 'sample_user'
 print(p1.name)
 익명   # 출력값
 생성됨 # 출력값
-yujin # 출력값
+sample_user # 출력값
 
 p2 = Person()
 del p2
@@ -240,19 +240,19 @@ class TestClass:
 # Person class
 class Person:
     name = '홍길동'
-    phone = '010-1234-1234'
+    phone = '010-0000-0000'
     
     def __init__(self, name):
         self.name = name
 
 # Person instance
-p = Person('정유진')
+p = Person('사용자A')
 print(Person.name) # 클래스 변수
 홍길동 # 출력값
 print(p.name) # 인스턴스 변수
-정유진 #출력값
+사용자A #출력값
 print(p.phone) # p(나)에 없다면 Person(부모)로 가게됨 if 부모도 없으면 error
-010-1234-1234 # 출력값
+010-0000-0000 # 출력값
 ```
 
 ### 클래스 메소드, 인스턴스메소드, 스태틱메소드
@@ -416,9 +416,9 @@ class Soldier(Person):
 ```
 
 ```python
-s1 = Soldier('email@email.com','010-1234-2344','seoul','kim','12345')
+s1 = Soldier('email@example.com','010-0000-0000','seoul','kim','sample_id')
 print(s1.name) -> kim # 출력값
-print(s1.soldier_id) -> 12345 # 출력값
+print(s1.soldier_id) -> sample_id # 출력값
 ```
 ## 다중 상속
 

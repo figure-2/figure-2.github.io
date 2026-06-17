@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Python 메소드 - 문자열, 리스트, 딕셔너리, 세트 메소드
+## Python 메소드 - 문자열, 리스트, 딕셔너리, 세트 메소드
 
 # 메소드
 ## 문자열 메소드
@@ -32,9 +32,9 @@ hello # 출력값 : 원본은 그대로 있음
 ```
 - **.title()** : 각 문자별 대문자
 ```python
-a = 'hello my name is yujin'
+a = 'hello my name is sample_user'
 a.capitalize()
-'Hello my name is yujin' # 출력값
+'Hello my name is sample_user' # 출력값
 a.title()
 'Hello My Name Is Yujin' # 출력값
 ```
@@ -239,7 +239,7 @@ print(result2)
         ```
 
 - ex. 모음제거   
-`words =  'my name is yujin'  ,vowels = 'aeiou'`
+`words =  'my name is sample_user'  ,vowels = 'aeiou'`
     - for문   
         ```python
         result =''
@@ -258,14 +258,14 @@ print(result2)
 ## 3. 딕셔너리 메소드
 `
 info = {
-    'name' : 'yujin',
+    'name' : 'sample_user',
     'location' : 'seoul'
 }
 `
 - **.pop(key[,default])** : key 값 제거
 ```python
 info.pop('location')
-print(info) -> {'name': 'yujin'} # 출력값
+print(info) -> {'name': 'sample_user'} # 출력값
 print(info.pop('location',None)) -> None # 출력값
 print(info.pop('location','없습니다')) -> '없습니다' # 출력값
 

@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Context Engineering + Safety 실습
+## Context Engineering + Safety 실습
 
 > **실습 정보**
 > - **주차**: Week 06, Day 04

@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 트리 (Tree)
+## 트리 (Tree)
 
 > **한줄 정의**
 > 계층적 구조를 표현하는 비선형 자료구조. 루트 노드에서 시작하여 부모-자식 관계로 연결된 노드의 집합이다.

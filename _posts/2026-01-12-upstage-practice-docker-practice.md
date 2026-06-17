@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Docker/MySQL 실습
+## Docker/MySQL 실습
 
 > **실습 정보**
 > - **주차**: Week 03, Day 04

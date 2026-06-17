@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Django 이미지 업로드 - 사진 업로드와 프로필 관리
+## Django 이미지 업로드 - 사진 업로드와 프로필 관리
 
 ## 개요
 

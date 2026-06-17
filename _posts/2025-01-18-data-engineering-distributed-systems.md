@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 분산시스템의 이해
+## 분산시스템의 이해
 
 ## 컴퓨터의 진화
 

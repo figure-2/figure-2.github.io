@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Git 기본과 심화 - 버전 관리의 핵심
+## Git 기본과 심화 - 버전 관리의 핵심
 
 ## 핵심 개념
 

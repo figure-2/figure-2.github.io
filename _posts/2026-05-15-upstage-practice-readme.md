@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Exercises - 자기주도 실습
+## Exercises - 자기주도 실습
 
 이 폴더에는 각 주차별 실습 과제가 포함되어 있습니다.
 Claude Code에서 `/mission` 명령으로 미션 도전 후, 여기서 추가 실습을 진행하세요.

@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Matplotlib 고급 시각화 - 데이터 분석을 위한 전문 기법
+## Matplotlib 고급 시각화 - 데이터 분석을 위한 전문 기법
 
 ## 개요
 

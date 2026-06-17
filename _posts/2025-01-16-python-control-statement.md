@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Python 제어문 - 조건문과 조건표현식
+## Python 제어문 - 조건문과 조건표현식
 
 ## 제어문
 ### 조건문( if문 )

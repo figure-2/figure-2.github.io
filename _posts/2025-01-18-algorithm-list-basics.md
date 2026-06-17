@@ -19,7 +19,7 @@ mermaid: true
 math: true
 ---
 
-# SWEA 알고리즘 - List 기초 및 문제 해결
+## SWEA 알고리즘 - List 기초 및 문제 해결
 
 > **SW Expert Academy** 파이썬 SW문제해결 기본 과정의 List 관련 알고리즘 학습
 

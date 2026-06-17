@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Context Engineering & Safety
+## Context Engineering & Safety
 
 ## 수업 위치
 

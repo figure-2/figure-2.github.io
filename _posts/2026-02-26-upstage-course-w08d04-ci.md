@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# GitHub Actions CI
+## GitHub Actions CI
 
 ## 수업 위치
 

@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# idol-agent v0.2 - LangGraph MVP
+## idol-agent v0.2 - LangGraph MVP
 
 > **프로젝트 정보**
 > - **위치**: `Week08/Day02/day2-mission/`

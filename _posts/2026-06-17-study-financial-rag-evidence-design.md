@@ -16,15 +16,26 @@ mermaid: true
 math: true
 ---
 
-금융 RAG를 보면서 가장 먼저 든 생각은 “근거의 종류가 너무 다르다”는 것이었다.
+금융 RAG를 보면서 계속 걸렸던 지점은 근거의 종류가 너무 다르다는 점이었다.
 
 증권 리포트는 길고 정적이다. 뉴스는 짧고 최신성이 중요하다. 표 데이터는 숫자와 단위가 중요하고, 그래프는 추세를 담는다. 이 네 가지를 같은 chunk로 취급하면 답변은 자연스러워도 근거가 흐려진다.
 
-![금융 RAG 근거 설계](/assets/images/study/diagrams/study-practice-financial-rag-evidence.png)
+```mermaid
+flowchart LR
+  A["Analyst Report<br/>장기 분석 근거"] --> M["Metadata<br/>source, date, page, unit"]
+  N["News<br/>최신 이벤트"] --> M
+  T["Table<br/>수치와 단위"] --> M
+  C["Chart<br/>추세와 변동"] --> M
 
-## 금융 RAG에서 먼저 나눌 것
+  M --> S["Source-Type Retrieval<br/>근거 유형별 검색"]
+  S --> R["Reranking<br/>질문별 근거 재정렬"]
+  R --> G["Grounded Answer<br/>근거 안에서 답변"]
+  G --> CIT["Citation<br/>출처와 조건 표시"]
+```
 
-금융 질의응답에서는 “무엇을 검색할 것인가”보다 “근거를 어떻게 분리할 것인가”가 먼저였다.
+## 금융 RAG에서 처음에 나눌 것
+
+금융 질의응답에서는 “무엇을 검색할 것인가”만으로는 부족했다. 근거를 어떻게 분리할 것인지가 같이 정해져야 했다.
 
 | 근거 | 특징 | 주의점 |
 | --- | --- | --- |
@@ -48,7 +59,7 @@ math: true
 | 재무 수치 확인 | 표 데이터 |
 | 추세 설명 | 그래프/차트 설명 |
 
-내가 정리한 기준은 단순하다. 답변에 “리포트 기준”과 “최근 뉴스 기준”을 분리해서 말할 수 있어야 한다.
+그래서 답변에는 “리포트 기준”과 “최근 뉴스 기준”을 분리해서 말할 수 있어야 한다고 봤다.
 
 ## 표 데이터는 RAG의 별도 입력이다
 
@@ -79,9 +90,9 @@ math: true
 
 중요한 것은 “답변이 그럴듯한가”보다 “근거 문서로 돌아갈 수 있는가”다.
 
-## 실습 체크리스트
+## 다시 설계할 때 볼 것
 
-금융 RAG를 설계한다면 다음을 먼저 확인할 것이다.
+금융 RAG를 다시 설계한다면 아래 항목부터 확인할 것이다.
 
 | 체크 | 질문 |
 | --- | --- |
@@ -92,13 +103,11 @@ math: true
 | 생성 평가 | 답변이 근거 밖으로 나가지 않는가 |
 | 사용자 표현 | 투자 조언처럼 단정하지 않는가 |
 
-## 코드 조각으로 다시 보기
+## Evidence를 따로 남기는 코드
 
-![Financial RAG evidence table code note](/assets/images/study/code-notes/study-code-financial-evidence-table.png)
+금융 RAG를 코드로 적어보면 retrieval 결과를 바로 문자열로 합치지 않는 것이 중요하다. `content`, `metadata`, `score`, `source`를 묶어두고, 표 데이터는 별도 경로로 처리해야 한다. 금융 문서에서 표를 본문과 같은 방식으로 다루면 수치와 단위가 쉽게 깨진다.
 
-이 코드 조각에서 중요하게 본 부분은 retrieval 결과를 바로 문자열로 합치지 않는다는 점이었다. `content`, `metadata`, `score`, `source`를 묶어두고, `category == "table"`인 경우에는 별도 경로로 처리한다. 금융 문서에서 표를 본문과 같은 방식으로 다루면 수치와 단위가 쉽게 깨진다.
-
-내가 압축해서 가져간 구조는 다음과 같다.
+코드로는 다음 정도만 남겨도 기준이 분명해진다.
 
 ```python
 from dataclasses import dataclass
@@ -107,7 +116,7 @@ from dataclasses import dataclass
 @dataclass
 class Evidence:
     content: str
-    source_type: str
+    source_type: str  # report, news, table, chart를 섞지 않기 위한 경계
     page: int | None
     published_at: str | None
     score: float
@@ -116,14 +125,15 @@ class Evidence:
 @dataclass
 class GroundedAnswer:
     answer: str
+    # 답변보다 먼저 근거 목록이 남아야 나중에 검증할 수 있다.
     evidences: list[Evidence]
     missing_context: bool
 ```
 
 금융 RAG에서는 답변 문장보다 `Evidence`가 먼저다. 답변이 맞아 보여도 어떤 리포트, 어떤 날짜, 어떤 표에서 온 근거인지 남아 있지 않으면 나중에 검증할 수 없다.
 
-## 정리
+## 남은 원칙
 
-금융 RAG는 일반 문서 RAG보다 근거 경계가 더 중요하다. 리포트, 뉴스, 표, 그래프가 서로 다른 시간성과 의미를 갖기 때문이다.
+금융 RAG는 일반 문서 RAG보다 근거 경계에 더 민감하다. 리포트, 뉴스, 표, 그래프가 서로 다른 시간성과 의미를 갖기 때문이다.
 
-내가 가져간 결론은 이것이다. 금융 RAG의 품질은 좋은 답변 문장보다 근거를 분리하고 추적하는 설계에서 시작된다.
+좋은 답변 문장 이전에 해야 할 일은 근거를 분리하고 추적 가능하게 만드는 것이다. 금융 RAG의 품질은 그 지점에서 시작된다.

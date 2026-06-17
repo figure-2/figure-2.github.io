@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Django ORM과 SQL 비교 - 데이터베이스 조작의 두 가지 방법
+## Django ORM과 SQL 비교 - 데이터베이스 조작의 두 가지 방법
 
 ## 개요
 

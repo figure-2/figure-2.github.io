@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 클라우드 배포 자동화
+## 클라우드 배포 자동화
 
 ## 핵심 개념
 

@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# RAG Fundamentals & Advanced RAG 1
+## RAG Fundamentals & Advanced RAG 1
 
 # 수업에서 처음 잡은 감
 

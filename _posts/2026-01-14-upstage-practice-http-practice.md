@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# HTTP 웹통신 실습
+## HTTP 웹통신 실습
 
 > **실습 정보**
 > - **주차**: Week 04, Day 01

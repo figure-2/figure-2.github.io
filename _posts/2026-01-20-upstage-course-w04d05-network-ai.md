@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 네트워크와 AI
+## 네트워크와 AI
 
 ## 핵심 개념
 

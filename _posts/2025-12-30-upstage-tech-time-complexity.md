@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 시간복잡도 (Time Complexity)
+## 시간복잡도 (Time Complexity)
 
 > **한줄 정의**
 > 입력 크기 n에 따라 알고리즘의 실행 시간이 어떻게 증가하는지를 Big-O 표기법으로 나타낸 척도.

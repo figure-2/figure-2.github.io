@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# LangGraph
+## LangGraph
 
 > **한줄 정의**
 > LangChain 기반의 상태 기계(State Machine) 에이전트 프레임워크. 노드와 엣지로 구성된 그래프로 복잡한 에이전트 워크플로우를 정의하고 실행한다.

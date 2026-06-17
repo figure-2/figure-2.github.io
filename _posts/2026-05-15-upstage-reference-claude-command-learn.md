@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Learning Mode - 주차별 순서 학습
+## Learning Mode - 주차별 순서 학습
 
 사용자가 `/learn` 또는 `학습시작`을 입력했습니다. 아래 절차대로 진행하세요.
 

@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Week 05 - Prompt Engineering & RAG
+## Week 05 - Prompt Engineering & RAG
 
 > **요약**
 > LLM을 더 잘 쓰기 위한 입력 설계에서 시작해, 외부 지식 결합(RAG), RAG 고도화, 프롬프트 기반 보안, 멀티모달/개인화, Agentic AI로 이어지는 흐름을 학습한 주차다.

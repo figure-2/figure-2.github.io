@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# LightGBM (Light Gradient Boosting Machine)
+## LightGBM (Light Gradient Boosting Machine)
 
 > 230926 학습한 내용 정리
 

@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Week 03 - 개발환경, Git, Docker
+## Week 03 - 개발환경, Git, Docker
 
 > **요약** 주차 개요
 > 실무 개발 환경을 구성하고 협업 도구를 익히는 주차. IDE/Python 개발환경(PyCharm, uv)부터 Git 기본/심화/협업, GitHub를 활용한 프로젝트 관리, Docker 인프라와 MySQL 데이터베이스까지 다룬다.

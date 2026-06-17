@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 데이터 분석 기초 - 자동차 결함 리콜 데이터 분석 실습
+## 데이터 분석 기초 - 자동차 결함 리콜 데이터 분석 실습
 
 ## 개요
 

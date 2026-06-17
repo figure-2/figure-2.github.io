@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 배포 자동화 실습
+## 배포 자동화 실습
 
 > **실습 정보**
 > - **주차**: Week 04, Day 04

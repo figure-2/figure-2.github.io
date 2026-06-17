@@ -21,7 +21,7 @@ mermaid: true
 math: true
 ---
 
-# SWEA 알고리즘 - Stack, DFS, 동적 계획법
+## SWEA 알고리즘 - Stack, DFS, 동적 계획법
 
 > **SW Expert Academy** 파이썬 SW문제해결 기본 과정의 Stack 관련 고급 알고리즘 학습
 

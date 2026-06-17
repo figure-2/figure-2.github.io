@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# GPT-3: Language Models are Few-Shot Learners
+## GPT-3: Language Models are Few-Shot Learners
 
 > **논문 요약**
 > OpenAI의 GPT-3 논문. 175B 파라미터 모델이 Few-shot 프롬프팅만으로 다양한 NLP 태스크에서 SOTA에 근접하는 성능을 달성.

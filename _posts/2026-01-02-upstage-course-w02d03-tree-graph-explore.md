@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 트리, 그래프, DFS/BFS 탐색
+## 트리, 그래프, DFS/BFS 탐색
 
 ## 핵심 개념
 

@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# HTML 스크래핑 - 웹 데이터 수집의 핵심
+## HTML 스크래핑 - 웹 데이터 수집의 핵심
 
 ## 개요
 

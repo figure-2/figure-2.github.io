@@ -14,7 +14,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Git 기초
+## Git 기초
 
 ## 버전 관리란?
 “버전 관리” 는 무엇이고 우리는 왜 이것을 알아야 할까? 버전 관리 시스템은 파일 변화를 시간에 따라 기록했다가 나중에 특정 시점의 버전을 다시 꺼내올 수 있는 시스템이다. 이 책에서는 버전 관리하는 예제로 소프트웨어 소스 코드만 보여주지만, 실제로 거의 모든 컴퓨터 파일의 버전을 관리할 수 있다.
@@ -79,7 +79,7 @@ git remote rm origin
 ```
 
 ## git 까지의 세세한 과정
-1. 바탕화면에 폴더 생성 C:\Users\yujin\Desktop\camp29\TIL
+1. 작업 폴더 생성 C:\workspace\TIL
 2. TIL 폴더에 들어가서 마우스 오른쪽 -> Code로 열기 진행
 3. git init
 ![master](/assets/images/git-기초/git_init.png)

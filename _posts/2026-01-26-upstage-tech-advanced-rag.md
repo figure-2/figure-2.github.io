@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Advanced RAG
+## Advanced RAG
 
 Advanced RAG는 처음 들으면 기법 이름이 너무 많다. HyDE, RAGRouter, Small-to-Big, Self-RAG, GraphRAG, RAPTOR처럼 이름만 보면 다 따로 외워야 할 것 같다.
 

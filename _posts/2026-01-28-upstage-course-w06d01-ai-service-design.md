@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# AI 서비스와 에이전트 설계
+## AI 서비스와 에이전트 설계
 
 ## 수업 위치
 

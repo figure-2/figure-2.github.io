@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Pandas 통계 함수 - describe, mean, median, corr 등
+## Pandas 통계 함수 - describe, mean, median, corr 등
 
 ## 데이터 분석
 ### 통계

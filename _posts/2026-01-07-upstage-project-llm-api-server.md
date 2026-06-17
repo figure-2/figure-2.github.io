@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Solar FastAPI 앱
+## Solar FastAPI 앱
 
 > **프로젝트 정보**
 > - **위치**: `Week03/solar-project/`

@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# FastAPI
+## FastAPI
 
 > **한줄 정의**
 > Python 기반 고성능 비동기 웹 프레임워크. Pydantic과 타입 힌트를 활용하여 자동 문서화와 데이터 검증을 제공한다.

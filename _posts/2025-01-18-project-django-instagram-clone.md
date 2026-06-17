@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Django Instagram 클론 프로젝트 - 소셜미디어 플랫폼 개발
+## Django Instagram 클론 프로젝트 - 소셜미디어 플랫폼 개발
 
 ## 프로젝트 개요
 

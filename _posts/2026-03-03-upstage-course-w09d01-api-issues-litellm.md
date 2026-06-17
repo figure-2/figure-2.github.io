@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# API 이슈 & LiteLLM
+## API 이슈 & LiteLLM
 
 ## 수업 위치
 

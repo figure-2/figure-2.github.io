@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# PCA (Principal Component Analysis)
+## PCA (Principal Component Analysis)
 
 > 231004 학습한 내용 정리
 

@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Pandas concat과 merge - 데이터 연결과 병합
+## Pandas concat과 merge - 데이터 연결과 병합
 
 ## concat() - 데이터 연결
 - concat()은 DataFrame을 연결함.

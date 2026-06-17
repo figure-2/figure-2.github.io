@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# idol-agent v0.7 - 상태관리 + 비용 추적
+## idol-agent v0.7 - 상태관리 + 비용 추적
 
 > **프로젝트 정보**
 > - **위치**: `Week09/Day02/Day7_mission/`

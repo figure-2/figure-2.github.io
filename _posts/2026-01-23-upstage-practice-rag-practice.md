@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Naive RAG 파이프라인 구축 실습
+## Naive RAG 파이프라인 구축 실습
 
 Day3 실습은 PDF 하나를 가지고 직접 RAG 파이프라인을 만들어보는 내용이었다. 처음에는 LangChain 코드만 따라가면 되는 실습이라고 생각했는데, 막상 정리해보니 핵심은 코드보다 **중간 결과를 계속 확인하는 습관**이었다.
 

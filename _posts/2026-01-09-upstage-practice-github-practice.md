@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# GitHub 협업 실습
+## GitHub 협업 실습
 
 > **실습 정보**
 > - **주차**: Week 03, Day 03

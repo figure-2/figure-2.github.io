@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Agent Architecture
+## Agent Architecture
 
 > **한줄 정의**
 > LLM 기반 자율 에이전트의 구조와 설계 패턴. 지각-추론-행동 루프를 반복하며 복잡한 목표를 자율적으로 달성한다.

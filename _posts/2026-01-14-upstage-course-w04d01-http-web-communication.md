@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# HTTP와 웹 통신 이해
+## HTTP와 웹 통신 이해
 
 ## 핵심 개념
 

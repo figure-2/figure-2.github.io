@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# LLMOps 패턴 정리
+## LLMOps 패턴 정리
 
 ## 수업 위치
 

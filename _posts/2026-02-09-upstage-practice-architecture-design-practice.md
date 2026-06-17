@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 프로젝트 아키텍처 설계 실습
+## 프로젝트 아키텍처 설계 실습
 
 > **실습 정보**
 > - **주차**: Week 08, Day 01

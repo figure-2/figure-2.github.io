@@ -16,7 +16,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Bootstrap 기초 - 빠른 웹 개발을 위한 CSS 프레임워크
+## Bootstrap 기초 - 빠른 웹 개발을 위한 CSS 프레임워크
 
 ## Bootstrap 개요
 

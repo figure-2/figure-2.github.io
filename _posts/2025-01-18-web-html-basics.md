@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# HTML 기초 - 웹 개발의 첫 걸음
+## HTML 기초 - 웹 개발의 첫 걸음
 
 ## 웹서비스 개요
 
@@ -214,15 +214,15 @@ Body 태그 안에 들어가는 form 태그
 
 ### 웹사이트에서 input을 넣고 Enter를 치면 나오는 링크 예시
 ```
-file:///C:/Users/yujin/Desktop/camp29/web/2.form.html?username=yujin&pw=a1234
+file:///workspace/web/2.form.html?username=sample_user&pw=example_pw
 ```
 
 **링크 구조 분석:**
-- `file:///C:/Users/yujin/Desktop/camp29/web/2.form.html` (기본 URL)
+- `file:///workspace/web/2.form.html` (기본 URL)
 - `?` (구분자)
-- `username=yujin` (**key** = *value* - 웹에서 직접 입력)
+- `username=sample_user` (**key** = *value* - 웹에서 직접 입력)
 - `&` (구분자)
-- `pw=a1234` (**key** = *value* - 웹에서 직접 입력)
+- `pw=example_pw` (**key** = *value* - 웹에서 직접 입력)
 - `&` (구분자)
 - `choice=css` (**key** = *value* - HTML에서 value값 지정)
 

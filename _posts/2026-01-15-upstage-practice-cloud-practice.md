@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 클라우드 컴퓨팅 실습
+## 클라우드 컴퓨팅 실습
 
 > **실습 정보**
 > - **주차**: Week 04, Day 02

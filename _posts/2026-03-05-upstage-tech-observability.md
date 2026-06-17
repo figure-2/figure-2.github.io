@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Observability (관측 가능성)
+## Observability (관측 가능성)
 
 > **한줄 정의**
 > 시스템의 내부 상태를 로그, 메트릭, 트레이스로 추적해 “무슨 일이 왜 일어났는지” 설명할 수 있게 만드는 운영 능력.

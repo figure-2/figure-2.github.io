@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Docker
+## Docker
 
 > **한줄 정의**
 > 컨테이너 기반 애플리케이션 패키징 및 배포 플랫폼. 환경 의존성을 격리하여 어디서나 동일하게 실행되는 이미지를 만든다.

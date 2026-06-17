@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Context Engineering
+## Context Engineering
 
 > **한줄 정의**
 > LLM의 컨텍스트 윈도우를 최적으로 활용하기 위한 정보 설계 기법. 제한된 토큰 예산 내에서 최대 품질의 출력을 이끌어낸다.

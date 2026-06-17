@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Week 04 - 네트워크와 클라우드
+## Week 04 - 네트워크와 클라우드
 
 > **요약** 주차 개요
 > LLM 서비스 기반 지식을 위한 네트워크 및 클라우드 강의. HTTP 웹 통신 기초부터 AWS EC2 클라우드 서버 관리, FastAPI 웹서버 개발, 배포 자동화(CI/CD), 네트워크와 AI 인프라까지 다룬다.

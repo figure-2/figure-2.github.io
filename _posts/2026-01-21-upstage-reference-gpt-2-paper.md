@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# GPT-2: Language Models are Unsupervised Multitask Learners
+## GPT-2: Language Models are Unsupervised Multitask Learners
 
 > **논문 요약**
 > OpenAI의 GPT-2 논문. 대규모 언어 모델이 별도의 지도 학습 없이도 다양한 NLP 태스크를 수행할 수 있음을 보여줌.

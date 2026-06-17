@@ -22,7 +22,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Airflow 상세 내용
+## Airflow 상세 내용
 
 > 231120~231121, 231215~231222 학습한 내용 정리
 

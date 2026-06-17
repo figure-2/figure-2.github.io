@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Django 댓글 시스템 - 1:N 관계와 댓글 CRUD
+## Django 댓글 시스템 - 1:N 관계와 댓글 CRUD
 
 ## 개요
 

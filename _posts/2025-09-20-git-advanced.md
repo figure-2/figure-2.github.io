@@ -15,7 +15,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Git 고급
+## Git 고급
 
 ## 230725 2번째 수업
 ## 오전수업

@@ -19,7 +19,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Spark 상세 내용
+## Spark 상세 내용
 
 > 231114~231124 학습한 내용 정리
 

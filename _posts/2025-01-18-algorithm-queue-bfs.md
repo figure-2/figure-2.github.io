@@ -19,7 +19,7 @@ mermaid: true
 math: true
 ---
 
-# SWEA 알고리즘 - Queue 및 BFS
+## SWEA 알고리즘 - Queue 및 BFS
 
 > **SW Expert Academy** 파이썬 SW문제해결 기본 과정의 Queue 관련 알고리즘 학습
 

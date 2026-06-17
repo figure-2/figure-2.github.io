@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 정렬/문제풀이 실습
+## 정렬/문제풀이 실습
 
 > **실습 정보**
 > - **주차**: Week 02, Day 05

@@ -22,7 +22,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Selenium을 활용한 고급 크롤링
+## Selenium을 활용한 고급 크롤링
 > 동적 웹 페이지와 JavaScript 기반 사이트 크롤링
 
 ## Selenium이란?

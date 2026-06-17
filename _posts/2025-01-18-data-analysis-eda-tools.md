@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# EDA 도구 활용 - 효율적인 탐색적 데이터 분석
+## EDA 도구 활용 - 효율적인 탐색적 데이터 분석
 
 ## 개요
 

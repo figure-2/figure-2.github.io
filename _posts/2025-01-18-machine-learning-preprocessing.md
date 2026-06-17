@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 머신러닝 전처리 - 데이터 품질 향상을 위한 핵심 기법
+## 머신러닝 전처리 - 데이터 품질 향상을 위한 핵심 기법
 
 ## 개요
 

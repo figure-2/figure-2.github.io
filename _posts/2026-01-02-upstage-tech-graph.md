@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 그래프 (Graph)
+## 그래프 (Graph)
 
 > **한줄 정의**
 > 정점(Vertex)과 간선(Edge)으로 구성된 비선형 자료구조. 객체 간의 관계를 표현하는 가장 일반적인 구조다.

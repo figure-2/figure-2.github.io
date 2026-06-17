@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Django 밸런스 게임 프로젝트 - 실무 웹 애플리케이션 개발
+## Django 밸런스 게임 프로젝트 - 실무 웹 애플리케이션 개발
 
 ## 프로젝트 개요
 

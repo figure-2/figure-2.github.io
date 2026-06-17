@@ -15,7 +15,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 가상환경 설정
+## 가상환경 설정
 
 ## 가상환경 생성
 pandas 폴더에서 **git bash** 열기  

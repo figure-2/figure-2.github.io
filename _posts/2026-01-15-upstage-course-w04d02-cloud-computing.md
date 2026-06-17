@@ -18,7 +18,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# 클라우드 컴퓨팅 시작하기
+## 클라우드 컴퓨팅 시작하기
 
 ## 핵심 개념
 

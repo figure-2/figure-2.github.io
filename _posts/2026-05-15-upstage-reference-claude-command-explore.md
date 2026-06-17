@@ -17,7 +17,7 @@ comments: false
 mermaid: true
 math: true
 ---
-# Explore Mode - 개념 탐색
+## Explore Mode - 개념 탐색
 
 사용자가 `/explore` 또는 `탐색`을 입력했습니다. 아래 절차대로 진행하세요.
 
