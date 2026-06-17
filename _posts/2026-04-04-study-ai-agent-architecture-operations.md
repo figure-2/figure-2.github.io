@@ -17,224 +17,113 @@ mermaid: true
 math: true
 ---
 
-AI Agent를 실제 서비스로 만들 때는 모델 호출보다 운영 구조가 더 중요해진다. Memory, RAG, guardrails, protocol, cost control이 붙는 순간 Agent는 단순 챗봇이 아니라 상태를 가진 시스템이 된다.
+AI Agent를 실제 서비스로 만들 때는 모델 호출보다 운영 구조가 더 중요해진다. Memory, RAG, guardrails, protocol, cost control이 붙는 순간 Agent는 단순 챗봇이 아니라 상태를 가진 실행 시스템이 된다.
+
+## 핵심 구성 요소
+
+```mermaid
+flowchart TB
+    U[User] --> A[Agent Core]
+    A --> M[Memory]
+    A --> R[RAG / Retrieval]
+    A --> T[Tools]
+    A --> G[Guardrails]
+    A --> C[Cost Control]
+    A --> O[Observability]
+```
 
-## 핵심 아키텍처 개념
+| 구성 요소 | 역할 |
+| --- | --- |
+| Memory | 현재 작업 맥락과 장기 지식을 유지 |
+| RAG | 외부 문서와 지식을 검색해 grounding 제공 |
+| Tools | API, DB, code execution 등 외부 행동 수행 |
+| Guardrails | 입력, 출력, 도구 실행의 위험 제한 |
+| Cost Control | 반복 실행과 tool call 비용 관리 |
+| Observability | trace, latency, token, failure reason 기록 |
 
-에이전트 시스템의 내부를 구성하는 핵심 개념을 memory, retrieval, safety, protocol 관점으로 나눠 정리한다.
+## Agent Memory
 
-### Agent Memory 시스템
+Agent memory는 단순히 대화 로그를 저장하는 것이 아니다. 현재 작업에 필요한 짧은 기억과, 세션을 넘어 유지해야 하는 장기 기억을 구분해야 한다.
 
-인간의 기억 체계에서 영감을 받은 에이전트 메모리 시스템은 세 가지 유형으로 나뉩니다.
+| memory 유형 | 의미 | 구현 예 |
+| --- | --- | --- |
+| Short-term Memory | 현재 대화와 작업 맥락 | context window, working memory |
+| Long-term Memory | 세션을 넘어 유지되는 사실과 규칙 | vector DB, knowledge graph |
+| Episodic Memory | 과거 경험과 유사 상황 | semantic retrieval, event log |
 
-#### Short-term Memory
+좋은 memory 설계는 "무엇을 기억할 것인가"보다 "무엇을 잊을 것인가"를 함께 정의한다. 모든 기록을 넣으면 context noise가 커지고, 중요한 정보가 묻힌다.
 
-컨텍스트 윈도우 내의 작업 기억. 현재 대화와 즉시 필요한 정보를 유지합니다.
+## Agentic RAG vs Traditional RAG
 
-구현: Context Window, Working Memory
+Traditional RAG는 보통 한 번 검색하고 한 번 답한다. Agentic RAG는 검색 결과를 평가하고, 부족하면 query를 바꾸거나 다른 source를 찾아 다시 검색한다.
 
-#### Long-term Memory
+| 구분 | Traditional RAG | Agentic RAG |
+| --- | --- | --- |
+| 검색 횟수 | 주로 단일 검색 | 반복 검색 가능 |
+| 판단 주체 | pipeline code | LLM + evaluator |
+| 실패 대응 | fallback 또는 낮은 품질 답변 | 재검색, source 변경, tool 사용 |
+| 적합한 상황 | 단순 문서 QA | 복합 질문, multi-source 조사 |
 
-세션을 넘어 지속되는 기억. 사실, 정의, 규칙 등 구조화된 지식을 저장합니다.
+```mermaid
+flowchart LR
+    Q[Query] --> R[Retrieve]
+    R --> E{Enough?}
+    E -->|No| Q2[Rewrite / Re-retrieve]
+    Q2 --> R
+    E -->|Yes| S[Synthesize]
+```
 
-구현: Vector DB, Knowledge Graph
+Agentic RAG는 더 강력하지만 비용과 latency가 증가한다. 단순 QA에는 Traditional RAG가 더 안정적일 수 있다.
 
-#### Episodic Memory
+## Guardrails
 
-과거 경험과 에피소드를 기록. 유사한 상황에서 과거 경험을 참조합니다.
+가드레일은 하나의 필터가 아니라 계층적 방어 구조로 보는 편이 맞다.
 
-구현: Vector DB + Semantic Retrieval
+```mermaid
+flowchart TB
+    I[Input] --> IG[Input Guardrails]
+    IG --> A[Agent Core]
+    A --> TG[Tool Guardrails]
+    TG --> T[Tool Execution]
+    A --> OG[Output Guardrails]
+    OG --> O[Response]
+```
 
-Generative Agents와 AI Agent Memory 관련 정리에서 공통적으로 강조하는 부분은, Agent memory가 단순 로그 저장이 아니라 현재 작업 기억과 장기 지식을 분리해야 한다는 점이다.
+| 위치 | 예 |
+| --- | --- |
+| Input Guardrails | PII 감지, prompt injection 방어, 유해 요청 차단 |
+| Tool Guardrails | 권한 확인, 실행 전 validation, Human-in-the-Loop |
+| Output Guardrails | hallucination 점검, 민감정보 제거, 형식 검증 |
 
-### Agentic RAG vs Traditional RAG
+특히 tool guardrail이 중요하다. Agent가 외부 API, DB, 파일 시스템, 결제, 발송 기능을 호출할 수 있다면 답변 품질 문제가 아니라 실제 행동 위험이 생긴다.
 
-#### Traditional RAG
+## Cost Control
 
-Query
+Agent loop는 단일 LLM 호출보다 token 사용량이 크게 늘 수 있다. tool schema, memory, retrieved context, intermediate reasoning, retry가 모두 비용으로 이어진다.
 
-↓
+| 전략 | 기대 효과 | 설명 |
+| --- | --- | --- |
+| Prompt Caching | 반복 prompt 비용 절감 | system prompt와 tool schema 재사용 |
+| Multi-Model Routing | 작업별 모델 비용 최적화 | 단순 분류는 작은 모델, 복잡한 추론은 큰 모델 |
+| Batch Processing | 비동기 작업 비용 절감 | 대량 작업을 batch로 처리 |
+| Prompt Compaction | token 사용량 감소 | 불필요한 설명, 사용하지 않는 tool 제거 |
+| Max Steps | loop 비용 상한 설정 | 무한 반복 방지 |
 
-Vector Search
+비용 최적화는 품질을 낮추자는 뜻이 아니다. 비싼 모델을 써야 하는 구간과 그렇지 않은 구간을 분리하자는 뜻이다.
 
-↓
+## MCP와 A2A
 
-Retrieve Docs
+Agent ecosystem에서는 도구와 데이터 연결, agent 간 통신을 표준화하려는 흐름이 있다. 대표적으로 MCP와 A2A를 나눠 볼 수 있다.
 
-↓
+| 프로토콜 | 방향 | 핵심 역할 |
+| --- | --- | --- |
+| MCP | Agent -> Tools / Data | LLM이 외부 도구와 data source에 접근하는 방식 표준화 |
+| A2A | Agent -> Agent | agent 간 작업 위임, 상태 교환, 결과 전달 표준화 |
 
-Generate Answer
+MCP는 tool integration 문제를 줄이는 데 초점이 있고, A2A는 여러 agent가 협업할 때의 통신 방식을 다룬다. 둘은 경쟁 관계라기보다 서로 다른 계층을 담당하는 보완 관계로 이해하는 편이 자연스럽다.
 
-단일 패스. 검색 결과가 부족해도 재시도 없음. 도서관에서 책 한 권 빌리는 것과 같음.
+## 정리
 
-vs
+운영 가능한 Agent는 `LLM + prompt`로 끝나지 않는다. memory는 상태를 유지하고, RAG는 외부 지식을 가져오며, guardrails는 행동 범위를 제한하고, cost control은 반복 실행이 비용 폭주로 이어지지 않게 막는다.
 
-#### Agentic RAG
-
-Plan
-
-↓
-
-Retrieve
-
-↓
-
-Evaluate
-
-↓ / ↺
-
-Re-retrieve / Tool Use
-
-↓
-
-Synthesize
-
-반복적 검색, 평가, 재검색. 연구 조교가 여러 자료를 찾아 교차 검증하는 것과 같음.
-
-### Guardrails 아키텍처
-
-Safety
-
-가드레일은 계층적 방어(Layered Defense) 원칙으로 설계됩니다. 하나의 가드레일로 모든 것을 잡을 수 없습니다.
-
-Input Guardrails
-
-PII 감지
-
-Prompt Injection 방어
-
-유해성 필터링
-
-↓
-
-Agent Core (LLM + Tools)
-
-↓
-
-Output Guardrails
-
-할루시네이션 탐지
-
-콘텐츠 검수
-
-PII 제거
-
-Tool Guardrails
-
-실행 전 검증
-
-권한 확인
-
-Human-in-the-Loop
-
-### 비용 최적화 전략
-
-Production
-
-에이전트 루프는 단일 호출 대비 10~100배 더 많은 토큰을 소비할 수 있습니다. 주요 최적화 전략:
-
-Prompt Caching
-
-60-80% 절감
-
-캐시된 토큰은 75% 저렴. 시스템 프롬프트, 도구 스키마 재사용
-
-Multi-Model Routing
-
-30-60% 절감
-
-단순 작업은 저렴한 모델, 복잡한 추론만 고급 모델 사용
-
-Batch Processing
-
-~50% 절감
-
-비동기 배치 처리로 할인 적용 (OpenAI, Google, Mistral)
-
-Prompt Engineering
-
-15-40% 절감
-
-간결한 프롬프트, JSON 구조화 출력, 사용하지 않는 도구 제거
-
-Protocols
-
-## 에이전트 통신 프로토콜
-
-에이전트 생태계를 연결하는 두 가지 핵심 프로토콜
-
-MCP
-
-### Model Context Protocol
-
-by Anthropic (Nov 2024)
-
-Vertical
-
-Agent ↔ Tools & Data
-
-에이전트가 외부 도구와 데이터에 접근하는 방법을 표준화합니다. N x M 통합 문제를 M + N으로 줄입니다.
-
-Tools
-
-LLM이 호출할 수 있는 함수
-
-Resources
-
-접근할 수 있는 데이터 소스
-
-Prompts
-
-최적 사용을 위한 템플릿
-
-JSON-RPC 2.0 | stdio / HTTP+SSE
-
-A2A
-
-### Agent-to-Agent Protocol
-
-by Google (Apr 2025)
-
-Horizontal
-
-Agent ↔ Agent
-
-에이전트 간 작업을 위임하고 결과를 교환하는 방법을 표준화합니다. Agent Card로 능력을 광고합니다.
-
-Agent Cards
-
-능력 광고 JSON 문서
-
-Tasks
-
-작업 단위 & 라이프사이클
-
-Messages
-
-컨텍스트, 결과, 아티팩트 교환
-
-HTTP + JSON | SSE Streaming | Apache 2.0
-
-MCP
-
-Agent ↔ Tools
-
-Complementary
-
-A2A
-
-Agent ↔ Agent
-
-두 프로토콜은 경쟁이 아닌 상호 보완 관계입니다. 2025년 12월 Linux Foundation의 AAIF(Agentic AI Foundation)에서 OpenAI, Anthropic, Google, Microsoft, AWS가 공동 거버넌스에 합류했습니다.
-
----
-
-## 추가 정리
-
-### 핵심 요약
-
-이 글의 중심은 에이전트가 단순히 LLM을 호출하는 구조가 아니라는 점이다. 실무 에이전트는 Memory, RAG, Guardrails, Cost Control을 함께 설계해야 운영 가능한 시스템이 된다.
-
-### 보충 해설
-
-Memory는 상태를 유지하기 위한 장치이고, RAG는 외부 지식을 가져오는 장치다. Guardrails는 행동 범위를 제한하고, Cost Control은 반복 실행이 비용 폭주로 이어지지 않게 막는다. 네 요소 중 하나라도 빠지면 데모는 가능해도 운영 안정성이 낮아진다.
+이 네 요소 중 하나라도 빠지면 데모는 가능해도 운영 안정성은 낮아진다.

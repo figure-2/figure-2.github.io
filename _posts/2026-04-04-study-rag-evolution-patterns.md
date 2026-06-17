@@ -275,8 +275,6 @@ MAP(Mean Average Precision) 52% 향상 보고 — Cohere Rerank, bge-reranker, F
 
 유사도 임계값, MMR(Maximal Marginal Relevance) 등으로 중복 문서를 제거하고 다양성을 확보합니다.
 
-STAGE 3
-
 ## Modular RAG
 
 파이프라인을 고정된 순서가 아닌 모듈 단위로 분리해서 태스크에 맞게 조합하는 패러다임입니다.
@@ -343,164 +341,35 @@ LLM이 스스로 "지금 검색이 필요한 시점인가?"를 판단합니다. 
 
 ### 대표 구현 패턴
 
-#### Self-RAG
+| 패턴 | 핵심 아이디어 | 의미 |
+| --- | --- | --- |
+| Self-RAG | LLM이 검색 필요 여부, 문서 관련성, 응답 근거성을 reflection token으로 판단 | 모든 질문에 검색하지 않고 필요한 경우에만 검색 |
+| CRAG | 검색 결과를 correct / incorrect / ambiguous로 분류한 뒤 보정 경로 선택 | 검색 실패를 감지하고 web search나 문서 정제로 보완 |
+| Graph RAG | 지식 그래프를 구축해 entity 관계 기반 검색 수행 | 여러 문서에 흩어진 관계형 질문에 강함 |
+| RAPTOR | chunk를 clustering하고 재귀적으로 요약해 tree 구조 생성 | 세부 질문은 leaf, 요약 질문은 상위 node에서 검색 |
 
-Asai et al., ICLR 2024
-
-LLM이 Reflection Token으로 검색 필요 여부, 문서 관련성, 응답 품질을 자체 판단합니다.
-
-질문 입력
-
-→
-
-[Retrieve] 토큰?
-
-Yes
-
-검색 수행
-
-→
-
-[IsRel] 관련?
-
-→
-
-생성
-
-→
-
-[IsSup] 근거?
-
-No
-
-바로 생성
-
-핵심 통찰:
-
-모든 질문에 검색을 할 필요 없이, LLM이 필요할 때만 검색합니다. 불필요한 검색으로 인한 노이즈를 줄입니다.
-
-#### CRAG (Corrective RAG)
-
-Yan et al., 2024
-
-검색 결과를 Correct / Incorrect / Ambiguous로 분류 후, 각각 다른 보정 경로를 선택합니다.
-
-검색 수행
-
-→
-
-Retrieval Evaluator
-
-Correct
-
-문서 정제 후 생성
-
-Incorrect
-
-웹 검색으로 대체
-
-Ambiguous
-
-문서 + 웹 검색 결합
-
-성과:
-
-Self-CRAG는 벤치마크에서 정확도
-
-19~37% 향상
-
-을 보고했습니다.
-
-#### Graph RAG
-
-Microsoft, 2024
-
-지식 그래프를 구축해서 엔티티 간 관계 기반 검색을 수행합니다. 여러 문서에 흩어진 정보를 연결하는 "글로벌 질문"에 강점.
-
-```text
-회사A
-기술X
-시장Y
-제품B
-경쟁사C
-```
-
-핵심:
-
-계층적 커뮤니티 요약을 생성해서, "이 산업의 전반적 트렌드는?" 같은 넓은 질문에도 답할 수 있습니다.
-
-#### RAPTOR
-
-Sarthi et al., ICLR 2024
-
-재귀적 트리 요약 — 문서 청크를 클러스터링하고 요약하는 과정을 반복해서 다단계 추상화 트리를 만듭니다.
-
-전체 요약
-
-클러스터 요약 A
-
-클러스터 요약 B
-
-청크 1
-
-청크 2
-
-청크 3
-
-청크 4
-
-성과:
-
-QuALITY 벤치마크에서 GPT-4 기반
-
-+20%
-
-향상. 세부 질문은 리프 노드에서, 요약 질문은 상위 노드에서 검색합니다.
-
-NEXT LEVEL
+Self-RAG는 불필요한 검색을 줄이는 방향이고, CRAG는 검색 실패를 감지해 보정하는 방향이다. Graph RAG와 RAPTOR는 검색 단위를 단순 chunk에서 graph나 tree 구조로 확장한다.
 
 ## Agentic RAG
 
 AI Agent가 검색을 도구로 사용하면서 계획-실행-반성 루프를 돌리는 방식입니다. 복잡한 멀티스텝 질문에 효과적입니다.
 
-```text
-AGENT ORCHESTRATOR
-Plan
-하위 작업 분해
-Reason
-판단 & 선택
-Reflect
-자체 품질 평가
-U
-Query
-복잡한 질문
-Response
-최종 답변 + 출처
-완료
-TOOLS
-Vector Search
-벡터 DB 검색
-시맨틱 매칭
-Web Search
-인터넷 검색
-실시간 정보
-SQL Query
-구조화 데이터
-테이블 조회
-Code Exec
-코드 실행
-계산 & 분석
-API Call
-외부 서비스
-데이터 연동
-Memory
-대화 이력
-검색 캐시 / 중간 결과
-Iteration Loop
-Step 1: 정보 수집
-Step 2: 분석 & 추론
-Step N: 답변 정제
-부족 시 재실행
+```mermaid
+flowchart TB
+    Q[Complex Query] --> P[Plan]
+    P --> R[Reason]
+    R --> T{Select Tool}
+    T --> V[Vector Search]
+    T --> W[Web Search]
+    T --> S[SQL Query]
+    T --> C[Code Execution]
+    V --> E[Evaluate Evidence]
+    W --> E
+    S --> E
+    C --> E
+    E --> D{Enough?}
+    D -->|No| P
+    D -->|Yes| A[Answer with Sources]
 ```
 
 #### Multi-Agent 아키텍처
@@ -521,18 +390,10 @@ Step N: 답변 정제
 
 #### Speculative RAG
 
-추가 기법
-
 작은 전문가 모델이 여러 개의 초안(draft)을 병렬로 생성하고, 큰 범용 모델이 이를 검증하는 방식. Draft-then-Verify 패턴으로 정확도와 지연시간 모두 개선합니다.
 
----
-
-## 추가 정리
-
-### 핵심 요약
-
-RAG는 Naive RAG에서 Advanced, Modular, Agentic RAG로 갈수록 검색 전후의 제어 지점이 늘어난다. 발전 방향은 단순히 검색을 붙이는 것에서, context를 설계하고 검증하는 쪽으로 이동한다.
-
-### 보충 해설
+## 정리
 
 Naive RAG는 빠르게 만들 수 있지만 실패 원인 분리가 어렵다. Advanced RAG는 query rewriting, reranking, metadata filtering으로 품질을 올린다. Modular RAG는 각 단계를 교체 가능한 모듈로 만들고, Agentic RAG는 검색 전략 자체를 실행 중에 선택한다.
+
+RAG의 발전 방향은 단순히 검색을 붙이는 것에서, context를 설계하고 검증하는 쪽으로 이동한다.
