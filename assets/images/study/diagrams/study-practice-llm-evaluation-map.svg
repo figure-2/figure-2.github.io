@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-labelledby="title desc">
+  <title id="title">LLM Service Evaluation Map</title>
+  <desc id="desc">ROUGE, BERTScore, G-Eval을 LLM 서비스 평가 관점별로 배치한 그림.</desc>
+  <defs>
+    <style>
+      text{font-family:"Pretendard","Noto Sans KR",Inter,Arial,sans-serif;fill:#172033}
+      .title{font-size:30px;font-weight:800}.subtitle{font-size:14px;fill:#64748b}
+      .box{fill:#fff;stroke:#94a3b8;stroke-width:1.5}.blue{fill:#eff6ff;stroke:#3b82f6}.green{fill:#ecfdf5;stroke:#10b981}.orange{fill:#fff7ed;stroke:#f97316}.purple{fill:#f5f3ff;stroke:#8b5cf6}.red{fill:#fef2f2;stroke:#ef4444}
+      .label{font-size:18px;font-weight:800}.small{font-size:12px;fill:#64748b}.note{font-size:14px;font-weight:700;fill:#334155}
+    </style>
+  </defs>
+  <rect width="1280" height="720" fill="#ffffff"/>
+  <text x="48" y="54" class="title">LLM 서비스 평가 방법을 나눠 보기</text>
+  <text x="48" y="82" class="subtitle">요약, 리포트, QA는 같은 LLM 출력이지만 평가 관점은 다르게 잡아야 한다.</text>
+
+  <g transform="translate(86 150)">
+    <rect width="300" height="170" rx="18" class="box blue"/>
+    <text x="34" y="42" class="label">ROUGE</text>
+    <text x="34" y="76" class="small">표면적 overlap을 본다.</text>
+    <text x="34" y="104" class="small">정답 요약문이 있을 때 빠르게 비교한다.</text>
+    <text x="34" y="132" class="small">문장 의미가 달라도 낮게 나올 수 있다.</text>
+  </g>
+  <g transform="translate(490 150)">
+    <rect width="300" height="170" rx="18" class="box green"/>
+    <text x="34" y="42" class="label">BERTScore</text>
+    <text x="34" y="76" class="small">embedding 기반 의미 유사도를 본다.</text>
+    <text x="34" y="104" class="small">표현이 달라도 의미가 비슷하면 잡힌다.</text>
+    <text x="34" y="132" class="small">사실성 검증은 별도다.</text>
+  </g>
+  <g transform="translate(894 150)">
+    <rect width="300" height="170" rx="18" class="box orange"/>
+    <text x="34" y="42" class="label">G-Eval / Judge</text>
+    <text x="34" y="76" class="small">평가 rubric으로 답변 품질을 본다.</text>
+    <text x="34" y="104" class="small">충실성, 완결성, 형식을 점검한다.</text>
+    <text x="34" y="132" class="small">judge bias와 기준 흔들림을 조심한다.</text>
+  </g>
+
+  <g transform="translate(178 395)">
+    <rect width="924" height="112" rx="18" class="box purple"/>
+    <text x="34" y="42" class="note">실습 메모</text>
+    <text x="34" y="72" class="small">ROUGE와 BERTScore는 요약 결과를 빠르게 훑는 데 좋고, G-Eval은 “좋은 리포트인가”처럼 기준이 복합적인 경우에 유용했다.</text>
+  </g>
+
+  <g transform="translate(178 560)">
+    <rect width="924" height="80" rx="18" class="box red"/>
+    <text x="34" y="34" class="note">주의</text>
+    <text x="34" y="60" class="small">평가 수치 하나로 서비스 품질을 단정하지 않는다. 데이터셋 크기, rubric, judge 모델, 실패 사례를 함께 봐야 한다.</text>
+  </g>
+</svg>

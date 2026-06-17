@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Workflow Practice</title>
+  <desc id="desc">Tool calling, reflection, multi-agent, report generation을 연결해 Agent workflow를 학습하는 그림.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/></marker>
+    <style>
+      text{font-family:"Pretendard","Noto Sans KR",Inter,Arial,sans-serif;fill:#172033}
+      .title{font-size:30px;font-weight:800}.subtitle{font-size:14px;fill:#64748b}
+      .box{fill:#fff;stroke:#94a3b8;stroke-width:1.5}.group{fill:#f8fafc;stroke:#cbd5e1;stroke-width:1.5}
+      .blue{fill:#eff6ff;stroke:#3b82f6}.green{fill:#ecfdf5;stroke:#10b981}.orange{fill:#fff7ed;stroke:#f97316}.purple{fill:#f5f3ff;stroke:#8b5cf6}.red{fill:#fef2f2;stroke:#ef4444}
+      .label{font-size:16px;font-weight:800}.small{font-size:12px;fill:#64748b}.note{font-size:14px;font-weight:700;fill:#334155}
+      .arrow{stroke:#2563eb;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1280" height="720" fill="#ffffff"/>
+  <text x="48" y="54" class="title">Agent Workflow 실습 정리</text>
+  <text x="48" y="82" class="subtitle">Agent는 모델이 아니라 실행 흐름이다. 도구 선택, 검증, 재시도, 보고서 생성까지 봐야 한다.</text>
+
+  <g transform="translate(72 170)"><rect width="150" height="76" rx="14" class="box blue"/><text x="75" y="32" text-anchor="middle" class="label">User Request</text><text x="75" y="54" text-anchor="middle" class="small">질문 또는 작업</text></g>
+  <path d="M226 208 H300" class="arrow"/>
+  <g transform="translate(306 170)"><rect width="160" height="76" rx="14" class="box green"/><text x="80" y="32" text-anchor="middle" class="label">Planner</text><text x="80" y="54" text-anchor="middle" class="small">작업 분해</text></g>
+  <path d="M470 208 H544" class="arrow"/>
+  <g transform="translate(550 170)"><rect width="160" height="76" rx="14" class="box orange"/><text x="80" y="32" text-anchor="middle" class="label">Tool Call</text><text x="80" y="54" text-anchor="middle" class="small">검색, DB, 메시지</text></g>
+  <path d="M714 208 H788" class="arrow"/>
+  <g transform="translate(794 170)"><rect width="160" height="76" rx="14" class="box purple"/><text x="80" y="32" text-anchor="middle" class="label">Reflection</text><text x="80" y="54" text-anchor="middle" class="small">결과 점검</text></g>
+  <path d="M958 208 H1032" class="arrow"/>
+  <g transform="translate(1038 170)"><rect width="160" height="76" rx="14" class="box red"/><text x="80" y="32" text-anchor="middle" class="label">Report</text><text x="80" y="54" text-anchor="middle" class="small">요약과 근거</text></g>
+
+  <rect x="104" y="330" width="1072" height="160" rx="18" class="group"/>
+  <text x="132" y="368" class="note">Multi-Agent로 확장할 때 생기는 질문</text>
+  <text x="132" y="404" class="small">1. 역할을 나누면 품질이 좋아지는가, 아니면 latency와 비용만 늘어나는가?</text>
+  <text x="132" y="432" class="small">2. 품질평가 Agent가 재생성을 요구할 기준은 무엇인가?</text>
+  <text x="132" y="460" class="small">3. 직렬 workflow가 2~3분까지 늘어나면 사용자는 기다릴 수 있는가?</text>
+
+  <rect x="104" y="548" width="1072" height="82" rx="18" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="132" y="582" class="note">내가 정리한 결론</text>
+  <text x="132" y="612" class="small">Agent를 붙일 때는 “똑똑한 답변”보다 tool boundary, 평가 loop, latency budget을 먼저 설계해야 한다.</text>
+</svg>

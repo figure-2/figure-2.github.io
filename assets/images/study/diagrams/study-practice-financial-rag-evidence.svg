@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-labelledby="title desc">
+  <title id="title">Financial RAG Evidence Design</title>
+  <desc id="desc">금융 RAG에서 리포트, 뉴스, 표 데이터, 그래프 근거를 분리하고 답변에 연결하는 구조.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/></marker>
+    <style>
+      text{font-family:"Pretendard","Noto Sans KR",Inter,Arial,sans-serif;fill:#172033}
+      .title{font-size:30px;font-weight:800}.subtitle{font-size:14px;fill:#64748b}
+      .box{fill:#fff;stroke:#94a3b8;stroke-width:1.5}.group{fill:#f8fafc;stroke:#cbd5e1;stroke-width:1.5}
+      .blue{fill:#eff6ff;stroke:#3b82f6}.green{fill:#ecfdf5;stroke:#10b981}.orange{fill:#fff7ed;stroke:#f97316}.purple{fill:#f5f3ff;stroke:#8b5cf6}.red{fill:#fef2f2;stroke:#ef4444}
+      .label{font-size:16px;font-weight:800}.small{font-size:12px;fill:#64748b}.note{font-size:14px;font-weight:700;fill:#334155}
+      .arrow{stroke:#2563eb;stroke-width:2.2;fill:none;marker-end:url(#arrow)}.soft{stroke:#64748b;stroke-width:1.5;fill:none;stroke-dasharray:6 5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1280" height="720" fill="#ffffff"/>
+  <text x="48" y="54" class="title">금융 RAG 근거 설계 메모</text>
+  <text x="48" y="82" class="subtitle">금융 질의응답은 “답을 생성하는 일”보다 “근거 종류를 분리하는 일”이 먼저였다.</text>
+
+  <rect x="52" y="122" width="344" height="410" rx="18" class="group"/>
+  <text x="78" y="158" class="note">근거 소스</text>
+  <g transform="translate(90 190)"><rect width="250" height="64" rx="12" class="box blue"/><text x="125" y="28" text-anchor="middle" class="label">리포트 본문</text><text x="125" y="48" text-anchor="middle" class="small">장기 관점, 정적 근거</text></g>
+  <g transform="translate(90 276)"><rect width="250" height="64" rx="12" class="box green"/><text x="125" y="28" text-anchor="middle" class="label">뉴스</text><text x="125" y="48" text-anchor="middle" class="small">최신 흐름, 동적 근거</text></g>
+  <g transform="translate(90 362)"><rect width="250" height="64" rx="12" class="box orange"/><text x="125" y="28" text-anchor="middle" class="label">표 데이터</text><text x="125" y="48" text-anchor="middle" class="small">수치, 재무 항목</text></g>
+  <g transform="translate(90 448)"><rect width="250" height="64" rx="12" class="box purple"/><text x="125" y="28" text-anchor="middle" class="label">그래프 / 차트</text><text x="125" y="48" text-anchor="middle" class="small">추세와 시각 정보</text></g>
+
+  <path d="M398 327 H480" class="arrow"/>
+  <rect x="485" y="180" width="280" height="294" rx="18" class="group"/>
+  <text x="514" y="218" class="note">근거 정리 계층</text>
+  <g transform="translate(525 250)"><rect width="200" height="54" rx="12" class="box"/><text x="100" y="34" text-anchor="middle" class="label">Parser / OCR</text></g>
+  <g transform="translate(525 324)"><rect width="200" height="54" rx="12" class="box"/><text x="100" y="34" text-anchor="middle" class="label">Schema / Metadata</text></g>
+  <g transform="translate(525 398)"><rect width="200" height="54" rx="12" class="box"/><text x="100" y="34" text-anchor="middle" class="label">Index / DB</text></g>
+
+  <path d="M770 327 H850" class="arrow"/>
+  <rect x="855" y="180" width="330" height="294" rx="18" class="group"/>
+  <text x="884" y="218" class="note">답변 생성 전 체크</text>
+  <g transform="translate(895 250)"><rect width="250" height="54" rx="12" class="box red"/><text x="125" y="34" text-anchor="middle" class="label">근거가 충분한가</text></g>
+  <g transform="translate(895 324)"><rect width="250" height="54" rx="12" class="box red"/><text x="125" y="34" text-anchor="middle" class="label">최신성과 문서 기준이 섞였나</text></g>
+  <g transform="translate(895 398)"><rect width="250" height="54" rx="12" class="box red"/><text x="125" y="34" text-anchor="middle" class="label">수치 출처를 남겼나</text></g>
+
+  <rect x="80" y="578" width="1120" height="80" rx="18" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="110" y="613" class="note">내가 정리한 결론</text>
+  <text x="110" y="641" class="small">금융 RAG는 “정답”보다 “어떤 근거를 어떤 시간 기준으로 사용했는지”를 설명할 수 있어야 한다.</text>
+</svg>

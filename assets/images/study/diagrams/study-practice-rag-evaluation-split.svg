@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-labelledby="title desc">
+  <title id="title">RAG Evaluation Split</title>
+  <desc id="desc">RAG 평가를 retrieval 평가와 generation 평가로 분리하는 실습 흐름.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/></marker>
+    <style>
+      text{font-family:"Pretendard","Noto Sans KR",Inter,Arial,sans-serif;fill:#172033}
+      .title{font-size:30px;font-weight:800}.subtitle{font-size:14px;fill:#64748b}
+      .group{fill:#f8fafc;stroke:#cbd5e1;stroke-width:1.5}.box{fill:#fff;stroke:#94a3b8;stroke-width:1.5}
+      .blue{fill:#eff6ff;stroke:#3b82f6}.green{fill:#ecfdf5;stroke:#10b981}.orange{fill:#fff7ed;stroke:#f97316}.purple{fill:#f5f3ff;stroke:#8b5cf6}
+      .label{font-size:16px;font-weight:800}.small{font-size:12px;fill:#64748b}.note{font-size:14px;font-weight:700;fill:#334155}
+      .arrow{stroke:#2563eb;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1280" height="720" fill="#ffffff"/>
+  <text x="48" y="54" class="title">RAG 평가를 둘로 나눠 보기</text>
+  <text x="48" y="82" class="subtitle">답변이 틀렸을 때 retrieval 문제인지 generation 문제인지 먼저 분리한다.</text>
+
+  <g transform="translate(90 150)">
+    <rect width="230" height="80" rx="14" class="box blue"/>
+    <text x="115" y="32" text-anchor="middle" class="label">질문 세트</text>
+    <text x="115" y="56" text-anchor="middle" class="small">질문, 정답, 근거 문서</text>
+  </g>
+  <path d="M325 190 H410" class="arrow"/>
+
+  <rect x="415" y="122" width="330" height="250" rx="18" class="group"/>
+  <text x="450" y="160" class="note">1. Retrieval 평가</text>
+  <g transform="translate(455 190)"><rect width="250" height="54" rx="12" class="box green"/><text x="125" y="34" text-anchor="middle" class="label">Top-K Accuracy</text></g>
+  <g transform="translate(455 260)"><rect width="250" height="54" rx="12" class="box green"/><text x="125" y="34" text-anchor="middle" class="label">Recall / Groundedness</text></g>
+
+  <path d="M750 247 H835" class="arrow"/>
+  <rect x="840" y="122" width="330" height="250" rx="18" class="group"/>
+  <text x="875" y="160" class="note">2. Generation 평가</text>
+  <g transform="translate(880 190)"><rect width="250" height="54" rx="12" class="box orange"/><text x="125" y="34" text-anchor="middle" class="label">G-Eval / Judge</text></g>
+  <g transform="translate(880 260)"><rect width="250" height="54" rx="12" class="box orange"/><text x="125" y="34" text-anchor="middle" class="label">정확성 / 충실성</text></g>
+
+  <rect x="170" y="438" width="940" height="102" rx="18" class="box purple"/>
+  <text x="210" y="478" class="note">실습에서 헷갈렸던 지점</text>
+  <text x="210" y="510" class="small">검색 결과가 틀렸는데 답변 모델만 바꾸면 개선 원인을 알 수 없다. 반대로 검색은 맞았는데 답변이 과장되는 경우도 따로 봐야 한다.</text>
+
+  <rect x="170" y="580" width="940" height="76" rx="18" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="210" y="612" class="note">내가 정리한 결론</text>
+  <text x="210" y="640" class="small">RAG 평가는 하나의 점수가 아니라 retrieval score와 answer score를 나눠 읽는 습관이 필요하다.</text>
+</svg>
