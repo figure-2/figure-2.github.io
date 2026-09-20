@@ -20,25 +20,26 @@ math: true
 ## 시각장애인을 위한 안내 서비스 (견: 見)
 
 > **프로젝트 기간**: 2025.07 ~ 2025.09 (3개월)  
-> **목적**: 실시간 카메라 송출을 통한 이미지 인식 및 음성 안내 모델 제작  
-> **역할**: Object Detection 모델 학습, OCR 데이터 파이프라인 구축, Streamlit 웹 서비스 개발
+> **목적**: 실시간 카메라 영상에서 주변 정보를 인식해 음성으로 안내하는 모델 제작<br>
+> **역할**: 객체 탐지 모델 학습, OCR 데이터 처리 흐름 구축, Streamlit 웹 서비스 개발
 
 <br>
 
-## 🎯 프로젝트 개요
+## 카메라로 인식한 주변 정보를 음성으로 전달했다
 
-사회적 약자를 위한 ‘**Social Impact 프로젝트**’를 만들어 보고자 하는 취지에서 본 프로젝트를 시작했습니다. 단순한 삶의 편의 개선도 좋지만 필수적으로 AI가 필요한 곳에 기술이 쓰이면 좋을 것이라고 판단했습니다.
+시각 정보에 접근하기 어려운 사용자가 주변 상황과 안내판의 글자를 음성으로 확인할 수 있도록 이 프로젝트를 시작했다. 이미지 인식을 일상에서 필요한 정보를 얻는 데 활용하고자 했다.
 
-기존 시각장애인 안내견은 간단한 길 안내와 위험물 탐지만이 가능하다는 한계가 있었습니다. 따라서 시각장애인에게 눈이 되어 주자는 목표로,  **시각장애인을 위한 안내 서비스**를 제작하였습니다.
+서비스는 카메라 영상에서 장애물과 안내판을 찾고, 안내판의 글자를 읽어 음성으로 전달한다. 주변 객체를 탐지하는 모델과 글자를 읽는 모델을 연결해 구성했다.
 
 <br>
 
-## 🏗 시스템 아키텍처
+## 객체 탐지, 문자 인식, 음성 출력을 연결한 구조
 
-### 전체 워크플로우
+### 전체 처리 흐름
 
-카메라를 통해 입력된 이미지는 실시간으로 객체 탐지(Object Detection) 모델을 거칩니다. 위험물이나 안내판이 감지되면, 글자가 있는 영역(ROI)을 잘라내어 OCR 모델로 전달하고, 최종적으로 사용자에게 음성(TTS)으로 상황을 안내합니다.
+카메라 이미지는 먼저 객체 탐지 모델을 거친다. 위험물이나 안내판을 감지하면 글자가 있는 관심 영역(ROI)을 잘라 OCR 모델로 전달한다. 마지막으로 탐지 결과와 인식한 글자를 문장으로 합쳐 음성 합성(TTS)으로 안내한다.
 
+```mermaid
 graph TB
     %% 입력
     Input[Camera Input] --> Streamlit[Streamlit App]
@@ -73,29 +74,33 @@ graph TB
     class Input,Streamlit input
     class Filter,Check,IsSign,Crop,Merge,GenText process
     class OD,OCR,TTS model
-    class Speaker output<br>
+    class Speaker output
+```
 
-## 🛠 기술 스택
+## 구현에 사용한 기술
 
-### AI & Data Science
-- **Object Detection**: MMDetection, Facebook DETR, Faster-RCNN
+### 인공지능과 데이터 처리
+
+- **객체 탐지**: MMDetection, Facebook DETR, Faster-RCNN
 - **OCR**: NAVER Clova TRBA (TPS-ResNet-BiLSTM-Attn)
-- **Deep Learning Framework**: PyTorch, TorchVision
-- **Libraries**: OpenCV, Pandas, NumPy, PIL
+- **딥러닝 프레임워크**: PyTorch, TorchVision
+- **라이브러리**: OpenCV, Pandas, NumPy, PIL
 
-### Application & Deployment
-- **Web Framework**: Streamlit
+### 애플리케이션과 실행 환경
+
+- **웹 프레임워크**: Streamlit
 - **API**: Google gTTS (Text-to-Speech), Naver Cloud Platform (OCR API)
-- **Environment**: Python 3.8+
+- **실행 환경**: Python 3.8+
 
 <br>
 
-## 💻 주요 기능 및 코드 구현
+## 주요 기능과 구현 코드
 
-### 1. Object Detection (객체 탐지)
+### 1. 객체 탐지
 
-MMDetection 라이브러리를 활용하여 29가지 장애물을 탐지합니다. `inference_detector`를 통해 결과를 얻고, 신뢰도(Threshold) 0.3 이상인 객체만 필터링합니다.
+MMDetection 라이브러리로 29가지 장애물을 탐지한다. `inference_detector`의 결과 중 신뢰도 임계값 0.3 이상인 객체만 남긴다.
 
+```python
 # Visually_Impaired_Service/Front Streamlit/Object_Detection.py
 
 import mmcv
@@ -128,16 +133,21 @@ def object_detection(img):
     
     # 탐지된 정보를 바탕으로 안내 멘트 생성
     object_text = '앞에 ' + ', '.join(object_list) + '가 탐지되었습니다.'
-    return object_text, ocr_list, cut_list### 2. OCR (광학 문자 인식)
+    return object_text, ocr_list, cut_list
+```
 
-탐지된 객체 중 텍스트 정보가 필요한 객체(안내판, 표지판 등)는 이미지를 Crop하여 OCR 모델로 전달합니다. 모델 구조는 **TRBA (TPS-ResNet-BiLSTM-Attn)** 방식을 채택하여 불규칙한 텍스트에서도 높은 인식률을 보입니다.
+### 2. OCR로 안내판 글자 읽기
 
-**Model Architecture (TRBA)**
-1. **Transformation (TPS)**: 휘어진 글자를 펴줌
-2. **Feature Extraction (ResNet)**: 이미지 특징 추출
-3. **Sequence Modeling (BiLSTM)**: 문맥 정보 파악
-4. **Prediction (Attention)**: 최종 문자 예측
+탐지한 객체가 안내판이나 표지판이면 해당 영역을 잘라 문자 인식(OCR) 모델로 전달한다. TRBA(TPS-ResNet-BiLSTM-Attn) 구조를 사용했으며, 불규칙한 형태의 글자에서도 높은 인식률을 보였다.
 
+TRBA는 다음 네 단계로 문자를 인식한다.
+
+1. **형태 보정(TPS)**: 휘어진 글자를 편다.
+2. **특징 추출(ResNet)**: 이미지의 특징을 추출한다.
+3. **순서 정보 처리(BiLSTM)**: 추출한 특징을 순서대로 읽으며 앞뒤 관계를 반영한다.
+4. **문자 예측(Attention)**: 최종 문자열을 예측한다.
+
+```python
 # Visually_Impaired_Service/Optical Character Recognition/model.py
 
 class Model(nn.Module):
@@ -164,10 +174,14 @@ class Model(nn.Module):
 
         # 4. Prediction: Attention
         if opt.Prediction == 'Attn':
-            self.Prediction = Attention(self.SequenceModeling_output, opt.hidden_size, opt.num_class)### 3. OCR API 연동 및 결과 처리
+            self.Prediction = Attention(self.SequenceModeling_output, opt.hidden_size, opt.num_class)
+```
 
-자체 학습된 모델 외에도 Naver Cloud Platform의 OCR API를 활용하여 하이브리드 방식으로 텍스트 인식을 수행합니다.
+### 3. OCR API 결과를 안내 문장으로 변환
 
+자체 학습한 모델과 Naver Cloud Platform OCR API를 함께 사용해 텍스트를 인식한다.
+
+```python
 # Visually_Impaired_Service/Front Streamlit/OCR.py
 
 def ocr(ocr_list, cut_list):
@@ -188,31 +202,35 @@ def ocr(ocr_list, cut_list):
         # 자연스러운 문장 생성
         if len(ocr_text) != 0:
             for i in ocr_list:
-                ocr_text_list.append(label_list[i] + '에는 "' + ocr_text + '" 라고 적혀져 있습니다.') 
+                ocr_text_list.append(label_list[i] + '에는 "' + ocr_text + '" 라고 적혀져 있습니다.')
 
-    return ','.join(ocr_text_list)<br>
+    return ','.join(ocr_text_list)
+```
 
-## 📊 프로젝트 결과
+## 프로젝트 결과
 
 ### 모델 성능
-- **Object Detection (Faster-RCNN)**: mAP 0.44 달성 (Custom Dataset 기준)
-- **OCR (TRBA)**: Word Accuracy 85% 이상 (Scene Text Dataset 기준)
+
+- **객체 탐지(Faster-RCNN)**: mAP 0.44 달성 (Custom Dataset 기준)
+- **문자 인식(TRBA)**: 단어 단위 정확도(Word Accuracy) 85% 이상 (Scene Text Dataset 기준)
 
 ### 시연 시나리오
+
 1. **상황**: 사용자가 버스 정류장 앞에 서 있음
 2. **탐지**: "전방에 버스 정류장과 사람 2명이 탐지되었습니다." (Object Detection)
-3. **인식**: "버스 정류장 안내판에는 '7016번 도착 예정'이라고 적혀져 있습니다." (OCR)
+3. **인식**: "버스 정류장 안내판에는 '7016번 도착 예정'이라고 적혀 있습니다." (OCR)
 4. **출력**: 위 문장을 합성하여 음성으로 안내
 
 <br>
 
-## 🎓 학습한 점
+## 구현 과정에서 익힌 것
 
-1. **End-to-End 파이프라인 구축**: 단순히 모델을 학습시키는 것을 넘어, 웹캠 입력부터 음성 출력까지 이어지는 전체 서비스 파이프라인을 구축해 보았습니다.
-2. **Model Selection**: 다양한 Object Detection 모델(YOLO, DETR, Faster-RCNN)을 비교 실험하며, 실시간성과 정확도 사이의 Trade-off를 경험했습니다.
-3. **Data Preprocessing**: OCR 성능 향상을 위해 TPS(Spatial Transformer Network) 모듈의 중요성을 깨달았으며, 다양한 Augmentation 기법을 적용해 보았습니다.
+1. **전체 처리 흐름 구축**: 웹캠 입력부터 객체 탐지, 문자 인식, 음성 출력까지 이어지는 처리 흐름을 구현했다.
+2. **모델 선택**: YOLO, DETR, Faster-RCNN을 비교하며 처리 속도와 정확도를 함께 고려하는 경험을 쌓았다.
+3. **데이터 전처리**: OCR 성능을 높이기 위해 TPS(Spatial Transformer Network) 모듈과 여러 데이터 증강 기법을 적용했다.
 
 <br>
 
-## 🔗 관련 링크
-- **GitHub Repository**: [Visually_Impaired_Service](https://github.com/figure-2/Visually_Impaired_Service)
+## 관련 링크
+
+- **GitHub 저장소**: [Visually_Impaired_Service](https://github.com/figure-2/Visually_Impaired_Service)

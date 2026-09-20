@@ -21,21 +21,22 @@ math: true
 ## Financial-Agent: AI 기반 금융 투자 비서
 
 > **프로젝트 기간**: 2025.10 ~ 2025.11 (2개월)  
-> **목적**: 자연어 질의를 통해 복잡한 금융 데이터를 조회, 분석하고 개인화된 투자 위험을 관리하는 AI Agent 개발  
+> **목적**: 자연어 질문으로 금융 데이터를 조회·분석하고 개인별 투자 위험을 관리하는 AI 에이전트 개발<br>
 
 
 <br>
 
-## 🎯 프로젝트 개요
+## 자연어 질문을 금융 데이터 조회와 분석으로 연결했다
 
-Financial-Agent는 사용자의 자연어 질문을 이해하고, 복잡한 주식 시장 데이터를 분석하여 인사이트를 제공하는 지능형 에이전트입니다. 단순한 가격 조회를 넘어, 복합 조건 검색, 기술적 시그널 감지, 그리고 개인 투자 성향을 고려한 리스크 관리까지 수행합니다.
+Financial-Agent는 자연어 질문을 해석해 주식 시장 데이터를 조회하고 분석하는 AI 에이전트다. 가격 조회, 복합 조건 검색, 기술적 신호 감지, 모호한 질문의 재작성, 개인 투자 성향을 반영한 위험 관리를 각각 독립된 작업으로 나눴다.
 
 <br>
 
-## 🏗 시스템 아키텍처 및 주요 기능
+## LangGraph로 작업별 실행 흐름을 분리했다
 
-LangGraph를 기반으로 상태(State)를 관리하며, 5가지 주요 Task를 수행하는 서브 그래프(Sub-graph) 구조로 설계되었습니다.
+LangGraph가 상태를 관리하고, 5가지 작업을 하위 그래프로 나눠 실행하도록 설계했다.
 
+```mermaid
 graph TB
     User[User Input] --> Router{Intent Router}
     
@@ -59,57 +60,75 @@ graph TB
     Task1 --> Response[Final Response]
     Task2 --> Response
     Task3 --> Response
-    Task5 --> Response### Task 1: 단순 조회 (Information Retrieval)
-주식 시장의 다양한 금융 정보(가격, 등락률, 시가총액 등)를 자연어 질문으로 조회합니다.
+    Task5 --> Response
+```
+
+### 작업 1: 금융 정보 조회
+
+가격, 등락률, 시가총액과 같은 금융 정보를 자연어 질문으로 조회한다.
+
 - **기능**: 가격 조회, 시장 통계, 순위 확인, 종목 간 비교
 - **예시**: "동부건설우의 2024-11-06 시가는?", "2025-03-15에 KOSDAQ에서 상승한 종목은 몇 개?"
 
-### Task 2: 조건 검색 (Stock Screening)
-복잡한 조건을 만족하는 종목들을 필터링하여 검색합니다. 여러 조건을 AND 연산으로 결합할 수 있습니다.
+### 작업 2: 조건에 맞는 종목 검색
+
+여러 조건을 AND 연산으로 결합해 조건에 맞는 종목을 찾는다.
+
 - **기능**: 등락률, 거래량 급증, 특정 가격대 종목 필터링
 - **예시**: "2025-09-05에 KOSPI에서 종가가 10만원 이상이고 거래량이 50만주 이상인 종목 알려줘"
 
-### Task 3: 시그널 감지 (Technical Signal Detection)
-기술적 분석 지표(RSI, 이동평균선, 볼린저밴드 등)를 활용하여 매매 시점을 포착합니다.
+### 작업 3: 기술적 신호 감지
+
+RSI, 이동평균선, 볼린저밴드 같은 기술적 분석 지표로 매매 신호를 찾는다.
+
 - **지원 지표**: RSI 과매수/과매도, 골든/데드크로스, 볼린저밴드 터치, 이동평균선 돌파
 - **예시**: "2025-01-20에 RSI 과매수(70 이상) 종목을 알려줘"
 
-### Task 4: 모호한 의미 해석 (Ambiguity Resolution)
-사용자의 불완전하거나 모호한 질문(축약어, 은어, 정보 누락 등)을 자동으로 해석하고 명확하게 변환합니다.
-- **처리 방식**:
-    - **Rewriting**: 축약어("삼전" -> "삼성전자"), 은어("떡상" -> "폭등") 변환
-    - **Clarification**: 누락된 정보(날짜, 종목명)에 대해 역질문 생성
+### 작업 4: 모호한 질문 보완
 
-### Task 5: 집중 투자 위험 알림 (Risk Management)
-투자자의 매매 패턴과 마이데이터(투자 성향, 자산 규모)를 분석하여 과도한 집중 투자 위험을 경고합니다.
+축약어와 은어를 풀어 쓰고, 날짜나 종목명처럼 빠진 정보는 사용자에게 다시 묻는다.
+
+- **처리 방식**:
+    - **질문 재작성**: 축약어("삼전" -> "삼성전자"), 은어("떡상" -> "폭등") 변환
+    - **추가 확인**: 누락된 정보(날짜, 종목명)에 대해 역질문 생성
+
+### 작업 5: 집중 투자 위험 알림
+
+투자자의 매매 패턴과 마이데이터(투자 성향, 자산 규모)를 분석해 과도한 집중 투자 위험을 경고한다.
+
 - **PTPRA 모델**: Personalized Trading Pattern Risk Alert
-- **기능**: 개인별 위험 임계치 산출, 뉴스 기반 매매 동기 분석, 위험 경고 리포트 생성
+- **기능**: 개인별 위험 임계값 산출, 뉴스 기반 매매 동기 분석, 위험 알림 보고서 생성
 
 <br>
 
-## 💻 기술 스택
+## 구현에 사용한 기술
 
-### Core Logic
-- **LangChain & LangGraph**: 에이전트 상태 관리 및 워크플로우 오케스트레이션
+### 실행 흐름
+
+- **LangChain & LangGraph**: 에이전트 상태와 작업 흐름 관리
 - **OpenAI GPT-4o**: 자연어 이해 및 SQL/JSON 생성
 - **Pandas & NumPy**: 금융 데이터 전처리 및 분석
 
-### Data Engineering
+### 데이터 처리
+
 - **yfinance**: 주식 시장 데이터 수집
 - **SQLAlchemy & SQLite**: 로컬 데이터베이스 구축 및 ORM
-- **BeautifulSoup & Selenium**: 뉴스 데이터 크롤링 및 하이라이팅
+- **BeautifulSoup & Selenium**: 뉴스 데이터 수집과 관련 내용 강조 표시
 
-### Infrastructure
+### 실행 환경
+
 - **Docker**: 실행 환경 컨테이너화
 - **FastAPI**: REST API 엔드포인트 제공
 
 <br>
 
-## 📊 구현 상세 (Code Snippet)
+## 자연어 질문을 실행 가능한 계획으로 바꾸는 코드
 
-### 자연어 -> SQL 변환 (Task 1)
-LLM을 통해 자연어를 구조화된 JSON으로 변환하고, 이를 SQL 쿼리로 매핑하여 실행합니다.
+### 작업 1: 자연어를 SQL로 변환
 
+LLM이 자연어 질문을 구조화된 JSON으로 바꾸면, 실행 계층이 JSON을 SQL 쿼리로 매핑해 조회한다.
+
+```python
 def parse_question_with_llm(state: AgentState) -> Dict[str, Any]:
     # LLM을 통해 자연어를 구조화된 JSON으로 변환
     # 지원 task_type: PRICE_INQUIRY, MARKET_STATISTICS, RANKING 등
@@ -119,9 +138,14 @@ def execute_plan(state: AgentState) -> Dict[str, Any]:
     # 분석된 JSON 계획을 SQL 쿼리로 변환하여 데이터베이스 조회 실행
     # 예: {"task_type": "PRICE_INQUIRY", "stock": "삼성전자"} 
     # -> SELECT open, close FROM stocks WHERE name='삼성전자' ...
-    pass### 위험도 분석 로직 (Task 5)
-투자자의 성향과 생애주기(나이)를 고려하여 개인화된 위험 임계치를 계산합니다.
+    pass
+```
 
+### 작업 5: 개인별 위험 임계값 계산
+
+투자자의 성향과 생애주기(나이)를 반영해 개인별 위험 임계값을 계산한다.
+
+```python
 def analyze_risk_patterns(state: AgentState) -> Dict[str, Any]:
     # 1. 개인화 임계치 계산
     # 투자성향 한도(예: 위험중립형 60%) × 생애주기 계수(예: 20대 0.3)
@@ -133,16 +157,18 @@ def analyze_risk_patterns(state: AgentState) -> Dict[str, Any]:
     # 3. 위험 경고 여부 판단
     if concentration > personalized_threshold:
         return create_risk_alert(stock_name, concentration, personalized_threshold)
-    return {"status": "SAFE"}<br>
+    return {"status": "SAFE"}
+```
 
-## 🎓 학습한 점
+## 설계 과정에서 익힌 것
 
-1. **Agentic Workflow**: LangGraph를 활용하여 단순한 체인이 아닌, 순환하고 분기하는 에이전트 워크플로우를 설계하며 LLM 애플리케이션의 제어 흐름을 깊이 이해했습니다.
-2. **Text-to-SQL**: 자연어를 정확한 SQL로 변환하기 위해 스키마 정보를 프롬프트에 효율적으로 주입하고, LLM의 환각을 제어하는 프롬프트 엔지니어링 기술을 익혔습니다.
-3. **Domain Knowledge Integration**: 금융 도메인의 특수성(은어, 기술적 지표, 리스크 관리 이론)을 로직에 녹여내어, 단순 챗봇이 아닌 전문성 있는 도구로 발전시켰습니다.
+1. **에이전트 실행 흐름**: LangGraph로 순환과 분기가 있는 실행 흐름을 설계하며 LLM 애플리케이션의 제어 지점을 나눴다.
+2. **자연어를 SQL로 변환(Text-to-SQL)**: 자연어 질문을 정확한 SQL로 변환하도록 프롬프트에 스키마 정보를 구성하고, LLM의 환각을 제어하는 프롬프트 작성 방법을 익혔다.
+3. **금융 규칙 반영**: 은어, 기술적 지표, 위험 관리 이론을 처리 로직에 반영해 금융 질문에 맞는 도구로 발전시켰다.
 
 <br>
 
-## 🔗 관련 링크
-- **GitHub Repository**: [Financial-Agent](https://github.com/figure-2/Financial-Agent) (Private)
-- **API Endpoint**: `http://211.188.58.134:8000/agent` (데모 기간 한정)
+## 관련 링크
+
+- **GitHub 저장소**: [Financial-Agent](https://github.com/figure-2/Financial-Agent) (Private)
+- **API 엔드포인트**: `http://211.188.58.134:8000/agent` (데모 기간 한정)
