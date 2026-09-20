@@ -39,6 +39,12 @@ def test_destination_for_unknown_category_raises_actionable_error() -> None:
         destination_for(["9.UNKNOWN"])
 
 
+def test_destination_for_insurance_project() -> None:
+    destination = destination_for(["2.PROJECT", "2-8. Insurance_PF"])
+
+    assert destination == Path("projects/insurance-pf")
+
+
 def test_plan_migration_rejects_case_insensitive_destination_collision(tmp_path: Path) -> None:
     first = tmp_path / "first" / "2026-01-01-Same.md"
     second = tmp_path / "second" / "2026-01-01-same.md"
@@ -68,3 +74,22 @@ def test_rewrite_and_verify_preserve_backup_content_after_move(tmp_path: Path) -
     rendered_source = (posts / "studies" / "rag" / source.name).read_text(encoding="utf-8")
     assert "{% post_url til/multicampus/python/2026-01-02-target %}" in rendered_source
     assert verify_migration(tmp_path, backup_dir) == []
+
+
+def test_verify_can_allow_posts_created_after_migration(tmp_path: Path) -> None:
+    posts = tmp_path / "_posts"
+    source = posts / "2026-01-01-source.md"
+    write_post(source, ["3.STUDY", "3-2.RAG"])
+
+    plan = plan_migration(tmp_path)
+    backup_dir = tmp_path / "backups" / "posts-flat-2026-09-20"
+
+    from tools.reorganize_posts import apply_migration
+
+    apply_migration(tmp_path, backup_dir, plan)
+    write_post(posts / "studies" / "rag" / "2026-01-02-new.md", ["3.STUDY", "3-2.RAG"])
+
+    strict_errors = verify_migration(tmp_path, backup_dir)
+    assert any("post count mismatch" in error for error in strict_errors)
+    assert any("unexpected destination" in error for error in strict_errors)
+    assert verify_migration(tmp_path, backup_dir, allow_new_posts=True) == []

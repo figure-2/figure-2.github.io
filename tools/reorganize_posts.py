@@ -50,6 +50,7 @@ PROJECTS = {
     "2-5. SeSAC-Note": "sesac-note",
     "2-6. LocalLens": "locallens",
     "2-7. Lumi_agent": "lumi-agent",
+    "2-8. Insurance_PF": "insurance-pf",
 }
 
 STUDY_TOPICS = {
@@ -226,7 +227,7 @@ def rewrite_post_urls(repo_root: Path, plan: dict[Path, Path]) -> int:
     return rewritten
 
 
-def verify_migration(repo_root: Path, backup_dir: Path) -> list[str]:
+def verify_migration(repo_root: Path, backup_dir: Path, *, allow_new_posts: bool = False) -> list[str]:
     errors: list[str] = []
     posts_dir = repo_root / "_posts"
     backup_files = flat_post_files(backup_dir)
@@ -239,7 +240,7 @@ def verify_migration(repo_root: Path, backup_dir: Path) -> list[str]:
         return [str(error)]
 
     destination_files = [path for path in posts_dir.rglob("*.md") if path.is_file()]
-    if len(backup_files) != len(destination_files):
+    if not allow_new_posts and len(backup_files) != len(destination_files):
         errors.append(f"post count mismatch: backup={len(backup_files)} destination={len(destination_files)}")
 
     flat_remaining = flat_post_files(posts_dir)
@@ -265,7 +266,7 @@ def verify_migration(repo_root: Path, backup_dir: Path) -> list[str]:
 
     expected_destinations = {posts_dir / relative for relative in expected_plan.values()}
     for destination in destination_files:
-        if destination not in expected_destinations:
+        if not allow_new_posts and destination not in expected_destinations:
             errors.append(f"unexpected destination: {destination.relative_to(posts_dir)}")
     return errors
 
@@ -283,6 +284,11 @@ def main() -> int:
     action.add_argument("--dry-run", action="store_true")
     action.add_argument("--apply", action="store_true")
     action.add_argument("--verify", action="store_true")
+    parser.add_argument(
+        "--allow-new-posts",
+        action="store_true",
+        help="during verification, allow posts created after the migration backup",
+    )
     args = parser.parse_args()
 
     repo_root = Path(args.repo_root).resolve()
@@ -301,14 +307,16 @@ def main() -> int:
             print(f"backup_posts={backed_up} moved_posts={len(plan)} link_targets_rewritten={rewritten}")
             return 0
 
-        errors = verify_migration(repo_root, backup_dir)
+        errors = verify_migration(repo_root, backup_dir, allow_new_posts=args.allow_new_posts)
         if errors:
             for error in errors:
                 print(error, file=sys.stderr)
             return 1
         destination_count = len([path for path in (repo_root / "_posts").rglob("*.md") if path.is_file()])
+        backup_count = len(flat_post_files(backup_dir))
         print(
-            f"backup_posts={len(flat_post_files(backup_dir))} destination_posts={destination_count} "
+            f"backup_posts={backup_count} destination_posts={destination_count} "
+            f"new_posts={destination_count - backup_count} "
             "content_mismatches=0 category_mismatches=0 flat_posts_remaining=0"
         )
         return 0
