@@ -204,6 +204,9 @@ compress_html:
     envs: [development]
 
 exclude:
+  - AGENTS.md
+  - backups
+  - _site
   - "*.gem"
   - "*.gemspec"
   - docs

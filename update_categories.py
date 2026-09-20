@@ -86,8 +86,8 @@ def main():
     """메인 함수"""
     print("포스트 파일 카테고리 업데이트 시작...")
 
-    # _posts 폴더의 모든 .md 파일 처리
-    post_files = glob.glob('_posts/*.md')
+    # _posts 하위 폴더를 포함한 모든 .md 파일 처리
+    post_files = glob.glob('_posts/**/*.md', recursive=True)
 
     success_count = 0
     total_count = len(post_files)
