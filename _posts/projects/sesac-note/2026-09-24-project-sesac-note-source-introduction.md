@@ -17,9 +17,6 @@ SeSAC:Note의 문제 정의, 멀티모달 분석 파이프라인과 학습 기�
 
 {% raw %}
 
-![SeSAC:Note 프로젝트 소개 이미지 1](/assets/images/source-archives/sesac-note/intro-01.gif)
-
-## [SeSAC:Note](https://re-view-ten.vercel.app/login)
 
 ### 1. 문제 정의
 
