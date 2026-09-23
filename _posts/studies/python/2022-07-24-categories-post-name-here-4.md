@@ -101,7 +101,7 @@ math: true
 
 ### Broadcasting
 
-다른 크기 배열간 연산 가능
+크기가 다른 배열도 연산할 수 있습니다.
 
 ```python
 a = np.array([1, 2, 3])  # (3,)
