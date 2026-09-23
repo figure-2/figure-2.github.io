@@ -16,93 +16,88 @@ mermaid: true
 math: true
 ---
 
-SeSAC:Note를 만들면서 가장 크게 배운 점은 AI 서비스가 모델 호출만으로 완성되지 않는다는 것입니다. STT, VLM, Summarizer, Judge, QA가 각각 좋아도 중간 연결이 약하면 사용자는 안정적인 학습 노트를 얻기 어렵습니다.
+프로젝트 : SeSAC:Note  영상 요약 AI 서비스
 
-```mermaid
-flowchart TB
-    A[강의 영상] --> B[STT]
-    A --> C[Capture + VLM]
-    B --> D[Timestamp Fusion]
-    C --> D
-    D --> E[AI Note]
-    D --> F[Video-scoped QA]
-    E --> G[학습 경험]
-    F --> G
-```
+역할 : AI & Backend Infrastructure
 
-## 연결 구조가 품질을 만든다
+기간 : 2025.11.28 ~ 2026.02.11 (약 2.5개월)
 
-멀티모달 AI 서비스에서 품질은 마지막 LLM prompt에서만 결정되지 않습니다. 앞단에서 어떤 화면을 캡처했는지, STT와 VLM 결과를 어떻게 같은 시간 구간으로 묶었는지, 그 segment가 요약과 QA에 어떻게 전달되는지가 전체 품질을 좌우합니다.
+기여 : 커밋 198개 (Backend/AI/Infra 주도)
 
-| 연결 지점 | 배운 점 |
-| --- | --- |
-| Capture -> VLM | 중복 슬라이드가 많으면 비용과 지연이 커짐 |
-| STT + VLM -> Fusion | 화면과 음성을 같은 segment로 묶어야 근거가 생김 |
-| Fusion -> Summary | 구조화된 입력이 있어야 노트 품질이 안정됨 |
-| Summary -> Judge | 생성 결과를 근거와 비교하는 보조 점검이 필요함 |
-| Summary/Segment -> QA | 질문이 영상 밖으로 벗어나지 않게 범위를 제한해야 함 |
+## 나는 내 학습 목표를 달성하기 위해 무엇을 어떻게 했는가?
 
-이 프로젝트에서 가장 중요한 설계 판단은 "모든 것을 한 번에 잘하는 LLM"을 기대하지 않는 것이었습니다. 각 단계의 역할을 나누고, 중간 산출물을 저장하고, 다음 단계가 사용할 수 있는 형태로 넘기는 구조가 더 중요했습니다.
+학습 목표 달성을 위해 대용량 영상 처리 파이프라인 최적화와 안정적인 백엔드 서비스 구축에 집중했습니다.
 
-## 확인한 것
+### [목표 1] AI/LLM 파이프라인 구축 및 최적화
 
-프로젝트 기록에는 sample pipeline, Judge benchmark, 보안 테스트, frontend build처럼 서로 다른 종류의 확인 결과가 남아 있습니다.
+영상 요약 비용을 줄이고 응답 속도를 개선하기 위해 캡처 로직과 병렬 처리 파이프라인을 설계했습니다.
 
-| 확인 항목 | 해석 |
-| --- | --- |
-| sample pipeline | STT, capture, batch, segment, Judge 결과가 단계별로 남는 흐름 확인 |
-| Judge benchmark | prompt 버전별 평가 시간과 토큰 사용량 비교 |
-| 보안 테스트 | media ticket, upload validation 등 일부 부정 경로 확인 |
-| frontend build | 프론트엔드 빌드 가능성 확인 |
+#### 영상 전처리 및 알고리즘 최적화
 
-sample4 기준 파이프라인 기록은 다음처럼 남아 있다. 이 표는 하나의 sample 실행 기록이며, 모든 영상에서 같은 결과를 보장하는 지표가 아니다.
+ORB 알고리즘 기반으로 프레임 간 특징점을 비교하여 중복 프레임을 제거했습니다. ROI(관심 영역) 감지 후 리사이징된 이미지의 pHash 값을 비교하고, 유사한 프레임들을 타임라인상에서 병합하여 불필요한 VLM 호출 횟수를 줄였습니다.
 
-| 항목 | sample4 기준 기록 |
-| --- | --- |
-| Video status | DONE |
-| Captures | 5개 레코드, `time_ranges` 스키마 포함 |
-| STT units | 42개 |
-| Batch progress | 2/2 완료 |
-| Analytic segments | 8개 |
-| Judge scores | Batch 1: 8.26 / Batch 2: 8.96 |
+![ROI 전처리, ORB 특징점 추출과 중복 프레임 제거 흐름](/assets/images/source-archives/sesac-note/intro-03.webp)
 
-Judge benchmark에서는 v3 기준 평균 평가 시간 14.7초, 평균 토큰 14,734, 제한된 benchmark 조건 5/5 통과가 기록되어 있다. 이 수치들은 설계 판단의 근거로 볼 수 있지만, 모든 영상에서 같은 결과를 보장하는 지표는 아니다.
+#### 비동기 파이프라인 아키텍처
 
-## 다음 개선 방향
+전체 처리 시간을 단축하기 위해 STT 추출(Clova API), 프레임 캡처, 오디오 추출 작업을 병렬로 수행하도록 구현했습니다. 각 작업이 완료된 후 데이터를 동기화하고, 이후 요약 생성 단계는 비동기적으로 처리하여 사용자 대기 시간을 최소화했습니다.
 
-마지막으로 남은 개선 방향은 세 가지로 압축된다.
+![영상 입력, 병렬 전처리, VLM, 요약과 Judge를 연결한 서비스 파이프라인](/assets/images/source-archives/sesac-note/intro-02.webp)
 
-| 개선 방향 | 해석 |
-| --- | --- |
-| 응답 속도 최적화 | VLM 호출과 요약 생성 구간의 병목을 계속 줄여야 함 |
-| 서빙 역량 강화 | 외부 API 의존도를 낮추는 자체 서빙 구조가 장기 과제 |
-| 판서 인식 확장 | 슬라이드 중심 구조를 판서형 강의까지 넓히려는 방향 |
+#### Judge 시스템 경량화 및 고도화
 
-이 항목들은 완료된 성과가 아니라 후속 과제다. 따라서 "구현 완료"가 아니라 "남은 개선 방향"으로만 적는 것이 맞다.
+기존 Judge가 수행하던 데이터 정합성 검증은 시스템 레벨로 이관하고, Judge는 요약의 형식과 정보 품질 검수에만 집중하도록 역할을 분리했습니다.
 
-## 전체 시리즈
+#### VLM/Summarizer 모델 실험
 
-```mermaid
-flowchart LR
-    A[Sample 기록] --> D[문서상 검증]
-    B[Judge benchmark] --> E[평가 단계 기준]
-    C[보안 테스트] --> F[보안 보강 기준]
-    D --> G[해석 기준]
-    E --> G
-    F --> G
-```
+한국어와 영어, JSON과 JSONL 포맷 등 4가지 조합에 대한 비교 실험을 진행하여 최적의 프롬프트를 도출했습니다.
 
-이번 시리즈는 SeSAC:Note를 하나의 긴 개발 흐름으로 정리했다.
+#### 시스템 안정성 강화
 
-1. [01. SeSAC:Note 프로젝트 개요: 강의 영상을 AI 학습 노트로 바꾸기]({% post_url projects/sesac-note/2025-11-28-project-sesac-note-01-case-study %})
-2. [02. SeSAC:Note 핵심 기능과 구조]({% post_url projects/sesac-note/2025-12-02-project-sesac-note-02-readme-overview %})
-3. [03. 6장으로 보는 SeSAC:Note 포트폴리오 요약]({% post_url projects/sesac-note/2025-12-05-project-sesac-note-03-visual-portfolio %})
-4. [04. 문제 정의: STT 요약을 넘어 독립형 강의 노트로]({% post_url projects/sesac-note/2025-12-09-project-sesac-note-04-problem-definition %})
-5. [05. 아키텍처: STT, VLM, Fusion을 연결하는 방법]({% post_url projects/sesac-note/2025-12-16-project-sesac-note-05-architecture %})
-6. [06. 캡처와 VLM 개선: 중복 슬라이드와 입력 품질 다루기]({% post_url projects/sesac-note/2025-12-23-project-sesac-note-06-capture-vlm %})
-7. [07. 비동기 처리: 긴 영상의 대기시간과 상태 추적 줄이기]({% post_url projects/sesac-note/2026-01-06-project-sesac-note-07-async-pipeline %})
-8. [08. QA 설계: 영상 근거 안에서만 답하게 만들기]({% post_url projects/sesac-note/2026-01-20-project-sesac-note-08-evidence-qa %})
-9. [09. Judge 설계: 요약 품질을 보조 평가하는 방법]({% post_url projects/sesac-note/2026-01-30-project-sesac-note-09-judge-evaluation %})
-10. [10. 프로젝트 회고: 멀티모달 AI 서비스에서 배운 것]({% post_url projects/sesac-note/2026-02-10-project-sesac-note-10-validation-retrospective %})
+복잡했던 라우팅 로직을 간소화하여 실행 흐름을 명확히 하고, API 호출 실패 시 재시도 로직을 적용해 안정성을 높였습니다.
 
-- 이전 글: [09. Judge 설계: 요약 품질을 보조 평가하는 방법]({% post_url projects/sesac-note/2026-01-30-project-sesac-note-09-judge-evaluation %})
+### [목표 2] 백엔드 및 인프라 엔지니어링
+
+데이터의 무결성을 보장하고 서비스 확장성을 고려하여 스토리지와 데이터베이스를 구성했습니다.
+
+#### RDBMS 도입 및 스키마 설계
+
+영상 메타데이터와 요약 결과의 관계를 명확히 정의하기 위해 PostgreSQL을 도입했습니다. 초기 스키마를 구성하고 저장소를 연동하여 데이터의 구조적 안정성을 확보했습니다.
+
+#### Object Storage 마이그레이션
+
+초기에는 로컬 파일 시스템을 사용했으나, 영상 데이터의 용량 증가와 배포 확장성을 고려하여 Cloudflare R2 스토리지로 마이그레이션을 진행했습니다.
+
+### [목표 3] 협업 프로세스 및 문서화
+
+팀 내 기술적 의사결정을 주도하고 이슈 기반의 개발 프로세스를 정착시켰습니다.
+
+#### 데이터 기반 의사결정
+
+VLM 및 Judge 모델의 벤치마크 결과를 이슈로 문서화하여 공유함으로써, 팀원들이 객관적인 데이터에 기반해 의사결정을 내릴 수 있도록 지원했습니다
+
+DevOps 및 인프라 환경을 직접 구축한 것도 큰 변화입니다. 로컬 개발 환경에 머무르지 않고 Docker 컨테이너화, Cloud Run 배포, R2 스토리지 연동까지 직접 수행했습니다. 배포 과정을 자동화함으로써 반복 작업을 줄이고 스토리지 확장성을 확보했습니다.
+
+![Cloud Run 백엔드, 데이터베이스와 R2 저장소를 연결한 서비스 구조](/assets/images/source-archives/sesac-note/intro-04.webp)
+
+체계적인 Issue/PR 관리 사이클을 도입했습니다. 단순 구현에 그치지 않고 'Issue 등록 → PR 작성 → Code Review → Merge → Close'로 이어지는 전체 사이클을 준수했습니다. 이로 인해 버그 발생 원인과 해결 과정을 투명하게 추적하고 관리할 수 있었습니다.
+
+## 마주한 한계는 무엇이며, 아쉬웠던 점은 무엇인가?
+
+가장 큰 기술적 한계는 캡처 로직의 민감도 문제였습니다. 정적인 영상(슬라이드 중심)에서는 구현한 ORB 기반의 특징점 비교 로직이 효과적으로 작동했으나, 화면 전환이 잦거나 동적인 요소가 많은 영상에서는 변화를 너무 민감하게 감지했습니다. 이로 인해 불필요한 프레임이 과도하게 캡처되는 문제가 발생했고, 이는 VLM 호출 비용 증가로 이어질 수 있었습니다.
+
+## 한계/교훈을 바탕으로 다음 프로젝트에서 시도해보고 싶은 점은 무엇인가?
+
+이번 프로젝트에서 겪은 캡처 로직의 한계를 개선하고, LLM 활용 범위를 확장하는 방향으로 발전시켜보고 싶습니다.
+
+### 콘텐츠 분류 모델 도입
+
+캡처 로직 실행 전, 영상의 종류(정적/동적)를 분류하는 모델을 배치하고자 합니다. 각 영상 특성에 최적화된 로직을 개별적으로 적용한다면 '민감도 문제'를 해결할 수 있을 것입니다.
+
+### 일반화 캡처 알고리즘 연구
+
+특정 상황에 구애받지 않고 다양한 영상 환경에서 안정적으로 동작하는, 일반화 성능이 뛰어난 캡처 알고리즘을 지속적으로 탐구해보고 싶습니다.
+
+### Agent Orchestration 및 보안 검증
+
+단순한 프롬프트 최적화를 넘어, 에이전트 오케스트레이팅을 통해 시스템의 보안 취약점이나 최적화 요소를 스스로 검증하는 구조를 만들어보고 싶습니다. 또한 AOP(Auto Optimize Prompt) 기법을 활용해 최적의 프롬프트를 자동으로 탐색하는 시스템을 구축해보고 싶습니다.

@@ -1,0 +1,40 @@
+<!-- Project navigation follows the series; other posts keep chronological navigation. -->
+{% assign previous_post = page.previous %}
+{% assign next_post = page.next %}
+{% if page.categories[0] == '2.PROJECT' and page.categories[1] %}
+  {% assign project_category = page.categories[1] %}
+  {% assign project_posts = site.categories[project_category] | project_posts_in_order %}
+  {% assign previous_post = nil %}
+  {% assign next_post = nil %}
+  {% for project_post in project_posts %}
+    {% if project_post.url == page.url %}
+      {% unless forloop.first %}
+        {% assign previous_index = forloop.index0 | minus: 1 %}
+        {% assign previous_post = project_posts[previous_index] %}
+      {% endunless %}
+      {% unless forloop.last %}
+        {% assign next_post = project_posts[forloop.index] %}
+      {% endunless %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+  {% assign previous = site.data.locales[include.lang].post.button.previous %}
+  {% assign next = site.data.locales[include.lang].post.button.next %}
+  {% if previous_post.url %}
+    <a href="{{ previous_post.url | relative_url }}" class="btn btn-outline-primary" aria-label="{{ previous }}">
+      <p>{{ previous_post.title }}</p>
+    </a>
+  {% else %}
+    <div class="btn btn-outline-primary disabled" aria-label="{{ previous }}"><p>-</p></div>
+  {% endif %}
+  {% if next_post.url %}
+    <a href="{{ next_post.url | relative_url }}" class="btn btn-outline-primary" aria-label="{{ next }}">
+      <p>{{ next_post.title }}</p>
+    </a>
+  {% else %}
+    <div class="btn btn-outline-primary disabled" aria-label="{{ next }}"><p>-</p></div>
+  {% endif %}
+</nav>
