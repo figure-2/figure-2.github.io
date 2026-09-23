@@ -16,7 +16,7 @@ mermaid: true
 math: true
 ---
 
-LocalLens의 검색은 `GUI -> SearchEngine -> FileManager -> VectorStore -> Encoder -> FAISS/SQLite -> Result` 흐름으로 이어진다. 사용자는 검색창 하나를 보지만, 내부에서는 파일 상태 동기화와 타입별 임베딩, 벡터 검색이 순서대로 실행된다.
+LocalLens의 검색은 `GUI -> SearchEngine -> FileManager -> VectorStore -> Encoder -> FAISS/SQLite -> Result` 흐름으로 이어집니다. 사용자는 검색창 하나를 보지만, 내부에서는 파일 상태 동기화와 타입별 임베딩, 벡터 검색이 순서대로 실행됩니다.
 
 ## 전체 구조
 
@@ -39,11 +39,11 @@ flowchart TB
     RES --> GUI
 ```
 
-구조를 이렇게 나눈 이유는 책임을 분리하기 위해서다. 검색 요청을 받는 코드, 파일을 찾는 코드, 벡터 저장소를 관리하는 코드, 파일을 임베딩하는 코드를 한 곳에 몰아두면 파일 타입이 늘어날수록 수정 지점이 커진다.
+구조를 이렇게 나눈 이유는 책임을 분리하기 위해서입니다. 검색 요청을 받는 코드, 파일을 찾는 코드, 벡터 저장소를 관리하는 코드, 파일을 임베딩하는 코드를 한 곳에 몰아두면 파일 타입이 늘어날수록 수정 지점이 커집니다.
 
 ## SearchEngine
 
-`SearchEngine`은 검색 흐름의 조정자다. 사용자가 입력한 query, target directory, extension filter, Top-K 값을 받아 다음 순서로 처리한다.
+`SearchEngine`은 검색 흐름의 조정자입니다. 사용자가 입력한 query, target directory, extension filter, Top-K 값을 받아 다음 순서로 처리합니다.
 
 | 순서 | 작업 |
 | --- | --- |
@@ -54,11 +54,11 @@ flowchart TB
 | 5 | FAISS 검색 |
 | 6 | 타입별 결과 반환 |
 
-SearchEngine 자체가 모델을 직접 다루지는 않는다. 모델 로딩과 임베딩은 Encoder 계층에 맡기고, 파일 상태와 벡터 저장은 VectorStore에 맡긴다.
+SearchEngine 자체가 모델을 직접 다루지는 않습니다. 모델 로딩과 임베딩은 Encoder 계층에 맡기고, 파일 상태와 벡터 저장은 VectorStore에 맡깁니다.
 
 ## FileManager
 
-`FileManager`는 지정된 루트 폴더를 순회하며 지원 확장자만 모은다.
+`FileManager`는 지정된 루트 폴더를 순회하며 지원 확장자만 모읍니다.
 
 ```text
 image: .jpg, .jpeg, .png

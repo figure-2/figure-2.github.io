@@ -16,9 +16,9 @@ mermaid: true
 math: true
 ---
 
-로컬 검색에서 어려운 문제는 벡터 검색 자체만이 아니다. 파일은 계속 추가되고, 수정되고, 삭제된다. VectorStore가 이 변화를 따라가지 못하면 검색 결과는 실제 폴더 상태와 어긋난다.
+로컬 검색에서 어려운 문제는 벡터 검색 자체만이 아닙니다. 파일은 계속 추가되고, 수정되고, 삭제됩니다. VectorStore가 이 변화를 따라가지 못하면 검색 결과는 실제 폴더 상태와 어긋납니다.
 
-LocalLens는 이 문제를 FAISS와 SQLite의 역할 분리로 풀었다.
+LocalLens는 이 문제를 FAISS와 SQLite의 역할 분리로 풀었습니다.
 
 | 구성 | 책임 |
 | --- | --- |
@@ -28,16 +28,16 @@ LocalLens는 이 문제를 FAISS와 SQLite의 역할 분리로 풀었다.
 
 ## 왜 둘을 나눴나
 
-FAISS는 벡터 검색에 적합하지만 파일 상태 관리용 DB는 아니다. 반대로 SQLite는 경량 metadata 관리에 좋지만 벡터 유사도 검색 엔진은 아니다.
+FAISS는 벡터 검색에 적합하지만 파일 상태 관리용 DB는 아닙니다. 반대로 SQLite는 경량 metadata 관리에 좋지만 벡터 유사도 검색 엔진은 아닙니다.
 
-그래서 LocalLens는 벡터와 파일 정보를 분리했다.
+그래서 LocalLens는 벡터와 파일 정보를 분리했습니다.
 
 ```text
 FAISS  -> id, embedding vector
 SQLite -> id, file_path, mtime, extension, type
 ```
 
-이 분리 덕분에 검색 시에는 FAISS가 유사한 ID를 찾고, SQLite가 해당 ID의 파일 경로를 제공한다. 삭제나 수정이 발생하면 SQLite metadata와 FAISS index를 같은 ID 기준으로 정리한다.
+이 분리 덕분에 검색 시에는 FAISS가 유사한 ID를 찾고, SQLite가 해당 ID의 파일 경로를 제공합니다. 삭제나 수정이 발생하면 SQLite metadata와 FAISS index를 같은 ID 기준으로 정리합니다.
 
 ## 동기화 흐름
 

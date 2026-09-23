@@ -16,9 +16,9 @@ mermaid: true
 math: true
 ---
 
-PDF 검색은 텍스트 파일 검색보다 까다롭다. PDF 안에는 본문 텍스트뿐 아니라 표, 그래프, 다이어그램, 이미지가 함께 들어갈 수 있다. 텍스트만 추출하면 검색해야 할 맥락 일부가 빠진다.
+PDF 검색은 텍스트 파일 검색보다 까다롭습니다. PDF 안에는 본문 텍스트뿐 아니라 표, 그래프, 다이어그램, 이미지가 함께 들어갈 수 있습니다. 텍스트만 추출하면 검색해야 할 맥락 일부가 빠집니다.
 
-LocalLens는 PDF를 `텍스트 추출 + 이미지 설명 + 텍스트 임베딩` 흐름으로 처리했다.
+LocalLens는 PDF를 `텍스트 추출 + 이미지 설명 + 텍스트 임베딩` 흐름으로 처리했습니다.
 
 ![PDF와 VLM caption 예시](/assets/images/locallens/03-pdf-vlm-example.png)
 
@@ -36,9 +36,9 @@ flowchart TB
     ENC --> EMB[PDF Embedding]
 ```
 
-PyMuPDF는 PDF에서 텍스트와 이미지를 추출한다. 텍스트는 그대로 검색 맥락이 된다. 이미지, 표, 그래프처럼 텍스트로 바로 검색하기 어려운 요소는 VLM caption으로 설명 문장을 만든다.
+PyMuPDF는 PDF에서 텍스트와 이미지를 추출합니다. 텍스트는 그대로 검색 맥락이 됩니다. 이미지, 표, 그래프처럼 텍스트로 바로 검색하기 어려운 요소는 VLM caption으로 설명 문장을 만듭니다.
 
-최종적으로는 다음 형태의 텍스트를 만든다.
+최종적으로는 다음 형태의 텍스트를 만듭니다.
 
 ```text
 PDF에서 추출한 본문 텍스트
@@ -48,7 +48,7 @@ PDF에서 추출한 본문 텍스트
 VLM이 생성한 시각 요소 설명
 ```
 
-이 combined text를 TextEncoder에 넣어 PDF embedding을 만든다.
+이 combined text를 TextEncoder에 넣어 PDF embedding을 만듭니다.
 
 ## 왜 VLM caption을 붙였나
 
