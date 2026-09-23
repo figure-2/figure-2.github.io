@@ -16,15 +16,15 @@ mermaid: true
 math: true
 ---
 
-“검색해줘”와 “메시지 보내줘”는 같은 도구 호출이 아니다.
+“검색해줘”와 “메시지 보내줘”는 같은 도구 호출이 아닙니다.
 
-검색은 결과가 마음에 들지 않으면 다시 하면 된다. 하지만 메시지 전송이나 일정 변경은 외부 상태를 바꾼다. Lumi_agent가 Safe Tool과 Sensitive Tool을 나눈 이유는 이 차이 때문이다.
+검색은 결과가 마음에 들지 않으면 다시 하면 됩니다. 하지만 메시지 전송이나 일정 변경은 외부 상태를 바꿉니다. Lumi_agent가 Safe Tool과 Sensitive Tool을 나눈 이유는 이 차이 때문입니다.
 
 ![HITL sequence](/assets/images/lumi-agent/04-hitl-sequence.png)
 
 ## MCP Tool Calling 구조
 
-Lumi_agent는 여러 외부 도구를 MCP 기반으로 연결한다.
+Lumi_agent는 여러 외부 도구를 MCP 기반으로 연결합니다.
 
 | 도구 범주 | 예시 |
 | --- | --- |
@@ -33,7 +33,7 @@ Lumi_agent는 여러 외부 도구를 MCP 기반으로 연결한다.
 | Calendar | Google Calendar |
 | Knowledge | Wikipedia 계열 일반 지식 검색 |
 
-Agent는 사용자의 요청을 보고 필요한 도구를 선택한다. 도구 실행 결과는 다시 Agent로 돌아오고, Agent는 결과를 해석해 응답하거나 다음 도구 호출을 판단한다.
+Agent는 사용자의 요청을 보고 필요한 도구를 선택합니다. 도구 실행 결과는 다시 Agent로 돌아오고, Agent는 결과를 해석해 응답하거나 다음 도구 호출을 판단합니다.
 
 ```mermaid
 sequenceDiagram

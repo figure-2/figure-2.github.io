@@ -16,9 +16,9 @@ mermaid: true
 math: true
 ---
 
-Lumi_agent의 전체 구조는 `Desktop GUI -> Analyzer -> Context Builder -> Agent Node -> MCP Tools -> Memory Manager` 흐름으로 이어진다.
+Lumi_agent의 전체 구조는 `Desktop GUI -> Analyzer -> Context Builder -> Agent Node -> MCP Tools -> Memory Manager` 흐름으로 이어집니다.
 
-사용자는 캐릭터형 GUI와 대화하지만, 내부에서는 감정/관계 상태, 기억 검색, 도구 라우팅, 승인 경계, 메모리 저장이 순서대로 움직인다.
+사용자는 캐릭터형 GUI와 대화하지만, 내부에서는 감정/관계 상태, 기억 검색, 도구 라우팅, 승인 경계, 메모리 저장이 순서대로 움직입니다.
 
 ![Lumi_agent workflow](/assets/images/lumi-agent/01-agent-workflow.png)
 

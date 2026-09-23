@@ -16,13 +16,13 @@ mermaid: true
 math: true
 ---
 
-데스크톱 Agent에서 어려운 점은 LLM 호출만이 아니다. 사용자가 메시지를 보내는 동안 GUI가 멈추면 비서처럼 느껴지지 않는다.
+데스크톱 Agent에서 어려운 점은 LLM 호출만이 아닙니다. 사용자가 메시지를 보내는 동안 GUI가 멈추면 비서처럼 느껴지지 않습니다.
 
-Lumi_agent는 PySide6 GUI와 비동기 Agent 실행을 연결하기 위해 qasync를 사용했다. Qt 이벤트 루프와 asyncio 작업을 하나의 흐름으로 묶는 것이 핵심이었다.
+Lumi_agent는 PySide6 GUI와 비동기 Agent 실행을 연결하기 위해 qasync를 사용했습니다. Qt 이벤트 루프와 asyncio 작업을 하나의 흐름으로 묶는 것이 핵심이었습니다.
 
 ## GUI 통합 전 문제
 
-초기 구조에서는 CLI Agent와 GUI가 서로 다른 입력 루프를 갖는다.
+초기 구조에서는 CLI Agent와 GUI가 서로 다른 입력 루프를 갖습니다.
 
 | 구성 | 문제 |
 | --- | --- |
@@ -30,7 +30,7 @@ Lumi_agent는 PySide6 GUI와 비동기 Agent 실행을 연결하기 위해 qasyn
 | PySide6 GUI | Qt 이벤트 루프 |
 | asyncio Agent 실행 | 별도 비동기 이벤트 루프 |
 
-이 셋을 단순히 합치면 GUI가 멈추거나 이벤트 루프 충돌이 생긴다.
+이 셋을 단순히 합치면 GUI가 멈추거나 이벤트 루프 충돌이 생깁니다.
 
 ## qasync 구조
 

@@ -16,9 +16,9 @@ mermaid: true
 math: true
 ---
 
-Lumi_agent의 개발 흐름은 “처음부터 완성된 Agent”가 아니라, MCP 도구 실험에서 시작해 Memory, LangGraph, HITL, GUI 안정화로 확장된 과정에 가깝다.
+Lumi_agent의 개발 흐름은 “처음부터 완성된 Agent”가 아니라, MCP 도구 실험에서 시작해 Memory, LangGraph, HITL, GUI 안정화로 확장된 과정에 가깝습니다.
 
-개발 기록을 기준으로 보면 구조 변화는 다음 순서로 읽힌다.
+개발 기록을 기준으로 보면 구조 변화는 다음 순서로 읽힙니다.
 
 ## 개발 타임라인
 
@@ -37,11 +37,11 @@ Lumi_agent의 개발 흐름은 “처음부터 완성된 Agent”가 아니라, 
 
 ## 구조 변화
 
-초기에는 외부 API를 붙이는 실험이 중심이었다. Calendar, Discord, Slack, Search 같은 도구를 Agent가 사용할 수 있게 만드는 것이 먼저였다.
+초기에는 외부 API를 붙이는 실험이 중심이었습니다. Calendar, Discord, Slack, Search 같은 도구를 Agent가 사용할 수 있게 만드는 것이 먼저였습니다.
 
-그다음 문제는 기억이었다. 개인 비서가 이전 대화를 계속 넣고 가면 context window가 금방 길어진다. 그래서 Sliding Window, Summary, ChromaDB 기반 장기 기억 구조가 들어갔다.
+그다음 문제는 기억이었습니다. 개인 비서가 이전 대화를 계속 넣고 가면 context window가 금방 길어집니다. 그래서 Sliding Window, Summary, ChromaDB 기반 장기 기억 구조가 들어갔습니다.
 
-이후에는 Agent 실행 흐름을 명시적으로 관리하기 위해 LangGraph 구조가 추가됐다. 단순 wrapper보다 노드와 route가 보이는 구조가 필요했기 때문이다.
+이후에는 Agent 실행 흐름을 명시적으로 관리하기 위해 LangGraph 구조가 추가됐습니다. 단순 wrapper보다 노드와 route가 보이는 구조가 필요했기 때문입니다.
 
 ```mermaid
 flowchart LR
