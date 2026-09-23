@@ -17,9 +17,9 @@ mermaid: true
 math: true
 ---
 
-AI Assistant Engineering은 챗봇을 만드는 공부가 아니다. 사용자의 작업을 안정적으로 도와주는 assistant system을 설계하는 학습 주제다.
+AI Assistant Engineering은 챗봇을 만드는 공부가 아닙니다. 사용자의 작업을 안정적으로 돕는 assistant system을 설계하는 학습 주제입니다.
 
-assistant는 겉으로는 대화 인터페이스처럼 보이지만, 내부에는 LLM, context 설계, RAG, tool use, memory, evaluation, guardrail이 함께 들어간다.
+assistant는 겉으로는 대화 인터페이스처럼 보이지만, 내부에는 LLM, context 설계, RAG, tool use, memory, evaluation, guardrail이 함께 들어갑니다.
 
 ## 학습 범위
 
@@ -34,7 +34,7 @@ assistant는 겉으로는 대화 인터페이스처럼 보이지만, 내부에�
 
 ## Assistant와 Agent의 차이
 
-assistant는 사용자의 작업을 돕는 제품 인터페이스에 가깝고, agent는 목표를 받아 실행 흐름을 스스로 결정하는 구조에 가깝다. 둘은 겹치지만 같은 말은 아니다.
+assistant는 사용자의 작업을 돕는 제품 인터페이스에 가깝고, agent는 목표를 받아 실행 흐름을 스스로 결정하는 구조에 가깝습니다. 둘은 겹치지만 같은 말은 아닙니다.
 
 | 구분 | Assistant | Agent |
 | --- | --- | --- |
@@ -45,13 +45,13 @@ assistant는 사용자의 작업을 돕는 제품 인터페이스에 가깝고, 
 
 ## 학습 순서
 
-1. 기본 LLM 호출과 prompt 구조를 이해한다.
-2. 대화 context와 파일 context를 분리한다.
-3. RAG로 외부 지식을 연결한다.
-4. tool calling을 붙인다.
-5. memory와 user preference를 다룬다.
-6. evaluation과 guardrail을 만든다.
+1. 기본 LLM 호출과 prompt 구조를 이해합니다.
+2. 대화 context와 파일 context를 분리합니다.
+3. RAG로 외부 지식을 연결합니다.
+4. tool calling을 추가합니다.
+5. memory와 user preference를 다룹니다.
+6. evaluation과 guardrail을 만듭니다.
 
 ## 정리
 
-좋은 assistant는 똑똑한 모델 하나로 만들어지지 않는다. 사용자가 무엇을 하려는지, 어떤 근거를 써야 하는지, 언제 도구를 호출해야 하는지, 어떤 경우에는 답하지 말아야 하는지를 시스템으로 설계해야 한다.
+좋은 assistant는 똑똑한 모델 하나로 만들어지지 않습니다. 사용자가 무엇을 하려는지, 어떤 근거를 써야 하는지, 언제 도구를 호출해야 하는지, 어떤 경우에는 답하지 말아야 하는지를 시스템으로 설계해야 합니다.

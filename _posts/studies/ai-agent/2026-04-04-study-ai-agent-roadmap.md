@@ -18,9 +18,9 @@ mermaid: true
 math: true
 ---
 
-AI Agent를 학습할 때는 프레임워크 이름보다 실행 구조를 먼저 이해해야 한다. LangGraph, CrewAI, AutoGen, ADK, Agents SDK는 모두 유용하지만, 어떤 문제에 어떤 실행 구조가 필요한지 모르면 도구만 바꿔가며 같은 실수를 반복하게 된다.
+AI Agent를 학습할 때는 프레임워크 이름보다 실행 구조를 먼저 이해해야 합니다. LangGraph, CrewAI, AutoGen, ADK, Agents SDK는 모두 유용하지만, 어떤 문제에 어떤 실행 구조가 필요한지 모르면 도구만 바꿔가며 같은 실수를 반복하게 됩니다.
 
-이 글은 Agent 학습 순서를 `개념 -> 도구 사용 -> memory/RAG -> 평가 -> 운영 -> framework` 흐름으로 정리한다.
+이 글에서는 Agent 학습 순서를 `개념 -> 도구 사용 -> memory/RAG -> 평가 -> 운영 -> framework` 흐름으로 정리합니다.
 
 ## 학습 순서
 
@@ -48,7 +48,7 @@ flowchart LR
 
 ## 주요 프레임워크 비교
 
-프레임워크는 문제 유형에 맞춰 선택한다. 처음부터 multi-agent framework를 고르는 것보다, 필요한 state 관리와 관측 수준을 먼저 정하는 것이 좋다.
+프레임워크는 문제 유형에 맞춰 선택합니다. 처음부터 multi-agent framework를 고르는 것보다 필요한 state 관리와 관측 수준을 먼저 정하는 편이 좋습니다.
 
 | 프레임워크 | 중심 구조 | 강점 | 적합한 상황 |
 | --- | --- | --- | --- |
@@ -61,7 +61,7 @@ flowchart LR
 
 ## 에이전트 구축 시 흔한 실수
 
-Agent 프로젝트의 실패는 모델 성능보다 설계 방식에서 자주 나온다.
+Agent 프로젝트의 실패는 모델 성능보다 설계 방식에서 자주 발생합니다.
 
 | 실수 | 왜 문제인가 |
 | --- | --- |
@@ -78,11 +78,11 @@ Agent 프로젝트의 실패는 모델 성능보다 설계 방식에서 자주 �
 
 ## 실무 권장 사항
 
-1. Simple first: 단일 LLM, RAG, 정해진 workflow로 해결되는지 먼저 확인한다.
-2. Evaluate early: golden set, LLM-as-judge, regression test를 먼저 만든다.
-3. Human-in-the-Loop: 결제, 삭제, 권한 변경, 대량 발송에는 사람 승인을 둔다.
-4. Observe everything: trace, tool call, token cost, latency, failure reason을 남긴다.
-5. Limit tools: agent가 실제로 써야 하는 tool만 노출한다.
+1. Simple first: 단일 LLM, RAG, 정해진 workflow로 해결되는지 먼저 확인합니다.
+2. Evaluate early: golden set, LLM-as-judge, regression test를 먼저 만듭니다.
+3. Human-in-the-Loop: 결제, 삭제, 권한 변경, 대량 발송에는 사람 승인을 둡니다.
+4. Observe everything: trace, tool call, token cost, latency, failure reason을 남깁니다.
+5. Limit tools: agent가 실제로 써야 하는 tool만 노출합니다.
 
 ## 핵심 논문과 자료
 
@@ -107,8 +107,8 @@ Agent 프로젝트의 실패는 모델 성능보다 설계 방식에서 자주 �
 | GAIA | tool use와 multi-modal reasoning |
 | AgentBench | 다양한 환경에서의 agent 작업 수행 |
 
-벤치마크 수치는 모델과 시점에 따라 바뀐다. 중요한 것은 특정 점수보다 어떤 능력을 측정하는 benchmark인지 이해하는 것이다.
+벤치마크 수치는 모델과 시점에 따라 바뀝니다. 중요한 것은 특정 점수보다 어떤 능력을 측정하는 benchmark인지 이해하는 것입니다.
 
 ## 정리
 
-AI Agent 학습은 프레임워크 사용법이 아니라 실행 구조를 이해하는 순서로 진행해야 한다. 먼저 단일 agent의 입출력, tool call, 실패 로그, 평가 기준을 잡고, 그다음 orchestration과 multi-agent로 확장하는 흐름이 안정적이다.
+AI Agent 학습은 프레임워크 사용법이 아니라 실행 구조를 이해하는 순서로 진행해야 합니다. 먼저 단일 agent의 입출력, tool call, 실패 로그, 평가 기준을 잡고, 그다음 orchestration과 multi-agent로 확장하는 흐름이 안정적입니다.
