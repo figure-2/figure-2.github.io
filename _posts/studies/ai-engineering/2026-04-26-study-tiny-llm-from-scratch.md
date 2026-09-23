@@ -16,11 +16,11 @@ mermaid: true
 math: true
 ---
 
-Tiny LLM from Scratch는 작은 언어 모델을 직접 만들어보면서 LLM의 내부 구조를 이해하는 학습 주제다. 목표는 대형 모델을 대체하는 것이 아니라 tokenizer, transformer, training loop, inference 흐름을 손으로 확인하는 것이다.
+Tiny LLM from Scratch는 작은 언어 모델을 직접 만들어보며 LLM의 내부 구조를 이해하는 학습 주제입니다. 목표는 대형 모델을 대체하는 것이 아니라 tokenizer, transformer, training loop, inference 흐름을 직접 확인하는 것입니다.
 
 ## 왜 작은 모델을 직접 만드는가
 
-LLM API만 사용하면 모델 내부에서 어떤 일이 일어나는지 감각이 흐려지기 쉽다. 작은 모델을 직접 구현하면 다음 개념을 더 정확히 이해할 수 있다.
+LLM API만 사용하면 모델 내부에서 어떤 일이 일어나는지 감각이 흐려지기 쉽습니다. 작은 모델을 직접 구현하면 다음 개념을 더 정확히 이해할 수 있습니다.
 
 | 개념 | 확인할 수 있는 것 |
 | --- | --- |
@@ -43,12 +43,12 @@ LLM API만 사용하면 모델 내부에서 어떤 일이 일어나는지 감각
   -> 간단한 배포
 ```
 
-처음부터 큰 corpus와 큰 모델을 목표로 잡으면 학습 비용이 커진다. 작은 데이터와 작은 parameter 수로 전체 흐름을 끝까지 통과하는 것이 더 중요하다.
+처음부터 큰 corpus와 큰 모델을 목표로 잡으면 학습 비용이 커집니다. 작은 데이터와 작은 parameter 수로 전체 흐름을 끝까지 통과하는 것이 더 중요합니다.
 
 ## 실무에서 얻는 이점
 
-작은 모델을 직접 만들어보면 대형 LLM API를 사용할 때도 입력 token, context length, attention, latency, memory 사용량을 더 구체적으로 이해할 수 있다. 특히 RAG나 Agent를 설계할 때 "context에 무엇을 넣을지"와 "출력 길이를 어떻게 제한할지"를 더 현실적으로 판단하게 된다.
+작은 모델을 직접 만들어보면 대형 LLM API를 사용할 때도 입력 token, context length, attention, latency, memory 사용량을 더 구체적으로 이해할 수 있습니다. 특히 RAG나 Agent를 설계할 때 "context에 무엇을 넣을지"와 "출력 길이를 어떻게 제한할지"를 더 현실적으로 판단하게 됩니다.
 
 ## 정리
 
-Tiny LLM은 실무용 대체 모델이라기보다 구조 이해용 실험 장치다. 모델을 크게 만드는 것보다, 데이터가 token이 되고, token이 attention을 거쳐 다음 token 확률이 되는 과정을 끝까지 보는 것이 핵심이다.
+Tiny LLM은 실무용 대체 모델이라기보다 구조 이해용 실험 장치입니다. 모델을 크게 만드는 것보다 데이터가 token이 되고 token이 attention을 거쳐 다음 token 확률이 되는 과정을 끝까지 보는 것이 핵심입니다.
