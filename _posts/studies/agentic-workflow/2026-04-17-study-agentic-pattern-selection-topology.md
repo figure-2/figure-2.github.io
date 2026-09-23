@@ -16,7 +16,7 @@ mermaid: true
 math: true
 ---
 
-Agentic pattern은 복잡한 구조부터 고르는 것이 아니다. 비용, latency, 예측 가능성, 실패 복구 가능성을 기준으로 가장 단순한 구조부터 선택해야 한다.
+Agentic pattern은 복잡한 구조부터 고르는 것이 아닙니다. 비용, latency, 예측 가능성, 실패 복구 가능성을 기준으로 가장 단순한 구조부터 선택해야 합니다.
 
 ## 어떤 패턴을 써야 할까?
 
@@ -53,8 +53,8 @@ Orchestrator-Workers를 확장할 때 3가지 구조 중 선택 — 규모와 �
 
 ### 핵심 요약
 
-패턴 선택의 기본 원칙은 단순한 구조부터 시작하는 것이다. 비용과 latency, 예측 가능성을 기준으로 Workflow, Orchestrator, Autonomous Agent, Human-in-the-Loop를 선택해야 한다.
+패턴 선택의 기본 원칙은 단순한 구조부터 시작하는 것입니다. 비용과 latency, 예측 가능성을 기준으로 Workflow, Orchestrator, Autonomous Agent, Human-in-the-Loop를 선택해야 합니다.
 
 ### 보충 해설
 
-Multi-Agent 토폴로지는 멋있어 보이지만 운영 난도가 높다. Supervisor는 통제가 쉽고, Swarm은 유연하지만 디버깅이 어렵고, Hierarchical은 규모 확장에 유리하다. 선택 기준은 자율성보다 관측 가능성과 실패 복구 가능성이다.
+Multi-Agent 토폴로지는 운영 난도가 높습니다. Supervisor는 통제가 쉽고, Swarm은 유연하지만 디버깅이 어렵고, Hierarchical은 규모 확장에 유리합니다. 선택 기준은 자율성보다 관측 가능성과 실패 복구 가능성입니다.

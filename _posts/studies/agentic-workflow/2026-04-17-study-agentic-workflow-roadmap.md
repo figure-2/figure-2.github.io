@@ -18,7 +18,7 @@ mermaid: true
 math: true
 ---
 
-Agentic Workflow는 패턴 이름을 외우는 것보다 유즈케이스를 어떤 실행 구조로 바꿀지 판단하는 것이 중요하다. 같은 문제도 비용, 품질 기준, 실패 비용에 따라 다른 패턴을 선택할 수 있다.
+Agentic Workflow는 패턴 이름을 외우는 것보다 유즈케이스를 어떤 실행 구조로 바꿀지 판단하는 것이 중요합니다. 같은 문제도 비용, 품질 기준, 실패 비용에 따라 다른 패턴을 선택할 수 있습니다.
 
 ## 실전 유즈케이스 매핑
 
@@ -26,55 +26,55 @@ Prompt Chaining
 
 마케팅 카피 생성
 
-브리프 → 아웃라인 → 초안 → 편집 → 번역. 각 단계 게이트로 품질 보장.
+브리프 → 아웃라인 → 초안 → 편집 → 번역 순으로 진행합니다. 각 단계의 게이트로 품질을 보장합니다.
 
 Routing
 
 고객지원 자동화
 
-환불/기술/일반 문의 분류 후 전문 핸들러로. Router는 Haiku, Handler는 Sonnet.
+환불·기술·일반 문의를 분류한 뒤 전문 핸들러로 보냅니다. Router는 Haiku, Handler는 Sonnet을 사용합니다.
 
 Parallelization
 
 코드 리뷰 자동화
 
-보안/성능/스타일 관점을 병렬 검토 후 통합 리포트. 관점별 전문 프롬프트.
+보안·성능·스타일 관점을 병렬로 검토한 뒤 통합 리포트를 만듭니다. 관점별 전문 프롬프트를 사용합니다.
 
 Orchestrator-Workers
 
 코딩 에이전트
 
-Claude Code처럼 런타임에 Grep/Read/Edit/Bash 워커를 동적 분배.
+Claude Code처럼 런타임에 Grep/Read/Edit/Bash 워커를 동적으로 분배합니다.
 
 Evaluator-Optimizer
 
 고품질 번역
 
-Generator가 번역, Evaluator가 용어·톤·자연스러움 평가. 최대 3회 루프.
+Generator가 번역하고 Evaluator가 용어·톤·자연스러움을 평가합니다. 최대 3회 반복합니다.
 
 Autonomous Agent
 
 브라우저 자동화
 
-Computer Use: 목표만 주고 클릭·입력·관찰을 스스로 판단.
+Computer Use는 목표만 주고 클릭·입력·관찰을 스스로 판단합니다.
 
 Swarm Topology
 
 다역할 고객지원
 
-결제 → 기술 → 법무 상담원끼리 필요시 자율 handoff. 중앙 감독 없음.
+결제 → 기술 → 법무 상담원이 필요할 때 자율적으로 handoff합니다. 중앙 감독은 없습니다.
 
 Hierarchical Topology
 
 엔터프라이즈 에이전트 플랫폼
 
-Top supervisor → 회계/법무/고객 팀 supervisor → 각 팀 워커들. 대규모 책임 격리.
+Top supervisor → 회계·법무·고객 팀 supervisor → 각 팀 워커로 구성합니다. 대규모 책임을 격리합니다.
 
 Human-in-the-Loop
 
 결제·발송 승인
 
-에이전트가 이메일 50명 발송 직전 일시정지 → 사람 검토 → 재개. 실수 비용이 큰 모든 곳.
+에이전트가 이메일 50명 발송 직전에 일시 정지하고, 사람이 검토한 뒤 재개합니다. 실수 비용이 큰 모든 상황에 적용할 수 있습니다.
 
 ### 하이브리드 조합 예시
 
@@ -122,4 +122,4 @@ Agentic Workflow 학습은 패턴을 암기하는 것이 아니라, 문제를 �
 
 ### 보충 해설
 
-좋은 연습 방법은 하나의 문제를 여러 패턴으로 다시 설계해 보는 것이다. 예를 들어 코드 리뷰는 Parallelization으로, 고객지원은 Routing으로, 장기 리서치는 Orchestrator-Workers로, 배포 승인 흐름은 Human-in-the-Loop로 모델링할 수 있다.
+좋은 연습 방법은 하나의 문제를 여러 패턴으로 다시 설계해 보는 것입니다. 예를 들어 코드 리뷰는 Parallelization으로, 고객지원은 Routing으로, 장기 리서치는 Orchestrator-Workers로, 배포 승인 흐름은 Human-in-the-Loop로 모델링할 수 있습니다.
