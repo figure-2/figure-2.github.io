@@ -16,13 +16,13 @@ mermaid: true
 math: true
 ---
 
-SeSAC:Note의 QA는 범용 챗봇을 붙이는 문제가 아니었다. 사용자가 기대하는 것은 "아무 지식이나 답하는 AI"가 아니라 "내가 올린 이 강의 영상의 근거 안에서 답하는 AI"였다.
+SeSAC:Note의 QA는 범용 챗봇을 붙이는 문제가 아니었습니다. 사용자가 기대하는 것은 "아무 지식이나 답하는 AI"가 아니라 "내가 올린 이 강의 영상의 근거 안에서 답하는 AI"였습니다.
 
-그래서 이 글에서는 QA 흐름을 `video-scoped evidence-grounded QA`로 정리한다. 일반적인 vector DB RAG 전체를 구현했다고 표현하지 않고, 특정 영상의 summary, segment, evidence 안에서 답변하는 QA 흐름으로 제한한다.
+그래서 이 글에서는 QA 흐름을 `video-scoped evidence-grounded QA`로 정리합니다. 일반적인 vector DB RAG 전체를 구현했다고 표현하지 않고, 특정 영상의 summary, segment, evidence 안에서 답변하는 QA 흐름으로 제한합니다.
 
 ## 단순 LLM QA의 문제
 
-가장 간단한 방식은 사용자의 질문을 LLM에 그대로 넣는 것이다. 하지만 이 방식은 강의 복습 서비스에 맞지 않는다.
+가장 간단한 방식은 사용자의 질문을 LLM에 그대로 넣는 것입니다. 하지만 이 방식은 강의 복습 서비스에 맞지 않습니다.
 
 | 단순 LLM QA 문제 | 영향 |
 | --- | --- |
@@ -31,11 +31,11 @@ SeSAC:Note의 QA는 범용 챗봇을 붙이는 문제가 아니었다. 사용자
 | 출처 추적이 약함 | 어떤 segment에서 나온 답인지 알기 어려움 |
 | 긴 요약 전체 주입 | 토큰 비용과 latency 증가 |
 
-강의 영상 기반 QA에서는 답변보다 먼저 범위를 제한해야 한다. 이 질문은 어떤 영상에 대한 것인지, 어떤 segment가 관련되는지, 어떤 summary와 evidence를 근거로 삼을지 정해야 한다.
+강의 영상 기반 QA에서는 답변보다 먼저 범위를 제한해야 합니다. 이 질문은 어떤 영상에 대한 것인지, 어떤 segment가 관련되는지, 어떤 summary와 evidence를 근거로 삼을지 정해야 합니다.
 
 ## video_id 기준 context 제한
 
-QA 흐름의 기본 단위는 `video_id`다. 사용자가 질문하면 시스템은 전체 데이터가 아니라 해당 영상의 summary, segment, evidence를 기준으로 context를 구성한다.
+QA 흐름의 기본 단위는 `video_id`입니다. 사용자가 질문하면 시스템은 전체 데이터가 아니라 해당 영상의 summary, segment, evidence를 기준으로 context를 구성합니다.
 
 ```mermaid
 flowchart LR
@@ -50,7 +50,7 @@ flowchart LR
     L --> R[Streaming Answer]
 ```
 
-이 구조의 목적은 답변을 좁히는 것이다. "이 영상에서는 무엇을 설명했는가"에 답하게 만들고, 외부 지식으로 과하게 확장되는 것을 줄인다.
+이 구조의 목적은 답변을 좁히는 것입니다. "이 영상에서는 무엇을 설명했는가"에 답하게 만들고, 외부 지식으로 과하게 확장되는 것을 줄입니다.
 
 ## Flash Mode와 Thinking Mode
 

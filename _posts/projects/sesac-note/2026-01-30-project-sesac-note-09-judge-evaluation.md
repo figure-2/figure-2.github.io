@@ -15,13 +15,13 @@ mermaid: true
 math: true
 ---
 
-SeSAC:Note에서 Judge는 정답 판별기가 아니다. Judge는 Summarizer가 만든 노트를 원본 segment와 비교해 groundedness, note quality, multimodal use를 보조적으로 점검하는 gate다.
+SeSAC:Note에서 Judge는 정답 판별기가 아닙니다. Judge는 Summarizer가 만든 노트를 원본 segment와 비교해 groundedness, note quality, multimodal use를 보조적으로 점검하는 gate입니다.
 
-이 구분이 중요하다. Judge 수치를 잘못 쓰면 생성 품질을 최종 판정한 것처럼 보일 수 있다. 이 글에서는 Summarizer와 Judge를 왜 나눴는지, benchmark 수치를 어떻게 제한해서 해석해야 하는지 정리한다.
+이 구분이 중요합니다. Judge 수치를 잘못 쓰면 생성 품질을 최종 판정한 것처럼 보일 수 있습니다. 이 글에서는 Summarizer와 Judge를 왜 나눴는지, benchmark 수치를 어떻게 제한해서 해석해야 하는지 정리합니다.
 
 ## Summarizer와 Judge를 분리한 이유
 
-Summarizer의 역할은 노트를 생성하는 것이다. Judge의 역할은 생성된 노트가 근거에 맞는지 점검하는 것이다. 둘을 분리하면 생성과 평가의 책임이 나뉜다.
+Summarizer의 역할은 노트를 생성하는 것입니다. Judge의 역할은 생성된 노트가 근거에 맞는지 점검하는 것입니다. 둘을 분리하면 생성과 평가의 책임이 나뉩니다.
 
 ```mermaid
 flowchart LR
@@ -33,9 +33,9 @@ flowchart LR
     E --> F[Revision or Accept]
 ```
 
-Summarizer가 좋은 문장을 만들더라도 원본 근거와 맞지 않으면 학습 노트로는 위험하다. 반대로 원본 근거만 나열하면 읽기 좋은 노트가 되지 않는다. 그래서 생성과 평가를 분리해 서로 다른 관점으로 보게 했다.
+Summarizer가 좋은 문장을 만들더라도 원본 근거와 맞지 않으면 학습 노트로는 위험합니다. 반대로 원본 근거만 나열하면 읽기 좋은 노트가 되지 않습니다. 그래서 생성과 평가를 분리해 서로 다른 관점으로 보게 했습니다.
 
-Judge는 기준 점수에 미달한 결과에 대해 피드백을 만들고, 그 피드백을 바탕으로 요약을 보완하거나 재생성하는 loop로 설명할 수 있다. 다만 최종 판정 장치가 아니라 위험을 줄이는 보조 점검 loop로 보는 것이 맞다.
+Judge는 기준 점수에 미달한 결과에 대해 피드백을 만들고, 그 피드백을 바탕으로 요약을 보완하거나 재생성하는 loop로 설명할 수 있습니다. 다만 최종 판정 장치가 아니라 위험을 줄이는 보조 점검 loop로 보는 것이 맞습니다.
 
 ```mermaid
 flowchart LR
