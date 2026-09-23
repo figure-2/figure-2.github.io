@@ -131,6 +131,33 @@ flowchart LR
 
 따라서 LocalLens에서는 절대 점수가 가장 높은 모델보다, 로컬 환경에서 사용 가능한 속도와 품질의 균형을 우선했다. 이 수치는 발표자료 기준이며, 모든 환경에서 같은 처리 시간을 보장하는 값은 아니다.
 
+![인코더 계층 구조](/assets/images/source-archives/locallens/intro-04.webp)
+
+<details markdown="1">
+<summary markdown="span">인코더 선정 과정과 비교 장표</summary>
+
+### 02:47 · Text 인코더 선정 과정 — 후보군 선정
+
+![02:47 · Text 인코더 선정 과정 — 후보군 선정](/assets/images/source-archives/locallens/presentation-02m47s.png)
+
+### 03:18 · 핵심 도메인 성능 검증
+
+![03:18 · 핵심 도메인 성능 검증](/assets/images/source-archives/locallens/presentation-03m18s.png)
+
+### 03:40 · 모델 크기 대비 성능 효율성 분석
+
+![03:40 · 모델 크기 대비 성능 효율성 분석](/assets/images/source-archives/locallens/presentation-03m40s.png)
+
+### 04:11 · 실행 환경 성능 검증 및 최종 모델 확정
+
+![04:11 · 실행 환경 성능 검증 및 최종 모델 확정](/assets/images/source-archives/locallens/presentation-04m11s.png)
+
+### 04:54 · Vision 인코더 설명
+
+![04:54 · Vision 인코더 설명](/assets/images/source-archives/locallens/presentation-04m54s.png)
+
+</details>
+
 ## 다음 글
 
 다음 글에서는 PDF 내부 시각 정보를 어떻게 검색 맥락으로 바꾸었는지 정리한다.

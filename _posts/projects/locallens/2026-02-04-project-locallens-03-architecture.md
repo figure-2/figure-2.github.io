@@ -97,6 +97,10 @@ GUI는 검색 엔진의 핵심은 아니지만 사용 흐름을 완성한다. �
 
 이 구조는 “모델 하나를 붙인 데모”보다 “로컬 파일 검색 흐름을 끝까지 연결한 데스크톱 검색기”에 가깝다.
 
+![검색 엔진 구성도](/assets/images/source-archives/locallens/intro-02.webp)
+
+![검색 시퀀스](/assets/images/source-archives/locallens/intro-03.webp)
+
 ## 다음 글
 
 다음 글에서는 이 구조의 핵심인 VectorStore와 파일 동기화 방식을 정리한다.

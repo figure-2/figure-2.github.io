@@ -49,31 +49,80 @@ flowchart TB
 
 사용자는 프론트엔드에서 영상을 업로드합니다. 백엔드는 영상 파일과 메타데이터를 저장하고, 비동기 파이프라인을 시작합니다. 파이프라인은 음성과 화면을 별도로 분석한 뒤 timestamp 기준으로 결합합니다. 결과는 DB에 저장되고, 사용자는 처리 상태, 요약, 근거, 챗봇 답변을 조회합니다.
 
+<details markdown="1">
+<summary markdown="span">서비스 구성도와 처리 단계</summary>
+
+![멀티모달 처리 파이프라인](/assets/images/source-archives/sesac-note/intro-02.webp)
+
+![서비스 아키텍처](/assets/images/source-archives/sesac-note/intro-04.webp)
+
+![전체 시스템 구성](/assets/images/notion-records/sesac-note/development-01.png)
+
+![전처리와 분석 파이프라인](/assets/images/notion-records/sesac-note/development-02.png)
+
+![프로젝트 구성](/assets/images/notion-records/sesac-note/optimization-01.png)
+
+![경량화 파이프라인](/assets/images/notion-records/sesac-note/optimization-02.png)
+
+</details>
+
 ## STT: 음성 설명과 timestamp 생성
 
-STT 단계는 영상에서 음성을 추출하고, 강사의 설명을 timestamp가 있는 텍스트로 변환합니다. 강의에서는 "이 부분", "여기", "다음 식" 같은 지시어가 자주 나오기 때문에 timestamp가 중요합니다.
+음성 설명을 화면과 연결하기 위해 STT 결과에 시간 정보를 함께 저장했습니다. 엔진 선택과 오디오 전처리의 구현은 다음과 같습니다.
 
-STT 결과는 단순 transcript가 아니라 이후 Fusion 단계의 한쪽 입력입니다. 음성 설명이 어느 시간대에 등장했는지를 알아야 화면 캡처와 연결할 수 있습니다.
+{% raw %}
 
-STT 후보는 Clova Speech와 Whisper였습니다. 프로젝트 조건에서는 한국어 강의 인식과 긴 문장 처리가 중요했기 때문에 Clova Speech를 주요 STT 엔진으로 두고, Whisper를 fallback 후보로 유지하는 구조가 적합했습니다.
+<p><strong>Audio Engine: </strong><code>clova_stt.py</code><strong> &amp; </strong><code>whisper_stt.py</code></p>
+<ul>
+<li><strong>Clova Speech Client</strong>: 한국어 전문용어 및 긴 문장 인식률이 뛰어난 Naver Clova Speech API를 메인 엔진으로 사용</li>
+<li><strong>Whisper Client</strong>: 비용 절감 및 로컬 테스트, 다국어 지원을 위해 OpenAI Whisper 모델(base/small 등)을 서브/백업 엔진으로 구현</li>
+</ul>
+<p><strong>Output Schema</strong>:</p>
+<pre><code>{
+&quot;segments&quot;: [
+{
+&quot;id&quot;: &quot;stt_001&quot;,
+&quot;start_ms&quot;: 0,
+&quot;end_ms&quot;: 4500,
+&quot;text&quot;: &quot;안녕하세요, 이번 강의에서는 변분 추론에 대해 알아보겠습니다.&quot;,
+&quot;confidence&quot;: 0.985
+},
+...
+],
+&quot;confidence&quot;: 0.988,
+&quot;raw_response&quot;: { ... } // (Optional) Clova/Whisper 원본 응답
+}
+</code></pre>
+<div class="table-wrapper"><table>
+<tr><th><strong>지표</strong></th><th><strong>Clova</strong></th><th><strong>Whisper</strong></th><th><strong>승자</strong></th></tr>
+<tr><td><strong>WER (단어 오류율)</strong></td><td>6.2%</td><td>45.4%</td><td>Clova (<strong>7배 좋음</strong>)</td></tr>
+<tr><td><strong>CER (글자 오류율)</strong></td><td>4.0%</td><td>26.7%</td><td>Clova (<strong>7배 좋음</strong>)</td></tr>
+<tr><td><strong>속도 (latency)</strong></td><td>10초</td><td>16초</td><td>Clova (<strong>1.6배 빠름</strong>)</td></tr>
+</table></div>
+<p><strong>Audio Routing </strong><code>stt_router.py</code></p>
+<ul>
+<li>설정 파일 기반으 코드 수정 없이 STT 엔진을 즉시 교체할 수 있는 <strong>Router Pattern</strong> 적용</li>
+<li>오디오 추출부터 설정 파일을 통해서 결정된 backend(Clova/Whispeer)로 STT추출을 진행까지의 과정을 하나의 라우팅 레이어에서 관리</li>
+<li>오디오 추출 로직을 분리하여, 오디오 파일만으로도 독립 실행 가능한 형태로 구성</li>
+</ul>
+<p><strong>Smart Audio Extraction (</strong><code>extract_audio.py</code><strong>)</strong>:</p>
+<ul>
+<li><strong>Phase Cancellation Fix</strong>: 스테레오 오디오의 역상 상쇄 문제를 해결하기 위해 <code>volumedetect</code> 기반으로 Left/Right/Downmix/Phase-fix 중 최적의 모노 변환 방식을 자동으로 선택</li>
+<li><strong>Multi-Format Support</strong>: 스토리지 용량 최적화 및 다양한 업로드 요건 충족을 위해 WAV, FLAC 뿐만 아니라 <strong>MP3 (128k)</strong> 인코딩을 기본 지원</li>
+</ul>
+<p><strong>최종 정리</strong></p>
+<ol>
+<li><strong>유연성 (Flexibility)</strong>: Router 도입으로 Clova(고성능)와 Whisper(무료/로컬)를 자유롭게 오가며 운영 가능하며, 설정 파일을 통해 손쉽게 제어 가능</li>
+<li><strong>안정성 (Stability)</strong>: 역상 문제 자동 해결 로직(<code>auto-mono</code>)과 표준화된 출력 스키마를 통해 예측 가능한 파이프라인 구축</li>
+<li><strong>효율성 (Efficiency)</strong>: MP3 압축을 통한 업로드 용량 절감 및 처리 속도 최적화</li>
+</ol>
+<p><strong>시도해 본 것들</strong></p>
+<ul>
+<li><strong>Whisper 모델 최적화</strong>: V100 환경에서 Whisper Base 모델 서빙을 시도했으나, 한국어 전문용어 인식률 대비 속도(RTF)가 Clova API에 비해 현저히 떨어져 메인 서비스에는 Clova를 채택함 (벤치마크: Clova WER 6% vs Whisper 45%)</li>
+<li><strong>Faster-Whisper</strong>: 속도 개선을 위해 CTranslate2 기반의 faster-whisper 도입을 검토했으나, 여전히 클라우드 API의 편의성과 정확도를 넘어서지 못해 보류</li>
+</ul>
 
-| 후보 | 장점 | 프로젝트에서의 판단 |
-| --- | --- | --- |
-| Clova Speech | 한국어 강의 인식과 긴 문장 처리에 강점 | 주요 STT 엔진으로 사용 |
-| Whisper | 오픈소스, 다국어 지원, 비용 통제 여지 | fallback 후보로 유지 |
-
-또 하나의 실제 이슈는 오디오 채널 처리였습니다. 일부 영상 포맷에서는 스테레오 역상 상쇄 때문에 모노 변환 후 음성이 약해지거나 사라질 수 있습니다. 그래서 STT 전처리에서는 영상 파일을 그대로 보내는 것이 아니라, 오디오 상태를 확인하고 적절한 모노 변환 방식을 고르는 보정 흐름이 필요했습니다.
-
-오디오 전처리는 다음처럼 안정성 중심으로 보는 편이 맞다.
-
-| 단계 | 목적 |
-| --- | --- |
-| 음성 추출 | 영상에서 STT 입력용 audio track 분리 |
-| 채널 상태 확인 | 모노 변환 시 음성이 약해지는 케이스 감지 |
-| 보정 방식 선택 | 입력 영상 특성에 맞는 변환 방식 적용 |
-| STT 실행 | timestamp가 있는 transcript 생성 |
-
-이 단계는 모델 성능을 과시하는 부분이 아니라, 뒤의 Fusion이 쓸 수 있는 시간축 텍스트를 안정적으로 만드는 기반 작업이다.
+{% endraw %}
 
 ## Capture: 의미 있는 화면 변화 추출
 
@@ -145,6 +194,29 @@ Summarizer는 segment를 바탕으로 영상 없이 읽을 수 있는 노트를 
 | 평가 결과 | judge |
 
 Storage/R2 계열 저장소는 원본 영상과 캡처 이미지를 담당하고, Supabase PostgreSQL은 상태와 구조화 결과를 담당한다. 이 분리가 있어야 업로드, 진행률, 요약 조회, 영상별 QA가 웹 서비스 흐름으로 이어질 수 있다.
+
+![영상과 처리 결과의 데이터베이스 구조](/assets/images/notion-records/sesac-note/development-08.jpg)
+
+처리 상태는 `preprocessing_jobs`와 `processing_jobs`로, 시간축 결합과 요약 결과는 `fs_segments`와 `fs_summaries`로 구분했습니다.
+
+<details markdown="1">
+<summary markdown="span">Audio (src/audio) 개발 이력</summary>
+
+{% raw %}
+
+<div class="table-wrapper"><table>
+<tr><th>Date</th><th>Change Bundle</th><th>Category</th><th>Evidence</th><th>Impact</th></tr>
+<tr><td>12/31</td><td>Clova STT 클라이언트 초기 구현(요청/응답 정규화, 신뢰도 계산)</td><td>DevEx/Quality</td><td><code>5e18553</code></td><td>STT 메인 엔진 기반 확보</td></tr>
+<tr><td>01/01</td><td>역상 스테레오 무음 해결: volumedetect 기반 auto-mono 선택(Left/Right/Downmix/Phase-fix)</td><td>Reliability</td><td><code>0e2760f</code></td><td>무음 케이스 자동 복구</td></tr>
+<tr><td>01/02</td><td>Whisper 백업 엔진 도입 및 성능 비교</td><td>Cost/Quality</td><td><code>03e4a0d</code></td><td>WER: Clova 6% vs Whisper 45% → 메인 Clova 유지</td></tr>
+<tr><td>01/14~01/15</td><td>Router Pattern + settings.yaml 분리 + 리팩토링(독립 실행 가능)</td><td>DevEx</td><td><code>d906e05</code></td><td>코드 수정 없이 STT 엔진/옵션 교체</td></tr>
+<tr><td>01/20</td><td>STT 세그먼트에 고유 ID(stt_XXX) 부여(추적성 강화)</td><td>Reliability/QA</td><td><code>3098f59</code></td><td>이후 Summarizer 근거 참조 가능</td></tr>
+<tr><td>01/21</td><td>MP3(128k)/FLAC 등 다중 포맷 지원 + DB 직동기화 최적화</td><td>Cost/Perf</td><td><code>8e77ee6</code></td><td>저장/업로드 비용 절감, 운영 유연성 증가</td></tr>
+</table></div>
+
+{% endraw %}
+
+</details>
 
 ## 다음 글로 이어지는 지점
 

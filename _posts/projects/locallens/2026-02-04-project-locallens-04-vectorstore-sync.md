@@ -474,6 +474,8 @@ class VectorStore:
 
 </details>
 
+![파일 상태와 벡터 저장소 동기화](/assets/images/source-archives/locallens/intro-05.webp)
+
 ## 다음 글
 
 다음 글에서는 VectorStore 뒤에서 실제 임베딩을 처리하는 Encoder 구조와 모델 선택을 정리한다.

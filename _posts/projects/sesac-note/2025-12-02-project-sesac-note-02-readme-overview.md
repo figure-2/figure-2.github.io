@@ -88,23 +88,45 @@ flowchart LR
 
 ## 기술 스택
 
-backend와 frontend 기술 스택은 다음처럼 정리된다.
+{% raw %}
 
-| 영역 | 기술 |
-| --- | --- |
-| Backend Language | Python 3.10+ |
-| Backend Framework | FastAPI + Uvicorn |
-| AI/LLM | Google Gemini, Qwen VLM, Google ADK |
-| STT | Clova Speech API, OpenAI Whisper |
-| Computer Vision | OpenCV, ORB, pHash, ROI Detection |
-| Orchestration | LangGraph |
-| Database | Supabase PostgreSQL + pgvector |
-| Storage | Supabase Storage + Cloudflare R2 |
-| Container / CI-CD | Docker, GitHub Actions, Cloud Run 설정 |
-| Frontend | React 19.2, Vite 7.2, React Router |
-| UI / 문서 렌더링 | Tailwind CSS, KaTeX, react-markdown |
+<ul>
+<li><strong>Tech Stack</strong><ul>
+<li><strong>Language</strong>: Python 3.10+</li>
+<li><strong>Frontend</strong>: Streamlit, React (Vite)</li>
+<li><strong>Backend</strong>: FastAPI, Supabase (PostgreSQL)</li>
+</ul>
+</li>
+<li><strong>Frameworks &amp; Libraries</strong><ul>
+<li><strong>Ochestration</strong>: LangGraph, ADK</li>
+<li><strong>AI SDK</strong>: OpenAI SDK, Google GenAI SDK</li>
+<li><strong>Capture</strong>: OpenCV, NumPy, FFmpeg</li>
+</ul>
+</li>
+<li><strong>AI Models (API)</strong><ul>
+<li><strong>VLM</strong>: Qwen3-VL-32B-Instruct (Alibaba Cloud)</li>
+<li><strong>LLM (Judge/Summary)</strong>: Gemini 3 Flash</li>
+<li>LLM (Chatbot): Gemini 3 Flash</li>
+<li><strong>STT</strong>: Naver Clova Speech (Main), OpenAI Whisper (Fallback)</li>
+</ul>
+</li>
+<li><strong>Library</strong><ul>
+<li>FastAPI: 0.123.10 (ASGI Server: uvicorn 0.40.0)</li>
+<li>React: 19.x (Frontend via Vite)</li>
+<li>LangGraph: 0.3.5+ (Agent Workflow Orchestration)</li>
+<li>OpenAI SDK: 2.14.0 (for OpenRouter/Qwen)</li>
+<li>Google GenAI SDK: 1.56.0 (for Gemini Judge/Summarizer)</li>
+<li>OpenCV (opencv-python): 4.12.0.88</li>
+<li>MediaPipe: 0.10.31</li>
+<li>NumPy: 2.2.6</li>
+<li>OpenAI Whisper: 20250625 (Local STT Engine) </li>
+<li>Supabase: 2.0.0+ (PostgreSQL Client)</li>
+<li>Pydantic: 2.11.7 (Data Validation)</li>
+</ul>
+</li>
+</ul>
 
-CI/CD와 배포 관련 기술은 실행 구조를 이해하기 위한 맥락으로만 본다. 여기서는 프로젝트가 어떤 배포/실행 구조를 갖도록 설계되었는지에 집중한다.
+{% endraw %}
 
 ## 코드 구조
 

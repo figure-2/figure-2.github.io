@@ -62,6 +62,84 @@ Judge는 요약을 하나의 점수로만 보지 않는다. 프로젝트 기록�
 
 이 축들은 품질 보증이 아니라 점검 기준이다. LLM Judge 역시 LLM이므로 실수할 수 있다. 따라서 Judge 결과는 자동 검사의 한 종류로 보고, 제한된 benchmark 기준으로만 해석한다.
 
+<details markdown="1">
+<summary markdown="span">평가 모듈의 입력·출력과 가중치</summary>
+
+{% raw %}
+
+<p>Judge 모듈은 생성된 요약 콘텐츠의 품질을 보증하는 단계</p>
+<ul>
+<li>입력 : 생성된 요약본 <code>segment_summaries.jsonl</code>+ 원본 STT/이미지 싱크 데이터 <code>segments_units.jsonl</code></li>
+<li>평가 : 정해진 항목으로 평가</li>
+<li>산출 : 가중치가 적용된 종합 점수와 개선 사항이 담긴 한국어 한 줄 피드백.</li>
+</ul>
+<p><code>src/judge/judge.py</code><strong>: 요약 결과 평가</strong></p>
+<ul>
+<li>생성된 요약 콘텐츠가 신뢰 가능(groundedness, multimodal_use)하고, 규칙 준수(compliance) 및 교육적 가치(note_quality)가 있는지 평가</li>
+<li>처리 로직<ol>
+<li>요약본과 원본 근거 데이터를 로드하고 ID 매칭 수행</li>
+<li>segments_units를 batch_size 단위로 분할</li>
+<li>Gemini 모델로 평가 요청(병렬 처리 지원)</li>
+<li>LLM이 반환한 3가지 항목의 점수를 가중치를 적용해 계산 후 정규화를 통해 최종 점수를 계산</li>
+<li>최종 리포트 및 세그먼트별 상세 리포트를 JSON으로 저장</li>
+</ol>
+</li>
+</ul>
+<p><code>config/judge/prompts.yaml</code><strong>: 평가 기준 프롬프트</strong></p>
+<ul>
+<li>목적: 토큰 소모를 최소화하면서 핵심만 빠르게 평가.</li>
+<li>구조 :<ol>
+<li>System : &quot;엄격한 AI 평가자&quot; 페르소나 부여.</li>
+<li>Criteria (채점 기준표) :</li>
+</ol>
+<div class="table-wrapper"><table>
+<tr><th><strong>항목</strong></th><th><strong>가중치</strong></th><th><strong>설명</strong></th></tr>
+<tr><td><strong>groundedness</strong></td><td>45%</td><td>주장이 근거에 의해 완벽히 지지되는가? (Hallucination 방지)</td></tr>
+<tr><td><strong>note_quality</strong></td><td>35%</td><td>영상 없이도 이해 가능한 독립적인 학습 노트인가?</td></tr>
+<tr><td><strong>compliance</strong></td><td>20%</td><td>JSON 스키마 및 금지어 규칙을준수했는가?</td></tr>
+<tr><td><strong>multimodal_use</strong></td><td>참고</td><td>시각 정보(cap_ids)를 적절히 활용했는가?</td></tr>
+</table></div>
+<ol>
+<li>Protocol: Validation Report 확인 -&gt; 의미론적 근거 검증 -&gt; JSON 출력 순서 강제.</li>
+</ol>
+</li>
+</ul>
+<p><strong>최종 정리</strong></p>
+<pre><code>{
+&quot;pass&quot;: true, // 최종 통과 여부 (boolean)
+&quot;final_score&quot;: 10.0, // 최종 점수 (10점 만점)
+&quot;min_score&quot;: 7.0, // 통과 기준 점수
+&quot;model&quot;: &quot;gemini-3-flash-preview&quot;, // 사용된 Judge LLM 모델
+&quot;prompt_version&quot;: &quot;v3&quot;, // 프롬프트 버전
+&quot;generated_at_utc&quot;: &quot;...&quot;, // 생성 시간 (UTC)
+&quot;feedback&quot;: [ // 세그먼트별 피드백 (선택적일 수 있음)
+{
+&quot;segment_id&quot;: 1,
+&quot;feedback&quot;: &quot;VLM 텍스트와 레이아웃 정보를 바탕으로...&quot;
+},
+    ...
+  ],
+&quot;report&quot;: { // 상세 평가 리포트
+&quot;scores_avg&quot;: {
+&quot;groundedness&quot;: 10.0, // 근거 기반 점수 (환각 여부 등)
+&quot;multimodal_use&quot;: 10.0, // 멀티모달 정보 활용도
+&quot;note_quality&quot;: 10.0, // 노트 품질
+&quot;compliance&quot;: 10.0, // 지시 이행도
+&quot;final&quot;: 10.0 // 최종 평균점
+},
+&quot;segments&quot;: {
+&quot;matched&quot;: 3,
+&quot;missing_summaries&quot;: [],
+&quot;missing_units&quot;: []
+}
+}
+}
+</code></pre>
+
+{% endraw %}
+
+</details>
+
 ## Judge prompt 개선 흐름
 
 초기 Judge prompt는 평가 조건이 많고 모호하면 모델의 판단이 흔들릴 수 있다. 평가 기준이 복잡하면 토큰 사용량도 늘고, 응답 시간도 늘어난다.
@@ -116,6 +194,36 @@ Judge benchmark는 유용하지만 한계가 있다.
 | 서비스 전체와 분리 | Judge 단계 수치가 전체 UX를 대표하지 않음 |
 
 따라서 "benchmark 조건에서 평가 단계 효율 개선이 관찰됐다" 정도로 해석하는 것이 안전하다.
+
+<details markdown="1">
+<summary markdown="span">Judge (src/judge) 개발 이력</summary>
+
+{% raw %}
+
+<div class="table-wrapper"><table>
+<tr><th>Date</th><th>Change Bundle</th><th>Category</th><th>Evidence</th><th>Impact</th></tr>
+<tr><td>01/07</td><td>Judge 초기 구성(가중치 기반 평가 + 배치 처리)</td><td>QA</td><td><code>465c392</code><strong> </strong></td><td>품질 기준 “정의” 완료</td></tr>
+<tr><td>01/08</td><td>점수 인플레이션 해결: 0~10 엄격 기준 정립</td><td>Quality</td><td><code>b5ba590</code></td><td>과대평가 방지</td></tr>
+<tr><td>01/09</td><td>병렬 처리 도입(ThreadPoolExecutor)</td><td>Perf</td><td><code>7d35075</code></td><td>평가 속도 약 40% 개선</td></tr>
+<tr><td>01/09</td><td>ADK UI 연동(버튼 클릭 평가)</td><td>DevEx</td><td><code>a7baa8a</code><strong> </strong></td><td>데모/운영 편의 향상</td></tr>
+<tr><td>01/10</td><td>피드백을 한 줄로 압축(토큰 절감)</td><td>Cost</td><td><code>723709c</code><strong> </strong></td><td>평가 비용/지연 감소</td></tr>
+<tr><td>01/15</td><td>프롬프트/설정 파일 분리(prompt.yaml)</td><td>DevEx</td><td><code>723709c</code></td><td>유지보수성 향상</td></tr>
+<tr><td>01/16</td><td>Feedback loop 리팩토링(최대 2회 재시도)</td><td>Reliability</td><td><code>c64f53c</code></td><td>“자가 교정” 품질 보증 완성</td></tr>
+<tr><td>01/19</td><td>Judge 프롬프트 
+v2/v3 추가</td><td>Reliability</td><td><code>7be6ad1</code>
+Issue #91</td><td>summarizer (v3) 조합.
+v2 (34.2초, 14,131) → 
+v1 (17.6초, 14,704) →
+v3 (14.8초, 13,980)</td></tr>
+<tr><td>02/07</td><td>배치 간 
+Context Chaining </td><td>Reliability</td><td><code>c1fe261</code>
+</td><td>Summarizer→ Judge 
+문맥 연속성 확보, 맥락 단절 해결</td></tr>
+</table></div>
+
+{% endraw %}
+
+</details>
 
 ## Judge 해석에서 주의할 점
 

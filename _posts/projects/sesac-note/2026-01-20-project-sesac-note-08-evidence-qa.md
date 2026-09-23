@@ -97,19 +97,113 @@ LangGraph를 사용하면 다음 책임을 분리할 수 있다.
 
 상태 기반 흐름으로 나누면 질문 파싱, 근거 선택, 부족한 근거 보강, 답변 생성 책임을 분리할 수 있다. 특히 Thinking Mode처럼 추가 근거 탐색이 필요한 경우에는 단일 prompt보다 상태 전이가 있는 workflow가 더 설명하기 쉽다.
 
+<details markdown="1">
+<summary markdown="span">질문 처리 노드와 프롬프트</summary>
+
+{% raw %}
+
+<p><strong>LangGraph</strong></p>
+<p><img src="/assets/images/notion-records/sesac-note/development-05.png" alt="서비스 개발 도식 5"></p>
+<p>LangGraph는 Node와 Edge로 구성된 그래프 구조를 통해 의사결정 과정을 시각화하고 제어할 수 있는 프레임워크. </p>
+<p>본 프로젝트의 그래프 구조는 사진과 같음</p>
+<p><strong>주요 노드</strong></p>
+<ul>
+<li>parse_input: 사용자 입력 파싱(시간 태그 추출, 의도 분석)</li>
+<li>route_with_llm: LLM 기반 의도 파악 후 다음 단계 라우팅</li>
+<li>prepare_full: 전체 요약 데이터 로드 및 응답 준비</li>
+<li>decide_summary: 현재 요약만으로 답변이 충분한지 여부 판단(gemini-2.5-flash)</li>
+<li>enrich_evidence: 필요 시 DB에서 STT/VLM 원본 조회로 근거 보강</li>
+<li>generate_answer: 최종 컨텍스트 기반 답변 생성(gemini-3-flash-preview)</li>
+</ul>
+<p><strong>라우팅/처리 흐름</strong></p>
+<ul>
+<li>입력 처리 관문은 설정에 따라 Full/Partial 모드로 동작</li>
+<li>현재는 Full mode만 구현되어 있으며, 기본 설정으로 Full mode로 동작</li>
+</ul>
+<p><strong>Processing Workflow</strong></p>
+<ul>
+<li>DB에서 Summary 데이터를 가져와 answer_records에 적재</li>
+<li>LLM이 질문과 요약만으로 답변 가능한지 판단<ul>
+<li>Flash mode: 증거 추가 조회 없이 요약 중심으로 빠르게 응답</li>
+<li>Thinking mode: 항상 Need Evidence로 판단하여 STT/VLM 근거를 함께 조회</li>
+</ul>
+</li>
+<li>source_refs의 STT/VLM ID 수집 후 원본 데이터 조회</li>
+<li>보강된 evidence를 prompt에 넣어 최종 답변 생성</li>
+</ul>
+<div class="table-wrapper"><table>
+<tr><th><strong>단계</strong></th><th><strong>상태 변화</strong></th><th><strong>설명</strong></th></tr>
+<tr><td>초기</td><td>message</td><td>사용자 입력만 존재</td></tr>
+<tr><td>Parse</td><td>cleaned_message, time_ms</td><td>시간 태그 분리 및 정제</td></tr>
+<tr><td>Prepare</td><td>answer_records (Summary Only)</td><td>요약 데이터 로드</td></tr>
+<tr><td>Enrich</td><td>answer_records(+Evidence)</td><td>요약 데이터 내부에 STT/VLM 근거 추가</td></tr>
+<tr><td>Generate</td><td>respone, history</td><td>최종 답변 생성 및 대화 이력 갱신</td></tr>
+</table></div>
+<p><strong>LangGraph Prompt</strong></p>
+<p><strong>Flash Mode</strong></p>
+<pre><code>요약본 자체에 집중해 복잡한 추론보다는 있는 그대로 답변하는 데 초점을 둠
+
+&quot;Use only the provided summary records to answer.&quot;
+
+하지만 evidence도 참고할 수 있도록 함
+
+&quot;If summaries are missing but evidence is sufficient, provide a reasonable interpretation based on the evidence.&quot;</code></pre>
+<p><strong>Thinking Mode</strong></p>
+<pre><code>증거를 적극적으로 활용하고 주장에 대한 근거를 설명하도록 유도함
+
+“Use only the provided summary records and evidence to answer.&quot;
+
+&quot;When answering, connect claims to evidence and explain the reasoning briefly.&quot;</code></pre>
+
+{% endraw %}
+
+</details>
+
 ## streaming response와 follow-up question
 
 긴 답변은 한 번에 늦게 보여주는 것보다 streaming으로 보여주는 편이 낫다. 사용자는 답변이 생성되고 있다는 것을 볼 수 있고, 프론트엔드는 대화 상태를 자연스럽게 업데이트할 수 있다.
 
 follow-up question은 학습 UX와 연결된다. 사용자가 어떤 질문을 해야 할지 모를 때, 영상 내용 기반의 다음 질문 후보를 제공하면 복습 흐름이 이어진다. 다만 이 역시 영상 근거 범위 안에서 생성되어야 한다.
 
-## batch-level retrieval 아이디어와 범위 제한
+## 배치 단위 검색으로 QA 입력 줄이기
 
-개발 과정에서는 batch 단위 요약을 embedding하고, 질문과 관련 있는 batch만 검색하는 아이디어도 정리됐다. 전체 요약을 매번 context로 넣으면 토큰 비용과 latency가 커지고, 관련 없는 내용이 답변에 섞일 수 있기 때문이다.
+전체 요약을 매번 넣는 방식에서 질문과 관련된 배치 요약만 검색하는 방식으로 구현을 확장했습니다. 검색 범위는 해당 영상 안의 근거로 제한합니다.
 
-다만 이 부분을 일반적인 vector DB RAG 전체 구현으로 과장하면 안 된다. 안전한 표현은 다음과 같다.
+{% raw %}
 
-> 영상별 batch summary나 segment를 질문과 연결해 context를 좁히는 방향을 검토했다. 이 글에서는 이를 범용 지식 검색 시스템이 아니라 특정 영상 안의 근거 선택 문제로 다룬다.
+<h4 id="opt-22"><strong>문제 정의</strong></h4>
+<p>사용자가 챗봇으로 질문할 때마다 전체 요약을 컨텍스트로 넣으면 API 호출 비용과 응답 레이턴시가 증가한다고 판단했습니다. 또한 전체 요약을 넣으면 답변에 사용해야 할 중요한 내용이 희석될 위험이 있었습니다.</p>
+<h4 id="opt-23"><strong>접근 방법</strong></h4>
+<p>배치별로 요약 결과 임베딩을 만들어두고 질문이 들어오면 관련 배치만 검색(top-k)해서 컨텍스트를 구성하는 방식으로 비용(LLM 토큰, 레이턴시), 적합도 문제를 해결할 수 있다고 생각했습니다.</p>
+<h4 id="opt-24"><strong>해결</strong></h4>
+<ul>
+<li>배치별 요약 결과를 Qwen3 Embedding 8B로 임베딩</li>
+<li>쿼리도 임베딩한 뒤 유사도 검색으로 관련 배치 top-k를 retrieve</li>
+<li>검색 로직을 Supabase SQL Function(RPC)로 정의해 서버 측에서 벡터 유사도 검색이 가능하도록 구성하고, 챗봇이 해당 함수를 tool-call로 호출하도록 연동</li>
+</ul>
+<h4 id="opt-25"><strong>결과</strong></h4>
+<ul>
+<li>전체 요약을 매번 챗봇에 주입하지 않아도 되어서 비용/레이턴시 감소</li>
+<li>질문과 관련된 내용 중심으로 컨텍스트를 구성하여 답변의 적합도 상승</li>
+</ul>
+
+{% endraw %}
+
+<details markdown="1">
+<summary markdown="span">Orchestration / Chatbot (ADK → LangGraph) 개발 이력</summary>
+
+{% raw %}
+
+<div class="table-wrapper"><table>
+<tr><th>Date</th><th>Change Bundle</th><th>Category</th><th>Evidence</th><th>Impact</th></tr>
+<tr><td>01/08~01/17</td><td>ADK 기반 Root-Sub 구조, PipelineService 도입, 챗봇+Streamlit 연동</td><td>DevEx</td><td><strong>Issue #68</strong></td><td>서비스 계층화, UI-로직 분리</td></tr>
+<tr><td>01/25</td><td>ADK, GenAI SDK, LangGraph 비교 후 Langgraph로 전환 결정</td><td>DevEx</td><td><strong>Issue #117</strong></td><td>그래프 기반 라우팅/제어로 확장성 확보</td></tr>
+<tr><td>01/27</td><td>LangGraph PR merge</td><td>DevEx</td><td><strong>PR #125</strong></td><td>full/partial 모드 확장 기반</td></tr>
+</table></div>
+
+{% endraw %}
+
+</details>
 
 ## 일반 RAG/Autonomous Agent라고 말하지 않는 이유
 

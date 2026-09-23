@@ -101,6 +101,23 @@ PDF+VLM 구조의 후속 개선은 세 가지다.
 
 이 글의 핵심은 VLM을 붙였다는 사실이 아니다. PDF의 시각 요소를 검색 가능한 텍스트 맥락으로 바꾸고, 그 맥락을 기존 TextEncoder 흐름에 태웠다는 점이다.
 
+<details markdown="1">
+<summary markdown="span">PDF 처리와 VLM 비교 장표</summary>
+
+### 05:33 · PDF 인코더 파이프라인
+
+![05:33 · PDF 인코더 파이프라인](/assets/images/source-archives/locallens/presentation-05m33s.png)
+
+### 06:08 · VLM 사용 방법과 예시
+
+![06:08 · VLM 사용 방법과 예시](/assets/images/source-archives/locallens/presentation-06m08s.png)
+
+### 06:55 · VLM 사용 실험
+
+![06:55 · VLM 사용 실험](/assets/images/source-archives/locallens/presentation-06m55s.png)
+
+</details>
+
 ## PDF 처리 구현 코드
 
 아래는 PDF의 텍스트와 이미지를 추출하고, 이미지 설명을 검색용 텍스트에 결합하는 구현입니다. VLM 제공자는 설정에 따라 선택하며, 기본값은 mock입니다. 따라서 이 코드의 존재만으로 외부 VLM 호출이나 품질 검증이 완료됐다고 볼 수는 없습니다.
