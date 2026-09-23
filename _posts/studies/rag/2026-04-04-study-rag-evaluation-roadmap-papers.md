@@ -16,11 +16,11 @@ mermaid: true
 math: true
 ---
 
-RAG 평가는 검색과 생성을 분리해서 봐야 한다. 좋은 답변이 나오지 않았을 때 검색 실패인지, context 구성 실패인지, 생성 실패인지 구분할 수 있어야 개선이 가능하다.
+RAG 평가는 검색과 생성을 분리해 봐야 합니다. 좋은 답변이 나오지 않았을 때 검색 실패인지, context 구성 실패인지, 생성 실패인지 구분할 수 있어야 개선할 수 있습니다.
 
 ## RAG 평가하기
 
-RAG 시스템의 품질은 answer quality 하나로 평가하기 어렵다. retrieval quality, context quality, faithfulness, citation accuracy를 나눠 봐야 한다.
+RAG 시스템의 품질은 answer quality 하나만으로 평가하기 어렵습니다. retrieval quality, context quality, faithfulness, citation accuracy를 나눠 봐야 합니다.
 
 | 영역 | 메트릭 | 질문 |
 | --- | --- | --- |
@@ -57,7 +57,7 @@ flowchart LR
     E --> F[Production Monitoring]
 ```
 
-처음부터 모든 평가를 자동화하려고 하면 오래 걸린다. 먼저 작은 golden set을 만들고, 검색 결과와 생성 답변을 분리해 기록하는 것부터 시작하는 편이 현실적이다.
+처음부터 모든 평가를 자동화하려 하면 오래 걸립니다. 먼저 작은 golden set을 만들고 검색 결과와 생성 답변을 분리해 기록하는 것부터 시작하는 편이 현실적입니다.
 
 ## 주요 논문 타임라인
 
@@ -80,6 +80,6 @@ flowchart LR
 
 ## 정리
 
-답변이 틀렸을 때 원인은 여러 가지일 수 있다. 검색이 틀렸는지, 맞는 문서를 찾았지만 context에 못 넣었는지, context는 맞지만 모델이 무시했는지, citation이 잘못 붙었는지 분리해야 한다.
+답변이 틀렸을 때 원인은 여러 가지일 수 있습니다. 검색이 틀렸는지, 맞는 문서를 찾았지만 context에 넣지 못했는지, context는 맞지만 모델이 무시했는지, citation이 잘못 붙었는지를 분리해야 합니다.
 
-논문 타임라인은 이 문제들이 어떤 순서로 발견되고 보완되어 왔는지 보는 기준으로 활용하면 된다.
+논문 타임라인은 이 문제들이 어떤 순서로 발견되고 보완되어 왔는지 살피는 기준으로 활용하면 됩니다.

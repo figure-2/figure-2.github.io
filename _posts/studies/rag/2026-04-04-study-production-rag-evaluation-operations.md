@@ -16,11 +16,11 @@ mermaid: true
 math: true
 ---
 
-Production RAG의 품질은 검색 단계에서 끝나지 않는다. 검색된 컨텍스트를 어떻게 생성 단계에 전달하고, 응답을 어떻게 평가하며, 운영 중 어떤 지표를 볼지가 함께 설계되어야 한다.
+Production RAG의 품질은 검색 단계에서 끝나지 않습니다. 검색된 컨텍스트를 생성 단계에 어떻게 전달할지, 응답을 어떻게 평가할지, 운영 중 어떤 지표를 볼지를 함께 설계해야 합니다.
 
 ## Generation & Prompting
 
-검색된 context를 LLM에 전달할 때는 "많이 넣기"보다 "필요한 근거를 읽기 좋은 구조로 넣기"가 중요하다.
+검색된 context를 LLM에 전달할 때는 "많이 넣기"보다 "필요한 근거를 읽기 좋은 구조로 넣기"가 중요합니다.
 
 | 전략 | 목적 | 적합한 상황 |
 | --- | --- | --- |
@@ -31,7 +31,7 @@ Production RAG의 품질은 검색 단계에서 끝나지 않는다. 검색된 �
 
 ## Agentic RAG Patterns
 
-Agentic RAG는 단순 pipeline을 넘어 검색, 판단, 반복을 동적으로 수행하는 패턴이다. 강력하지만 비용과 latency가 늘기 때문에 문제 복잡도에 맞춰 써야 한다.
+Agentic RAG는 단순 pipeline을 넘어 검색, 판단, 반복을 동적으로 수행하는 패턴입니다. 강력하지만 비용과 latency가 늘어나므로 문제 복잡도에 맞춰 사용해야 합니다.
 
 | 패턴 | 핵심 아이디어 | 주의점 |
 | --- | --- | --- |
@@ -52,7 +52,7 @@ Adaptive RAG의 예시는 다음처럼 볼 수 있다.
 
 ## Context Engineering
 
-2025~2026 흐름에서 RAG는 더 넓은 context engineering으로 확장된다. 정적 문서 검색만 다루는 것이 아니라 memory, tool, service 연결까지 포함한다.
+2025~2026 흐름에서 RAG는 더 넓은 context engineering으로 확장됩니다. 정적 문서 검색뿐 아니라 memory, tool, service 연결까지 포함합니다.
 
 | 구성 | 의미 |
 | --- | --- |
@@ -60,11 +60,11 @@ Adaptive RAG의 예시는 다음처럼 볼 수 있다.
 | Memory | 대화 이력, 사용자 상태, 작업 이력 |
 | MCP | 외부 도구, DB, 파일 시스템, API 연결 |
 
-이 관점에서는 RAG가 단일 기능이 아니라 knowledge runtime의 일부가 된다.
+이 관점에서 RAG는 단일 기능이 아니라 knowledge runtime의 일부가 됩니다.
 
 ## Evaluation Framework
 
-RAG 평가는 retrieval과 generation을 분리해야 한다. 검색이 틀렸는지, 생성이 틀렸는지 구분하지 못하면 개선 방향도 잡기 어렵다.
+RAG 평가는 retrieval과 generation을 분리해야 합니다. 검색과 생성 중 어느 단계가 문제인지 구분하지 못하면 개선 방향도 잡기 어렵습니다.
 
 | 영역 | 메트릭 | 의미 |
 | --- | --- | --- |
@@ -86,7 +86,7 @@ RAG 평가는 retrieval과 generation을 분리해야 한다. 검색이 틀렸�
 
 ## Production Operations
 
-운영 환경에서는 품질뿐 아니라 latency, 비용, 장애 대응도 함께 본다.
+운영 환경에서는 품질뿐 아니라 latency, 비용, 장애 대응도 함께 봅니다.
 
 ### 레이턴시 예산
 
@@ -119,4 +119,4 @@ RAG 평가는 retrieval과 generation을 분리해야 한다. 검색이 틀렸�
 
 ## 정리
 
-Production RAG의 마지막 품질은 evaluation과 operations에서 결정된다. 검색이 맞았는지, 답변이 근거를 따랐는지, 비용과 latency가 허용 범위 안인지 계속 측정해야 한다.
+Production RAG의 최종 품질은 evaluation과 operations에서 결정됩니다. 검색이 맞았는지, 답변이 근거를 따랐는지, 비용과 latency가 허용 범위 안인지 계속 측정해야 합니다.

@@ -16,21 +16,21 @@ mermaid: true
 math: true
 ---
 
-RAG는 단순한 `Query -> Retrieve -> Generate` 구조에서 시작해, 검색 전후 최적화와 동적 모듈 조합으로 확장되어 왔다. 이 글은 Naive, Advanced, Modular, Agentic RAG가 어떤 문제를 해결하려고 등장했는지 정리한다.
+RAG는 단순한 `Query -> Retrieve -> Generate` 구조에서 시작해, 검색 전후 최적화와 동적 모듈 조합으로 확장되어 왔습니다. 이 글은 Naive, Advanced, Modular, Agentic RAG가 어떤 문제를 해결하려고 등장했는지 정리합니다.
 
 ## RAG의 진화
 
-RAG는 3세대에 걸쳐 발전해 왔다. 각 세대는 이전 구조의 한계를 보완하는 방식으로 확장됐다.
+RAG는 3세대에 걸쳐 발전해 왔습니다. 각 세대는 이전 구조의 한계를 보완하는 방식으로 확장됐습니다.
 
 ### Naive RAG (2020~2022)
 
-고정된 파이프라인. Query → Retrieve → Generate. 단순하지만 한계가 명확합니다.
+고정된 파이프라인입니다. Query → Retrieve → Generate로 구성하며, 단순하지만 한계가 명확합니다.
 
 Query → Retrieve → Generate
 
 ### Advanced RAG (2023~2024)
 
-검색 전/중/후를 최적화. 쿼리 리라이팅, 하이브리드 검색, 리랭킹 등을 추가합니다.
+검색 전·중·후를 최적화합니다. 쿼리 리라이팅, 하이브리드 검색, 리랭킹 등을 추가합니다.
 
 Query 최적화 → Hybrid Retrieve → Rerank → Generate
 

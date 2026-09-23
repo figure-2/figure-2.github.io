@@ -15,13 +15,13 @@ mermaid: true
 math: true
 ---
 
-Production RAG는 검색 파이프라인 하나로 끝나지 않는다. ingestion, query processing, hybrid retrieval, reranking, generation, evaluation, cache, monitoring이 함께 설계되어야 운영 가능한 시스템이 된다.
+Production RAG는 검색 파이프라인 하나로 끝나지 않습니다. ingestion, query processing, hybrid retrieval, reranking, generation, evaluation, cache, monitoring이 함께 설계되어야 운영 가능한 시스템이 됩니다.
 
-이 글은 프로덕션 RAG의 전체 아키텍처와 핵심 설계 지점을 정리한다.
+이 글은 프로덕션 RAG의 전체 아키텍처와 핵심 설계 지점을 정리합니다.
 
 ## Production Architecture
 
-프로덕션 RAG 시스템의 전체 흐름은 offline ingestion pipeline과 online query pipeline으로 나눌 수 있다.
+프로덕션 RAG 시스템의 전체 흐름은 offline ingestion pipeline과 online query pipeline으로 나눌 수 있습니다.
 
 ```text
 OFFLINE — INGESTION PIPELINE

@@ -17,9 +17,9 @@ mermaid: true
 math: true
 ---
 
-RAG를 실무에 적용할 때는 최신 기법을 한 번에 넣는 것보다 작은 baseline을 만들고, 검색 품질과 평가 체계를 순서대로 붙이는 편이 안전하다.
+RAG를 실무에 적용할 때는 최신 기법을 한 번에 넣는 것보다 작은 baseline을 만들고, 검색 품질과 평가 체계를 순서대로 붙이는 편이 안전합니다.
 
-RAG 학습은 개념보다 실패 유형을 기준으로 잡는 편이 좋다. 검색 실패, chunk 실패, context noise, hallucination, citation 오류를 하나씩 줄이는 방식으로 접근하면 실무 감각이 생긴다.
+RAG 학습은 개념보다 실패 유형을 기준으로 잡는 편이 좋습니다. 검색 실패, chunk 실패, context noise, hallucination, citation 오류를 하나씩 줄이는 방식으로 접근하면 실무 감각이 생깁니다.
 
 ## 추천 학습 순서
 
